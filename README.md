@@ -19,3 +19,4 @@ __Informations :__
 Dans le code, le "rang" d'un Yo-kai est appelé "class".
 
 # Le code ne semble pas fonctionner sous windows pour la commande /medallium (la func class_id_to_class(str, true) ), il n'a aucun problème sous linux/debian.
+# sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex sex 
