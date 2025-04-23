@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-import discord
-from discord.ext import commands
+import nextcord
+from nextcord.ext import commands
 import json
-from discord.errors import Forbidden
+from nextcord.errors import Forbidden
 import random
 import logging
 from colorlog import ColoredFormatter
@@ -194,10 +194,10 @@ async def mk_error_file(error, ctx, command):
     with open(f"./files/error/{file_name}.txt", "w", encoding="utf-8") as f:
         f.write(error_info)
     
-    error_embed = discord.Embed(
+    error_embed = nextcord.Embed(
                 title="Oh non, une erreur s'est produite !",
                 description="Vous pouvez réessayez plus tard. Ou transmettres les info suivantes :",
-                color= discord.Color.red()
+                color= nextcord.Color.red()
             )
     error_embed.add_field(name="Information :",
                           value=f"> - Code d'erreur : {file_name}")
@@ -264,7 +264,7 @@ class Help(commands.Cog):
                 
                 
             # Commence à construire l'embed
-            emb = discord.Embed(title='Commandes et modules', color=discord.Color.blue(),
+            emb = nextcord.Embed(title='Commandes et modules', color=nextcord.Color.blue(),
                                 description=f'Utilisez `{prefix}help <module>` pour obtenir plus d\'informations sur ce module '
                                             f':smiley:\n')
 
@@ -304,8 +304,8 @@ class Help(commands.Cog):
                 if cog.lower() == input[0].lower():
 
                     # Crée un titre - récupère la description à partir de la doc-string sous la classe
-                    emb = discord.Embed(title=f'{cog} - Commandes', description=self.bot.cogs[cog].__doc__,
-                                        color=discord.Color.green())
+                    emb = nextcord.Embed(title=f'{cog} - Commandes', description=self.bot.cogs[cog].__doc__,
+                                        color=nextcord.Color.green())
 
                     # Récupère les commandes du cog
                     for command in self.bot.get_cog(cog).get_commands():
@@ -317,23 +317,23 @@ class Help(commands.Cog):
 
             # Si le module demandé n'est pas trouvé
             else:
-                emb = discord.Embed(title="Qu'est-ce que c'est ?!",
+                emb = nextcord.Embed(title="Qu'est-ce que c'est ?!",
                                     description=f"Je n'ai jamais entendu parler d'un module appelé `{input[0]}` :scream:",
-                                    color=discord.Color.orange())
+                                    color=nextcord.Color.orange())
 
         # Trop de modules demandés - un seul à la fois est autorisé
         elif len(input) > 1:
-            emb = discord.Embed(title="C'est trop.",
+            emb = nextcord.Embed(title="C'est trop.",
                                 description="Merci de ne demander qu'un module à la fois :sweat_smile:",
-                                color=discord.Color.orange())
+                                color=nextcord.Color.orange())
 
         else:
-            emb = discord.Embed(title="C'est un endroit magique.",
+            emb = nextcord.Embed(title="C'est un endroit magique.",
                                 description="Je ne sais pas comment vous êtes arrivé ici. Je ne m'attendais vraiment pas à ça.\n"
                                             "Pourriez-vous s'il vous plaît signaler ce problème En dm ?\n"
                                             "__hubble"
                                             "Merci !",
-                                color=discord.Color.red())
+                                color=nextcord.Color.red())
 
         
         
@@ -386,9 +386,9 @@ class Admin_command(commands.Cog):
                 try:
                     int(input_id)
                 except :
-                    error_embed = discord.Embed(
+                    error_embed = nextcord.Embed(
                         title="Merci de fournir un identifiant corect !",
-                        color= discord.Color.red()
+                        color= nextcord.Color.red()
                     )
                     return await send_embed(ctx, error_embed)
                 
@@ -396,18 +396,18 @@ class Admin_command(commands.Cog):
                 brute_inventory = await get_inv(input_id)
 
                 if brute_inventory == {}:
-                    error_embed = discord.Embed(
+                    error_embed = nextcord.Embed(
                     title="Le Médallium de cette utilisateur est déjà vide !",
-                    color= discord.Color.red()
+                    color= nextcord.Color.red()
                 )
                     return await send_embed(ctx, error_embed)
                 
                 #empt the inv and send the message
                 brute_inventory = {}
                 await save_inv(brute_inventory, input_id)
-                sucess_embed = discord.Embed(
+                sucess_embed = nextcord.Embed(
                     title="Le Médallium de cette utilisateur a été vidé !",
-                    color= discord.Color.green()
+                    color= nextcord.Color.green()
                 )
                 #Log
                 bot_logger.warning(f"{ctx.author.name} a utilisé le /reset dans {ctx.guild.name}")
@@ -416,10 +416,10 @@ class Admin_command(commands.Cog):
                     
             #if member is not in the admin team        
             else :
-                error_embed = discord.Embed(
+                error_embed = nextcord.Embed(
                     title="Vous n'êtes pas dans l'équipe de développement.",
                     description="Vous n'avez pas la permission de faire ceci !",
-                    color= discord.Color.red()
+                    color= nextcord.Color.red()
                 )
                 bot_logger.warning(f"{ctx.author.name} n'avais pas les permissions pour utiliser le /reset dans {ctx.guild.name}")
                 return await send_embed(ctx, error_embed)
@@ -446,10 +446,10 @@ class Admin_command(commands.Cog):
                     break
                 
             if verify == False :
-                error_embed = discord.Embed(
+                error_embed = nextcord.Embed(
                     title="Vous n'êtes pas dans l'équipe de développement.",
                     description="Vous n'avez pas la permission de faire ceci !",
-                    color= discord.Color.red()
+                    color= nextcord.Color.red()
                 )
                 bot_logger.warning(f"{ctx.author.name} n'avais pas les permissions pour utiliser le /stats dans {ctx.guild.name}, sur l'input {input}")
                 return await send_embed(ctx, error_embed)
@@ -469,7 +469,7 @@ class Admin_command(commands.Cog):
                             total_size += os.path.getsize(fp)
                 
                 #mk the embed
-                stats_embed = discord.Embed(color=discord.Color.green(), title="Voici les stats de l'inventaire :")
+                stats_embed = nextcord.Embed(color=nextcord.Color.green(), title="Voici les stats de l'inventaire :")
                 stats_embed.add_field(name="Le nombre d'utilisateurs qui ont un inventaire :", value=f"`{total_user}` utilisateurs", inline=False)
                 stats_embed.add_field(name="Taille du dossier `inventory`", value=f"`{total_size}` octet", inline=False)
                 bot_logger.warning(f"{ctx.author.name} a utilisé le /stats dans {ctx.guild.name}, sur l'input {input}")
@@ -526,8 +526,8 @@ class Admin_command(commands.Cog):
                     #now, mod the json as asked
                     inv[yokai] = number
                     await save_inv(inv, input_id)
-                    sucess_embed = discord.Embed(title=f"La valeur `{yokai}` a été modifié sur `{number}` dans le Médallium de `{input_id}`",
-                                                color=discord.Color.green(),
+                    sucess_embed = nextcord.Embed(title=f"La valeur `{yokai}` a été modifié sur `{number}` dans le Médallium de `{input_id}`",
+                                                color=nextcord.Color.green(),
                                                 description=""
                                                 )
                     bot_logger.warning(msg=f"{ctx.author.name} a utilisé le /give sur l'id {input_id}, en mode json-mod")
@@ -546,10 +546,10 @@ class Admin_command(commands.Cog):
                 number = int(number)
             
             except :
-                error_embed = discord.Embed(
+                error_embed = nextcord.Embed(
                         title="La quantité fournie n'est pas valide.",
                         description="Merci de verifier si la commande est utilisée de manière valide (`/help Admin_command`)",
-                        color= discord.Color.red()
+                        color= nextcord.Color.red()
                     )
                 return await send_embed(ctx, error_embed)
             
@@ -562,10 +562,10 @@ class Admin_command(commands.Cog):
                     break
                     
             if verify == False :
-                error_embed = discord.Embed(
+                error_embed = nextcord.Embed(
                     title="Vous n'êtes pas dans l'équipe de développement.",
                     description="Vous n'avez pas la permission de faire ceci !",
-                    color= discord.Color.red()
+                    color= nextcord.Color.red()
                 )
                 bot_logger.warning(f"{ctx.author.name} n'avais pas les permissions pour utiliser le /give dans {ctx.guild.name}, sur l'input {input_id}")
                 return await send_embed(ctx, error_embed)
@@ -575,10 +575,10 @@ class Admin_command(commands.Cog):
             class_id = classid_to_class(class_name, True)
             if class_id == "" :
                 #if the class does not exist, it return "" and we can catch it
-                error_embed = discord.Embed(
+                error_embed = nextcord.Embed(
                     title="Le rang fourni n'est pas valide.",
                     description="Merci de verifier si la commande est utilisée de manière valide (`/help Admin_command`)",
-                    color= discord.Color.red()
+                    color= nextcord.Color.red()
                 )
                 return await send_embed(ctx, error_embed)
             
@@ -630,8 +630,8 @@ class Admin_command(commands.Cog):
                     #save the inv
                     await save_inv(data=inv, id=input_id)
                 
-            sucess_embed = discord.Embed(title=f"Le(s) Yo-Kai a été ajouté au Médallium de {input_id}",
-                                         color=discord.Color.green(),
+            sucess_embed = nextcord.Embed(title=f"Le(s) Yo-Kai a été ajouté au Médallium de {input_id}",
+                                         color=nextcord.Color.green(),
                                          description=f"**{yokai}** de rang **{rang}**\n> quantité : {number}"
                                          )
             bot_logger.warning(msg=f"{ctx.author.name} a utilisé le /give sur l'id {input_id}")
@@ -661,10 +661,10 @@ class Admin_command(commands.Cog):
                 number = int(number)
             
             except :
-                error_embed = discord.Embed(
+                error_embed = nextcord.Embed(
                         title="La quantité fournie n'est pas valide.",
                         description="Merci de verifier si la commande est utilisée de manière valide (`/help Admin_command`)",
-                        color= discord.Color.red()
+                        color= nextcord.Color.red()
                     )
                 return await send_embed(ctx, error_embed)
             
@@ -677,10 +677,10 @@ class Admin_command(commands.Cog):
                     break
                     
             if verify == False :
-                error_embed = discord.Embed(
+                error_embed = nextcord.Embed(
                     title="Vous n'êtes pas dans l'équipe de développement.",
                     description="Vous n'avez pas la permission de faire ceci !",
-                    color= discord.Color.red()
+                    color= nextcord.Color.red()
                 )
                 bot_logger.warning(f"{ctx.author.name} n'avais pas les permissions pour utiliser le /give sur l'input {input_id},  le yokai {yokai}, la quantité {number}")
                 return await send_embed(ctx, error_embed)
@@ -690,10 +690,10 @@ class Admin_command(commands.Cog):
             class_id = classid_to_class(class_name, True)
             if class_id == "" :
                 #if the class does not exist, it return "" and we can catch it
-                error_embed = discord.Embed(
+                error_embed = nextcord.Embed(
                     title="Le rang fourni n'est pas valide.",
                     description="Merci de verifier si la commande est utilisée de manière valide (`/help Admin_command`)",
-                    color= discord.Color.red()
+                    color= nextcord.Color.red()
                 )
                 return await send_embed(ctx, error_embed)
             
@@ -701,10 +701,10 @@ class Admin_command(commands.Cog):
             #Verify if the input id has an inventory file :
             inv = await get_inv(input_id)
             if inv == {}:
-                error_embed = discord.Embed(
+                error_embed = nextcord.Embed(
                     title=f"Ce Yo-kai n'est pas dans le Médallium de {input_id}",
                     description="Merci de verifier si la commande est utilisée de manière valide (`/help Admin_command`)",
-                    color= discord.Color.red()
+                    color= nextcord.Color.red()
                 )
                 return await send_embed(ctx, error_embed)
                 
@@ -720,20 +720,20 @@ class Admin_command(commands.Cog):
                     
                     
                     except KeyError:
-                        error_embed = discord.Embed(
+                        error_embed = nextcord.Embed(
                             title=f"Ce Yo-kai n'est pas dans le Médallium de {input_id}",
                             description="Merci de verifier si la commande est utilisée de manière valide (`/help Admin_command`)",
-                            color= discord.Color.red()
+                            color= nextcord.Color.red()
                         )
                         return await send_embed(ctx, error_embed)
                     
                     
                     except IndexError :
                         if number - i > 1 :
-                            error_embed = discord.Embed(
+                            error_embed = nextcord.Embed(
                                 title=f"Vous avez demandé plus de Yo-kai que il n'y en a dans ce Médallium.",
                                 description="Le nombre actuel dans le Médallium est : `1`",
-                                color= discord.Color.red()
+                                color= nextcord.Color.red()
                             )
                             return await send_embed(ctx, error_embed)
                         one_more_author = False
@@ -741,10 +741,10 @@ class Admin_command(commands.Cog):
                     if one_more_author == True :
                         if number - i > inv[yokai][1] :
                             #return an error if the user want to remove more yokai than there is in the corespondign Medallium
-                            error_embed = discord.Embed(
+                            error_embed = nextcord.Embed(
                                 title=f"Vous avez demandé plus de Yo-kai que il n'y en a dans ce Médallium.",
                                 description=f"Le nombre actuel dans le Médallium est : `{inv[yokai][1]}`",
-                                color= discord.Color.red()
+                                color= nextcord.Color.red()
                             )
                             return await send_embed(ctx, error_embed)
                             
@@ -760,8 +760,8 @@ class Admin_command(commands.Cog):
                         inv[class_id] -= 1
                     await save_inv(data=inv, id=input_id)
                 
-            sucess_embed = discord.Embed(title=f"Le(s) Yo-Kai a été retiré du Médallium de {input_id}",
-                                         color=discord.Color.green(),
+            sucess_embed = nextcord.Embed(title=f"Le(s) Yo-Kai a été retiré du Médallium de {input_id}",
+                                         color=nextcord.Color.green(),
                                          description=f"**{yokai}** de rang **{rang}** \n> quantité : {number} "
                                          )
             bot_logger.warning(msg=f"{ctx.author.name} a utilisé le /remove sur l'id {input_id}, le yokai {yokai}, la quantité {number}")
@@ -791,7 +791,7 @@ class Medallium(commands.Cog) :
         
         
     @commands.hybrid_command(name="medallium")
-    async def medallium(self, ctx, user : discord.User = None ):
+    async def medallium(self, ctx, user : nextcord.User = None ):
         """
         Permet de voir votre Médallium (inventaire), tous les Yo-kai que vous avez eu avec le /yokai. 
         Utilisez */medallium {user}* pour voir le Médallium d'un autre utilisateur.
@@ -812,9 +812,9 @@ class Medallium(commands.Cog) :
             #try if the inv is empty
             if brute_inventory == {}:
                 if user.id == ctx.author.id:
-                    inv_embed = discord.Embed(title="Oops, votre Médallium est vide 😢!")
+                    inv_embed = nextcord.Embed(title="Oops, votre Médallium est vide 😢!")
                 else:
-                    inv_embed = discord.Embed(title=f"Oops, le Médallium de {user.name} est vide 😢!")
+                    inv_embed = nextcord.Embed(title=f"Oops, le Médallium de {user.name} est vide 😢!")
                 return await send_embed(ctx, inv_embed)
                 
 
@@ -867,22 +867,22 @@ class Medallium(commands.Cog) :
             
             #Inv dropdown class
 
-            class Inv_dropdown(discord.ui.Select):
+            class Inv_dropdown(nextcord.ui.Select):
                 def __init__(self):
                     #set the options that will be in the dropdown
                     options = [
-                        discord.SelectOption(label="Tout !", description="Affiche tout le Médallium si possible.", emoji="🌐"),
-                        discord.SelectOption(label="E", emoji=emoji["E"]),
-                        discord.SelectOption(label="D", emoji=emoji["D"]),
-                        discord.SelectOption(label="C", emoji=emoji["C"]),
-                        discord.SelectOption(label="B", emoji=emoji["B"]),
-                        discord.SelectOption(label="A", emoji=emoji["A"]),
-                        discord.SelectOption(label="S", emoji=emoji["S"]),
-                        discord.SelectOption(label="Légendaire", emoji=emoji["LegendaryS"]),
-                        discord.SelectOption(label="Trésor", emoji=emoji["treasureS"]),
-                        discord.SelectOption(label="Spécial", emoji=emoji["SpecialS"]),
-                        discord.SelectOption(label="Divinité / Enma", emoji=emoji["DivinityS"]),
-                        discord.SelectOption(label="Boss", emoji=emoji["Boss"])
+                        nextcord.SelectOption(label="Tout !", description="Affiche tout le Médallium si possible.", emoji="🌐"),
+                        nextcord.SelectOption(label="E", emoji=emoji["E"]),
+                        nextcord.SelectOption(label="D", emoji=emoji["D"]),
+                        nextcord.SelectOption(label="C", emoji=emoji["C"]),
+                        nextcord.SelectOption(label="B", emoji=emoji["B"]),
+                        nextcord.SelectOption(label="A", emoji=emoji["A"]),
+                        nextcord.SelectOption(label="S", emoji=emoji["S"]),
+                        nextcord.SelectOption(label="Légendaire", emoji=emoji["LegendaryS"]),
+                        nextcord.SelectOption(label="Trésor", emoji=emoji["treasureS"]),
+                        nextcord.SelectOption(label="Spécial", emoji=emoji["SpecialS"]),
+                        nextcord.SelectOption(label="Divinité / Enma", emoji=emoji["DivinityS"]),
+                        nextcord.SelectOption(label="Boss", emoji=emoji["Boss"])
                     ]
                     
                     super().__init__(placeholder='Choisissez le rang que vous voulez...', min_values=1, max_values=1, options=options)
@@ -890,9 +890,9 @@ class Medallium(commands.Cog) :
                 async def callback(self, interaction, ctx=ctx):
                     if self.values[0] == "Tout !" :
                         if user.id == ctx.author.id:
-                            inv_embed = discord.Embed(title="Voici votre Médallium :")
+                            inv_embed = nextcord.Embed(title="Voici votre Médallium :")
                         else:
-                            inv_embed = discord.Embed(title=f"Voici le Médallium de {user.name} :")
+                            inv_embed = nextcord.Embed(title=f"Voici le Médallium de {user.name} :")
 
                         try :
                             for classes in yokai_per_class:
@@ -917,8 +917,8 @@ class Medallium(commands.Cog) :
                                                         value=yokai_list_formated)
                                     inv_embed.set_author(name=f"Médallium de {user.name}")
                             return await interaction.response.send_message(embed=inv_embed)
-                        except discord.errors.HTTPException as e:
-                            error_embed =  discord.Embed(color=discord.Color.red(),
+                        except nextcord.errors.HTTPException as e:
+                            error_embed =  nextcord.Embed(color=nextcord.Color.red(),
                                                         title="Oh non, une erreur s'est produite !",
                                                         description="> Un bug sur cette commande se produit quand le Médallium est trop grand pour être afficher. (C'est un peu un flex quand même 🙃)",
                                                         )
@@ -943,22 +943,22 @@ class Medallium(commands.Cog) :
                                     yokai_list_formated += f"> {elements} \n"
                                             
                                             
-                            inv_embed=discord.Embed(title=f"Yo-kai de Rang {classes_name} `{brute_inventory[class_id]}/{list_len[class_id]}`",
+                            inv_embed=nextcord.Embed(title=f"Yo-kai de Rang {classes_name} `{brute_inventory[class_id]}/{list_len[class_id]}`",
                                                 description=yokai_list_formated,
-                                                color=discord.Color.from_str(yokai_data[class_id]["color"])
+                                                color=nextcord.Color.from_str(yokai_data[class_id]["color"])
                                                 )
                             inv_embed.set_thumbnail(url=image_link[class_id])
                             inv_embed.set_author(name=f"Médallium de {user.name}")
                             return await interaction.response.send_message(embed=inv_embed)
                         else:
                             if user.id == ctx.author.id:
-                                inv_embed = discord.Embed(title="Oops, votre Médallium ne contient pas de Yo-kai de ce rang 😢!")
+                                inv_embed = nextcord.Embed(title="Oops, votre Médallium ne contient pas de Yo-kai de ce rang 😢!")
                             else:
-                                inv_embed = discord.Embed(title=f"Oops, le Médallium de {user.name} ne contient pas de Yo-kai de ce rang 😢!")
+                                inv_embed = nextcord.Embed(title=f"Oops, le Médallium de {user.name} ne contient pas de Yo-kai de ce rang 😢!")
                             return await interaction.response.send_message(embed=inv_embed)
                         
 
-            class Inv_dropdown_view(discord.ui.View):
+            class Inv_dropdown_view(nextcord.ui.View):
                 def __init__(self):
                     super().__init__()
 
@@ -967,7 +967,7 @@ class Medallium(commands.Cog) :
                     
             Dropdown = Inv_dropdown_view()
             #Create the main embed
-            main_embed = discord.Embed(title="__Médallium -- Menu.__",
+            main_embed = nextcord.Embed(title="__Médallium -- Menu.__",
                       colour=0xf58f00)
 
             #Make the nerdy stats :
@@ -1026,7 +1026,7 @@ class Trade(commands.Cog):
     
     
     @commands.hybrid_command(name="trade")
-    async def trade(self, ctx, ton_yokai : str, destinataire : discord.User, son_yokai : str):
+    async def trade(self, ctx, ton_yokai : str, destinataire : nextcord.User, son_yokai : str):
         
         """
         
@@ -1046,12 +1046,12 @@ class Trade(commands.Cog):
         try :
             def dont_have_it_embed(who : str):
                 if who == "a":
-                    embed = discord.Embed(color=discord.Color.red(),
+                    embed = nextcord.Embed(color=nextcord.Color.red(),
                                         title="Ce(s) Yo-kai n'est pas dans votre Médallium 🤔",
                                         description="Verifiez que l'orthographe est correct ou que vous le(s) possédez bien (`/medallium`)"
                                         )
                 else:
-                    embed = discord.Embed(color=discord.Color.red(),
+                    embed = nextcord.Embed(color=nextcord.Color.red(),
                                         title=f"Ce(s) Yo-kai n'est pas dans le Médallium de {destinataire.name} 🤔",
                                         description=f"Verifiez que l'orthographe est correct ou que il le(s) possède bien (`/medallium {destinataire.name}`)"
                                         )
@@ -1109,7 +1109,7 @@ class Trade(commands.Cog):
             
             
             
-            ask_embed = discord.Embed(color=discord.Color.green(),
+            ask_embed = nextcord.Embed(color=nextcord.Color.green(),
                                       title=f"Demande de trade entre {ctx.author.display_name} et {destinataire.display_name} !",
                                       description="Merci de réagir avec ✅ pour accepter, ou ❌ pour annuler.\n **Vous pouvez voir les details du trade ci dessous.** \n -----------------------------------------------------"
                                       )
@@ -1138,12 +1138,12 @@ class Trade(commands.Cog):
                 reaction, reaction_user = await bot.wait_for("reaction_add", timeout= 30, check=reaction_check)
             except TimeoutError:
                 #what if no reaction after 30s
-                denied_embed = discord.Embed(color=discord.Color.red(), title="🛑 Votre demande de trade a été annulée car aucune activité durant 30s.", description="Merci de relancer la commande")
+                denied_embed = nextcord.Embed(color=nextcord.Color.red(), title="🛑 Votre demande de trade a été annulée car aucune activité durant 30s.", description="Merci de relancer la commande")
                 return await ctx.send(embed=denied_embed)
             
             #What if the author cancel the request
             if reaction_user.id == ctx.author.id and reaction.emoji == "❌":
-                denied_embed = discord.Embed(color=discord.Color.red(), title=" 🛑 Votre demande de trade a été annulée", description="Merci de relancer la commande si cela était une erreur.")
+                denied_embed = nextcord.Embed(color=nextcord.Color.red(), title=" 🛑 Votre demande de trade a été annulée", description="Merci de relancer la commande si cela était une erreur.")
                 bot_logger.info(f"{ctx.author.name} a annulée sa demande de trade avec {destinataire.name}, dans {ctx.guild.name}")
                 return await ctx.send(embed=denied_embed)
             
@@ -1151,7 +1151,7 @@ class Trade(commands.Cog):
             
             elif reaction_user.id == destinataire.id :
                 if reaction.emoji == "❌":
-                    denied_embed = discord.Embed(color=discord.Color.red(), title=" ❌ La demande de trade a été refusée", description="Merci de relancer la commande si cela était une erreur.")
+                    denied_embed = nextcord.Embed(color=nextcord.Color.red(), title=" ❌ La demande de trade a été refusée", description="Merci de relancer la commande si cela était une erreur.")
                     bot_logger.info(f"{destinataire.name} a refusé la demande de trade de {ctx.author.name}, dans {ctx.guild.name}")
                     return await ctx.send(embed=denied_embed)
             
@@ -1230,7 +1230,7 @@ class Trade(commands.Cog):
             await save_inv(recipient_inv, destinataire.id)
                 
             #send the success embed
-            success_embed = discord.Embed(colour=discord.Color.green(),
+            success_embed = nextcord.Embed(colour=nextcord.Color.green(),
                                           title="__**Le trade a été effectué**__ ✅",
                                           description="> Ci dessous vous pouvez vois le bilan du trade."
                                           )
@@ -1324,9 +1324,9 @@ class Yokai(commands.Cog):
                             minimum_time_to_claim = last_claim + cooldown
                             remaining_time = time.gmtime( minimum_time_to_claim - time.time())
                             
-                            yokai_embed = discord.Embed(title="Vous ne pouvez pas tirer de Yo-kai pour l'instant !",
+                            yokai_embed = nextcord.Embed(title="Vous ne pouvez pas tirer de Yo-kai pour l'instant !",
                                                         description=f"🕰️ Merci d'attendre {cooldown_str} après votre dernier tirage. :/",
-                                                        color=discord.Color.red()
+                                                        color=nextcord.Color.red()
                                                         )
                             yokai_embed.add_field(name="__Il vous reste :__",
                                                 value=f"{remaining_time[3]}h {remaining_time[4]}min et {remaining_time[5]}s."
@@ -1344,9 +1344,9 @@ class Yokai(commands.Cog):
                 Yokai_choice = random.choices(class_choice["yokai_list"])
                 Yokai_choice = Yokai_choice[0]
                 
-                yokai_embed = discord.Embed(title=f"Vous avez eu le Yo-kai **{Yokai_choice}** ✨ ",
+                yokai_embed = nextcord.Embed(title=f"Vous avez eu le Yo-kai **{Yokai_choice}** ✨ ",
                                             description=f"Félicitations il est de rang **{class_name}**",
-                                            color=discord.Color.from_str(yokai_data[class_id]["color"])
+                                            color=nextcord.Color.from_str(yokai_data[class_id]["color"])
                                             )
                 yokai_embed.set_thumbnail(url=image_link[class_id])
                 bot_logger.info(f"{ctx.author.name} a utilisé le /yokai dans {ctx.guild.name}, il a eu {Yokai_choice}, de rang {class_name}")
@@ -1434,7 +1434,7 @@ class Yokai(commands.Cog):
 
 class Yokai_bot(commands.Bot):
     def __init__(self) -> None:
-        super().__init__(command_prefix=prefix, intents=discord.Intents.all())
+        super().__init__(command_prefix=prefix, intents=nextcord.Intents.all())
         
     async def setup_hook(self) -> None:
         #delete default help
@@ -1449,8 +1449,8 @@ class Yokai_bot(commands.Bot):
        
     async def on_ready(self):
         print(f"We have logged in as {bot.user}")
-        await self.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name =f"/yokai || /help"))
-        print(discord.__version__)
+        await self.change_presence(activity=nextcord.Activity(type=nextcord.ActivityType.watching, name =f"/yokai || /help"))
+        print(nextcord.__version__)
        
        
 #here everythings start.
