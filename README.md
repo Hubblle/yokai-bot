@@ -3,7 +3,7 @@
 
 - Python 3.12+
 - Libraries : discord.py / colorlog
-- Créer les dossiers/fichiers : `/files/error/` & `/files/logs/discord.log` & `/files/inventory` 
+- Créer les dossiers/fichiers : `/files/error/` & `/files/logs/discord.log` & `/files/inventory/` 
 
 - Créer un fichier `/files/configuration.json` tel que : 
 

@@ -7,6 +7,13 @@ import random
 import time
 import bot_package.Custom_func as Cf
 
+team_member_id = []
+with open("./files/configuration.json") as f:
+            data = json.load(f)
+            for id in data["team_members_id"] :
+                team_member_id.append(id)
+
+
 # Yokai command cog
 class Yokai(commands.Cog):
     
