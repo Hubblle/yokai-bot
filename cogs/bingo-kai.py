@@ -103,7 +103,7 @@ class Yokai(commands.Cog):
             color=discord.Color.from_str(self.bot.yokai_data[class_id]["color"])
         )
         yokai_embed.set_thumbnail(url=self.bot.image_link[class_id])
-        yokai_embed.set_footer(text="Essaye de faire /bkai !")
+        yokai_embed.set_footer(text="/!\ Étant donné que le bot approche des 100 serveurs, nous risquons de perdre l'accès aux commandes préfixées (ex. `.bkai`). Nous recommandons donc d'utiliser les commandes slash (ex. `/bkai`).")
         if ctx.guild is not None:
             self.bot.logger.info(
                 f"Executed bingo-kai command in {ctx.guild.name} (ID: {ctx.guild.id}) by {ctx.author} (ID: {ctx.author.id}) // He had '{Yokai_choice}' / Rank: {class_name}"

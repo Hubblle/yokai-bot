@@ -201,6 +201,7 @@ class Medallium(commands.Cog) :
 
         main_embed.add_field(name="Voici vos statistiques :", value=yokai_claimed_count, inline=True)
         main_embed.set_footer(text="Merci de choisir parmi les propositions ci-dessous pour afficher vos Yo-kai.")
+        main_embed.set_author(text="/!\ Étant donné que le bot approche des 100 serveurs, nous risquons de perdre l'accès aux commandes préfixées (ex. `.bkai`). Nous recommandons donc d'utiliser les commandes slash (ex. `/bkai`).")
 
         await ctx.send(embed=main_embed, view=Dropdown)
 
