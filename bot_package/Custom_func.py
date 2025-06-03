@@ -52,4 +52,4 @@ async def get_inv(id : int):
 #save inv func
 async def save_inv(data : dict, id : int):
     with open(f"./files/inventory/{str(id)}.json", "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2)
+        json.dump(data, f, indent=2, ensure_ascii=False)
