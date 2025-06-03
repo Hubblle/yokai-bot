@@ -2,7 +2,11 @@
 ## Requirements :
 
 - Python 3.12+
+<<<<<<< HEAD
 - Libraries : discord.py / colorlog
+=======
+- Libraries : discord.py / python-dotenv (requirement.txt)
+>>>>>>> 892f19441e1ec8418af8bb7d96c586a975e035b0
 - Créer les dossiers/fichiers : `/files/error/` & `/files/logs/discord.log` & `/files/inventory/` 
 
 - Créer un fichier `/files/configuration.json` tel que : 
