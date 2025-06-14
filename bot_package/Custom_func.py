@@ -23,6 +23,11 @@ class_list = ['E', 'D', 'C', 'B', 'A', 'S', 'LegendaryS', "treasureS", "SpecialS
 proba_list = [0.4175, 0.2, 0.12, 0.12, 0.08, 0.04, 0.0075, 0.0075, 0.0075, 0.005, 0.0025]
 
 
+#Get the full list
+with open("./files/full_name_fr.json") as yk_list_full:
+    yokai_list_full = json.load(yk_list_full)
+
+
 async def classid_to_class(id, reverse : bool = False):
         if reverse == False :
             return yokai_data[id]["class_name"]
