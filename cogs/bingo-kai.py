@@ -14,6 +14,7 @@ with open("./files/configuration.json") as f:
                 team_member_id.append(id)
 
 
+
 # Yokai command cog
 class Yokai(commands.Cog):
     
@@ -36,8 +37,10 @@ class Yokai(commands.Cog):
                 #define the inv
         brute_inventory = await Cf.get_inv(ctx.author.id)
 
-        #verify if the cooldown is bypassed ?
         iscooldown = True
+        
+        
+        #verify if the cooldown is bypassed ?
         """for ids in team_member_id :
             if ctx.author.id == ids :
                 iscooldown = False
@@ -96,6 +99,13 @@ class Yokai(commands.Cog):
         #choose the Yo-kai in the class
         Yokai_choice = random.choices(class_choice["yokai_list"])
         Yokai_choice = Yokai_choice[0]
+        print(type(Yokai_choice))
+        
+        #get the id of the yokai
+        try :
+            id = Cf.yokai_list_full[Yokai_choice]["id"]
+        except KeyError :
+            id = None
 
         yokai_embed = discord.Embed(
             title=f"Vous avez eu le Yo-kai **{Yokai_choice}** ✨ ",
@@ -103,7 +113,8 @@ class Yokai(commands.Cog):
             color=discord.Color.from_str(self.bot.yokai_data[class_id]["color"])
         )
         yokai_embed.set_thumbnail(url=self.bot.image_link[class_id])
-        yokai_embed.set_footer(text="/!\ Étant donné que le bot approche des 100 serveurs, nous risquons de perdre l'accès aux commandes préfixées (ex. `.bkai`). Nous recommandons donc d'utiliser les commandes slash (ex. `/bkai`).")
+        yokai_embed.set_footer(text="/!\ Étant donné que le bot approche des 100 serveurs, nous risquons de perdre l'accès aux commandes préfix (ex. `.bkai`). Nous recommandons donc d'utiliser les commandes slash (ex. `/bkai`).")
+        yokai_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{id}.png")
         if ctx.guild is not None:
             self.bot.logger.info(
                 f"Executed bingo-kai command in {ctx.guild.name} (ID: {ctx.guild.id}) by {ctx.author} (ID: {ctx.author.id}) // He had '{Yokai_choice}' / Rank: {class_name}"

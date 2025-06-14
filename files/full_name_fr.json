@@ -1,0 +1,2690 @@
+{
+  "Jojojoyeux": {
+    "name_en": "Happierre",
+    "id": "y177000"
+  },
+  "Marge": {
+    "name_en": "Marcy",
+    "id": null
+  },
+  "Violette": {
+    "name_en": "Blips",
+    "id": "y121010"
+  },
+  "Enma": {
+    "name_en": "Enma",
+    "id": null
+  },
+  "Whisper": {
+    "name_en": "Whisper",
+    "id": "y001000"
+  },
+  "Woko": {
+    "name_en": "Pandle",
+    "id": "y101000"
+  },
+  "Pagno": {
+    "name_en": "Undy",
+    "id": "y102000"
+  },
+  "Alfoncéo": {
+    "name_en": "Tanbo",
+    "id": "y102010"
+  },
+  "Papa Ress": {
+    "name_en": "D'wanna",
+    "id": "y103000"
+  },
+  "Ralbouc": {
+    "name_en": "N'more",
+    "id": "y104000"
+  },
+  "Bastata": {
+    "name_en": "Q'wit",
+    "id": "y104010"
+  },
+  "Sumochi": {
+    "name_en": "Mochismo",
+    "id": "y105000"
+  },
+  "Mochimacho": {
+    "name_en": "Minochi",
+    "id": "y105010"
+  },
+  "Toumou": {
+    "name_en": "Cutta-nah",
+    "id": "y106000"
+  },
+  "Lamlam'mou": {
+    "name_en": "Cutta-nah-nah",
+    "id": "y107000"
+  },
+  "Samoumouraï": {
+    "name_en": "Slacka-slash",
+    "id": "y107010"
+  },
+  "Bonneto": {
+    "name_en": "Chansin",
+    "id": "y108000"
+  },
+  "Sabri": {
+    "name_en": "Sheen",
+    "id": "y109000"
+  },
+  "Orox": {
+    "name_en": "Gleam",
+    "id": "y109010"
+  },
+  "Padelou": {
+    "name_en": "Snee",
+    "id": "y110000"
+  },
+  "Heaumer": {
+    "name_en": "Helmsman",
+    "id": "y111000"
+  },
+  "Bushidos": {
+    "name_en": "Reuknight",
+    "id": "y112000"
+  },
+  "Âmiral": {
+    "name_en": "Corptain",
+    "id": "y112010"
+  },
+  "Feulion": {
+    "name_en": "Blazion",
+    "id": "y113000"
+  },
+  "Vibrilion": {
+    "name_en": "Quaken",
+    "id": "y113010"
+  },
+  "Siro": {
+    "name_en": "Siro",
+    "id": "y113020"
+  },
+  "Scatcheur": {
+    "name_en": "Beetler",
+    "id": "y114000"
+  },
+  "Scarmouche": {
+    "name_en": "Beetall",
+    "id": "y115000"
+  },
+  "Scarnage": {
+    "name_en": "Cruncha",
+    "id": "y115010"
+  },
+  "Benkei": {
+    "name_en": "Benkei",
+    "id": "y116000"
+  },
+  "B3-NK1": {
+    "name_en": "B3-NK1",
+    "id": "y116010"
+  },
+  "Zerberker": {
+    "name_en": "Zerberker",
+    "id": "y117000"
+  },
+  "Fouétar": {
+    "name_en": "Snartle",
+    "id": "y117010"
+  },
+  "Morvobec": {
+    "name_en": "Snotsolong",
+    "id": "y118000"
+  },
+  "Matchou": {
+    "name_en": "Duchoo",
+    "id": "y118010"
+  },
+  "Espi": {
+    "name_en": "Espy",
+    "id": "y119000"
+  },
+  "Étassivilia": {
+    "name_en": "Infour",
+    "id": "y119010"
+  },
+  "Chaipô": {
+    "name_en": "Wazzat",
+    "id": "y120000"
+  },
+  "Gagalurin": {
+    "name_en": "Dummkap",
+    "id": "y120010"
+  },
+  "Marra": {
+    "name_en": "Lafalotta",
+    "id": "y121000"
+  },
+  "Sushiyama": {
+    "name_en": "Sushiyama",
+    "id": "y122000"
+  },
+  "Kapunki": {
+    "name_en": "Kapunki",
+    "id": "y122010"
+  },
+  "Cupistol": {
+    "name_en": "Cupistol",
+    "id": "y123000"
+  },
+  "Donjouant": {
+    "name_en": "Casanuva",
+    "id": "y124000"
+  },
+  "Nonjuan": {
+    "name_en": "Casanono",
+    "id": "y124010"
+  },
+  "Toutouïe": {
+    "name_en": "Tattletell",
+    "id": "y125000"
+  },
+  "Mémétal": {
+    "name_en": "Skranny",
+    "id": "y125010"
+  },
+  "Babalance": {
+    "name_en": "Tattlecast",
+    "id": "y126000"
+  },
+  "Baku": {
+    "name_en": "Baku",
+    "id": "y127000"
+  },
+  "Tapur": {
+    "name_en": "Whapir",
+    "id": "y127010"
+  },
+  "Padrézo": {
+    "name_en": "Signibble",
+    "id": "y128000"
+  },
+  "Émettor": {
+    "name_en": "Signiton",
+    "id": "y129000"
+  },
+  "Dynamo": {
+    "name_en": "Statiking",
+    "id": "y129010"
+  },
+  "Télémir": {
+    "name_en": "Mirapo",
+    "id": "y130000"
+  },
+  "Nuiroir": {
+    "name_en": "Mircle",
+    "id": "y130010"
+  },
+  "Hiblusion": {
+    "name_en": "Illoo",
+    "id": "y131000"
+  },
+  "Hibrouille": {
+    "name_en": "Elloo",
+    "id": "y131010"
+  },
+  "Hibourling": {
+    "name_en": "Alloo",
+    "id": "y131020"
+  },
+  "Angélik": {
+    "name_en": "Frostina",
+    "id": "y132000"
+  },
+  "Blizzaria": {
+    "name_en": "Blizzaria",
+    "id": "y133000"
+  },
+  "Damona": {
+    "name_en": "Damona",
+    "id": "y133010"
+  },
+  "Blizzie": {
+    "name_en": "Blizzie",
+    "id": "y133800"
+  },
+  "Kyubi": {
+    "name_en": "Kyubi",
+    "id": "y134000"
+  },
+  "Barakabo": {
+    "name_en": "Frostail",
+    "id": "y134010"
+  },
+  "Obskyurbi": {
+    "name_en": "Darkyubi",
+    "id": "y134020"
+  },
+  "Darabajoie": {
+    "name_en": "Dulluma",
+    "id": "y135000"
+  },
+  "Darumastar": {
+    "name_en": "Darumacho",
+    "id": "y136000"
+  },
+  "Goruma": {
+    "name_en": "Goruma",
+    "id": "y136010"
+  },
+  "Malmidal": {
+    "name_en": "Coughkoff",
+    "id": "y137000"
+  },
+  "Écchinose": {
+    "name_en": "Hurchin",
+    "id": "y137010"
+  },
+  "Squarlett": {
+    "name_en": "Dazzabel",
+    "id": "y138000"
+  },
+  "Margoth": {
+    "name_en": "Rattelle",
+    "id": "y139000"
+  },
+  "Squelèbelle": {
+    "name_en": "Skelebella",
+    "id": "y139010"
+  },
+  "Nanpart": {
+    "name_en": "Noway",
+    "id": "y140000"
+  },
+  "Passpa": {
+    "name_en": "Impass",
+    "id": "y141000"
+  },
+  "Granpart": {
+    "name_en": "Walldin",
+    "id": "y141010"
+  },
+  "Boulapic": {
+    "name_en": "Blowkade",
+    "id": "y142000"
+  },
+  "Bouldacier": {
+    "name_en": "Ledballoon",
+    "id": "y142010"
+  },
+  "Hauber": {
+    "name_en": "Armsman",
+    "id": "y143000"
+  },
+  "Lama Laya": {
+    "name_en": "Mad Mountain",
+    "id": "y144000"
+  },
+  "Etna Magma": {
+    "name_en": "Lava Lord",
+    "id": "y144010"
+  },
+  "Coléroptère": {
+    "name_en": "Rhinoggin",
+    "id": "y145000"
+  },
+  "Rhinolimit": {
+    "name_en": "Rhinormous",
+    "id": "y146000"
+  },
+  "Corniaque": {
+    "name_en": "Hornaplenty",
+    "id": "y146010"
+  },
+  "Castelius I": {
+    "name_en": "Castelius I",
+    "id": "y147000"
+  },
+  "Castelius III": {
+    "name_en": "Castelius III",
+    "id": "y147010"
+  },
+  "Castelius II": {
+    "name_en": "Castelius II",
+    "id": "y147020"
+  },
+  "Castelius Max": {
+    "name_en": "Castelius Max",
+    "id": "y147030"
+  },
+  "Misterre": {
+    "name_en": "Dromp",
+    "id": "y148000"
+  },
+  "Ressak": {
+    "name_en": "Swosh",
+    "id": "y148010"
+  },
+  "Cigalopin": {
+    "name_en": "Cadin",
+    "id": "y149000"
+  },
+  "Cigaillard": {
+    "name_en": "Cadable",
+    "id": "y150000"
+  },
+  "Cigazouille": {
+    "name_en": "Singcada",
+    "id": "y150010"
+  },
+  "Flamente": {
+    "name_en": "Buhu",
+    "id": "y151000"
+  },
+  "Volibrius": {
+    "name_en": "Flumpy",
+    "id": "y151010"
+  },
+  "Volatriste": {
+    "name_en": "Skreek",
+    "id": "y151020"
+  },
+  "Jibanyan": {
+    "name_en": "Jibanyan",
+    "id": "y152000"
+  },
+  "Jibanyan S": {
+    "name_en": "Jibanyan S",
+    "id": "y152900"
+  },
+  "Épinyan": {
+    "name_en": "Thornyan",
+    "id": "y153000"
+  },
+  "Bandinyan": {
+    "name_en": "Baddinyan",
+    "id": "y154000"
+  },
+  "Robonyan": {
+    "name_en": "Robonyan",
+    "id": "y155000"
+  },
+  "Oronyan": {
+    "name_en": "Goldenyan",
+    "id": "y155010"
+  },
+  "Diamanyan": {
+    "name_en": "Dianyan",
+    "id": "y156000"
+  },
+  "Saphinyan": {
+    "name_en": "Sapphinyan",
+    "id": "y156010"
+  },
+  "Émeranyan": {
+    "name_en": "Emenyan",
+    "id": "y156020"
+  },
+  "Rubinyan": {
+    "name_en": "Rubinyan",
+    "id": "y156030"
+  },
+  "Topanyan": {
+    "name_en": "Topanyan",
+    "id": "y156040"
+  },
+  "Kappacap": {
+    "name_en": "Walkappa",
+    "id": "y157000"
+  },
+  "Appak": {
+    "name_en": "Appak",
+    "id": "y158000"
+  },
+  "Kappaloha": {
+    "name_en": "Supyo",
+    "id": "y158010"
+  },
+  "Komasan": {
+    "name_en": "Komasan",
+    "id": "y159000"
+  },
+  "Komajiro": {
+    "name_en": "Komajiro",
+    "id": "y159010"
+  },
+  "KJ": {
+    "name_en": "KJ",
+    "id": "y159400"
+  },
+  "Komasan S": {
+    "name_en": "Komasan S",
+    "id": "y159900"
+  },
+  "Komajiro S": {
+    "name_en": "Komajiro S",
+    "id": "y159910"
+  },
+  "Komaous": {
+    "name_en": "Komane",
+    "id": "y160000"
+  },
+  "Komistigri": {
+    "name_en": "Komiger",
+    "id": "y160010"
+  },
+  "Bababou": {
+    "name_en": "Daiz",
+    "id": "y161000"
+  },
+  "Tourneboul": {
+    "name_en": "Confuze",
+    "id": "y161010"
+  },
+  "Chihuaglagla": {
+    "name_en": "Pupsicle",
+    "id": "y162000"
+  },
+  "Froahuahua": {
+    "name_en": "Chilhuahua",
+    "id": "y163000"
+  },
+  "Cho-cho": {
+    "name_en": "Swelterrier",
+    "id": "y163010"
+  },
+  "Pachycoul": {
+    "name_en": "Fidgephant",
+    "id": "y164000"
+  },
+  "Persévéfant": {
+    "name_en": "Touphant",
+    "id": "y164010"
+  },
+  "Dédé": {
+    "name_en": "Rollen",
+    "id": "y165000"
+  },
+  "Dédestin": {
+    "name_en": "Dubbles",
+    "id": "y165010"
+  },
+  "Tengu": {
+    "name_en": "Tengu",
+    "id": "y166000"
+  },
+  "Tengurou": {
+    "name_en": "Flengu",
+    "id": "y166010"
+  },
+  "Granpapéti": {
+    "name_en": "Hungramps",
+    "id": "y167000"
+  },
+  "Grainpère": {
+    "name_en": "Grainpa",
+    "id": "y167010"
+  },
+  "Puissanfon": {
+    "name_en": "Hungorge",
+    "id": "y168000"
+  },
+  "Corniot": {
+    "name_en": "Manjimutt",
+    "id": "y169000"
+  },
+  "Bicorniot": {
+    "name_en": "Multimutt",
+    "id": "y170000"
+  },
+  "Cerbébert": {
+    "name_en": "Sir Berus",
+    "id": "y170010"
+  },
+  "Méroubadour": {
+    "name_en": "Croonger",
+    "id": "y171010"
+  },
+  "Urnaconda": {
+    "name_en": "Urnaconda",
+    "id": "y171020"
+  },
+  "Papiltation": {
+    "name_en": "Enerfly",
+    "id": "y172000"
+  },
+  "Papiltension": {
+    "name_en": "Enefly",
+    "id": "y172010"
+  },
+  "Hyprapillon": {
+    "name_en": "Betterfly",
+    "id": "y173000"
+  },
+  "Vitapillon": {
+    "name_en": "Peppillon",
+    "id": "y173010"
+  },
+  "Noripop": {
+    "name_en": "Wiglin",
+    "id": "y174000"
+  },
+  "Wakapoeira": {
+    "name_en": "Steppa",
+    "id": "y174010"
+  },
+  "Salsalga": {
+    "name_en": "Rhyth",
+    "id": "y174020"
+  },
+  "Pitou": {
+    "name_en": "Shmoopie",
+    "id": "y175000"
+  },
+  "Choubidou": {
+    "name_en": "Pinkipoo",
+    "id": "y176000"
+  },
+  "Satandre": {
+    "name_en": "Pookivil",
+    "id": "y176010"
+  },
+  "Paradoxa": {
+    "name_en": "Reversa",
+    "id": "y178000"
+  },
+  "Potaumorose": {
+    "name_en": "Reversette",
+    "id": "y178010"
+  },
+  "Ratatam": {
+    "name_en": "Ol' Saint Trick",
+    "id": "y179000"
+  },
+  "Supernoël": {
+    "name_en": "Ol' Fortune",
+    "id": "y179010"
+  },
+  "Tata Aura": {
+    "name_en": "Mama Aura",
+    "id": "y180000"
+  },
+  "Tata Câlin": {
+    "name_en": "Auntie Heart",
+    "id": "y180010"
+  },
+  "Tontonerre": {
+    "name_en": "Papa Bolt",
+    "id": "y181000"
+  },
+  "Omnitonton": {
+    "name_en": "Uncle Infinite",
+    "id": "y181010"
+  },
+  "Tortico": {
+    "name_en": "Ake",
+    "id": "y182000"
+  },
+  "Tendino": {
+    "name_en": "Payn",
+    "id": "y183000"
+  },
+  "Contracto": {
+    "name_en": "Agon",
+    "id": "y183010"
+  },
+  "Nihilistik": {
+    "name_en": "Negatibuzz",
+    "id": "y184000"
+  },
+  "Grattoptère": {
+    "name_en": "Scritchy",
+    "id": "y185010"
+  },
+  "Égaroni": {
+    "name_en": "Leadoni",
+    "id": "y186000"
+  },
+  "Onisoi": {
+    "name_en": "Mynimo",
+    "id": "y186010"
+  },
+  "Chiperpiou": {
+    "name_en": "Peckpocket",
+    "id": "y187000"
+  },
+  "Pioubidou": {
+    "name_en": "Rockabelly",
+    "id": "y187010"
+  },
+  "Blablara": {
+    "name_en": "Chatalie",
+    "id": "y188000"
+  },
+  "Umilie": {
+    "name_en": "Nagatha",
+    "id": "y188010"
+  },
+  "Loubarbare": {
+    "name_en": "Roughraff",
+    "id": "y189000"
+  },
+  "Racaïd": {
+    "name_en": "Badude",
+    "id": "y190000"
+  },
+  "Frérosse": {
+    "name_en": "Bruff",
+    "id": "y190010"
+  },
+  "Nimpégase": {
+    "name_en": "Negasus",
+    "id": "y191000"
+  },
+  "Hennimi": {
+    "name_en": "Neighfarious",
+    "id": "y191010"
+  },
+  "Cenridion": {
+    "name_en": "Grumples",
+    "id": "y192000"
+  },
+  "Jouvencia": {
+    "name_en": "Everfore",
+    "id": "y193000"
+  },
+  "Éterna": {
+    "name_en": "Eterna",
+    "id": "y193010"
+  },
+  "Pégaz": {
+    "name_en": "Cheeksqueek",
+    "id": "y194000"
+  },
+  "Méphito": {
+    "name_en": "Cuttincheez",
+    "id": "y194010"
+  },
+  "Misterbide": {
+    "name_en": "Compunzer",
+    "id": "y195000"
+  },
+  "Flopito": {
+    "name_en": "Lamedian",
+    "id": "y195010"
+  },
+  "Insomnelle": {
+    "name_en": "Insomni",
+    "id": "y196000"
+  },
+  "Morféa": {
+    "name_en": "Sandi",
+    "id": "y196010"
+  },
+  "Marcognito": {
+    "name_en": "Dimmy",
+    "id": "y197000"
+  },
+  "Ninjamévu": {
+    "name_en": "Blandon",
+    "id": "y198000"
+  },
+  "Nihilo": {
+    "name_en": "Nul",
+    "id": "y198010"
+  },
+  "Humidon": {
+    "name_en": "Droplette",
+    "id": "y199000"
+  },
+  "Fryzeur": {
+    "name_en": "Slush",
+    "id": "y199010"
+  },
+  "Hémorhino": {
+    "name_en": "Gush",
+    "id": "y199020"
+  },
+  "Délujien": {
+    "name_en": "Drizzle",
+    "id": "y200000"
+  },
+  "Kongel": {
+    "name_en": "Alhail",
+    "id": "y200010"
+  },
+  "Lulugubre": {
+    "name_en": "Dismarelda",
+    "id": "y201000"
+  },
+  "Amoiz": {
+    "name_en": "Wantston",
+    "id": "y202000"
+  },
+  "Pikor": {
+    "name_en": "Grubsnitch",
+    "id": "y202010"
+  },
+  "Chauvekipeut": {
+    "name_en": "Hidabat",
+    "id": "y203000"
+  },
+  "Chauv'coucou": {
+    "name_en": "Abodabat",
+    "id": "y204000"
+  },
+  "Vampiloc": {
+    "name_en": "Belfree",
+    "id": "y204010"
+  },
+  "Nomoné": {
+    "name_en": "Lodo",
+    "id": "y205000"
+  },
+  "Noproblemo": {
+    "name_en": "Chippa",
+    "id": "y205010"
+  },
+  "Bibliotengu": {
+    "name_en": "Nird",
+    "id": "y206010"
+  },
+  "Suspicioni": {
+    "name_en": "Suspicioni",
+    "id": "y207000"
+  },
+  "Ragioni": {
+    "name_en": "Tantroni",
+    "id": "y207010"
+  },
+  "Contrarioni": {
+    "name_en": "Contrarioni",
+    "id": "y207020"
+  },
+  "Timidémon": {
+    "name_en": "Timidevil",
+    "id": "y208000"
+  },
+  "Belzel": {
+    "name_en": "Beelzebold",
+    "id": "y209000"
+  },
+  "Dente": {
+    "name_en": "Count Cavity",
+    "id": "y209010"
+  },
+  "Maltesse": {
+    "name_en": "Awevil",
+    "id": "y210010"
+  },
+  "Noko": {
+    "name_en": "Noko",
+    "id": "y211000"
+  },
+  "Pandanoko": {
+    "name_en": "Pandanoko",
+    "id": "y211010"
+  },
+  "Nénunoko": {
+    "name_en": "Bloominoko",
+    "id": "y212000"
+  },
+  "Sire Dragon": {
+    "name_en": "Dragon Lord",
+    "id": "y214000"
+  },
+  "Dragô": {
+    "name_en": "Azure Dragon",
+    "id": "y214010"
+  },
+  "Saumhonni": {
+    "name_en": "Rageon",
+    "id": "y216000"
+  },
+  "Vexturgeon": {
+    "name_en": "Tunatic",
+    "id": "y216010"
+  },
+  "Croquin": {
+    "name_en": "Chummer",
+    "id": "y217000"
+  },
+  "Inisquale": {
+    "name_en": "Shrook",
+    "id": "y217010"
+  },
+  "Claquille": {
+    "name_en": "Spenp",
+    "id": "y218000"
+  },
+  "Cocpille": {
+    "name_en": "Almi",
+    "id": "y218010"
+  },
+  "Jacquasseur": {
+    "name_en": "Babblong",
+    "id": "y219000"
+  },
+  "Bananar": {
+    "name_en": "Bananose",
+    "id": "y219010"
+  },
+  "Vipètesec": {
+    "name_en": "Copperled",
+    "id": "y220000"
+  },
+  "Vipairflay": {
+    "name_en": "Slitheref",
+    "id": "y220020"
+  },
+  "Vipérâle": {
+    "name_en": "Cynake",
+    "id": "y220010"
+  },
+  "Octorgone": {
+    "name_en": "Venoct",
+    "id": "y221000"
+  },
+  "Octorgombre": {
+    "name_en": "Shadow Venoct",
+    "id": "y221010"
+  },
+  "Luminoct": {
+    "name_en": "Illuminoct",
+    "id": "y221020"
+  },
+  "Shogunyan": {
+    "name_en": "Shogunyan",
+    "id": "y222000"
+  },
+  "Komashura": {
+    "name_en": "Komashura",
+    "id": "y223000"
+  },
+  "Cabotin": {
+    "name_en": "Dandoodle",
+    "id": "y224000"
+  },
+  "Camaïeul": {
+    "name_en": "Elder Bloom",
+    "id": "y225000"
+  },
+  "Gorgouille": {
+    "name_en": "Gilgaros",
+    "id": "y226000"
+  },
+  "Roupilion": {
+    "name_en": "Lie-in",
+    "id": "y231000"
+  },
+  "Samoussrai": {
+    "name_en": "Brushido",
+    "id": "y232000"
+  },
+  "Trépigno": {
+    "name_en": "Hissfit",
+    "id": "y233000"
+  },
+  "Agonigiri": {
+    "name_en": "Slicenrice",
+    "id": "y234000"
+  },
+  "Sale de bain": {
+    "name_en": "Tublappa",
+    "id": "y235000"
+  },
+  "Hovernyan": {
+    "name_en": "Hovernyan",
+    "id": "y236000"
+  },
+  "Bouh": {
+    "name_en": "Mudmunch",
+    "id": "y237000"
+  },
+  "Coach Antonic": {
+    "name_en": "Sgt. Burly",
+    "id": "y238000"
+  },
+  "Ronimpec": {
+    "name_en": "Washogun",
+    "id": "y239000"
+  },
+  "Rugis": {
+    "name_en": "Lie-in Heart",
+    "id": "y240000"
+  },
+  "Onigirix": {
+    "name_en": "Flamurice",
+    "id": "y241000"
+  },
+  "Démophage": {
+    "name_en": "Demuncher",
+    "id": "y242000"
+  },
+  "Vampéric": {
+    "name_en": "Devourer",
+    "id": "y242010"
+  },
+  "Pleurapluie": {
+    "name_en": "Brokenbrella",
+    "id": "y243000"
+  },
+  "Brumette": {
+    "name_en": "Smogling",
+    "id": "y244000"
+  },
+  "Trodésolé": {
+    "name_en": "So-Sorree",
+    "id": "y245000"
+  },
+  "Humainequin": {
+    "name_en": "Mimikin",
+    "id": "y246000"
+  },
+  "Mythovni": {
+    "name_en": "Failian",
+    "id": "y247000"
+  },
+  "Mémogre": {
+    "name_en": "Houzzat",
+    "id": "y248000"
+  },
+  "Brumella": {
+    "name_en": "Smogmella",
+    "id": "y249000"
+  },
+  "Maître Oden": {
+    "name_en": "Master Oden",
+    "id": "y250000"
+  },
+  "Pardomino": {
+    "name_en": "Bowminos",
+    "id": "y251000"
+  },
+  "Triptic-tac": {
+    "name_en": "Miradox",
+    "id": "y252000"
+  },
+  "Chymère": {
+    "name_en": "Chymera",
+    "id": "y253000"
+  },
+  "Chyper": {
+    "name_en": "Kingmera",
+    "id": "y253010"
+  },
+  "Potache": {
+    "name_en": "Terrorpotta",
+    "id": "y254000"
+  },
+  "Jalouseriz": {
+    "name_en": "Wotchagot",
+    "id": "y255000"
+  },
+  "Suinthan": {
+    "name_en": "Swelton",
+    "id": "y256000"
+  },
+  "Antonnerre": {
+    "name_en": "Zappary",
+    "id": "y257000"
+  },
+  "Égare-dare": {
+    "name_en": "No-Go Kart",
+    "id": "y258000"
+  },
+  "Chip-Chope": {
+    "name_en": "Gimme",
+    "id": "y259000"
+  },
+  "Fanfanfaron": {
+    "name_en": "Pride Shrimp",
+    "id": "y260000"
+  },
+  "Millyeux": {
+    "name_en": "Eyesoar",
+    "id": "y262000"
+  },
+  "Précyeux": {
+    "name_en": "Eyellure",
+    "id": "y262010"
+  },
+  "Carnanova": {
+    "name_en": "Carniboy",
+    "id": "y263000"
+  },
+  "Parantonn": {
+    "name_en": "Frazzel",
+    "id": "y264000"
+  },
+  "Pachypipi": {
+    "name_en": "Enduriphant",
+    "id": "y265000"
+  },
+  "Crapop": {
+    "name_en": "Toadal Dude",
+    "id": "y266000"
+  },
+  "Geeko": {
+    "name_en": "Uber Geeko",
+    "id": "y266010"
+  },
+  "Ovide": {
+    "name_en": "Faysoff",
+    "id": "y267000"
+  },
+  "Yokœil": {
+    "name_en": "Boyclops",
+    "id": "y268000"
+  },
+  "Gambeth": {
+    "name_en": "Leggly",
+    "id": "y269000"
+  },
+  "Vito": {
+    "name_en": "Nekidspeed",
+    "id": "y270000"
+  },
+  "Sabruine": {
+    "name_en": "Drizzelda",
+    "id": "y271000"
+  },
+  "Traviolette": {
+    "name_en": "Jumbelina",
+    "id": "y272000"
+  },
+  "Bakuku": {
+    "name_en": "Bakulia",
+    "id": "y273000"
+  },
+  "Faux Kappa": {
+    "name_en": "Faux Kappa",
+    "id": "y274000"
+  },
+  "Kappadissi": {
+    "name_en": "Tigappa",
+    "id": "y274010"
+  },
+  "Maître Nyada": {
+    "name_en": "Master Nyada",
+    "id": "y275000"
+  },
+  "Papilla": {
+    "name_en": "Tongus",
+    "id": "y276000"
+  },
+  "Parasolal": {
+    "name_en": "Pallysol",
+    "id": "y277000"
+  },
+  "Felipaix": {
+    "name_en": "Sandmeh",
+    "id": "y278000"
+  },
+  "DON-CHAN": {
+    "name_en": "DON-CHAN",
+    "id": null
+  },
+  "Métaureaulog": {
+    "name_en": "Predictabull",
+    "id": "y280000"
+  },
+  "Lulutin": {
+    "name_en": "Gnomey",
+    "id": "y281000"
+  },
+  "Sabrille": {
+    "name_en": "Ray O'Light",
+    "id": "y282000"
+  },
+  "Algacarena": {
+    "name_en": "Kelpacabana",
+    "id": "y283000"
+  },
+  "M. Felipaix": {
+    "name_en": "Mr. Sandmeh",
+    "id": "y285000"
+  },
+  "Scarasol": {
+    "name_en": "Scarasol",
+    "id": "y286000"
+  },
+  "Grégrigry": {
+    "name_en": "High Gnomey",
+    "id": "y287000"
+  },
+  "Ivanupieds": {
+    "name_en": "Supoor Hero",
+    "id": "y288000"
+  },
+  "Tauracle": {
+    "name_en": "Smashibull",
+    "id": "y289000"
+  },
+  "Kyryn": {
+    "name_en": "Kyryn",
+    "id": "y290000"
+  },
+  "Kyrycorne": {
+    "name_en": "Unikirin",
+    "id": "y290010"
+  },
+  "Gastong": {
+    "name_en": "Pittapatt",
+    "id": "y291000"
+  },
+  "Couchtar": {
+    "name_en": "Wydeawake",
+    "id": "y292000"
+  },
+  "Gloups": {
+    "name_en": "Yoink",
+    "id": "y293000"
+  },
+  "Herbert": {
+    "name_en": "Herbiboy",
+    "id": "y294000"
+  },
+  "Triptyk": {
+    "name_en": "Slimamander",
+    "id": null
+  },
+  "Snobéa": {
+    "name_en": "Snobetty",
+    "id": "y299000"
+  },
+  "Dracunyan": {
+    "name_en": "Dracunyan",
+    "id": "y300000"
+  },
+  "Noctambill": {
+    "name_en": "Allnyta",
+    "id": "y301000"
+  },
+  "Potofeu": {
+    "name_en": "Wobblewok",
+    "id": null
+  },
+  "Poilux": {
+    "name_en": "Furgus",
+    "id": "y303000"
+  },
+  "Non-non": {
+    "name_en": "Nosirs",
+    "id": "y304000"
+  },
+  "Pépésbrouf": {
+    "name_en": "Papa Windbag",
+    "id": "y305000"
+  },
+  "Ornella": {
+    "name_en": "Toiletta",
+    "id": "y306000"
+  },
+  "Adolfo Jeton": {
+    "name_en": "Ben Tover",
+    "id": "y307000"
+  },
+  "Rapiaf": {
+    "name_en": "Robbinyu",
+    "id": "y308000"
+  },
+  "Crocho": {
+    "name_en": "Sproink",
+    "id": null
+  },
+  "Babarouf": {
+    "name_en": "Rawry",
+    "id": "y310000"
+  },
+  "Poil-Émile": {
+    "name_en": "Furdinand",
+    "id": "y311000"
+  },
+  "Sornella": {
+    "name_en": "Foiletta",
+    "id": "y312000"
+  },
+  "Arachnus": {
+    "name_en": "Arachnus",
+    "id": "y313000"
+  },
+  "Arachnia": {
+    "name_en": "Arachnia",
+    "id": "y313010"
+  },
+  "Timours": {
+    "name_en": "Harry Barry",
+    "id": "y314000"
+  },
+  "Crampaud": {
+    "name_en": "Cricky",
+    "id": "y315000"
+  },
+  "Maudieuse": {
+    "name_en": "Snaggly",
+    "id": "y316000"
+  },
+  "Zikafon": {
+    "name_en": "Squeeky",
+    "id": "y317000"
+  },
+  "Carpitaine": {
+    "name_en": "SV Snaggerjag",
+    "id": null
+  },
+  "Mlle Coucou": {
+    "name_en": "Lady Longnek",
+    "id": "y322000"
+  },
+  "Draconfus": {
+    "name_en": "Draaagin",
+    "id": "y323000"
+  },
+  "Scolérique": {
+    "name_en": "Firewig",
+    "id": "y324000"
+  },
+  "Ed Mémoire": {
+    "name_en": "Vacuumory",
+    "id": "y325000"
+  },
+  "Jérémya": {
+    "name_en": "Whinona",
+    "id": "y326000"
+  },
+  "Sirènité": {
+    "name_en": "Mermadonna",
+    "id": "y327000"
+  },
+  "Sireine-mère": {
+    "name_en": "Mermother",
+    "id": "y327010"
+  },
+  "Déballerine": {
+    "name_en": "Spoilerina",
+    "id": "y329000"
+  },
+  "Savantard": {
+    "name_en": "Poofessor",
+    "id": "y330000"
+  },
+  "Slurpent": {
+    "name_en": "Slurpent",
+    "id": "y331000"
+  },
+  "Injustin": {
+    "name_en": "Unfairy",
+    "id": "y335000"
+  },
+  "Fielippine": {
+    "name_en": "Unkaind",
+    "id": "y336000"
+  },
+  "Cyrustre": {
+    "name_en": "Untidy",
+    "id": "y337000"
+  },
+  "Maudicko": {
+    "name_en": "Unpleasant",
+    "id": "y338000"
+  },
+  "Ronéan": {
+    "name_en": "Unkeen",
+    "id": "y339000"
+  },
+  "Apélicain": {
+    "name_en": "Apelican",
+    "id": "y341000"
+  },
+  "Darknyan": {
+    "name_en": "Darknyan",
+    "id": "y342000"
+  },
+  "Buchinyan": {
+    "name_en": "Buchinyan",
+    "id": "y343000"
+  },
+  "Valetino": {
+    "name_en": "Verygoodsir",
+    "id": "y344000"
+  },
+  "Robonyan F": {
+    "name_en": "Robonyan F",
+    "id": "y345000"
+  },
+  "Sailornyan": {
+    "name_en": "Sailornyan",
+    "id": "y346000"
+  },
+  "Maskonyan": {
+    "name_en": "Machonyan",
+    "id": "y347000"
+  },
+  "Jibakoma": {
+    "name_en": "Jibakoma",
+    "id": "y348000"
+  },
+  "Jetnyan": {
+    "name_en": "Jetnyan",
+    "id": "y349000"
+  },
+  "Boucanyan": {
+    "name_en": "Wondernyan",
+    "id": "y350000"
+  },
+  "Narinos": {
+    "name_en": "Snottle",
+    "id": "y353000"
+  },
+  "Ultramax N": {
+    "name_en": "Moximous N",
+    "id": "y354000"
+  },
+  "Ultramax K": {
+    "name_en": "Moximous K",
+    "id": "y355000"
+  },
+  "Mélobê": {
+    "name_en": "Grumpus Khan",
+    "id": "y401000"
+  },
+  "Geigneau": {
+    "name_en": "Groupus Khan",
+    "id": "y402000"
+  },
+  "Bon-huiii": {
+    "name_en": "Slumberhog",
+    "id": "y403000"
+  },
+  "Verrascible": {
+    "name_en": "Snortlehog",
+    "id": "y404000"
+  },
+  "Panja-san": {
+    "name_en": "Panja Pro",
+    "id": "y406000"
+  },
+  "Samuren": {
+    "name_en": "Samureel",
+    "id": "y407000"
+  },
+  "Barrakéda": {
+    "name_en": "Time Keeler",
+    "id": "y408000"
+  },
+  "Poulpater": {
+    "name_en": "Takoyaking",
+    "id": "y410000"
+  },
+  "Avallée": {
+    "name_en": "Danke Sand",
+    "id": "y411000"
+  },
+  "Mont merci": {
+    "name_en": "No Sandkyu",
+    "id": "y412000"
+  },
+  "Sumodon": {
+    "name_en": "Sumodon",
+    "id": "y413000"
+  },
+  "Soupotori": {
+    "name_en": "Yokozudon",
+    "id": "y414000"
+  },
+  "Pfffuji": {
+    "name_en": "Whateverest",
+    "id": "y415000"
+  },
+  "Krakatouaaah": {
+    "name_en": "Whatuption",
+    "id": "y416000"
+  },
+  "Lacanne": {
+    "name_en": "Happycane",
+    "id": "y417000"
+  },
+  "Canastelle": {
+    "name_en": "Starrycane",
+    "id": "y418000"
+  },
+  "Robocap": {
+    "name_en": "Robokapp",
+    "id": "y371000"
+  },
+  "Robokoma": {
+    "name_en": "Robokoma",
+    "id": "y372000"
+  },
+  "Robopapéti": {
+    "name_en": "Robogramps",
+    "id": "y373000"
+  },
+  "Robocorniot": {
+    "name_en": "Robomutt",
+    "id": "y374000"
+  },
+  "Robonoko": {
+    "name_en": "Robonoko",
+    "id": "y375000"
+  },
+  "Robodracou": {
+    "name_en": "Robodraggie",
+    "id": "y376000"
+  },
+  "Melonyan": {
+    "name_en": "Melonyan",
+    "id": "y377000"
+  },
+  "Oranyan": {
+    "name_en": "Oranyan",
+    "id": "y377010"
+  },
+  "Kiwinyan": {
+    "name_en": "Kiwinyan",
+    "id": "y377020"
+  },
+  "Vigninyan": {
+    "name_en": "Grapenyan",
+    "id": "y377030"
+  },
+  "Maranyan": {
+    "name_en": "Strawbnyan",
+    "id": "y377040"
+  },
+  "Pastènyan": {
+    "name_en": "Watermelnyan",
+    "id": "y377050"
+  },
+  "Gale de bain": {
+    "name_en": "Grublappa",
+    "id": "y235500"
+  },
+  "Mabouhl": {
+    "name_en": "Madmunch",
+    "id": "y237500"
+  },
+  "Fumella": {
+    "name_en": "Badsmella",
+    "id": "y249500"
+  },
+  "Fou Kappa": {
+    "name_en": "Mad Kappa",
+    "id": "y274500"
+  },
+  "Fatalutin": {
+    "name_en": "Gnomine",
+    "id": "y281500"
+  },
+  "Métaréaulog": {
+    "name_en": "Defectabull",
+    "id": "y280500"
+  },
+  "Sinisrénée": {
+    "name_en": "Scaremaiden",
+    "id": "y321500"
+  },
+  "Mlle Courroux": {
+    "name_en": "Wrongnek",
+    "id": "y322500"
+  },
+  "Momonyan": {
+    "name_en": "Momonyan",
+    "id": "y451000"
+  },
+  "Chionyan": {
+    "name_en": "Puppynyan",
+    "id": "y452000"
+  },
+  "Chimpanyan": {
+    "name_en": "Chimpanyan",
+    "id": "y453000"
+  },
+  "Faisanyan": {
+    "name_en": "Pheasanyan",
+    "id": "y454000"
+  },
+  "Jibanyan B": {
+    "name_en": "Jibanyan B",
+    "id": "y455000"
+  },
+  "Komasan B": {
+    "name_en": "Komasan B",
+    "id": "y456000"
+  },
+  "Sire Nyancelot": {
+    "name_en": "Sir Nyansalot",
+    "id": "y457000"
+  },
+  "Maginyan": {
+    "name_en": "Maginyan",
+    "id": "y458000"
+  },
+  "Rouminet": {
+    "name_en": "Rudy",
+    "id": "y459000"
+  },
+  "Usapyon B": {
+    "name_en": "Usapyon B",
+    "id": "y471000"
+  },
+  "MoiYihin": {
+    "name_en": "Fuu 2",
+    "id": "y474000"
+  },
+  "Odyssényan": {
+    "name_en": "Odysseynyan",
+    "id": "y475000"
+  },
+  "Kintaronyan": {
+    "name_en": "Kintaronyan",
+    "id": "y476000"
+  },
+  "Bison Antonic": {
+    "name_en": "Bison Burly",
+    "id": "y477000"
+  },
+  "Popcorne": {
+    "name_en": "Toadal Demon",
+    "id": "y478000"
+  },
+  "Extrabuki": {
+    "name_en": "Kabuking",
+    "id": null
+  },
+  "Jiganyan": {
+    "name_en": "Rubeus J",
+    "id": null
+  },
+  "Alga Sensei": {
+    "name_en": "Seaweed Sns.",
+    "id": null
+  },
+  "Grolos": {
+    "name_en": "Gutsy Bones",
+    "id": null
+  },
+  "Trempetta": {
+    "name_en": "Drenchetta",
+    "id": "y483000"
+  },
+  "Scintinoko": {
+    "name_en": "Starry Noko",
+    "id": "y484000"
+  },
+  "Komak": {
+    "name_en": "Hardy Hound",
+    "id": null
+  },
+  "Suprarachnus": {
+    "name_en": "Arachnevil",
+    "id": "y486000"
+  },
+  "Zazel": {
+    "name_en": "Zazel",
+    "id": "y487000"
+  },
+  "Jeniflair": {
+    "name_en": "Krystal Fox",
+    "id": "y501000"
+  },
+  "Loupépin": {
+    "name_en": "Sigh-Durr",
+    "id": "y502000"
+  },
+  "Antitaie": {
+    "name_en": "Flippit",
+    "id": "y503000"
+  },
+  "Caliméballe": {
+    "name_en": "Goofball",
+    "id": "y505000"
+  },
+  "Lescampette": {
+    "name_en": "Legsit",
+    "id": "y507000"
+  },
+  "Barbokai": {
+    "name_en": "BBQvil",
+    "id": "y508000"
+  },
+  "Moinon": {
+    "name_en": "Liarbird",
+    "id": "y509000"
+  },
+  "Lord Écibel": {
+    "name_en": "Shrillington",
+    "id": null
+  },
+  "Dagamberge": {
+    "name_en": "Ponderoo",
+    "id": "y511000"
+  },
+  "Shurikenny": {
+    "name_en": "Shurikenny",
+    "id": "y512000"
+  },
+  "Nunchucky": {
+    "name_en": "Nunchucky",
+    "id": "y512010"
+  },
+  "Chagellan": {
+    "name_en": "Columbakat",
+    "id": "y513000"
+  },
+  "Battant": {
+    "name_en": "Slugger",
+    "id": "y514000"
+  },
+  "XXL de bain": {
+    "name_en": "Lappinitup",
+    "id": "y515000"
+  },
+  "Superfouétar": {
+    "name_en": "Brutle",
+    "id": "y517000"
+  },
+  "Bradguette": {
+    "name_en": "Zip Unlock",
+    "id": "y519000"
+  },
+  "Toutournemal": {
+    "name_en": "Slippup",
+    "id": "y520000"
+  },
+  "Duc Delafeuille": {
+    "name_en": "Who-Me",
+    "id": "y521000"
+  },
+  "Curryeux": {
+    "name_en": "Why Naant",
+    "id": "y522000"
+  },
+  "Épigerien": {
+    "name_en": "Cornfused",
+    "id": "y524000"
+  },
+  "Steuf": {
+    "name_en": "House Partay",
+    "id": "y525000"
+  },
+  "Crânéidoscope": {
+    "name_en": "Skulleidoscope",
+    "id": "y526000"
+  },
+  "Wattson": {
+    "name_en": "Statikid",
+    "id": "y527000"
+  },
+  "Volroulo": {
+    "name_en": "Throne Wiper",
+    "id": "y529000"
+  },
+  "Imadjinn": {
+    "name_en": "Imagenius",
+    "id": "y530000"
+  },
+  "Eddylapid": {
+    "name_en": "Squandeer",
+    "id": "y531000"
+  },
+  "Feuildechou": {
+    "name_en": "2-Much-2-Take",
+    "id": null
+  },
+  "Curryogi": {
+    "name_en": "Naandhi",
+    "id": "y533000"
+  },
+  "T. Energison": {
+    "name_en": "T. Energison",
+    "id": "y534000"
+  },
+  "Sodartha": {
+    "name_en": "Thurston",
+    "id": "y535000"
+  },
+  "Mata Hase": {
+    "name_en": "Spect-hare",
+    "id": null
+  },
+  "Blanche Hase": {
+    "name_en": "Sn. Spect-hare",
+    "id": null
+  },
+  "Chameuhllow": {
+    "name_en": "Chilled Cowcao",
+    "id": "y537000"
+  },
+  "Piètros": {
+    "name_en": "Nummskull",
+    "id": "y538000"
+  },
+  "Otto": {
+    "name_en": "Oh Wheel",
+    "id": "y539000"
+  },
+  "Big O'Max": {
+    "name_en": "Oh Bah Gah!",
+    "id": "y540000"
+  },
+  "Axelérator": {
+    "name_en": "Sp mountain",
+    "id": "y541000"
+  },
+  "Navétéran": {
+    "name_en": "Ship. Sailor",
+    "id": null
+  },
+  "Pogorille": {
+    "name_en": "Sing Kong",
+    "id": "y543000"
+  },
+  "Mulangeur": {
+    "name_en": "Slippy",
+    "id": "y544000"
+  },
+  "Andrécup": {
+    "name_en": "Repossessor",
+    "id": "y545000"
+  },
+  "Zozoparleur": {
+    "name_en": "Mr. Blockhead",
+    "id": "y546000"
+  },
+  "Bricolos": {
+    "name_en": "Skillskull",
+    "id": "y547000"
+  },
+  "Scientifiborg Y": {
+    "name_en": "Sighborg Y",
+    "id": "y548000"
+  },
+  "Dépotache": {
+    "name_en": "Blownhistoppa",
+    "id": "y549000"
+  },
+  "Aloyau Ier": {
+    "name_en": "Steaking",
+    "id": "y550000"
+  },
+  "Pot-au-meuh": {
+    "name_en": "Stircrazy Stu",
+    "id": "y551000"
+  },
+  "Navigarmateur": {
+    "name_en": "Adm. Admiral",
+    "id": null
+  },
+  "Flèche d'azur": {
+    "name_en": "Silver Lining",
+    "id": "y553000"
+  },
+  "Squale masqué": {
+    "name_en": "Jawsome Kid",
+    "id": null
+  },
+  "El Squalador": {
+    "name_en": "El Sharkador",
+    "id": "y554010"
+  },
+  "Vertipiou": {
+    "name_en": "Twirly Pie",
+    "id": "y556000"
+  },
+  "Tatinmarre": {
+    "name_en": "Petty-Cake",
+    "id": "y557000"
+  },
+  "Éclopain": {
+    "name_en": "Buttered Blue",
+    "id": "y558000"
+  },
+  "Quésacourt": {
+    "name_en": "Runsure",
+    "id": "y559000"
+  },
+  "Ficheline": {
+    "name_en": "Cue-Tee",
+    "id": "y560000"
+  },
+  "Erzestine": {
+    "name_en": "Zest-a-Minute",
+    "id": "y562000"
+  },
+  "Moufpète": {
+    "name_en": "Stinkeye",
+    "id": "y563000"
+  },
+  "Raton glandeur": {
+    "name_en": "Slackoon",
+    "id": "y564000"
+  },
+  "Espreschiot": {
+    "name_en": "Puppiccino",
+    "id": "y565000"
+  },
+  "Kay Mandeuse": {
+    "name_en": "Demandi",
+    "id": "y566000"
+  },
+  "Fortuné": {
+    "name_en": "Ballin",
+    "id": "y568000"
+  },
+  "Tenguriginal": {
+    "name_en": "Tenguriginal",
+    "id": "y570000"
+  },
+  "Faustille": {
+    "name_en": "Whirlweasel",
+    "id": "y572000"
+  },
+  "Barbucheron": {
+    "name_en": "Bumblejack",
+    "id": "y574000"
+  },
+  "Double croche": {
+    "name_en": "In-Tune",
+    "id": "y575000"
+  },
+  "Afronaute": {
+    "name_en": "Afronaut",
+    "id": "y576000"
+  },
+  "Charivariz": {
+    "name_en": "Cereal Spiller",
+    "id": "y577000"
+  },
+  "Optimiss": {
+    "name_en": "Tomorrow Gal",
+    "id": "y578000"
+  },
+  "Fourchelangue": {
+    "name_en": "Tongue-Twister",
+    "id": "y579000"
+  },
+  "Papana Split": {
+    "name_en": "Lazy Sundae",
+    "id": "y580000"
+  },
+  "Maudestique": {
+    "name_en": "Got It Maid",
+    "id": "y581000"
+  },
+  "Papécolo": {
+    "name_en": "Greengramps",
+    "id": "y582000"
+  },
+  "Javabien": {
+    "name_en": "Fundango",
+    "id": "y583000"
+  },
+  "Benjirouette": {
+    "name_en": "Swaycorn",
+    "id": "y584000"
+  },
+  "Fluorence": {
+    "name_en": "Pearly White",
+    "id": "y585000"
+  },
+  "Antoilette": {
+    "name_en": "Bubble Beth",
+    "id": "y586000"
+  },
+  "Maintendante": {
+    "name_en": "Ghostess",
+    "id": "y587000"
+  },
+  "Papy Charles": {
+    "name_en": "Starwin",
+    "id": "y588000"
+  },
+  "Survolt": {
+    "name_en": "Double Time",
+    "id": "y589000"
+  },
+  "Supervolt": {
+    "name_en": "Sonic Bam",
+    "id": "y589010"
+  },
+  "Camélia": {
+    "name_en": "Camellia",
+    "id": "y590000"
+  },
+  "Arbrézo": {
+    "name_en": "Treetter",
+    "id": "y592000"
+  },
+  "Auberchouine": {
+    "name_en": "Neggplant",
+    "id": "y593000"
+  },
+  "Timouchar": {
+    "name_en": "Snitchin",
+    "id": "y594000"
+  },
+  "Bazaronin": {
+    "name_en": "Messyrai",
+    "id": "y595000"
+  },
+  "Indexter": {
+    "name_en": "Indexter",
+    "id": "y596000"
+  },
+  "Usapyon": {
+    "name_en": "Usapyon",
+    "id": "y597000"
+  },
+  "Tête de lard": {
+    "name_en": "Salty Bacon",
+    "id": "y598000"
+  },
+  "TuKappa": {
+    "name_en": "Lil Kappa",
+    "id": "y603000"
+  },
+  "Persépoil": {
+    "name_en": "Shedwin",
+    "id": "y604000"
+  },
+  "Arbrézo social": {
+    "name_en": "Retreeter",
+    "id": "y605000"
+  },
+  "Sinécureuil": {
+    "name_en": "Horizontail",
+    "id": "y606000"
+  },
+  "Hacksel": {
+    "name_en": "Hack King",
+    "id": "y608000"
+  },
+  "Dr Néant": {
+    "name_en": "Dr. E. Raser",
+    "id": "y609000"
+  },
+  "Dr Crépuscule": {
+    "name_en": "Dr. Nocturne",
+    "id": "y609010"
+  },
+  "Entout' Hâtila": {
+    "name_en": "Tut 'n' K'mon",
+    "id": "y610000"
+  },
+  "Les frères Topla": {
+    "name_en": "Right Brothers",
+    "id": "y611000"
+  },
+  "Cravat'en": {
+    "name_en": "Tie-red",
+    "id": "y612000"
+  },
+  "Théopportun": {
+    "name_en": "Pergushin",
+    "id": "y613000"
+  },
+  "Déshirley": {
+    "name_en": "Love-Torn",
+    "id": "y614000"
+  },
+  "Maindécis": {
+    "name_en": "Shakey",
+    "id": "y615000"
+  },
+  "Crassiella": {
+    "name_en": "Grubbles",
+    "id": "y616000"
+  },
+  "Werner Avif": {
+    "name_en": "Nervous Rex",
+    "id": "y617000"
+  },
+  "Rengainaël": {
+    "name_en": "Rinsin Repete",
+    "id": "y618000"
+  },
+  "Seulimane": {
+    "name_en": "Soloman",
+    "id": "y619000"
+  },
+  "Maracraque": {
+    "name_en": "Rhumbastiltskin",
+    "id": "y620000"
+  },
+  "Taï basse": {
+    "name_en": "Slax",
+    "id": "y621000"
+  },
+  "Javamal": {
+    "name_en": "Glumdango",
+    "id": "y622000"
+  },
+  "Kœud": {
+    "name_en": "Unshelltered",
+    "id": "y623000"
+  },
+  "Malocœur": {
+    "name_en": "Spewart",
+    "id": "y624000"
+  },
+  "Triopportun": {
+    "name_en": "Percrushionists",
+    "id": "y625000"
+  },
+  "Hadespote": {
+    "name_en": "Decidevible",
+    "id": "y626000"
+  },
+  "Jean-Mèchel": {
+    "name_en": "Hairum Scarum",
+    "id": "y627000"
+  },
+  "Oridjinn": {
+    "name_en": "Oridjinn",
+    "id": "y628000"
+  },
+  "Horridjinn": {
+    "name_en": "Horridjinn",
+    "id": "y628010"
+  },
+  "Carquentin": {
+    "name_en": "Quagmira",
+    "id": "y629000"
+  },
+  "Outransss": {
+    "name_en": "Putasockinit",
+    "id": "y630000"
+  },
+  "Thépacap": {
+    "name_en": "Humtea Jumtea",
+    "id": "y631000"
+  },
+  "Marceauterelle": {
+    "name_en": "Hoppy.",
+    "id": null
+  },
+  "Escarcool": {
+    "name_en": "Snailspace",
+    "id": "y633000"
+  },
+  "Criquetif": {
+    "name_en": "Snippity Cricket",
+    "id": "y638000"
+  },
+  "Bobdruche": {
+    "name_en": "Hot Air Buffoon",
+    "id": "y639000"
+  },
+  "Poulpulaire": {
+    "name_en": "Flocktopus",
+    "id": "y640000"
+  },
+  "Médisansss": {
+    "name_en": "Snidewinder",
+    "id": "y641000"
+  },
+  "Poulpétard": {
+    "name_en": "Bitter Batter",
+    "id": "y642000"
+  },
+  "Agraisseur": {
+    "name_en": "Ooze Zat",
+    "id": "y643000"
+  },
+  "Clic-bull": {
+    "name_en": "Push Pup",
+    "id": "y644000"
+  },
+  "Diegoïste": {
+    "name_en": "Mython",
+    "id": "y645000"
+  },
+  "Catastrosaure": {
+    "name_en": "D-Stroy",
+    "id": "y646000"
+  },
+  "Godichezilla": {
+    "name_en": "Clodzilla",
+    "id": "y646010"
+  },
+  "Entraînette": {
+    "name_en": "Frogetmenot",
+    "id": "y647000"
+  },
+  "Corailline": {
+    "name_en": "Princess Pearl",
+    "id": "y648000"
+  },
+  "Asura": {
+    "name_en": "Asura",
+    "id": "y649000"
+  },
+  "Saincope": {
+    "name_en": "Re-Q-Perate",
+    "id": "y650000"
+  },
+  "Koalanyan": {
+    "name_en": "Koalanyan",
+    "id": "y661000"
+  },
+  "Terminyanator": {
+    "name_en": "Terminyanator",
+    "id": "y666000"
+  },
+  "Sushinyan": {
+    "name_en": "Sushinyan",
+    "id": "y668000"
+  },
+  "Tempurasan": {
+    "name_en": "Tempurasan",
+    "id": "y669000"
+  },
+  "Platinos": {
+    "name_en": "Platinos",
+    "id": "y672000"
+  },
+  "Komastar": {
+    "name_en": "Koma Star",
+    "id": "y673000"
+  },
+  "Baratina": {
+    "name_en": "Gabby",
+    "id": "y674000"
+  },
+  "Institours": {
+    "name_en": "Teducator",
+    "id": "y675000"
+  },
+  "Aristocorniot": {
+    "name_en": "Gentlemutt",
+    "id": "y676000"
+  },
+  "Papi Taliste": {
+    "name_en": "Flash T. Cash",
+    "id": "y677000"
+  },
+  "Mégalopaul": {
+    "name_en": "City Licker",
+    "id": "y678000"
+  },
+  "Tomnyan": {
+    "name_en": "Tomnyan",
+    "id": "y679000"
+  },
+  "Komaventuriers": {
+    "name_en": "Koma Knomads",
+    "id": "y680000"
+  },
+  "Sanventurier": {
+    "name_en": "Knomad Koma",
+    "id": "y680100"
+  },
+  "Jiroventurier": {
+    "name_en": "Knomad Jiro",
+    "id": "y680200"
+  },
+  "Superobonyan": {
+    "name_en": "Showbonyan",
+    "id": "y681000"
+  },
+  "Octorbot": {
+    "name_en": "Venoctobot",
+    "id": "y682000"
+  },
+  "Kyubot": {
+    "name_en": "Kyubot",
+    "id": "y683000"
+  },
+  "PapiXXL": {
+    "name_en": "Supersize G.",
+    "id": null
+  },
+  "Graffaël": {
+    "name_en": "Roughgraff",
+    "id": "y685000"
+  },
+  "Lionguiste": {
+    "name_en": "Lionguist",
+    "id": "y686000"
+  },
+  "Tatartelette": {
+    "name_en": "Tattlecakes",
+    "id": "y687000"
+  },
+  "Chocobananar": {
+    "name_en": "Cocobanana",
+    "id": "y690000"
+  },
+  "Haltela": {
+    "name_en": "Judgebrick",
+    "id": "y691000"
+  },
+  "Ailexagère": {
+    "name_en": "Amplifly",
+    "id": "y692000"
+  },
+  "Chocobo-nyan": {
+    "name_en": "Chocobonyan",
+    "id": "y693000"
+  },
+  "Mog-nyan": {
+    "name_en": "Mooglenyan",
+    "id": "y694000"
+  },
+  "Wobblenyan": {
+    "name_en": "Wobblenyan",
+    "id": "y695000"
+  },
+  "Wibblekoma": {
+    "name_en": "Wibblekoma",
+    "id": "y696000"
+  },
+  "Jibanyan T": {
+    "name_en": "Jibanyan T",
+    "id": "y698000"
+  },
+  "Komasan T": {
+    "name_en": "Komasan T",
+    "id": "y699000"
+  },
+  "Aramis Taire": {
+    "name_en": "Miss Teri",
+    "id": "y701000"
+  },
+  "Diablotine": {
+    "name_en": "Little Charrmer",
+    "id": "y702000"
+  },
+  "Roi Jibanyan": {
+    "name_en": "King Jibanyan",
+    "id": "y703000"
+  },
+  "Dame Usapyon": {
+    "name_en": "Qn. Usapyon",
+    "id": null
+  },
+  "Valet Komasan": {
+    "name_en": "Jackomasan",
+    "id": "y705000"
+  },
+  "Dix de Komajiro": {
+    "name_en": "Komajiro Ten",
+    "id": "y706000"
+  },
+  "Josper": {
+    "name_en": "Josper",
+    "id": "y708000"
+  },
+  "Benzaiten": {
+    "name_en": "Benzaiten",
+    "id": "y711000"
+  },
+  "Hotei": {
+    "name_en": "Hotei",
+    "id": "y712000"
+  },
+  "Ebisu": {
+    "name_en": "Ebisu",
+    "id": "y713000"
+  },
+  "Daikokuten": {
+    "name_en": "Daikokuten",
+    "id": "y714000"
+  },
+  "Bishamonten": {
+    "name_en": "Bishamonten",
+    "id": "y715000"
+  },
+  "Jurojin": {
+    "name_en": "Jurojin",
+    "id": "y716000"
+  },
+  "Fukurokuju": {
+    "name_en": "Fukurokuju",
+    "id": "y717000"
+  },
+  "Supernyan": {
+    "name_en": "Supernyan",
+    "id": "y721000"
+  },
+  "Tofupyon": {
+    "name_en": "Tofupyon",
+    "id": "y728000"
+  },
+  "Grovide": {
+    "name_en": "Urnfulfilled",
+    "id": "y729000"
+  },
+  "Moqua glacé": {
+    "name_en": "Life-is-Parfait",
+    "id": "y731000"
+  },
+  "Fantimoré": {
+    "name_en": "Mr Blue-Shy",
+    "id": null
+  },
+  "Yogaratoi": {
+    "name_en": "Yoganalisten",
+    "id": "y733000"
+  },
+  "Trèchérubine": {
+    "name_en": "Ulteria",
+    "id": "y734000"
+  },
+  "Guillotin": {
+    "name_en": "Ed Zoff",
+    "id": "y736000"
+  },
+  "Coco Barjo": {
+    "name_en": "J. Ne-Sais-Quoi",
+    "id": null
+  },
+  "Enma l'Ancien": {
+    "name_en": "Ancient Enma",
+    "id": "y738000"
+  },
+  "Pandore": {
+    "name_en": "Pandora",
+    "id": "y743000"
+  },
+  "Génie du rire": {
+    "name_en": "Comic Genieus",
+    "id": "y744000"
+  },
+  "Bastetnyan": {
+    "name_en": "Bastnetnyan",
+    "id": "y745000"
+  },
+  "Komanubis": {
+    "name_en": "Komanubis",
+    "id": "y746000"
+  },
+  "Shivatenguerre": {
+    "name_en": "Rampajah",
+    "id": "y748000"
+  },
+  "Domniscian": {
+    "name_en": "Hinozall",
+    "id": null
+  },
+  "Domniscian 2.0": {
+    "name_en": "Hinozall Awk.",
+    "id": null
+  },
+  "Roi Pourkoidon": {
+    "name_en": "Whyvern King",
+    "id": "y761000"
+  },
+  "Deadcool": {
+    "name_en": "Deadcool",
+    "id": "y762000"
+  },
+  "Œuxcellence": {
+    "name_en": "Eggcelency",
+    "id": null
+  },
+  "Tristos": {
+    "name_en": "Sad 2 the Bone",
+    "id": null
+  },
+  "Momignorante": {
+    "name_en": "Crummy Mum.",
+    "id": null
+  },
+  "Escoffregriffe": {
+    "name_en": "Treasure Pest",
+    "id": "y766000"
+  },
+  "Normaline": {
+    "name_en": "Mee 2",
+    "id": "y767000"
+  },
+  "Enma funèbre": {
+    "name_en": "Umbral Enma",
+    "id": "y773000"
+  },
+  "Cymbaline": {
+    "name_en": "Cymbalina",
+    "id": "y774000"
+  },
+  "Gromel": {
+    "name_en": "Mumbles",
+    "id": "y775000"
+  },
+  "Vociféro": {
+    "name_en": "Roary",
+    "id": "y776000"
+  },
+  "Glapie": {
+    "name_en": "Letsbifrenz",
+    "id": "y777000"
+  },
+  "Turboss": {
+    "name_en": "Big Fish",
+    "id": "y778000"
+  },
+  "Alpinella": {
+    "name_en": "Alpina",
+    "id": "y779000"
+  },
+  "Lunatio": {
+    "name_en": "Lunie",
+    "id": "y780000"
+  },
+  "Affolanterne": {
+    "name_en": "Wack o' Lantern",
+    "id": "y781000"
+  },
+  "Indiana Jaws": {
+    "name_en": "Indiana Jaws",
+    "id": "y802000"
+  },
+  "Zombigoût": {
+    "name_en": "Zomboy",
+    "id": "y803000"
+  },
+  "Nyansès II": {
+    "name_en": "Nyanses II",
+    "id": "y804000"
+  },
+  "Néfertyrannie": {
+    "name_en": "Meopatra",
+    "id": "y805000"
+  },
+  "Phémniscian": {
+    "name_en": "The Hinix",
+    "id": "y806000"
+  },
+  "El Dragonor": {
+    "name_en": "El Dorago",
+    "id": "y807000"
+  },
+  "Cocassepied": {
+    "name_en": "Fitwit",
+    "id": "y808000"
+  },
+  "Originyan": {
+    "name_en": "Originyan",
+    "id": null
+  },
+  "Gargaros": {
+    "name_en": "Gargaros",
+    "id": null
+  },
+  "Ogralos": {
+    "name_en": "Ogralus",
+    "id": null
+  },
+  "Orqanos": {
+    "name_en": "Orcanos",
+    "id": null
+  },
+  "Orqéophyte": {
+    "name_en": "Orcalyte",
+    "id": null
+  },
+  "Boucanos": {
+    "name_en": "Plundros",
+    "id": null
+  },
+  "Porcinator": {
+    "name_en": "Hoggles",
+    "id": null
+  },
+  "Inamygal": {
+    "name_en": "Tarantutor",
+    "id": null
+  },
+  "McKraken": {
+    "name_en": "McKraken",
+    "id": null
+  },
+  "Volteface": {
+    "name_en": "Duwheel",
+    "id": null
+  },
+  "Voltéophyte": {
+    "name_en": "Duolyte",
+    "id": null
+  },
+  "Didgeai": {
+    "name_en": "Chirpster",
+    "id": null
+  },
+  "Didgéophyte": {
+    "name_en": "Chirpolyte",
+    "id": null
+  },
+  "Méganyan": {
+    "name_en": "Meganyan",
+    "id": null
+  },
+  "Firmain": {
+    "name_en": "Hans Full",
+    "id": null
+  },
+  "Maximain": {
+    "name_en": "Hans Galore",
+    "id": null
+  },
+  "Tromplœil": {
+    "name_en": "Eyephoon",
+    "id": null
+  },
+  "Tornadoculaire": {
+    "name_en": "Torneyedo",
+    "id": null
+  },
+  "Fatracteur": {
+    "name_en": "Junkernaut",
+    "id": null
+  },
+  "Supermanager": {
+    "name_en": "Supermanager",
+    "id": null
+  },
+  "Thibonimenteur": {
+    "name_en": "Hoaxy-Coaxy",
+    "id": null
+  },
+  "Agent X": {
+    "name_en": "Agent X",
+    "id": null
+  },
+  "Yo-kaiju": {
+    "name_en": "Yo-kaiju",
+    "id": null
+  },
+  "Yopple-bot": {
+    "name_en": "Yopple-Bot",
+    "id": null
+  },
+  "No-bot": {
+    "name_en": "No-Bot",
+    "id": null
+  },
+  "Dodorothée": {
+    "name_en": "Beddy-Byes",
+    "id": null
+  },
+  "Minustrel": {
+    "name_en": "Slackerjack",
+    "id": null
+  },
+  "Magnustrel": {
+    "name_en": "Slackolyte",
+    "id": null
+  },
+  "King Keskler": {
+    "name_en": "Rongo Swirll",
+    "id": null
+  },
+  "Don Morleone": {
+    "name_en": "Ghoulfather",
+    "id": null
+  },
+  "Don Spiration": {
+    "name_en": "Don Spiracy",
+    "id": null
+  },
+  "Karmagister": {
+    "name_en": "Zenlightener",
+    "id": null
+  },
+  "Clochemar": {
+    "name_en": "Hollow Guard",
+    "id": null
+  },
+  "Rôdin": {
+    "name_en": "Skulk",
+    "id": null
+  },
+  "Tata la Terreur": {
+    "name_en": "Tattleterror",
+    "id": null
+  },
+  "Garegamelle": {
+    "name_en": "Yellskitchen",
+    "id": null
+  },
+  "Hacharné": {
+    "name_en": "Soulcleaver",
+    "id": null
+  },
+  "Don Dorleone": {
+    "name_en": "The Goldfather",
+    "id": null
+  },
+  "Morquis": {
+    "name_en": "Whaleman",
+    "id": null
+  },
+  "Ténorque": {
+    "name_en": "Narwail",
+    "id": null
+  },
+  "Sequestrella": {
+    "name_en": "Maiden Ruin",
+    "id": null
+  },
+  "Mécagolem": {
+    "name_en": "IcarOS",
+    "id": null
+  },
+  "Shamanaconda": {
+    "name_en": "The Woebra",
+    "id": null
+  },
+  "Robonyan 28": {
+    "name_en": "Robonyan 28",
+    "id": null
+  },
+  "Robonyan 3000": {
+    "name_en": "Robonyan 3000",
+    "id": null
+  },
+  "Roi Shogun": {
+    "name_en": "Shogun King",
+    "id": null
+  },
+  "Hypertaupe": {
+    "name_en": "Holey Moley",
+    "id": null
+  }
+}
