@@ -99,7 +99,6 @@ class Yokai(commands.Cog):
         #choose the Yo-kai in the class
         Yokai_choice = random.choices(class_choice["yokai_list"])
         Yokai_choice = Yokai_choice[0]
-        print(type(Yokai_choice))
         
         #get the id of the yokai
         try :
