@@ -13,7 +13,7 @@
   },
   "Enma": {
     "name_en": "Enma",
-    "id": null
+    "id": "y473000"
   },
   "Whisper": {
     "name_en": "Whisper",
@@ -1117,7 +1117,7 @@
   },
   "DON-CHAN": {
     "name_en": "DON-CHAN",
-    "id": null
+    "id": "y279000"
   },
   "Métaureaulog": {
     "name_en": "Predictabull",
@@ -1181,7 +1181,7 @@
   },
   "Triptyk": {
     "name_en": "Slimamander",
-    "id": null
+    "id": "y298000"
   },
   "Snobéa": {
     "name_en": "Snobetty",
@@ -1197,7 +1197,7 @@
   },
   "Potofeu": {
     "name_en": "Wobblewok",
-    "id": null
+    "id": "y302000"
   },
   "Poilux": {
     "name_en": "Furgus",
@@ -1225,7 +1225,7 @@
   },
   "Crocho": {
     "name_en": "Sproink",
-    "id": null
+    "id": "y309000"
   },
   "Babarouf": {
     "name_en": "Rawry",
@@ -1265,7 +1265,7 @@
   },
   "Carpitaine": {
     "name_en": "SV Snaggerjag",
-    "id": null
+    "id": "y319000"
   },
   "Mlle Coucou": {
     "name_en": "Lady Longnek",
@@ -1585,19 +1585,19 @@
   },
   "Extrabuki": {
     "name_en": "Kabuking",
-    "id": null
+    "id": "y479000"
   },
   "Jiganyan": {
     "name_en": "Rubeus J",
-    "id": null
+    "id": "y480000"
   },
   "Alga Sensei": {
     "name_en": "Seaweed Sns.",
-    "id": null
+    "id": "y481000"
   },
   "Grolos": {
     "name_en": "Gutsy Bones",
-    "id": null
+    "id": "y482000"
   },
   "Trempetta": {
     "name_en": "Drenchetta",
@@ -1609,7 +1609,7 @@
   },
   "Komak": {
     "name_en": "Hardy Hound",
-    "id": null
+    "id": "y485000"
   },
   "Suprarachnus": {
     "name_en": "Arachnevil",
@@ -1649,7 +1649,7 @@
   },
   "Lord Écibel": {
     "name_en": "Shrillington",
-    "id": null
+    "id": "y510000"
   },
   "Dagamberge": {
     "name_en": "Ponderoo",
@@ -1725,7 +1725,7 @@
   },
   "Feuildechou": {
     "name_en": "2-Much-2-Take",
-    "id": null
+    "id": "y532000"
   },
   "Curryogi": {
     "name_en": "Naandhi",
@@ -1741,11 +1741,11 @@
   },
   "Mata Hase": {
     "name_en": "Spect-hare",
-    "id": null
+    "id": "y536000"
   },
   "Blanche Hase": {
     "name_en": "Sn. Spect-hare",
-    "id": null
+    "id": "y536010"
   },
   "Chameuhllow": {
     "name_en": "Chilled Cowcao",
@@ -1769,7 +1769,7 @@
   },
   "Navétéran": {
     "name_en": "Ship. Sailor",
-    "id": null
+    "id": "y542000"
   },
   "Pogorille": {
     "name_en": "Sing Kong",
@@ -1809,7 +1809,7 @@
   },
   "Navigarmateur": {
     "name_en": "Adm. Admiral",
-    "id": null
+    "id": "y552000"
   },
   "Flèche d'azur": {
     "name_en": "Silver Lining",
@@ -1817,7 +1817,7 @@
   },
   "Squale masqué": {
     "name_en": "Jawsome Kid",
-    "id": null
+    "id": "y554000"
   },
   "El Squalador": {
     "name_en": "El Sharkador",
@@ -2097,7 +2097,7 @@
   },
   "Marceauterelle": {
     "name_en": "Hoppy.",
-    "id": null
+    "id": "y632000"
   },
   "Escarcool": {
     "name_en": "Snailspace",
@@ -2233,7 +2233,7 @@
   },
   "PapiXXL": {
     "name_en": "Supersize G.",
-    "id": null
+    "id": "y684000"
   },
   "Graffaël": {
     "name_en": "Roughgraff",
@@ -2297,7 +2297,7 @@
   },
   "Dame Usapyon": {
     "name_en": "Qn. Usapyon",
-    "id": null
+    "id": "y704000"
   },
   "Valet Komasan": {
     "name_en": "Jackomasan",
@@ -2357,7 +2357,7 @@
   },
   "Fantimoré": {
     "name_en": "Mr Blue-Shy",
-    "id": null
+    "id": "y732000"
   },
   "Yogaratoi": {
     "name_en": "Yoganalisten",
@@ -2373,7 +2373,7 @@
   },
   "Coco Barjo": {
     "name_en": "J. Ne-Sais-Quoi",
-    "id": null
+    "id": "y737000"
   },
   "Enma l'Ancien": {
     "name_en": "Ancient Enma",
@@ -2401,11 +2401,11 @@
   },
   "Domniscian": {
     "name_en": "Hinozall",
-    "id": null
+    "id": "y749000"
   },
   "Domniscian 2.0": {
     "name_en": "Hinozall Awk.",
-    "id": null
+    "id": "y750000"
   },
   "Roi Pourkoidon": {
     "name_en": "Whyvern King",
@@ -2417,15 +2417,15 @@
   },
   "Œuxcellence": {
     "name_en": "Eggcelency",
-    "id": null
+    "id": "y763000"
   },
   "Tristos": {
     "name_en": "Sad 2 the Bone",
-    "id": null
+    "id": "y764000"
   },
   "Momignorante": {
     "name_en": "Crummy Mum.",
-    "id": null
+    "id": "y765000"
   },
   "Escoffregriffe": {
     "name_en": "Treasure Pest",
@@ -2501,19 +2501,19 @@
   },
   "Originyan": {
     "name_en": "Originyan",
-    "id": null
+    "id": "y900000"
   },
   "Gargaros": {
     "name_en": "Gargaros",
-    "id": null
+    "id": "y360000"
   },
   "Ogralos": {
     "name_en": "Ogralus",
-    "id": null
+    "id": "y361000"
   },
   "Orqanos": {
     "name_en": "Orcanos",
-    "id": null
+    "id": "y362000"
   },
   "Orqéophyte": {
     "name_en": "Orcalyte",
