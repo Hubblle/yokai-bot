@@ -101,10 +101,6 @@ class Yokai(commands.Cog):
         Yokai_choice = Yokai_choice[0]
         
         #get the id of the yokai
-        try :
-            id = Cf.yokai_list_full[Yokai_choice]["id"]
-        except KeyError :
-            id = None
 
         yokai_embed = discord.Embed(
             title=f"Vous avez eu le Yo-kai **{Yokai_choice}** ✨ ",
@@ -112,8 +108,17 @@ class Yokai(commands.Cog):
             color=discord.Color.from_str(self.bot.yokai_data[class_id]["color"])
         )
         yokai_embed.set_thumbnail(url=self.bot.image_link[class_id])
-        yokai_embed.set_footer(text="/!\ Étant donné que le bot approche des 100 serveurs, nous risquons de perdre l'accès aux commandes préfix (ex. `.bkai`). Nous recommandons donc d'utiliser les commandes slash (ex. `/bkai`).")
-        yokai_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{id}.png")
+        
+        #define the id and so the api request to the image
+        
+        try :
+            id = Cf.yokai_list_full[Yokai_choice]["id"]
+            yokai_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{id}.png")
+        except KeyError :
+            id = None
+            yokai_embed.add_field(name="Image non disponible ! 😢", inline=False, value="En effet, nous ne possédons pas l'image de tous les Yo-kai, mais l'équipe travaille pour les apporter au complet et au plus vite.")
+        
+        
         if ctx.guild is not None:
             self.bot.logger.info(
                 f"Executed bingo-kai command in {ctx.guild.name} (ID: {ctx.guild.id}) by {ctx.author} (ID: {ctx.author.id}) // He had '{Yokai_choice}' / Rank: {class_name}"
