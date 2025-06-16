@@ -31,7 +31,6 @@ load_dotenv()
 
 
 intents = discord.Intents.default()
-intents.message_content = True
 
 """
 Uncomment this if you want to use prefix (normal) commands.
