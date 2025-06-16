@@ -7,6 +7,7 @@ import json
 import random
 import time
 import bot_package.Custom_func as Cf
+import bot_package.Check as Check
 
 
 #Bot admin commands
@@ -27,7 +28,8 @@ class Admin_command(commands.Cog):
     
     
     
-    @commands.command(name="reset")
+    @commands.hybrid_command(name="reset")
+    @Check.is_in_dev_team()
     async def reset(self, ctx : commands.Context, input_id : str):
         """
         Reset le Médallium de l'utilisateur donné.
@@ -85,7 +87,8 @@ class Admin_command(commands.Cog):
     
     
     
-    @commands.command(name="stats")
+    @commands.hybrid_command(name="stats")
+    @Check.is_in_dev_team()
     async def stats(self, ctx : commands.Context, input):
         """give stats about input data."""
         
@@ -131,7 +134,8 @@ class Admin_command(commands.Cog):
         
         
         
-    @commands.command(name="give")
+    @commands.hybrid_command(name="give")
+    @Check.is_in_dev_team()
     async def give(self, ctx : commands.Context, input_id : int, yokai : str, rang : str, number = "1" ):
         """
         Give un Yo-kai à un utilisateur donné.
@@ -298,7 +302,8 @@ class Admin_command(commands.Cog):
     
     
     
-    @commands.command(name="remove")
+    @commands.hybrid_command(name="remove")
+    @Check.is_in_dev_team()
     async def remove(self, ctx : commands.Context, input_id : int, yokai : str, rang : str, number = "1"): 
         """
         Remove un Yo-kai à un utilisateur donné.
@@ -421,18 +426,16 @@ class Admin_command(commands.Cog):
                 
                 
                 
-    @commands.command(
+    @commands.hybrid_command(
         name="sync",
         description="Synchonizes the slash commands.",
     )
-    @app_commands.describe(scope="The scope of the sync. Can be `global` or `guild`")
     @commands.is_owner()
-    async def sync(self, context: Context, scope: str) -> None:
+    async def sync(self, context: commands.Context, scope: str) -> None:
         """
         Synchonizes the slash commands.
 
-        :param context: The command context.
-        :param scope: The scope of the sync. Can be `global` or `guild`.
+        scope : The scope of the sync. Can be `global` or `guild`.
         """
 
         if scope == "global":
@@ -458,5 +461,5 @@ class Admin_command(commands.Cog):
         await context.send(embed=embed)
 
 
-async def setup(bot) -> None:
+async def setup(bot : commands.Bot ) -> None:
     await bot.add_cog(Admin_command(bot))
