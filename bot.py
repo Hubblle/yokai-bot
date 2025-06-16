@@ -206,6 +206,7 @@ class DiscordBot(commands.Bot):
                     self.logger.error(
                         f"Failed to load extension {extension}\n{exception}"
                     )
+        
 
     @tasks.loop(minutes=1.0)
     async def status_task(self) -> None:
@@ -323,6 +324,23 @@ class DiscordBot(commands.Bot):
                 color=0xE02B2B,
             )
             await context.send(embed=embed)
+        
+        elif isinstance(error, commands.CheckFailure):
+            error_embed = discord.Embed(
+                    title="Vous n'êtes pas dans l'équipe de développement.",
+                    description="Vous n'avez pas la permission de faire ceci !",
+                    color= discord.Color.red()
+                )
+            await context.send(embed=error_embed)
+            if context.guild:
+                self.logger.warning(
+                    f"{context.author} (ID: {context.author.id}) tried to execute an dev team only command in the guild {context.guild.name} (ID: {context.guild.id}), but the user was not in the dev team of the bot."
+                )
+            else:
+                self.logger.warning(
+                    f"{context.author} (ID: {context.author.id}) tried to execute an dev team only command in the bot's DMs, but the user was not in the dev team of the bot."
+                )
+        
         else:
             raw_error = traceback.format_exception(error)
             formated_error = ""
