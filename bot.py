@@ -236,6 +236,7 @@ class DiscordBot(commands.Bot):
         self.logger.info("-------------------")
         #await self.init_db()
         await self.load_cogs()
+        await self.tree.sync()
         self.status_task.start()
         
 
