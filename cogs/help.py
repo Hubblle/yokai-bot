@@ -19,6 +19,8 @@ class Help(commands.Cog, name="help"):
 
         input = tuple(input.split())
 
+        
+        #The comments here are in French because at the time, i asked chatGPT to translate the messages of the bot in French, but it did it on all the text...
 
         # !SET THOSE VARIABLES TO MAKE THE COG FUNCTIONAL!
         prefix = self.bot.bot_prefix  # METTEZ VOTRE PRÉFIXE - chargé depuis la config, en string ou comme vous voulez !
