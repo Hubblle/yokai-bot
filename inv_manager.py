@@ -284,16 +284,21 @@ def key_manager():
     print("key manager")
     while True :
         print("Please, select a mode :")
-        print("   [1] Delete a yokai. \n   [2] Manage a key.")
+        print("   [1] Delete a yokai. \n   [2] Replace a yokai.")
         line()
         choise = input("Please, select a number [1-2] ")
     
         if choise == "1" or choise == "2" :
             choise = int(choise)
             break
+        
+        print("The number isn't right, please enter a number in range [1-2]")
+        input("Press any key to go back to the menu.")
+        line(35)
     
     if choise == 1:
         line()
+        number = 0
         chosen_yokai = input("Please, select the Yokai : ")
         chosen_class = input("Please choose the rank of the yokai : ")
         for dirpath, dirnames, filenames in os.walk("./files/inventory"):
@@ -306,13 +311,52 @@ def key_manager():
                         if yokai == chosen_yokai and current_inv[yokai][0] == chosen_class :
                             new_inv.pop(yokai)
                             print(f"The yokai {yokai} was removed for the inv of {id} !")
+                            number += 1
                     except :
                         pass
                 save_inv(new_inv, file.strip(".json"))
+                print(f"{number} {chosen_yokai} were removed from the inv.")
         
-        print("The number isn't right, please enter a number in range [1-2]")
-        input("Press any key to go back to the menu.")
     
+    if choise == 2:
+        line()
+        chosen_yokai = input("Please, select the Yokai : ")
+        chosen_class = input("Please choose the rank for the Yokai : ")
+        print(f"Yokai choosen -> {chosen_yokai} // class -> {chosen_class}")
+        line()
+        replacement_yokai = input("Please, choose the replacement Yokai : ")
+        replacement_class = input("Please, choose the replacement class : ")
+        
+        number = 0
+        for dirpath, dirnames, filenames in os.walk("./files/inventory"):
+            for file in filenames :
+                id = file.strip(".json")
+                current_inv = get_inv(id)
+                new_inv = get_inv(id)
+                for yokai in current_inv :
+                    try :
+                        if yokai == chosen_yokai and current_inv[yokai][0] == chosen_class :
+                            #remove the old yokai
+                            new_inv.pop(yokai)
+                            number += 1
+                            
+                            
+                            #add the replacement yokai
+                            try:
+                                new_inv[replacement_yokai] = [replacement_class, current_inv[yokai][1]]
+                            except IndexError:  
+                                new_inv[replacement_yokai] = [replacement_class]
+                            
+                            
+                            print(f"The yokai {yokai} was removed for the inv of {id} !")
+                    except :
+                        pass
+                
+                print(f"{number} {chosen_yokai} were replaced by {replacement_yokai}")
+                save_inv(new_inv, file.strip(".json"))
+    
+    
+    line()
     input("End of the program, press any key to go back to the main menu.")
     
 
