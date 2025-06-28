@@ -76,7 +76,7 @@ def adjust():
     print("Welcome to the ajustement program !")
     while True :
         print("Please, select a mode :")
-        print("   [1] Total number of yokai. \n   [2] Yokai replacement. \n   [3] Double Yokais ?")
+        print("   [1] Total number of yokai. \n   [2] Nothing. \n   [3] Double Yokais ?")
         line()
         choise = input("Please, select a number [1-3] ")
     
