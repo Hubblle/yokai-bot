@@ -37,10 +37,11 @@ class Yokai(commands.Cog):
         
         #verify if the cooldown is bypassed ?
         
-        """for ids in data.team_member_id :
-            if ctx.author.id == ids :
-                iscooldown = False
-                break"""
+        if data.team_bypass_cooldown :
+            for ids in data.team_member_id :
+                if ctx.author.id == ids :
+                    iscooldown = False
+                    break
 
         #Verify if there is a claim in their inv
         try:

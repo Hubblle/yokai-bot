@@ -43,4 +43,5 @@ with open("./files/bot-data.json") as bot_data:
 with open("./configuration.json", "r") as config:
     config_data = json.load(config)
     team_member_id = config_data["team_members_id"]
+    team_bypass_cooldown = config_data["team_bypass_cooldown"]
   
