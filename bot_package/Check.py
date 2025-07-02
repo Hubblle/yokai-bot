@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import json
 
-with open(f"./files/configuration.json") as f:
+with open(f"./configuration.json") as f:
             conf = json.load(f)
             
 

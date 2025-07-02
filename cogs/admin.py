@@ -8,7 +8,7 @@ import random
 import time
 import bot_package.Custom_func as Cf
 import bot_package.Check as Check
-
+import bot_package.data as data
 
 #Bot admin commands
 class Admin_command(commands.Cog):
@@ -34,54 +34,37 @@ class Admin_command(commands.Cog):
         """
         Reset le Médallium de l'utilisateur donné.
         """
-        if True:
-            #verify if author is in the Admin list.
-            verify = False
-            for ids in self.bot.team_member_id :
-                if ctx.author.id == ids :
-                    verify = True
-                    break
-                    
-            if verify == True :
-                #is the input id fine ?
-                try:
-                    int(input_id)
-                except :
-                    error_embed = discord.Embed(
-                        title="Merci de fournir un identifiant corect !",
-                        color= discord.Color.red()
-                    )
-                    return await ctx.send(embed=error_embed)
-                
-                #is the inv already empty ?
-                brute_inventory = await Cf.get_inv(input_id)
+        #is the input id fine ?
+        try:
+            int(input_id)
+        except :
+            error_embed = discord.Embed(
+                title="Merci de fournir un identifiant corect !",
+                color= discord.Color.red()
+            )
+            return await ctx.send(embed=error_embed)
+        
+        #is the inv already empty ?
+        brute_inventory = await Cf.get_inv(input_id)
 
-                if brute_inventory == {}:
-                    error_embed = discord.Embed(
-                    title="Le Médallium de cette utilisateur est déjà vide !",
-                    color= discord.Color.red()
-                )
-                    return await ctx.send(embed=error_embed)
-                
-                #empt the inv and send the message
-                brute_inventory = {}
-                await Cf.save_inv(brute_inventory, input_id)
-                sucess_embed = discord.Embed(
-                    title="Le Médallium de cette utilisateur a été vidé !",
-                    color= discord.Color.green()
-                )
-                #Log
-                return await ctx.send(embed=sucess_embed)
+        if brute_inventory == {}:
+            error_embed = discord.Embed(
+            title="Le Médallium de cette utilisateur est déjà vide !",
+            color= discord.Color.red()
+        )
+            return await ctx.send(embed=error_embed)
+        
+        #empt the inv and send the message
+        brute_inventory = {}
+        await Cf.save_inv(brute_inventory, input_id)
+        sucess_embed = discord.Embed(
+            title="Le Médallium de cette utilisateur a été vidé !",
+            color= discord.Color.green()
+        )
+        #Log
+        return await ctx.send(embed=sucess_embed)
+            
                     
-                    
-            #if member is not in the admin team        
-            else :
-                error_embed = discord.Embed(
-                    title="Vous n'êtes pas dans l'équipe de développement.",
-                    description="Vous n'avez pas la permission de faire ceci !",
-                    color= discord.Color.red()
-                )
-                return await ctx.send(embed=error_embed)
             
             
     
@@ -90,25 +73,13 @@ class Admin_command(commands.Cog):
     @commands.hybrid_command(name="stats")
     @Check.is_in_dev_team()
     async def stats(self, ctx : commands.Context, input : str):
-        """give stats about input data."""
+        """give stats about input data.
+        
+        Available stats for now : `inventory`
+        
+        """
             
-        #verify if author is in the Admin list.
-        verify = False
-        for ids in self.bot.team_member_id :
-            if ctx.author.id == ids :
-                verify = True
-                break
             
-        if verify == False :
-            error_embed = discord.Embed(
-                title="Vous n'êtes pas dans l'équipe de développement.",
-                description="Vous n'avez pas la permission de faire ceci !",
-                color= discord.Color.red()
-            )
-            return await ctx.send(embed=error_embed)
-        
-        
-        
         if input == "inventory":
 
             total_user = 0
@@ -139,30 +110,8 @@ class Admin_command(commands.Cog):
         Give un Yo-kai à un utilisateur donné.
         `.give {id de l'utilisateur} {"yokai"} {rang} {quantité}`
         """
-        
-        
-        #verify if author is in the Admin list.
-        verify = False
-        for ids in self.bot.team_member_id :
-            if ctx.author.id == ids :
-                verify = True
-                break
-                
-        if verify == False :
-            error_embed = discord.Embed(
-                title="Vous n'êtes pas dans l'équipe de développement.",
-                description="Vous n'avez pas la permission de faire ceci !",
-                color= discord.Color.red()
-            )
-            self.bot.logger.warning(f"{ctx.author.name} n'avais pas les permissions pour utiliser le /give dans {ctx.guild.name}, sur l'input {input_id}")
-            return await ctx.send(embed=error_embed)
-        
-        
-        
-        
-        
-        
-        
+    
+
         #is the input id fine ?
         try:
             input_id = int(input_id)
@@ -346,21 +295,6 @@ class Admin_command(commands.Cog):
             return await ctx.send(embed=error_embed)
         
         
-        #verify if author is in the Admin list.
-        verify = False
-        for ids in self.bot.team_member_id :
-            if ctx.author.id == ids :
-                verify = True
-                break
-                
-        if verify == False :
-            error_embed = discord.Embed(
-                title="Vous n'êtes pas dans l'équipe de développement.",
-                description="Vous n'avez pas la permission de faire ceci !",
-                color= discord.Color.red()
-            )
-            self.bot.logger.warning(f"{ctx.author.name} n'avais pas les permissions pour utiliser le /give sur l'input {input_id},  le yokai {yokai}, la quantité {number}")
-            return await ctx.send(embed=error_embed)
         
         #Verify if the class (rang) is fine :
         class_name = rang

@@ -6,6 +6,7 @@ import json
 import random
 import time
 import bot_package.Custom_func as Cf
+import bot_package.data as data
 
 
 
@@ -83,10 +84,10 @@ class Medallium(commands.Cog) :
             yokai_per_class[non_sorted_dicts] = sorted_dict
 
         #define the emoji list
-        emoji = self.bot.emoji
-        yokai_data = self.bot.yokai_data
-        list_len = self.bot.list_len
-        image_link = self.bot.image_link
+        emoji = data.emoji
+        yokai_data = data.yokai_data
+        list_len = data.list_len
+        image_link = data.image_link
 
 
 

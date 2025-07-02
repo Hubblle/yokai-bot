@@ -6,12 +6,7 @@ import json
 import random
 import time
 import bot_package.Custom_func as Cf
-
-team_member_id = []
-with open("./files/configuration.json") as f:
-            data = json.load(f)
-            for id in data["team_members_id"] :
-                team_member_id.append(id)
+import bot_package.data as data
 
 
 
@@ -34,14 +29,15 @@ class Yokai(commands.Cog):
         Tire au sort un Yo-kai de manière aléatoire.
         La commande possède un cooldown de 1h30 (1h sur le serveur de support ;) )
         """
-                #define the inv
+        #define the inv
         brute_inventory = await Cf.get_inv(ctx.author.id)
 
         iscooldown = True
         
         
         #verify if the cooldown is bypassed ?
-        """for ids in team_member_id :
+        
+        """for ids in data.team_member_id :
             if ctx.author.id == ids :
                 iscooldown = False
                 break"""
@@ -91,7 +87,7 @@ class Yokai(commands.Cog):
                     return await ctx.send(embed=yokai_embed)
 
         #choose the class of the yokai
-        class_choice = self.bot.yokai_data[random.choices(self.bot.class_list, weights=self.bot.proba_list, k=1)[0]]
+        class_choice = data.yokai_data[random.choices(data.class_list, weights=data.proba_list, k=1)[0]]
 
         #get the good name of the class and his id
         class_name = class_choice["class_name"]
@@ -105,9 +101,9 @@ class Yokai(commands.Cog):
         yokai_embed = discord.Embed(
             title=f"Vous avez eu le Yo-kai **{Yokai_choice}** ✨ ",
             description=f"Félicitations il est de rang **{class_name}**",
-            color=discord.Color.from_str(self.bot.yokai_data[class_id]["color"])
+            color=discord.Color.from_str(data.yokai_data[class_id]["color"])
         )
-        yokai_embed.set_thumbnail(url=self.bot.image_link[class_id])
+        yokai_embed.set_thumbnail(url=data.image_link[class_id])
         
         #define the id and so the api request to the image
         
