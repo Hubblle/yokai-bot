@@ -7,13 +7,7 @@
 
 - Créer les dossiers/fichiers : `/files/error/` & `/files/logs/discord.log` & `/files/inventory/` 
 
-- Créer un fichier `/files/configuration.json` tel que : 
-
-```
-{
-    "team_members_id" : [ID Discord des personnes pouvant exécuter des commandes d'administration.]
-}
-```
+- Créer un fichier `/configuration.json` tel que le fichier `/configuration.json.example` fourni dans le git.
 
 - Créer un fichier `/files/bot-data.json` tel que :
 
@@ -50,7 +44,7 @@
 }
 ```
 
-- Créer un fichier `./.env` tel que le fichier `.env.example` qui est fourni dans le git.
+- Créer un fichier `/.env` tel que le fichier `.env.example` qui est fourni dans le git.
 
 
 

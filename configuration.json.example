@@ -1,0 +1,4 @@
+{
+    "team_members_id" : [Put admin team members id here],
+    "team_bypass_cooldown" : true / false
+}
