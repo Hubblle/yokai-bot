@@ -16,7 +16,7 @@ import bot_package.data as data
 #Medallium command cog
 class Medallium(commands.Cog) :
     """
-    Permet de voir votre Médallium (inventaire), tous les Yo-kai que vous avez eu avec le /bingo-kai.
+    Permet de voir votre Médallium (inventaire), tous les Yo-kai que vous avez eu avec le /bingo-kai et votre sacoche avec tous vos objets et pièces.
     """
     
     
@@ -201,10 +201,183 @@ class Medallium(commands.Cog) :
                 yokai_claimed_count += f"Yo-kai **{await Cf.classid_to_class(classes, False)}**: `{brute_inventory[classes]}/{list_len[classes]}`\n"
 
         main_embed.add_field(name="Voici vos statistiques :", value=yokai_claimed_count, inline=True)
-        main_embed.set_footer(text="Merci de choisir parmi les propositions ci-dessous pour afficher vos Yo-kai.")
+        main_embed.set_footer(text="Merci de choisir parmi les propositions ci-dessous pour afficher vos items.")
 
         await ctx.send(embed=main_embed, view=Dropdown)
 
+    
+    #the bag command
+    @commands.hybrid_command(name="bag")
+    async def bag(self, ctx = commands.Context, user : discord.User = None ):
+        """
+        Permet de voir votre sacoche, tous les objets / pièces que vous avez eu avec le /bingo-kai. 
+        Utilisez */bag {user}* pour voir la sacoche d'un autre utilisateur.
+        """
+        #define the user
+        if user == None:
+            user = ctx.author
+
+        #Get bag
+        brute_bag = await Cf.get_bag(user.id)
+
+        #try if the bag is empty
+        if brute_bag == {}:
+            if user.id == ctx.author.id:
+                inv_embed = discord.Embed(title="Oops, votre sacoche est vide 😢!")
+            else:
+                inv_embed = discord.Embed(title=f"Oops, la sacoche de {user.name} est vide 😢!")
+            return await ctx.send(embed=inv_embed)
+
+        #create the list :  
+        item_per_class = {
+            "coin": {},
+            "obj": {},
+            "treasure": {},
+        }
+
+        #sort the content by categorie
+        for elements in brute_bag:
+            #Don't take any numbers
+            if not elements in ["coin", "obj", "treasure"]:
+                categorie = brute_bag[elements]
+
+                #Check if it's stack
+                try:
+                    count = brute_bag[elements][1]
+                except:
+                    count = 1
+
+                #add it to the right list
+                item_per_class[categorie[0]][elements] = count
+
+        #sort the list alphabeticaly :
+        for non_sorted_dicts in item_per_class:
+            list_key = list(item_per_class[non_sorted_dicts].keys())
+            list_key.sort()
+
+            sorted_dict = {i: item_per_class[non_sorted_dicts][i] for i in list_key}
+            item_per_class[non_sorted_dicts] = sorted_dict
+
+
+
+        #Inv dropdown class
+        class Inv_dropdown(discord.ui.Select):
+            def __init__(self):
+                options = [
+                    discord.SelectOption(label="Tout !", description="Affiche toute la sacoche.", emoji="🌐"),
+                    discord.SelectOption(label="Pièces", emoji="🪙"),
+                    discord.SelectOption(label="Objets", emoji="📦"),
+                    discord.SelectOption(label="trésors", emoji="📿"),
+                ]
+
+                super().__init__(placeholder='Choisissez ce que vous voulez...', min_values=1, max_values=1, options=options)
+
+            async def callback(self, interaction, ctx=ctx):
+                if self.values[0] == "Tout !":
+                    if user.id == ctx.author.id:
+                        inv_embed = discord.Embed(title="Voici votre sacoche :")
+                    else:
+                        inv_embed = discord.Embed(title=f"Voici le sacoche de {user.name} :")
+
+                    try:
+                        for classes in item_per_class:
+                            item_list_brute = item_per_class[classes]
+                            classes_name = await Cf.classid_to_class(classes, False)
+                            class_id = classes
+
+                            item_list_formated = ""
+
+                            if item_list_brute != {}:
+                                for elements in item_list_brute:
+                                    if item_list_brute[elements] > 1:
+                                        item_list_formated += f"> {elements} **`(x{str(item_list_brute[elements])})`**\n"
+                                    else:
+                                        item_list_formated += f"> {elements}\n"
+
+                                inv_embed.add_field(name=f"{classes_name} `{brute_bag[class_id]}`",
+                                                    value=item_list_formated)
+                                inv_embed.set_author(name=f"Sacoche de {user.name}")
+                        return await interaction.response.send_message(embed=inv_embed)
+                    except discord.errors.HTTPException as e:
+                        error_embed = discord.Embed(color=discord.Color.red(),
+                                                    title="Oh non, une erreur s'est produite !",
+                                                    description="> Un bug sur cette commande se produit quand la sacoche est trop grand pour être affichée. (C'est un peu un flex quand même 🙃)")
+                        error_embed.add_field(name="Vous devez donc spécifier un type pour que cela marche.",
+                                            value="Vous pouvez utiliser le message ci-dessus.")
+                        return await interaction.response.send_message(embed=error_embed)
+
+                else:
+                    
+                    if self.values[0] == "Pièces" :
+                        item_type = "coin"
+                        
+                    elif self.values[0] == "Objets":
+                        item_type = "obj"
+                    
+                    else :
+                        item_type = "treasure"
+                    
+                    
+                    
+                    item_list_brute = item_per_class[item_type]
+                    classes_name = self.values[0]
+                    class_id = item_type
+
+                    item_list_formated = ""
+
+                    if item_list_brute != {}:
+                        for elements in item_list_brute:
+                            if item_list_brute[elements] > 1:
+                                item_list_formated += f"> {elements} **`(x{str(item_list_brute[elements])})`**\n"
+                            else:
+                                item_list_formated += f"> {elements}\n"
+
+                        inv_embed = discord.Embed(
+                            title=f"{classes_name} `{brute_bag[item_type]}`",
+                            description=item_list_formated,
+                            color=discord.Color.from_str("#b87106")
+                        )
+                        
+                        #NOT implented yet
+                        #inv_embed.set_thumbnail(url=image_link[item_type])
+                        
+                        inv_embed.set_author(name=f"Sacoche de {user.name}")
+                        return await interaction.response.send_message(embed=inv_embed)
+                    else:
+                        if user.id == ctx.author.id:
+                            inv_embed = discord.Embed(
+                                title="Oops, votre sacoche ne contient rien de ce type 😢!")
+                        else:
+                            inv_embed = discord.Embed(
+                                title=f"Oops, la sacoche de {user.name} ne contient rien de ce type 😢!")
+                        return await interaction.response.send_message(embed=inv_embed)
+
+
+        class Inv_dropdown_view(discord.ui.View):
+            def __init__(self):
+                super().__init__()
+                self.add_item(Inv_dropdown())
+
+
+        Dropdown = Inv_dropdown_view()
+
+        #Create the main embed
+        main_embed = discord.Embed(title="__Sacoche -- Menu.__", colour=discord.Colour.from_str("#b87106"))
+
+        #Make the nerdy stats : 
+        yokai_claimed_count = ""
+        for classes in item_per_class:
+            if brute_bag[classes] == 0:
+                pass
+            
+            else:
+                yokai_claimed_count += f"**{await Cf.classid_to_class(classes, False)}**: `{brute_bag[classes]}`\n"
+
+
+        main_embed.add_field(name="Voici vos statistiques :", value=yokai_claimed_count, inline=True)
+        main_embed.set_footer(text="Merci de choisir parmi les propositions ci-dessous pour afficher vos Yo-kai.")
+
+        await ctx.send(embed=main_embed, view=Dropdown)
 
         
 

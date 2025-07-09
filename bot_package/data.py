@@ -2,6 +2,23 @@ import os
 import asyncio
 import json
 
+
+
+# Function to open JSON data
+def open_json(file_path: str):
+    if os.path.exists(file_path):
+        with open(file_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {}
+
+# Function to save JSON data
+def save_json(file_path: str, data: dict, ):
+    with open(file_path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+
+
+
+
 #Get Yo-kai lists :
 with open("./files/yokai_list.json") as yokai_list:
     yokai_data = json.load(yokai_list)
@@ -44,4 +61,38 @@ with open("./configuration.json", "r") as config:
     config_data = json.load(config)
     team_member_id = config_data["team_members_id"]
     team_bypass_cooldown = config_data["team_bypass_cooldown"]
-  
+    
+    
+#Get all coin related stuff (a lot)
+with open("./files/coin.json") as coin_brute :
+    coin_data = json.load(coin_brute)
+    coin_list = []
+    coin_proba = []
+    
+    for coin in coin_data :
+        #get the name of the coin, and his proba, and put it into tow seperate list in the same order
+        coin_list.append(coin)
+        coin_proba.append(coin_data[coin]["proba"])
+
+coin_loot = {}
+for dirpath, dirnames, filenames in os.walk("./files/coin"):
+    for file in filenames:
+        coin_loot_brute = open_json(f"./files/coin/{file}")
+        coin_loot[file.removesuffix(".json")] = {
+                "list" : coin_loot_brute["list"]
+            }
+        
+        proba_in_order = []
+        element_in_order = []
+        
+        for element in coin_loot[file.removesuffix(".json")]["list"] :
+            #add the element to the list at the same place than his proba
+            element_in_order.append(element)
+            
+            proba_in_order.append(coin_loot[file.removesuffix(".json")]["list"][element][1])
+        
+        coin_loot[file.removesuffix(".json")]["proba_in_order"] = proba_in_order
+        coin_loot[file.removesuffix(".json")]["element_in_order"] = element_in_order
+        
+#items info :
+item = open_json("./files/items.json")

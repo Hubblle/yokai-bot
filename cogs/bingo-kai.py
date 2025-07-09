@@ -29,8 +29,7 @@ class Yokai(commands.Cog):
         Tire au sort un Yo-kai de manière aléatoire.
         La commande possède un cooldown de 1h30 (1h sur le serveur de support ;) )
         """
-        #define the inv
-        brute_inventory = await Cf.get_inv(ctx.author.id)
+        
 
         iscooldown = True
         
@@ -87,6 +86,9 @@ class Yokai(commands.Cog):
                     )
                     return await ctx.send(embed=yokai_embed)
 
+        #define the inv
+        brute_inventory = await Cf.get_inv(ctx.author.id)
+        
         #choose the class of the yokai
         class_choice = data.yokai_data[random.choices(data.class_list, weights=data.proba_list, k=1)[0]]
 
@@ -97,7 +99,7 @@ class Yokai(commands.Cog):
         Yokai_choice = random.choices(class_choice["yokai_list"])
         Yokai_choice = Yokai_choice[0]
         
-        #get the id of the yokai
+        
 
         yokai_embed = discord.Embed(
             title=f"Vous avez eu le Yo-kai **{Yokai_choice}** ✨ ",
@@ -151,6 +153,7 @@ class Yokai(commands.Cog):
             #get all the yokais
             for elements in brute_inventory.keys():
                 if elements == Yokai_choice:
+                    verification = False
                     try:
                         #stack the Yo-kai
                         brute_inventory[Yokai_choice][1] += 1
@@ -168,17 +171,18 @@ class Yokai(commands.Cog):
                     #SAVE the inv
                     await Cf.save_inv(brute_inventory, ctx.author.id)
 
-                    #Send the embed
-                    return await ctx.send(embed=yokai_embed)
+                    
+            
 
-            brute_inventory[Yokai_choice] = [class_id]
-            brute_inventory[class_id] += 1
-            brute_inventory["last_claim"] = time.time()
-            await Cf.save_inv(brute_inventory, ctx.author.id)
-            yokai_embed.add_field(
-                name="Vous ne l'avez jamais eu !",
-                value="Il a été ajouté a votre Médallium. Faites `/medallium` pour le voir."
-            )
+            if verification == True:
+                brute_inventory[Yokai_choice] = [class_id]
+                brute_inventory[class_id] += 1
+                brute_inventory["last_claim"] = time.time()
+                await Cf.save_inv(brute_inventory, ctx.author.id)
+                yokai_embed.add_field(
+                    name="Vous ne l'avez jamais eu !",
+                    value="Il a été ajouté a votre Médallium. Faites `/medallium` pour le voir."
+                )
 
         else:
             brute_inventory[Yokai_choice] = [class_id]
@@ -188,7 +192,86 @@ class Yokai(commands.Cog):
                 name="Vous ne l'avez jamais eu !",
                 value="Il a été ajouté a votre Médallium. Faites `/medallium` pour le voir."
             )
-        await ctx.send(embed=yokai_embed)
+
+        
+        #Choose if they get a coin or not:
+        if random.choices([True, False], weights=[0.1, 0.9])[0] :
+            #choose the coin and coin related stuff
+            coin = random.choices(data.coin_list, weights=data.coin_proba)[0]
+            coin_id = data.coin_data[coin]["id"]
+            coin_color = data.coin_data[coin]["color"]
+
+            #make the embed
+            coin_embed = discord.Embed(
+                title=f"Oh, vous avez eu une {coin} en bonus !",
+                description=f"Félicitations, vous pouvez l'utiliser avec `/bingo-kai {coin}`.",
+                color=discord.Color.from_str(coin_color)
+            )
+            
+            #add the image
+            coin_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{coin_id}.png")
+            
+            #log the action
+            if ctx.guild is not None:
+                self.bot.logger.info(
+                    f"Executed bingo-kai command in {ctx.guild.name} (ID: {ctx.guild.id}) by {ctx.author} (ID: {ctx.author.id}) // He had '{coin}'"
+                )
+            else:
+                self.bot.logger.info(
+                    f"Executed bingo-kai command by {ctx.author} (ID: {ctx.author.id}) in DMs // He had '{coin}'"
+                )
+            
+            #get the bag
+            bag = await Cf.get_bag(ctx.author.id)
+            
+            verification = True
+            
+            #check if the bag is empty
+            if bag == {} :
+                bag = {
+                    "coin" : 1,
+                    "obj" : 0,
+                    "treasure" : 0,
+                    coin : ["coin"]
+                }
+                verification = False
+            
+            if verification == True:
+                #get all the coins
+                for elements in bag.keys():
+                    if elements == coin:
+                        #stack the coin
+                        try:
+                        #stack the Yo-kai
+                            bag[coin][1] += 1
+                        except:
+                            bag[coin].append(2)
+                        verification = False
+
+                        #Generate the rest of the embed
+                        coin_embed.add_field(
+                            name=f"Vous l'avez déjà eu. Vous en avez donc {bag[coin][1]}",
+                            value="Faites `/bag` pour voir votre sacoche."
+                        )
+
+                if verification == True:  
+                    bag[coin] = ["coin"]
+                    bag["coin"] += 1
+                    coin_embed.add_field(
+                        name="Vous ne l'avez jamais eu !",
+                        value="Elle a été ajoutée à votre sacoche. Faites `/bag` pour la voir."
+                    )
+            
+            #Set last claim
+            await Cf.save_bag(bag, ctx.author.id)
+            await ctx.send(embed=yokai_embed)
+            return await ctx.send(embed=coin_embed)
+
+        
+        else :
+            return await ctx.send(embed=yokai_embed)
+            
+            
 
                 
             

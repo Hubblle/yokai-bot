@@ -28,14 +28,28 @@ with open("./files/full_name_fr.json") as yk_list_full:
     yokai_list_full = json.load(yk_list_full)
 
 
+asset_for_class_id_to_class = {
+    "coin" : "pièce",
+    "obj" : "objet",
+    "treasure": "trésor"
+}
+
+
 async def classid_to_class(id, reverse : bool = False):
         if reverse == False :
-            return yokai_data[id]["class_name"]
+            try:
+                return yokai_data[id]["class_name"]
+            except KeyError:
+                return asset_for_class_id_to_class[id]
+            
         else :
             for classes in yokai_data :
                 if yokai_data[classes]["class_name"] == id :
                     return classes
-            
+                
+            for item in asset_for_class_id_to_class :
+                if asset_for_class_id_to_class[item] == id :
+                    return item
         #return nothing if the id or the name was not fund    
         return ""
 
@@ -57,4 +71,25 @@ async def get_inv(id : int):
 #save inv func
 async def save_inv(data : dict, id : int):
     with open(f"./files/inventory/{str(id)}.json", "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+        
+        
+        
+        
+#Get bag func
+async def get_bag(id : int):
+    if os.path.exists(f"./files/bag/{str(id)}.json"):
+        with open(f"./files/bag/{str(id)}.json") as f:
+            data = json.load(f)
+    else :
+        #retrun nothing if there's nothing to :/
+        data = {}
+       
+    return data
+
+
+
+#save bag func
+async def save_bag(data : dict, id : int):
+    with open(f"./files/bag/{str(id)}.json", "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
