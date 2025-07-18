@@ -181,7 +181,7 @@ class Medallium(commands.Cog) :
 
         class Inv_dropdown_view(discord.ui.View):
             def __init__(self):
-                super().__init__(timeout=10)
+                super().__init__(timeout=300)
                 self.add_item(Inv_dropdown())
                 
             async def on_timeout(self):
