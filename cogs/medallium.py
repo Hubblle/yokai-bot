@@ -181,9 +181,16 @@ class Medallium(commands.Cog) :
 
         class Inv_dropdown_view(discord.ui.View):
             def __init__(self):
-                super().__init__()
+                super().__init__(timeout=10)
                 self.add_item(Inv_dropdown())
-
+                
+            async def on_timeout(self):
+                for item in self.children:
+                    item.disabled = True
+                try:
+                    await self.message.edit( embed=self.message.embeds[0], view=self)
+                except discord.NotFound:
+                    pass
 
         Dropdown = Inv_dropdown_view()
 
@@ -203,7 +210,7 @@ class Medallium(commands.Cog) :
         main_embed.add_field(name="Voici vos statistiques :", value=yokai_claimed_count, inline=True)
         main_embed.set_footer(text="Merci de choisir parmi les propositions ci-dessous pour afficher vos items.")
 
-        await ctx.send(embed=main_embed, view=Dropdown)
+        Dropdown.message = await ctx.send(embed=main_embed, view=Dropdown)
 
     
     #the bag command
@@ -375,7 +382,7 @@ class Medallium(commands.Cog) :
 
 
         main_embed.add_field(name="Voici vos statistiques :", value=yokai_claimed_count, inline=True)
-        main_embed.set_footer(text="Merci de choisir parmi les propositions ci-dessous pour afficher vos Yo-kai.")
+        main_embed.set_footer(text="Merci de choisir parmi les propositions ci-dessous pour afficher vos items.")
 
         await ctx.send(embed=main_embed, view=Dropdown)
 
