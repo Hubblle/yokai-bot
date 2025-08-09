@@ -1,67 +1,67 @@
 {
-    "pièce rouge" :{
+    "Pièce rouge" :{
         "name_en" : "red coin",
         "color" : "#ff0000",
         "id" : "c0001",
         "proba" : 0.1
     },
-    "pièce jaune" :{
+    "Pièce jaune" :{
         "name_en" : "yellow coin",
         "color" : "#ffff00",
         "id" : "c0002",
         "proba" : 0.1
         
     },
-        "pièce orange" :{
+        "Pièce orange" :{
         "name_en" : "orange coin",
         "color" : "#ff8000",
         "id" : "c0003",
         "proba" : 0.1
         
     },
-        "pièce rose" :{
+        "Pièce rose" :{
         "name_en" : "pink coin",
         "color" : "#ff6686",
         "id" : "c0004",
         "proba" : 0.1
         
     },
-      "pièce verte" :{
+      "Pièce verte" :{
         "name_en" : "green coin",
         "color" : "#00b200",
         "id" : "c0005",
         "proba" : 0.1
         
     },
-        "pièce bleue" :{
+        "Pièce bleue" :{
         "name_en" : "blue coin",
         "color" : "#0000d7",
         "id" : "c0006",
         "proba" : 0.1
         
     },
-        "pièce mauve" :{
+        "Pièce mauve" :{
         "name_en" : "purple coin",
         "color" : "#ae00ea",
         "id" : "c0007",
         "proba" : 0.1
         
     },
-        "pièce bleue ciel" :{
+        "Pièce bleue ciel" :{
         "name_en" : "light blue coin",
         "color" : "#00d8ff",
         "id" : "c0008",
         "proba" : 0.1
         
     },
-        "pièce 1 étoile" :{
+        "Pièce 1 étoile" :{
         "name_en" : "one star coin",
         "color" : "#ffc600",
         "id" : "c0009",
         "proba" : 0.075
         
     },
-        "pièce 5 étoiles" :{
+        "Pièce 5 étoiles" :{
         "name_en" : "five star coin",
         "color" : "#ffc600",
         "id" : "c0010",
@@ -96,14 +96,14 @@
         "proba" : 0.025
         
     },
-        "pièce légendaire" :{
+        "Pièce légendaire" :{
         "name_en" : "legend coin",
         "color" : "#c2ab00",
         "id" : "c0015",
         "proba" : 0.0125
         
     },
-        "pièce monstrueuse" :{
+        "Pièce monstrueuse" :{
         "name_en" : "monstrous piece",
         "color" : "#356c00",
         "id" : "c0016",
