@@ -246,7 +246,7 @@ def inv_info():
                 current_inv = get_inv(file.strip(".json"))
                 for yokai in current_inv :
                     #check if the yokai is part of the inv system
-                    if yokai in ["E", "D", "C", "B", "A", "S", "LegendaryS", "treasureS", "SpecialS", "DivinityS", "Boss", "last_claim", "", "claim"] :
+                    if yokai in ["E", "D", "C", "B", "A", "S", "LegendaryS", "treasureS", "SpecialS", "DivinityS", "Boss","Shiny", "last_claim", "", "claim"] :
                         pass
                     
                     else :
