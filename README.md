@@ -3,46 +3,11 @@
 
 - Python 3.12+
 
-- Libraries : discord.py / colorlog
-
-- Créer les dossiers/fichiers : `/files/error/` & `/files/logs/discord.log` & `/files/inventory/` 
+- Paquet: discord.py / python-dotenv
 
 - Créer un fichier `/configuration.json` tel que le fichier `/configuration.json.example` fourni dans le git.
 
-- Créer un fichier `/files/bot-data.json` tel que :
-
-
-```
-{
-    "image_link" : {
-        "B" : "Lien image du rang B",
-        "E" : "Lien image du rang E",
-        "C" : "Lien image du rang E",
-        "A" : "Lien image du rang A",
-        "D" : "Lien image du rang D",
-        "S" : "Lien image du rang S",
-        "LegendaryS" : "Lien image pour les légendaires",
-        "treasureS" : "Lien image pour les trésor",
-        "SpecialS" : "Lien image pour les Spécial",
-        "DivinityS" : "Lien image pour les divinité",
-        "Boss" : "Lien image pour les Boss"
-    },
-
-    "emoji" : {
-        "treasureS" : "Markdown émoji trésor",
-        "B" : "Markdown émoji B",
-        "E" : "Markdown émoji E",
-        "C" : "Markdown émoji C",
-        "A" : "Markdown émoji A",
-        "D" : "Markdown émoji D",
-        "S" : "Markdown émoji S",
-        "DivinityS": "Markdown émoji divinité",
-        "LegendaryS": "Markdown émoji legendaire",
-        "SpecialS":"Markdown émoji spécial",
-        "Boss":"Markdown émoji Boss"
-    }
-}
-```
+- Créer un fichier `/files/bot-data.json` tel que le fichier `/files/bot-data.json.example` fourni dans le git.:
 
 - Créer un fichier `/.env` tel que le fichier `.env.example` qui est fourni dans le git.
 
@@ -54,6 +19,10 @@ Dans le code, le "rang" d'un Yo-kai est appelé "class".
 
 Vous pouvez executer `./bot.py` pour lancer le bot
 
-**--> Le code ne semble pas fonctionner sous windows pour la fonction `classid_to_class(str(), true)`, il n'a aucun problème sous linux/debian.**
+Pour toutes questions, créer un ticket : https://discord.gg/K4H4xhHqUb
+(For any information, please visit : https://discord.gg/K4H4xhHqUb)
 
+## Manager.py
+Le script manager.py est fourni pour toutes taches de maintenance sur le bot (voir manager.md)
 
+Il est important de noter que après l'ajout de Yo-kai dans la liste, il faut utiliser la fonction "6. **Ajustement des identifiants** (`adjust_id()`)", ou les ajouter manuellement au fichier `./files/full_name_fr.json` sinon le bot risque de provoquer des erreurs quand on les obtients.

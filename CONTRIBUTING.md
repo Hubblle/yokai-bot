@@ -10,3 +10,7 @@ Merci de votre intérêt ! Voici comment contribuer :
 5. Vérifiez que votre fork est bien sélectionné et ouvrez votre Pull Request.
 6. Attendez qu'elle soit examinée. Si des commentaires vous sont adressés, répondez aux questions et apportez les modifications nécessaires.
 7. Une fois validée, votre contribution sera fusionnée dans le projet ! 🎉
+
+
+Il est fortement recommandé de rejoindre le Discord et de lire la catégorie dédiée à ce sujet : https://discord.gg/K4H4xhHqUb
+

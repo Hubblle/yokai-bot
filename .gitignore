@@ -2,6 +2,7 @@
 configuration.json
 bot-data.json
 .env
+cooldownlist.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -3,7 +3,7 @@ Based on
 Copyright © Krypton 2019-Present template
 Version: 6.3.0
 """
-VERSION = 4
+VERSION = 5
 
 #import general stuff
 import json
@@ -13,6 +13,7 @@ import platform
 import random
 import sys
 import traceback
+import time
 
 #import form the bot package
 from bot_package import Error_manager
@@ -107,7 +108,7 @@ class DiscordBot(commands.Bot):
         This creates custom bot variables so that we can access these variables in cogs more easily.
 
         For example, The logger is available using the following code:
-        - self.logger # In this class
+        - self.logger # In this class   
         - bot.logger # In this file
         - self.bot.logger # In cogs
         """
@@ -118,14 +119,11 @@ class DiscordBot(commands.Bot):
         
         """
         item in the trade queue should look like that :
-            user_id : [
-                yokai_traded1,
-                yokai_traded2
-            ],
-            user_id2 : [
-                yokai_traded1,
-                yokai_traded2
-            ]
+        {
+            user_id : True #he hase a trade/gift engaged
+            user_id2 : Flase #he asn't any trade/gift engaged
+            
+        }
         """
         
         
@@ -142,14 +140,15 @@ class DiscordBot(commands.Bot):
         for file in os.listdir(f"{os.path.realpath(os.path.dirname(__file__))}/cogs"):
             if file.endswith(".py"):
                 extension = file[:-3]
-                try:
-                    await self.load_extension(f"cogs.{extension}")
-                    self.logger.info(f"Loaded extension '{extension}'")
-                except Exception as e:
-                    exception = f"{type(e).__name__}: {e}"
-                    self.logger.error(
-                        f"Failed to load extension {extension}\n{exception}"
-                    )
+                if not extension == "admin":
+                    try:
+                        await self.load_extension(f"cogs.{extension}")
+                        self.logger.info(f"Loaded extension '{extension}'")
+                    except Exception as e:
+                        exception = f"{type(e).__name__}: {e}"
+                        self.logger.error(
+                            f"Failed to load extension {extension}\n{exception}"
+                        )
         
 
     @tasks.loop(minutes=1.0)
@@ -157,7 +156,7 @@ class DiscordBot(commands.Bot):
         """
         Setup the game status task of the bot.
         """
-        statuses = ["/bingo-kai", "/bkai", "/help"]
+        statuses = ["✨V5 !", "/bkai", "/help"]
         await self.change_presence(activity=discord.Game(random.choice(statuses)))
 
     @status_task.before_loop
@@ -179,9 +178,39 @@ class DiscordBot(commands.Bot):
             f"Running on: {platform.system()} {platform.release()} ({os.name})"
         )
         self.logger.info("-------------------")
-        #await self.init_db()
         await self.load_cogs()
-        await self.tree.sync()
+        # Sync global commands
+        try:
+            await self.tree.sync()
+            self.logger.info("Global application commands synced.")
+        except Exception as e:
+            self.logger.error(f"Error syncing global commands: {e}")
+
+        # Sync support guild commands (admin commands decorated with app_commands.guilds)
+        try:
+            support_id = os.getenv("SUPPORT_GUILD_ID")
+            await self.load_extension(f"cogs.admin") #load admin command only for the support guild
+            for file in os.listdir(f"{os.path.realpath(os.path.dirname(__file__))}/cogs"): #unload everything else to avoid double
+                if file.endswith(".py"):
+                    extension = file[:-3]
+                    if not extension == "admin":
+                            await self.unload_extension(f"cogs.{extension}")
+            
+            if support_id:
+                guild_obj = discord.Object(id=int(support_id))
+                self.tree.copy_global_to(guild=guild_obj)
+                await self.tree.sync(guild=guild_obj)
+                self.logger.info(f"Support guild ({support_id}) commands synced.")
+        except Exception as e:
+            self.logger.error(f"Error syncing support guild commands: {e}")
+        #reload every others extension:
+        for file in os.listdir(f"{os.path.realpath(os.path.dirname(__file__))}/cogs"):
+            if file.endswith(".py"):
+                extension = file[:-3]
+                if not extension == "admin":
+                    await self.load_extension(f"cogs.{extension}")
+        
+        
         self.status_task.start()
         
 
@@ -204,18 +233,36 @@ class DiscordBot(commands.Bot):
         full_command_name = context.command.qualified_name
         split = full_command_name.split(" ")
         executed_command = str(split[0])
-        #here add the commands with custom logging
-        if executed_command in ["bingo-kai", "bkai", "trade", "cadeau"] :
-            return
-        if context.guild is not None:
-            self.logger.info(
-                f"Executed {executed_command} command in {context.guild.name} (ID: {context.guild.id}) by {context.author} (ID: {context.author.id})"
-            )
-        else:
-            self.logger.info(
-                f"Executed {executed_command} command by {context.author} (ID: {context.author.id}) in DMs"
-            )
+        
+        if not executed_command in ["bingo-kai", "bkai", "trade", "cadeau"]:
+            if context.guild is not None:
+                self.logger.info(
+                    f"Executed {executed_command} command in {context.guild.name} (ID: {context.guild.id}) by {context.author} (ID: {context.author.id})"
+                )
+            else:
+                self.logger.info(
+                    f"Executed {executed_command} command by {context.author} (ID: {context.author.id}) in DMs"
+                )
 
+        # Check if user has already seen the message
+        from bot_package.Custom_func import manage_cooldown
+        if await manage_cooldown(context.author.id, check_only=True):
+            return
+
+        # Add user to cooldown and send message
+        await manage_cooldown(context.author.id)
+        
+        message = ("Cher utilisateur, ce bot a commencé il y a déjà quelques mois, et grâce à toi, à vous tous, il est aujourd’hui sur plus de 150 serveurs partout sur Discord, la communauté en est contente.\n"
+                "Mais les choses changent, et moi, Hubble, developpeur principal du bot: **j’arrête officiellement de développer ce bot**, voici ce que cela veut dire :\n"
+                "- Le bot sera toujours disponible, cela ne changera pas.\n"
+                "- Le bot ne recevra plus de mises à jour faites par moi.\n"
+                "- La communauté peut toujours utiliser le GitHub pour en faire (voir en bas du /help).\n"
+                "Si vous avez des compétences en Python, votre aide sur le GitHub est la bienvenue, et je suis toujours là pour **aider avec le code !**\n"
+                "\n"
+                "Je tenais à remercier particulièrement les personnes qui m’ont aidé dans ce projet, toutes celles qui ont donné des retours sur le bot, et la communauté YW en général dont je ne faisais pas partie, mais qui a su m’accueillir avec respect ❤️.\n"
+                "Si vous avez des questions: https://discord.gg/K4H4xhHqUb")
+        await context.send(message, ephemeral=True)
+        
     async def on_command_error(self, context: Context, error) -> None:
         """
         The code in this event is executed every time a normal valid command catches an error.

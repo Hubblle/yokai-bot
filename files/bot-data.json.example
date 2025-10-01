@@ -1,0 +1,30 @@
+{
+    "image_link" : {
+        "B" : "https://hubble.quark-dev.com/wp-content/uploads/sites/2/2025/08/Rang_B.webp",
+        "E" : "https://hubble.quark-dev.com/wp-content/uploads/sites/2/2025/08/Rang_E.webp",
+        "C" : "https://hubble.quark-dev.com/wp-content/uploads/sites/2/2025/08/Rang_C.webp",
+        "A" : "https://hubble.quark-dev.com/wp-content/uploads/sites/2/2025/08/Rang_A.webp",
+        "D" : "https://hubble.quark-dev.com/wp-content/uploads/sites/2/2025/08/Rang_D.webp",
+        "S" : "https://hubble.quark-dev.com/wp-content/uploads/sites/2/2025/08/Rang_S.webp",
+        "LegendaryS" : "https://hubble.quark-dev.com/wp-content/uploads/sites/2/2025/08/Legende.png",
+        "treasureS" : "https://hubble.quark-dev.com/wp-content/uploads/sites/2/2025/08/Treasure.png",
+        "SpecialS" : "https://hubble.quark-dev.com/wp-content/uploads/sites/2/2025/08/rare.png",
+        "DivinityS" : "https://hubble.quark-dev.com/wp-content/uploads/sites/2/2025/08/divinite.png",
+        "Boss" : "https://hubble.quark-dev.com/wp-content/uploads/sites/2/2025/08/boss.png",
+        "Shiny" : "https://example.com"
+
+    },
+    "emoji" : {
+    "treasureS" : "Emojimarkdown for treasureS",
+    "B" : "Emojimarkdown for B",
+    "E" : "Emojimarkdown for E",
+    "C" : "Emojimarkdown for C",
+    "A" : "Emojimarkdown for A",
+    "D" : "Emojimarkdown for D",
+    "S" : "Emojimarkdown for S",
+    "DivinityS": "Emojimarkdown for Divinity",
+    "LegendaryS": "Emojimarkdown for Legendary",
+    "SpecialS": "Emojimarkdown for Special",
+    "Boss": "Emojimarkdown for Boss"
+ }
+}
