@@ -1,0 +1,616 @@
+{
+    "Riz à la prune" : {
+        "name_en" : "Plum Rice Ball",
+        "id" : "i0001",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment le riz. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Riz dans une feuille" : {
+        "name_en" : "Leaf Rice Ball",
+        "id" : "i0002",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment le riz. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Riz œufs saumon" : {
+        "name_en" : "Roe Rice Ball",
+        "id" : "i0003",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment le riz. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Riz à la crevette" : {
+        "name_en" : "Shrimp Rice Ball",
+        "id" : "i0004",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment le riz. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Sandwich" : {
+        "name_en" : "Sandwich",
+        "id" : "i0005",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment le pain. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Patte d'ours" : {
+        "name_en" : "Custard Bread",
+        "id" : "i0006",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment le pain. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Pain au curry" : {
+        "name_en" : "Curry Bread",
+        "id" : "i0007",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment le pain. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Baguette" : {
+        "name_en" : "Baguette",
+        "id" : "i0008",
+        "type" : "obj",
+        "desc" : "OUI OUI BAGUETTE !!Convient au Yo-kai qui aiment le pain. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Blablagel" : {
+        "name_en" : "Blehgel",
+        "id" : "i0009",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment le pain. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Chewing-gum" : {
+        "name_en" : "Hundrum Gum",
+        "id" : "i0010",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les bonbons. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Bonbon poisseux" : {
+        "name_en" : "Gooey Candy",
+        "id" : "i0011",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les bonbons. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Chips géante" : {
+        "name_en" : "Giant Cracker",
+        "id" : "i0012",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les bonbons. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Bonbons fruits" : {
+        "name_en" : "Fruit Drops",
+        "id" : "i0013",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les bonbons. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Pomme d'amour" : {
+        "name_en" : "Candy Apple",
+        "id" : "i0014",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les bonbons. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Granité" : {
+        "name_en" : "Shaved Ice",
+        "id" : "i0015",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les bonbons. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Lait" : {
+        "name_en" : "Milk",
+        "id" : "i0016",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment le lait. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Café au lait" : {
+        "name_en" : "Coffee Milk",
+        "id" : "i0017",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment le lait. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Lait aux fruits" : {
+        "name_en" : "Fruit Milk",
+        "id" : "i0018",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment le laits. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Lait merveilleux" : {
+        "name_en" : "Amazing Milk",
+        "id" : "i0019",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment le lait. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Y-Cola" : {
+        "name_en" : "Y-Cola",
+        "id" : "i0020",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les soda. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Thé de l'âme" : {
+        "name_en" : "Soul Tea",
+        "id" : "i0021",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les soda. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Spiritizer Y" : {
+        "name_en" : "Spiritizer Y",
+        "id" : "i0022",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les soda. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "VoltXtrême" : {
+        "name_en" : "VoltXtreme",
+        "id" : "i0023",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les soda. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Hamburger" : {
+        "name_en" : "Hamburger",
+        "id" : "i0024",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les hamburgers. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Cheeseburger" : {
+        "name_en" : "Cheeseburger",
+        "id" : "i0025",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les hamburgers. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Double burger" : {
+        "name_en" : "Double burger",
+        "id" : "i0026",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les hamburgers. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Burger Miam" : {
+        "name_en" : "Nom Burger",
+        "id" : "i0027",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les hamburgers. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Ramen minute" : {
+        "name_en" : "Ramen Cup",
+        "id" : "i0028",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les ramens. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Ramen au poulet" : {
+        "name_en" : "Pork Ramen",
+        "id" : "i0029",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les ramens. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Ramen deluxe" : {
+        "name_en" : "Deluxe Ramen",
+        "id" : "i0030",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les ramens. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Ramen complet" : {
+        "name_en" : "Everything Ramen",
+        "id" : "i0031",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les ramens. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Raviolis chinois" : {
+        "name_en" : "Pot Stickers",
+        "id" : "i0032",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les Spécialités chinoises. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Foie à l'oignon" : {
+        "name_en" : "Liver & Chives",
+        "id" : "i0033",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les Spécialités chinoises. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Omelette crabe" : {
+        "name_en" : "Crab Omelet",
+        "id" : "i0034",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les Spécialités chinoises. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Crevette piment" : {
+        "name_en" : "Chili Shrimp",
+        "id" : "i0035",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les Spécialités chinoises. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Carotte" : {
+        "name_en" : "Carrot",
+        "id" : "i0036",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les légumes. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Concombre" : {
+        "name_en" : "Cucumber",
+        "id" : "i0037",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les légumes. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Pousse de bambou" : {
+        "name_en" : "Bamboo Shoot",
+        "id" : "i0038",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les légumes. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Matsutake" : {
+        "name_en" : "Matsutake",
+        "id" : "i0039",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les légumes. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Cuisse de poulet" : {
+        "name_en" : "Chicken Thigh",
+        "id" : "i0040",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment la viandes. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Morceau de lard" : {
+        "name_en" : "Slab Bacon",
+        "id" : "i0041",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment la viandes. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Langue de bœuf" : {
+        "name_en" : "Beef Tongue",
+        "id" : "i0042",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment la viandes. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Bœuf persillé" : {
+        "name_en" : "Marbled Beef",
+        "id" : "i0043",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment la viandes. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Maquereau séché" : {
+        "name_en" : "Dried Mackerel",
+        "id" : "i0043",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les fruits de mer. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Sériole" : {
+        "name_en" : "Yellowtail",
+        "id" : "i0044",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les fruits de mer. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Oursin cru" : {
+        "name_en" : "Fresh Urchin",
+        "id" : "i0045",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les fruits de mer. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Thon premier choix" : {
+        "name_en" : "Choice Tuna",
+        "id" : "i0046",
+        "type" : "obj",
+        "desc" : "Convient au Yo-kai qui aiment les fruits de mer. Il permet de redonner des points de vies aux Yo-kai alliés ou d'en donner aux Yo-kai adverses pour augmenter leurs taux d'amitié."
+    },
+    "Talisman de force" : {
+        "name_en" : "Strength Talisman",
+        "id" : "i0047",
+        "type" : "obj",
+        "desc" : "Un talisman. Objet de collection , ne sert uniquement a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Talisman d'esprit" : {
+        "name_en" : "Spirit Talisman",
+        "id" : "i0048",
+        "type" : "obj",
+        "desc" : "Un talisman. Objet de collection , ne sert uniquement a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Talisman de défense" : {
+        "name_en" : "Defense Talisman",
+        "id" : "i0049",
+        "type" : "obj",
+        "desc" : "Un talisman. Objet de collection , ne sert uniquement a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Talisman de vitesse" : {
+        "name_en" : "Speed Talisman",
+        "id" : "i0050",
+        "type" : "obj",
+        "desc" : "Un talisman. Objet de collection , ne sert uniquement a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Remède infect" : {
+        "name_en" : "Nasty Medicine",
+        "id" : "i0051",
+        "type" : "obj",
+        "desc" : "Un Remède. Objet de collection , ne sert uniquement a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Remède amer" : {
+        "name_en" : "Bitter Medicine",
+        "id" : "i0052",
+        "type" : "obj",
+        "desc" : "Un remède. Objet de collection , ne sert uniquement a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Remède puissant" : {
+        "name_en" : "Mighty Medicine",
+        "id" : "i0053",
+        "type" : "obj",
+        "desc" : "Un remède. Objet de collection , ne sert uniquement a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Staminum" : {
+        "name_en" : "Staminum",
+        "id" : "i0054",
+        "type" : "obj",
+        "desc" : "Un staminums. Objet de collection , ne sert uniquement a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Staminum alpha" : {
+        "name_en" : "Staminum alpha",
+        "id" : "i0055",
+        "type" : "obj",
+        "desc" : "Un staminums. Objet de collection , ne sert uniquement a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Mini EXPorbe" : {
+        "name_en" : "Mini EXPorb",
+        "id" : "i0056",
+        "type" : "obj",
+        "desc" : "Une EXPorbes. Objet de collection , ne sert uniquement a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Petit EXPorbe" : {
+        "name_en" : "Small Exporb",
+        "id" : "i0057",
+        "type" : "obj",
+        "desc" : "Une EXPorbes. Objet de collection , ne sert uniquement a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "EXPorbe moyen" : {
+        "name_en" : "Medium Exporb",
+        "id" : "i0058",
+        "type" : "obj",
+        "desc" : "Une EXPorbes. Objet de collection , ne sert uniquement a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Grand EXPorbe" : {
+        "name_en" : "Large Exporb",
+        "id" : "i0059",
+        "type" : "obj",
+        "desc" : "Une EXPorbes. Objet de collection , ne sert uniquement a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Méga EXPorbe" : {
+        "name_en" : "Mega Exporb",
+        "id" : "i0060",
+        "type" : "obj",
+        "desc" : "Une EXPorbes. Objet de collection , ne sert uniquement a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "EXPorbe Sacré" : {
+        "name_en" : "Holy Exporb",
+        "id" : "i0061",
+        "type" : "obj",
+        "desc" : "Une EXPorbes. Objet de collection , ne sert uniquement a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Poupée de fuite" : {
+        "name_en" : "Getaway Plush",
+        "id" : "i0062",
+        "type" : "obj",
+        "desc" : "Une Poupées. Objet de collection , ne sert uniquement a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Poupée de bronze" : {
+        "name_en" : "Bronze Doll",
+        "id" : "i0063",
+        "type" : "obj",
+        "desc" : "Une Poupées. Objet de collection , ne sert uniquement a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Poupée d'argent" : {
+        "name_en" : "Silver Doll",
+        "id" : "i0064",
+        "type" : "obj",
+        "desc" : "Une Poupées. Objet de collection , ne sert uniquement a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Poupée d'or" : {
+        "name_en" : "Gold Doll",
+        "id" : "i0065",
+        "type" : "obj",
+        "desc" : "Une Poupées. Objet de collection , ne sert uniquement a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Les coups secrets" : {
+        "name_en" : "Hidden Hits",
+        "id" : "i0066",
+        "type" : "obj",
+        "desc" : "Un livres. Objet de collection , ne sert uniquement qu'a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Techniques tip-top" : {
+        "name_en" : "Top Techniques",
+        "id" : "i0067",
+        "type" : "obj",
+        "desc" : "Un livres. Objet de collection , ne sert uniquement qu'a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Secrets de l'âme" : {
+        "name_en" : "Soul Secrets",
+        "id" : "i0068",
+        "type" : "obj",
+        "desc" : "Un livres. Objet de collection , ne sert uniquement qu'a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "La vie en tête" : {
+        "name_en" : "A Serious Life",
+        "id" : "i0069",
+        "type" : "obj",
+        "desc" : "Un livres. Objet de collection , ne sert uniquement qu'a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Pensez Karaté" : {
+        "name_en" : "Think Karate",
+        "id" : "i0070",
+        "type" : "obj",
+        "desc" : "Un livres. Objet de collection , ne sert uniquement qu'a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Vivez Karaté" : {
+        "name_en" : "Use Karate",
+        "id" : "i0071",
+        "type" : "obj",
+        "desc" : "Un livres. Objet de collection , ne sert uniquement qu'a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Dico-tech" : {
+        "name_en" : "Skill Compendium",
+        "id" : "i0072",
+        "type" : "obj",
+        "desc" : "Un livres. Objet de collection , ne sert uniquement qu'a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Techni-clopédie" : {
+        "name_en" : "Skill Encyclopedia",
+        "id" : "i0073",
+        "type" : "obj",
+        "desc" : "Un livres. Objet de collection , ne sert uniquement qu'a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "La défense de A à Z" : {
+        "name_en" : "Get Guarding",
+        "id" : "i0074",
+        "type" : "obj",
+        "desc" : "Un livres. Objet de collection , ne sert uniquement qu'a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Tout sur la défense" : {
+        "name_en" : "Guard Guloriously",
+        "id" : "i0075",
+        "type" : "obj",
+        "desc" : "Un livres. Objet de collection , ne sert uniquement qu'a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Docteur Tit'ange" : {
+        "name_en" : "Li'l Angel Heals",
+        "id" : "i0076",
+        "type" : "obj",
+        "desc" : "Un livres. Objet de collection , ne sert uniquement qu'a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Au revoir, Tit'ange" : {
+        "name_en" : "Bye, Li'l Angel",
+        "id" : "i0077",
+        "type" : "obj",
+        "desc" : "Un livres. Objet de collection , ne sert uniquement qu'a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Petite teigne" : {
+        "name_en" : "The Pest's Quest",
+        "id" : "i0078",
+        "type" : "obj",
+        "desc" : "Un livres. Objet de collection , ne sert uniquement qu'a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "La teigne parfaite" : {
+        "name_en" : "The Perfect Pest",
+        "id" : "i0079",
+        "type" : "obj",
+        "desc" : "Un livres. Objet de collection , ne sert uniquement qu'a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Secours mag #7" : {
+        "name_en" : "Support Life #7",
+        "id" : "i0080",
+        "type" : "obj",
+        "desc" : "Un livres. Objet de collection , ne sert uniquement qu'a etre échangé ou collecté... du moins pour l'instant. "
+    },
+    "Secours hors-série" : {
+        "name_en" : "Support Special",
+        "id" : "i0081",
+        "type" : "obj",
+        "desc" : "Un livres. Objet de collection , ne sert uniquement qu'a etre échangé ou collecté... du moins pour l'instant. "
+    },
+        "Boîte rouge" : {
+        "name_en" : "Red Box",
+        "id" : "i0082",
+        "type" : "obj",
+        "desc" : "Une boite a ne SURTOUT PAS OUVRIR"
+    },
+    "Essence maléfique" : {
+        "name_en" : "Essence of Evil",
+        "id" : "i0083",
+        "type" : "obj",
+        "desc" : "Une essence acheté a une épicerie , il y est écris dessus «Peux etre fusioner» mais vous ne savez pas ce que ca veut dire."
+    },
+    "Le Fruit défendu" : {
+        "name_en" : "Forbidden Fruit",
+        "id" : "i0084",
+        "type" : "obj",
+        "desc" : "Un fruit étrangement bon , rend meme adict. Mais surtout extrement cher du de sa rareté."
+    },
+    "Lingot de platine" : {
+        "name_en" : "Platinum bar",
+        "id" : "i0085",
+        "type" : "obj",
+        "desc" : "Ca sent l'argent tout ca !!"
+    },
+    "Marque d'Ultramax" : {
+        "name_en" : "Ultramax mark*",
+        "id" : "i0086",
+        "type" : "obj",
+        "desc" : "Cela semble etre important"
+    },
+    "Médallium Yo-kai" : {
+        "name_en" : "Medallium",
+        "id" : "i0087",
+        "type" : "obj",
+        "desc" : "Ne peut pas etre echanger"
+    },
+    "Trésor du feu" : {
+        "name_en" : "treasure of fire",
+        "id" : "i1001",
+        "type" : "treasure",
+        "desc" : "Boost ton taux de drop de rang S",
+        "slot" : 3,
+        "action" : 1,
+        "value1" : 0.05,
+        "value2" : "S",
+        "_comment" : "ajoute Value1 sur la rareté value2"
+    },
+    "Trésor du soleil" : {
+        "name_en" : "treasure of sun",
+        "id" : "i1002",
+        "type" : "treasure",
+        "desc" : "Permet de réduire le cooldown du bingo-kai de 10 min",
+        "slot" : 3,
+        "action" : 2,
+        "value1" : 5,
+        "_comment" : "réduis le cooldown de chaque Bkai normal de 5min"
+    },
+    "Trésor de l'eau" : {
+        "name_en" : "treasure of water",
+        "id" : "i1003",
+        "type" : "treasure",
+        "desc" : "Augmente le taux de pourcentage d'obtenir un bon nombre de tirage de bkai a pièce quotidien max",
+        "slot" : 2,
+        "action" : 3,
+        "value1" : 5,
+        "_comment" : "ajoute plus de possiblité aux nombres de tirage quotidien max entre 6 et 20 deviens entre 6 et 25"
+    },
+    "Trésor du poison" : {
+        "name_en" : "treasure of poison",
+        "id" : "i1004",
+        "type" : "treasure",
+        "desc" : "Une fois équipé l'utilisateur ne peux que avoir des yokai de rang E dans les tirage classique",
+        "slot" : 5,
+        "action" : 1,
+        "value1" : 1,
+        "value2" : "rang E",
+        "_comment" : "ajoute 100% de proba au rang E"
+    },
+    "Trésor de l'amour" : {
+        "name_en" : "treasure of love",
+        "id" : "i1005",
+        "type" : "treasure",
+        "desc" : "Une fois équipé , l'utilisateur obtient plus de chance d'obtenir des yokai divinité",
+        "slot" : 4,
+        "action" : 1,
+        "value1" : 0.0025,
+        "value2" : "divinité",
+        "_comment" : "ajoute 0.25% de proba au divinité"
+    },
+    "Trésor du ciel" : {
+        "name_en" : "treasure of sky",
+        "id" : "i1006",
+        "type" : "treasure",
+        "desc" : "Une fois équipé , l'utilisateur obtient plus de chance d'obtenir des yokai spécial",
+        "slot" : 4,
+        "action" : 1,
+        "value1" : 0.0025,
+        "value2" : "spécial",
+        "_comment" : "ajoute 0.25% de proba au spécial"
+    },
+    "Trésor de la forêt" : {
+        "name_en" : "treasure of the forest",
+        "id" : "i1007",
+        "type" : "treasure",
+        "desc" : "Une fois équipé , l'utilisateur obtient plus de chance d'obtenir des yokai de rang A",
+        "slot" : 2,
+        "action" : 1,
+        "value1" : 0.05,
+        "value2" : "spécial",
+        "_comment" : "ajoute 5% de proba aux rangs A"
+    },
+    "Trésor légendaire" : {
+        "name_en" : "legendary treasure",
+        "id" : "i1008",
+        "type" : "treasure",
+        "desc" : "Une fois équipé l'utilisateur a plus de chance d'obtenir des yokai légendaire",
+        "slot" : 4,
+        "action" : 1,
+        "value1" : 0.03,
+        "value2" : "spécial",
+        "_comment" : "ajoute 3% de proba aux légendaires"
+    }
+}

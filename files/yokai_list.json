@@ -846,5 +846,36 @@
       "Hypertaupe",
       "Ultime Nyanmuraï"
     ]
+  },
+  "Shiny": {
+    "class_name": "Shiny",
+    "class_id": "Shiny",
+    "color": "#C9F5F5",
+    "yokai_list": [
+      "Chihuaglagla Shiny",
+      "Granpapéti Shiny",
+      "Pioubidou Shiny",
+      "Umilie Shiny",
+      "Komajiro Shiny",
+      "Agonigiri Shiny",
+      "Coléroptère Shiny",
+      "Kappacap Shiny",
+      "Appak Shiny",
+      "Félipaix Shiny",
+      "Mr Félipaix Shiny",
+      "Scatcheur Shiny",
+      "Scarmouche Shiny",
+      "Nanpart Shiny",
+      "Passpa Shiny",
+      "Marcognito Shiny",
+      "Ninjamévu Shiny",
+      "Tapur Shiny",
+      "Suspicioni Shiny",
+      "Froahuahua Shiny",
+      "Puissanfon Shiny",
+      "Komistigri Shiny",
+      "Onigirix Shiny",
+      "Rhinolimit Shiny"
+    ]
   }
 }

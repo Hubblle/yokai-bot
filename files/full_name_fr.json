@@ -3,6 +3,10 @@
     "name_en": "Happierre",
     "id": "y177000"
   },
+  "Trépigno": {
+    "name_en": "Hissfit",
+    "id": "y233000"
+  },
   "Marge": {
     "name_en": "Marcy",
     "id": null
@@ -465,7 +469,7 @@
   },
   "Komistigri": {
     "name_en": "Komiger",
-    "id": "y160010"
+    "id": null
   },
   "Bababou": {
     "name_en": "Daiz",
@@ -669,7 +673,7 @@
   },
   "Frérosse": {
     "name_en": "Bruff",
-    "id": "y190010"
+    "id": null
   },
   "Nimpégase": {
     "name_en": "Negasus",
@@ -915,10 +919,6 @@
     "name_en": "Brushido",
     "id": "y232000"
   },
-  "Trépigno": {
-    "name_en": "Hissfit",
-    "id": "y233000"
-  },
   "Agonigiri": {
     "name_en": "Slicenrice",
     "id": "y234000"
@@ -1117,7 +1117,7 @@
   },
   "DON-CHAN": {
     "name_en": "DON-CHAN",
-    "id": "y279000"
+    "id": null
   },
   "Métaureaulog": {
     "name_en": "Predictabull",
@@ -1365,7 +1365,7 @@
   },
   "Boucanyan": {
     "name_en": "Wondernyan",
-    "id": "y350000"
+    "id": null
   },
   "Narinos": {
     "name_en": "Snottle",
@@ -1773,7 +1773,7 @@
   },
   "Pogorille": {
     "name_en": "Sing Kong",
-    "id": "y543000"
+    "id": null
   },
   "Mulangeur": {
     "name_en": "Slippy",
@@ -2213,11 +2213,11 @@
   },
   "Sanventurier": {
     "name_en": "Knomad Koma",
-    "id": "y680100"
+    "id": null
   },
   "Jiroventurier": {
     "name_en": "Knomad Jiro",
-    "id": "y680200"
+    "id": null
   },
   "Superobonyan": {
     "name_en": "Showbonyan",
@@ -2261,11 +2261,11 @@
   },
   "Chocobo-nyan": {
     "name_en": "Chocobonyan",
-    "id": "y693000"
+    "id": null
   },
   "Mog-nyan": {
     "name_en": "Mooglenyan",
-    "id": "y694000"
+    "id": null
   },
   "Wobblenyan": {
     "name_en": "Wobblenyan",
@@ -2373,7 +2373,7 @@
   },
   "Coco Barjo": {
     "name_en": "J. Ne-Sais-Quoi",
-    "id": "y737000"
+    "id": null
   },
   "Enma l'Ancien": {
     "name_en": "Ancient Enma",
@@ -3080,6 +3080,102 @@
     "id": null
   },
   "Ultime Nyanmuraï": {
+    "name_en": null,
+    "id": null
+  },
+  "Chihuaglagla Shiny": {
+    "name_en": null,
+    "id": null
+  },
+  "Granpapéti Shiny": {
+    "name_en": null,
+    "id": null
+  },
+  "Pioubidou Shiny": {
+    "name_en": null,
+    "id": null
+  },
+  "Umilie Shiny": {
+    "name_en": null,
+    "id": null
+  },
+  "Komajiro Shiny": {
+    "name_en": null,
+    "id": null
+  },
+  "Agonigiri Shiny": {
+    "name_en": null,
+    "id": null
+  },
+  "Coléroptère Shiny": {
+    "name_en": null,
+    "id": null
+  },
+  "Kappacap Shiny": {
+    "name_en": null,
+    "id": null
+  },
+  "Appak Shiny": {
+    "name_en": null,
+    "id": null
+  },
+  "Félipaix Shiny": {
+    "name_en": null,
+    "id": null
+  },
+  "Mr Félipaix Shiny": {
+    "name_en": null,
+    "id": null
+  },
+  "Scatcheur Shiny": {
+    "name_en": null,
+    "id": null
+  },
+  "Scarmouche Shiny": {
+    "name_en": null,
+    "id": null
+  },
+  "Nanpart Shiny": {
+    "name_en": null,
+    "id": null
+  },
+  "Passpa Shiny": {
+    "name_en": null,
+    "id": null
+  },
+  "Marcognito Shiny": {
+    "name_en": null,
+    "id": null
+  },
+  "Ninjamévu Shiny": {
+    "name_en": null,
+    "id": null
+  },
+  "Tapur Shiny": {
+    "name_en": null,
+    "id": null
+  },
+  "Suspicioni Shiny": {
+    "name_en": null,
+    "id": null
+  },
+  "Froahuahua Shiny": {
+    "name_en": null,
+    "id": null
+  },
+  "Puissanfon Shiny": {
+    "name_en": null,
+    "id": null
+  },
+  "Komistigri Shiny": {
+    "name_en": null,
+    "id": null
+  },
+  "Onigirix Shiny": {
+    "name_en": null,
+    "id": null
+  },
+  "Rhinolimit Shiny": {
     "name_en": null,
     "id": null
   }
