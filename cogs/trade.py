@@ -33,6 +33,9 @@ class TradeConfirmView(discord.ui.View):
 
     @discord.ui.button(label="Accepter le trade", style=discord.ButtonStyle.green)
     async def accept(self, interaction: discord.Interaction, button: discord.ui.Button):
+        if not interaction.user.id == self.destinataire.id:
+            return
+        
         
         author_inv = await Cf.get_inv(self.author.id)
         recipient_inv = await Cf.get_inv(self.destinataire.id)
