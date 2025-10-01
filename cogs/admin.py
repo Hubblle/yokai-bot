@@ -10,13 +10,17 @@ import bot_package.Custom_func as Cf
 import bot_package.Check as Check
 import bot_package.data as data
 
+
+
 async def class_autcomplete(interaction : discord.Interaction, current : str) -> list[app_commands.Choice[str]] :
-    choices = ["Boss", "Divinité / Enma", "Légendaire", "Spécial", "Trésor", "S", "A", "B", "C", "D", "E", "objet", "pièce", "objet", "trésor", "json-mod"]
-    return [
+    choices = ["Shiny", "Boss", "Divinité / Enma", "Légendaire", "Spécial", "S", "A", "B", "C", "D", "E", "objet", "pièce", "json-mod"]
+    list = [
         app_commands.Choice(name=choices, value=choices)
         for choices in choices if current.lower() in choices.lower()
     ]
-
+    list.append(app_commands.Choice(name="Trésor (yokai)", value="Trésor"))
+    list.append(app_commands.Choice(name="Trésor (objet)", value="trésor"))
+    return list
 
 async def where_autcomplete(interaction : discord.Interaction, current : str) -> list[app_commands.Choice[str]] :
     choices = ["bag", "medallium"]
@@ -42,7 +46,7 @@ class Admin_command(commands.Cog):
     
     
     
-    
+ 
     @commands.hybrid_command(name="reset")
     @Check.is_in_dev_team()
     async def reset(self, ctx : commands.Context, input_id : str):
@@ -84,10 +88,9 @@ class Admin_command(commands.Cog):
             
     
     
-    
-    @commands.hybrid_command(name="stats")
-    @Check.is_in_dev_team()
-    async def stats(self, ctx : commands.Context, input : str):
+ 
+    @commands.hybrid_command(name="show")
+    async def show(self, ctx : commands.Context, input : str):
         """give stats about input data.
         
         Available stats for now : `inventory`
@@ -117,7 +120,7 @@ class Admin_command(commands.Cog):
         
         
         
-         
+      
     @commands.hybrid_command(name="give")
     @Check.is_in_dev_team()
     @app_commands.autocomplete(where=where_autcomplete)
@@ -244,7 +247,7 @@ class Admin_command(commands.Cog):
             #set the inv to the default
             inv = default_inv
             
-            inv[yokai] = class_id
+            inv[yokai] = [class_id]
             
             inv[class_id] = 1
             if not number == 1 :
@@ -271,7 +274,11 @@ class Admin_command(commands.Cog):
                     #add it
                     inv[yokai] = [class_id]
                     #add one more to the yokai count of the coresponding class
-                    inv[class_id] += 1
+                    try:
+                        inv[class_id] += 1
+                    except:
+                        inv[class_id] = 1
+                        
                 #save the inv
                 await save_inv(data=inv, id=input_id)
             
@@ -286,7 +293,7 @@ class Admin_command(commands.Cog):
     
     
     
-    
+ 
     @commands.hybrid_command(name="remove")
     @Check.is_in_dev_team()
     @app_commands.autocomplete(where=where_autcomplete)
