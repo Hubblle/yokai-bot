@@ -27,11 +27,11 @@ class Help(commands.Cog, name="help"):
         version = self.bot.VERSION  # indiquez la version de votre code
 
         # Paramétrage du nom du propriétaire - si vous ne voulez pas être mentionné, supprimez ces lignes et ajustez le texte d'aide
-        owner = 882241177578004542  # ENTREZ VOTRE ID DISCORD
-        owner_name = '__hubble'  # ENTREZ VOTRE NOM D'UTILISATEUR#1234
+        co_owner = 882241177578004542  # ENTREZ VOTRE ID DISCORD
+        co_owner_name = '__hubble'  # ENTREZ VOTRE NOM D'UTILISATEUR#1234
         
-        co_owner = 902270379186323487
-        co_owner_name = "Mart1Max"
+        owner = 902270379186323487
+        owner_name = "Mart1Max"
 
         serv_discord = "https://discord.gg/K4H4xhHqUb"
 
@@ -78,8 +78,8 @@ class Help(commands.Cog, name="help"):
                 emb.add_field(name='Ne faisant pas partie d\'un module', value=commands_desc, inline=False)
 
             # Ajoute des informations sur l'auteur
-            emb.add_field(name="À propos", value=f"Le bot est développé par {owner}, basé sur discord.py. La liste des Yokais est faite par {co_owner} \n\
-                                    ")
+            emb.add_field(name="À propos", value=f"Le bot est la création de {owner} (Idées/direction), {co_owner} l'a développé mais il ne contribue plus à faire les maj ajourd'hui, juste maintenir / aider le git.\n")
+            emb.add_field(name="Contribuer ?", value="En effet, le bot est open source et ouvert à la contribution: [lien du gihub](https://github.com/Hubblle/yokai-bot)\n-# Il est ecrit en python, basé sur discord.py", inline=False)
             emb.add_field(name="Serveur discord de support :", value=f"{serv_discord}", inline=False)
             emb.set_footer(text=f"bot version {version}")
 
