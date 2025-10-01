@@ -16,7 +16,7 @@ import bot_package.data as data
 #Medallium command cog
 class Medallium(commands.Cog) :
     """
-    Permet de voir votre Médallium (inventaire), tous les Yo-kai que vous avez eu avec le /bingo-kai et votre sacoche avec tous vos objets et pièces.
+    New ✨!\nPermet de voir votre Médallium (inventaire), tous les Yo-kai que vous avez eu avec le /bingo-kai et votre sacoche avec tous vos objets et pièces.
     """
     
     
@@ -57,7 +57,8 @@ class Medallium(commands.Cog) :
             "SpecialS": {},
             "LegendaryS": {},
             "DivinityS": {},
-            "Boss": {}
+            "Boss": {},
+            "Shiny": {}
         }
 
         #sort the Yo-kai by class
@@ -107,7 +108,8 @@ class Medallium(commands.Cog) :
                     discord.SelectOption(label="Trésor", emoji=emoji["treasureS"]),
                     discord.SelectOption(label="Spécial", emoji=emoji["SpecialS"]),
                     discord.SelectOption(label="Divinité / Enma", emoji=emoji["DivinityS"]),
-                    discord.SelectOption(label="Boss", emoji=emoji["Boss"])
+                    discord.SelectOption(label="Boss", emoji=emoji["Boss"]),
+                    discord.SelectOption(label="Shiny", emoji="✨")
                 ]
 
                 super().__init__(placeholder='Choisissez le rang que vous voulez...', min_values=1, max_values=1, options=options)
@@ -198,17 +200,36 @@ class Medallium(commands.Cog) :
         main_embed = discord.Embed(title="__Médallium -- Menu.__", colour=0xf58f00)
 
         #Make the nerdy stats :
+        
+        #the total and the actual for the completion of the medallium
+        total = 0
+        actual = 0
+        total_point = 0
+        
         yokai_claimed_count = ""
         for classes in yokai_per_class:
+            total += list_len[classes]
+            actual += brute_inventory[classes]
+            total_point += brute_inventory[classes]*data.class_to_point[classes]
+            
             if brute_inventory[classes] == 0:
                 pass
             elif len(classes) == 1:
                 yokai_claimed_count += f"Yo-kai de rang **{await Cf.classid_to_class(classes, False)}**: `{brute_inventory[classes]}/{list_len[classes]}`\n"
             else:
                 yokai_claimed_count += f"Yo-kai **{await Cf.classid_to_class(classes, False)}**: `{brute_inventory[classes]}/{list_len[classes]}`\n"
+                
+        #process the completion of the medallium
+        completion = actual/total*100
+        completion = round(completion, 2)
 
-        main_embed.add_field(name="Voici vos statistiques :", value=yokai_claimed_count, inline=True)
-        main_embed.set_footer(text="Merci de choisir parmi les propositions ci-dessous pour afficher vos items.")
+        main_embed.add_field(name="Voici vos statistiques :", value=yokai_claimed_count, inline=False)
+        main_embed.add_field(name="Pourcentage et points:", value=f"> Médallium complété à **{completion}%** !\n> Votre Médallium vaut {total_point} points !\n-# faites /stats pour plus d'info sur les points.")
+        if not user == None and user.id != ctx.author.id:
+            main_embed.set_footer(text=f"Merci de choisir parmi les propositions ci-dessous pour afficher les Yo-kai de {user.display_name}.")
+        
+        else:
+            main_embed.set_footer(text="Merci de choisir parmi les propositions ci-dessous pour afficher vos Yo-kai.")
 
         Dropdown.message = await ctx.send(embed=main_embed, view=Dropdown)
 
@@ -217,7 +238,7 @@ class Medallium(commands.Cog) :
     @commands.hybrid_command(name="bag")
     async def bag(self, ctx = commands.Context, user : discord.User = None ):
         """
-        Permet de voir votre sacoche, tous les objets / pièces que vous avez eu avec le /bingo-kai. 
+        New ✨! Permet de voir votre sacoche, tous les objets / pièces que vous avez eu avec le /bingo-kai. 
         Utilisez */bag {user}* pour voir la sacoche d'un autre utilisateur.
         """
         #define the user
@@ -245,7 +266,7 @@ class Medallium(commands.Cog) :
         #sort the content by categorie
         for elements in brute_bag:
             #Don't take any numbers
-            if not elements in ["coin", "obj", "treasure"]:
+            if not elements in ["coin", "obj", "treasure", "equipped_treasure", "last_daily_reset", "amount"]:
                 categorie = brute_bag[elements]
 
                 #Check if it's stack
@@ -382,9 +403,39 @@ class Medallium(commands.Cog) :
 
 
         main_embed.add_field(name="Voici vos statistiques :", value=yokai_claimed_count, inline=True)
-        main_embed.set_footer(text="Merci de choisir parmi les propositions ci-dessous pour afficher vos items.")
+        if not user == None and user.id != ctx.author.id:
+            main_embed.set_footer(text=f"Merci de choisir parmi les propositions ci-dessous pour afficher les items de {user.display_name}.")
+        
+        else:
+            main_embed.set_footer(text="Merci de choisir parmi les propositions ci-dessous pour afficher vos items.")
+
 
         await ctx.send(embed=main_embed, view=Dropdown)
+        
+    
+    @commands.hybrid_command(name="stats")
+    async def stats(self, ctx: commands.Context):
+        """
+        New ✨! Donne des statistiques sur plein de choses !
+        """
+        #get what we need:
+        drop_proba_formated = ""
+        
+        for i in range(12):
+            drop_proba_formated += f"> **{await Cf.classid_to_class(data.class_list[i])}:** `{data.proba_list[i]*100}%`\n"
+        
+        point_formated = ""
+        
+        for c in data.class_list:
+            point_formated += f"> **{await Cf.classid_to_class(c)}:** {data.class_to_point[c]} points\n"
+            
+        stats_embed = discord.Embed(title="__Voici les stats !__", color=discord.Color.from_str("#148A99"))
+        
+        stats_embed.add_field(name="__Taux de drop :__", value=drop_proba_formated.removesuffix("\n"))
+        stats_embed.add_field(name="__Points par rang :__", value=point_formated.removesuffix("\n"))
+        
+        return await ctx.send(embed=stats_embed)
+        
 
         
 
