@@ -1,13 +1,34 @@
 import json
 import time
 import os
-VERSION = 2
+import aiohttp
+import asyncio
+VERSION = 3
 
 def line(num : int = 1):
     for i in range(num):
         print(" ")
         
+# async func to check images
+async def check_image(session, yokai_name, yokai_data):
+    """Check if image exists for given Yo-kai."""
+    if not yokai_data.get('id'):
+        return yokai_name, None
         
+    url = f"https://api.quark-dev.com/yk/img/{yokai_data['id']}.png"
+    try:
+        async with session.get(url) as response:
+            if response.status == 404:
+                print(f"❌ Image not found for {yokai_name} (ID: {yokai_data['id']})")
+                return yokai_name, None
+            else:
+                print(f"✓ Valid image for {yokai_name}")
+                return yokai_name, yokai_data['id']
+    except Exception as e:
+        print(f"Error checking {yokai_name}: {e}")
+        return yokai_name, None
+
+
         
 #Get inv func
 def get_inv(id : str):
@@ -76,15 +97,15 @@ def adjust():
     print("Welcome to the ajustement program !")
     while True :
         print("Please, select a mode :")
-        print("   [1] Total number of yokai. \n   [2] Nothing. \n   [3] Double Yokais ?")
+        print("   [1] Total number of yokai. \n   [2] Nothing. \n")
         line()
-        choise = input("Please, select a number [1-3] ")
+        choise = input("Please, select a number [1-2] ")
     
-        if choise == "1" or choise == "2" or choise == "3":
+        if choise == "1" or choise == "2":
             choise = int(choise)
             break
     
-        print("The number isn't right, please enter a number in range [1-3]")
+        print("The number isn't right, please enter a number in range [1-2]")
         input("Press any key to go back to the menu.")
     
     
@@ -130,27 +151,6 @@ def adjust():
         print("that func wasn't coded yet :/")
             
             
-    if choise == 3:
-        yokai_list = open_json("./files/yokai_list.json")
-        all_yokai = {}
-        for classes in yokai_list:
-            for yokai in yokai_list[classes]["yokai_list"]:
-                try :
-                    all_yokai[yokai].append(classes)
-                except:
-                    all_yokai[yokai] = [classes]
-        
-        double_yokai = ""
-        for yokai in all_yokai:
-            
-            if len(all_yokai[yokai]) > 1:
-                double_yokai_current = f"\n {yokai} : "
-                for classes in all_yokai[yokai]:
-                    double_yokai_current += f"{classid_to_class(classes)}/ "
-                double_yokai += double_yokai_current
-        
-        print("Here are the double yokai :")
-        print(double_yokai)
                     
             
                                         
@@ -363,43 +363,232 @@ def key_manager():
 
 def organise_list():
     line(35)
-    yokai_list = open_json("./files/yokai_list.json")
+    print("Welcome to the list management program !")
+    while True :
+        print("Please, select a mode :")
+        print("   [1] Sort the list (alphabetically). \n   [2] Check for double yokais.")
+        line()
+        choise = input("Please, select a number [1-2] ")
     
-    for classes in yokai_list:
-        yokais = yokai_list[classes]["yokai_list"]
-        yokais.sort()
-        yokai_list[classes]["yokai_list"] = yokais
+        if choise == "1" or choise == "2" or choise == "2":
+            choise = int(choise)
+            break
+    
+        print("The number isn't right, please enter a number in range [1-2]")
+        input("Press any key to go back to the menu.")
         
-    save_json("./files/yokai_list.json", yokai_list)
-    print("The json was sorted sucessfully !")
+        
+    if choise == 1:
+        yokai_list = open_json("./files/yokai_list.json")
+        
+        for classes in yokai_list:
+            yokais = yokai_list[classes]["yokai_list"]
+            yokais.sort()
+            yokai_list[classes]["yokai_list"] = yokais
+            
+        save_json("./files/yokai_list.json", yokai_list)
+        print("The json was sorted sucessfully !")
+        
+        
+        
+    elif choise == 2:
+        yokai_list = open_json("./files/yokai_list.json")
+        all_yokai = {}
+        for classes in yokai_list:
+            for yokai in yokai_list[classes]["yokai_list"]:
+                try :
+                    all_yokai[yokai].append(classes)
+                except:
+                    all_yokai[yokai] = [classes]
+        
+        double_yokai = ""
+        for yokai in all_yokai:
+            
+            if len(all_yokai[yokai]) > 1:
+                double_yokai_current = f"\n {yokai} : "
+                for classes in all_yokai[yokai]:
+                    double_yokai_current += f"{classid_to_class(classes)}/ "
+                double_yokai += double_yokai_current
+        
+        print("Here are the double yokai :")
+        print(double_yokai)
+    
+    line()
     input("Press enter to go back to the main menu.")
+
+    
+    
+    
+    
+    
+def check():
+    line(35)
+    print("Checks")
+    while True :
+        print("Please, select a mode :")
+        print("   [1] Check coin files. \n   [2] Check yokai ids (images).")
+        line()
+        choise = input("Please, select a number [1-2] ")
+    
+        if choise == "1" or choise == "2" :
+            choise = int(choise)
+            break
+        
+        print("The number isn't right, please enter a number in range [1-2]")
+        input("Press any key to go back to the menu.")
+        line(35)
+    
+    if choise == 1:
+        coin_list = open_json("./files/coin.json").keys()
+        coin_output_total = ""
+        for coin in coin_list:
+            coin_output = f"\n  {coin}: "
+            coin_file = open_json(f"./files/coin/{coin}.json")
+            if coin_file == {}:
+                coin_output += "❌ No/empty file"
+                
+            else:
+                try:
+                    item_number = len(coin_file["list"].keys())
+                    proba_total = 0
+                    for loots in coin_file["list"]:
+                        proba_total += coin_file["list"][loots][1]
+                    proba_total = round(proba_total, 4)
+                    if proba_total == 1:
+                        coin_output += "total proba ✅ // "
+                    else:
+                        coin_output += f"total proba = {proba_total} ❌ // "
+                    coin_output += f"total items: {item_number}"
+
+                    all_items = open_json("./files/items.json").keys()
+                    all_yokai = open_json("./files/full_name_fr.json").keys()
+                    
+                    for item in coin_file["list"]:
+                        if coin_file["list"][item][0] in ["obj", "treasure"]:
+                            if item not in all_items:
+                                coin_output += f"\n    - {item} ❌ Not found in items"
+                        elif coin_file["list"][item][0] == "yokai":
+                            if item not in all_yokai:
+                                coin_output += f"\n    - {item} ❌ Not found in yokais"
+                        else:
+                            coin_output += f"\n    - {item} ❌ Has a wrong type ! ()"
+                
+                except Exception as e:
+                    coin_output += f"📛 Error during file reading ! >>> {e}"
+            coin_output_total+=coin_output
+        print(coin_output_total)
+        
+    if choise == 2:
+        async def check_id():
+            # Load the JSON file
+            with open("./files/full_name_fr.json", "r", encoding="utf-8") as f:
+                yokai_data = json.load(f)
+            
+            async with aiohttp.ClientSession() as session:
+                tasks = []
+                for yokai_name, data in yokai_data.items():
+                    tasks.append(check_image(session, yokai_name, data))
+                
+                results = await asyncio.gather(*tasks)
+                
+                # Count valid IDs
+                valid_count = 0
+                total_count = len(results)
+                
+                # Update IDs based on results
+                for yokai_name, new_id in results:
+                    if new_id is not None:
+                        valid_count += 1
+                    elif new_id is None:
+                        yokai_data[yokai_name]['id'] = None
+        
+    
+            # Save updated data
+            with open("./files/full_name_fr.json", "w", encoding="utf-8") as f:
+                json.dump(yokai_data, f, indent=2, ensure_ascii=False)
+            
+            # Print statistics
+            print(f"\n=== Results ===")
+            print(f"Total Yo-kai: {total_count}")
+            print(f"Valid IDs: {valid_count}")
+            print(f"Invalid/Missing IDs: {total_count - valid_count}")
+            print(f"Success rate: {(valid_count/total_count)*100:.1f}%")
+                
+            
+        asyncio.run(check_id())
+        
+    line()
+    input("End of the program, press any key to go back to the main menu.")
+
+def adjust_id():
+    line(35)
+    full_name_fr = open_json("./files/full_name_fr.json")
+    full_list_raw = open_json("./files/yokai_list.json")
+    full_list = []
+    
+    for cat in full_list_raw:
+        full_list += full_list_raw[cat]["yokai_list"]
+            
+
+    actual_list = []
+
+    count1 = 0
+
+
+    for key in full_name_fr :
+        actual_list.append(key)
+        count1 += 1
+
+    print(f"{count1} Yo-kai translated in English")
+
+    count2 = 0
+    for yokai in full_list :
+        if not yokai in actual_list :
+            full_name_fr[yokai] = {
+                "name_en" : None,
+                "id" : None
+            }
+            count2 += 1
+            
+    print(f"{count2} Yo-kai added to the list")
+    print(f"total = {count1 + count2}")
+
+    save_json("./files/full_name_fr.json", full_name_fr)
+    
+    line()
+    input("End of the program, press any key to go back to the main menu.")
         
 
 func_list = {
-    1 : "inv_info()",
-    2 : "key_manager()",
-    3 : "adjust()",
-    4 : "organise_list()"
+    1 : inv_info,
+    2 : key_manager,
+    3 : adjust,
+    4 : organise_list,
+    5 : check,
+    6 : adjust_id
 }
 
 line(35)
 print("Starting the script...")
 print(f"Welcome on script manager V{VERSION}")
+print("#### Check manager.md for documentation")
 line()
 time.sleep(0.5)
 while True :
     print("Choose something you want to do :")
-    print("[1] Show the inv folder info.")
-    print("[2] Key manager.")
-    print("[3] Inv adjust.")
-    print("[4] Organise the list.")
+    print("[1] Show the inv folder info")
+    print("[2] Key manager")
+    print("[3] Inv adjust")
+    print("[4] Organise the list")
+    print("[5] Checks")
+    print("[6] Adjust yokai ids")
     
     
-    choise_range = "[1-4]"
+    choise_range = "1-6"
     choise = input(f"Please select a number [{choise_range}] : ")
 
-    if int(choise) in [1, 2, 3, 4] :
-        exec(func_list[int(choise)])
+    if int(choise) in func_list.keys() :
+        func_list[int(choise)]()
     else :
         print(f"The number isn't right, please enter a number in range [{choise_range}]")
         input("Press any key to go back to the main menu.")
