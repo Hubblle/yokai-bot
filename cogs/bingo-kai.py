@@ -1,12 +1,25 @@
 import discord
 from discord.ext import commands
+from discord import app_commands
 from discord.ext.commands import Context
-import os
-import json
 import random
 import time
+import os
 import bot_package.Custom_func as Cf
 import bot_package.data as data
+import importlib
+
+
+
+        
+
+async def bingo_kai_autcomplete(interaction : discord.Interaction, current : str) -> list[app_commands.Choice[str]] :
+    coin = data.coin_list
+    return [
+        app_commands.Choice(name=coin, value=coin)
+        for coin in coin if current.lower() in coin.lower()
+    ]
+
 
 
 
@@ -21,16 +34,402 @@ class Yokai(commands.Cog):
     
     def __init__(self, bot:commands.Bot):
         self.bot = bot
-
+        ## Custom bkai scripts importation
+        # Import custom bingo-kai scripts
+        for filename in os.listdir("cogs/treasure_bkai"):
+            if filename.endswith(".py"):
+                fn = filename[:-3]  # Remove .py extension
+                try:
+                    #import the module as an atribute
+                    module = importlib.import_module(f"cogs.treasure_bkai.{fn}")
+                    setattr(self.__class__, fn, module)
+                    self.bot.logger.info(f"Custom Bingo-kai {fn} loaded")
+                    
+                except Exception as e:
+                    self.bot.logger.error(f"Error while loading custom Bingo-kai {fn}: {e}")
+                    
+                    
 
     @commands.hybrid_command(name="bingo-kai",)
-    async def bingo_yokai(self, ctx = commands.Context):
+    @app_commands.autocomplete(coin=bingo_kai_autcomplete)
+    async def bingo_yokai(self, ctx = commands.Context, coin : str = None):
         """
         Tire au sort un Yo-kai de manière aléatoire.
         La commande possède un cooldown de 1h30 (1h sur le serveur de support ;) )
         """
         
+        #Check if they have a treasure equiped
+        bag = await Cf.get_bag(ctx.author.id)
+        equipped_treasure = bag.get("equipped_treasure")
+        
+        if not equipped_treasure == None:
+            #get the id to run the right script
+            id = data.item[equipped_treasure]["id"]
+            #now run the custom bkai
+            module = self.__getattribute__(id)
+            return await module.main(self, ctx, coin)
+        
+        
+        if not coin in data.coin_list and not coin == None:
+            #check if the coin is right
+            error_embed = discord.Embed(title="Oh non, la pièce que vous avez demandée n'existe pas...", description="Merci de verifier l'orthographe, faites `/bag` pour voir vos pièces.")
+            return await ctx.send(embed=error_embed)
+        
+        if not coin == None :
+            bag = await Cf.get_bag(ctx.author.id)
+            
+            #check if the bag is empty
+            if bag == {} :
+                error_embed = discord.Embed(title="Oh non, vous n'avez pas cette pièce...", description="Vous devez d'abord l'avoir dans le `/bingo-kai` classique avant de l'utiliser :/")
+                return await ctx.send(embed=error_embed)
+            
+            else:
+                #else, we check if they have the coin in their bag 
+                try :
+                    bag[coin]
+                except KeyError:
+                    error_embed = discord.Embed(title="Oh non, vous n'avez pas cette pièce...", description="Vous devez d'abord l'avoir dans le `/bingo-kai` classique avant de l'utiliser :/")
+                    return await ctx.send(embed=error_embed)
+            
+            
+            # Get current time and convert to midnight timestamp
+            current_time = time.time()
+            current_day = time.localtime(current_time)
+            midnight = time.mktime((current_day.tm_year, current_day.tm_mon, 
+                                    current_day.tm_mday, 0, 0, 0, 0, 0, 0))
+            midnight -= 3600 #correction cause it's fucked up
+            
+            # Check if we need to reset daily limits
+            last_reset = bag.get("last_daily_reset", 0)
+            if last_reset < midnight:
+                bag["amount"] = 0
+                bag["last_daily_reset"] = midnight
+                await Cf.save_bag(bag, ctx.author.id)
+            
+            
+            try:
+                amount = bag["amount"]
+            except KeyError:
+                amount = 0
+                bag["amount"] = 0
+                bag["last_daily_reset"] = midnight
+                await Cf.save_bag(bag, ctx.author.id)
+                
+            if amount == "max":
+                # Calculate time until next reset
+                next_midnight = midnight + 86400  # Next day midnight
+                time_left = next_midnight - current_time
+                hours = int(time_left // 3600)
+                minutes = int((time_left % 3600) // 60)
+                
+                error_embed = discord.Embed(
+                    title="Oh non, vous avez fait votre maximum de tirage avec des pièces pour aujourd'hui...",
+                    description=f"Réessayez à minuit ! (Dans **{hours}h {minutes}min**)"
+                )
+                return await ctx.send(embed=error_embed)
 
+            #define the data we need!
+            try:
+                loot_brute = data.coin_loot[coin]["list"]
+                loot_order = data.coin_loot[coin]["element_in_order"]
+                proba_order = data.coin_loot[coin]["proba_in_order"]
+            #check if the coin loot is available
+            except Exception:
+                error_embed = discord.Embed(title="Oh non, cette pièce n'est pas encore disponible...", description="> Elle n'a pas encore été faite, mais cela arrive au plus vite !")
+                return await ctx.send(embed=error_embed)
+            
+            if amount == 20: 
+                error_embed = discord.Embed(title="Oh non, vous avez fait votre maximum de tirage avec des pièces pour aujourd'hui...", description="Recommencez demain !")
+                bag["amount"] = "max"
+                await Cf.save_bag(bag, ctx.author.id)
+                return await ctx.send(embed=error_embed)
+        
+            if amount > 6 :
+                proba = amount / 30 
+                anti_proba = 1 - proba
+                if random.choices([True, False], weights=[proba, anti_proba])[0]:
+                    error_embed = discord.Embed(title="Oh non, vous avez fait votre maximum de tirage avec des pièces pour aujourd'hui...", description="Recommencez demain !")
+                    bag["amount"] = "max"
+                    await Cf.save_bag(bag, ctx.author.id)
+                    return await ctx.send(embed=error_embed)
+            
+            amount += 1
+            bag["amount"] = amount
+            await Cf.save_bag(bag, ctx.author.id)
+            
+            
+            
+            
+            
+            #make the choice:
+            item = random.choices(loot_order, proba_order)[0]
+            
+            #now get the type of the item
+            item_type = loot_brute[item][0]
+            
+            #log
+            if ctx.guild is not None:
+                self.bot.logger.info(
+                    f"Executed bingo-kai command in {ctx.guild.name} (ID: {ctx.guild.id}) by {ctx.author} (ID: {ctx.author.id}) // He had '{item}' ({item_type}) / {coin}"
+                )
+            else:
+                self.bot.logger.info(
+                    f"Executed bingo-kai command by {ctx.author} (ID: {ctx.author.id}) in DMs // He had '{item}' ({item_type}) / {coin}"
+            )
+            
+            
+            #if its an object, check in the item list to see if it's a treasure or a random obj
+            if item_type == "obj":
+                item_type = data.item[item]["type"]
+                
+            #get rid of the coin they used
+            bag = await Cf.get_bag(ctx.author.id)
+            try :
+                more_than_one = bag[coin][1] > 1
+            except :
+                more_than_one = False
+                
+            
+            if more_than_one == True :
+                #just remove the mention of several coin if there are juste two
+                if bag[coin][1] == 2:
+                    bag[coin].remove(bag[coin][1])
+                else:
+                    bag[coin][1] -= 1
+                    
+            else :
+                bag.pop(coin)
+                bag["treasure"] -= 1
+            
+            await Cf.save_bag(bag, ctx.author.id)
+            
+            #now make the embed and add it to the inv
+            if item_type == "yokai":
+                for element in data.yokai_data:
+                    if item in data.yokai_data[element]["yokai_list"]:
+                        class_id = data.yokai_data[element]["class_id"]
+                        class_name = data.yokai_data[element]["class_name"]
+                        break
+
+                brute_inventory = await Cf.get_inv(ctx.author.id)
+                if brute_inventory == {}:
+                    brute_inventory = {
+                        "last_claim": 10000,
+                        "E": 0,
+                        "D": 0,
+                        "C": 0,
+                        "B": 0,
+                        "A": 0,
+                        "S": 0,
+                        "LegendaryS": 0,
+                        "treasureS": 0,
+                        "SpecialS": 0,
+                        "DivinityS": 0,
+                        "Boss": 0,
+                        "Shiny": 0
+                    }
+                    verification = False
+                else:
+                    verification = True
+
+                if verification:
+                    for elements in brute_inventory.keys():
+                        if elements == item:
+                            verification = False
+                            try:
+                                brute_inventory[item][1] += 1
+                            except:
+                                brute_inventory[item].append(2)
+                                
+                            #make the embed
+                            yokai_embed = discord.Embed(
+                                title=f"Vous avez eu le Yo-kai **{item}** ✨ ",
+                                description=f"Félicitations il est de rang **{class_name}**",
+                                color=discord.Color.from_str(data.yokai_data[class_id]["color"])
+                            )
+                            #get the image
+                            try :
+                                id = data.yokai_list_full[item]["id"]
+                                yokai_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{id}.png")
+                                yokai_embed.set_thumbnail(url=data.image_link[class_id])
+                            except KeyError :
+                                id = None
+                            
+                            yokai_embed.add_field(
+                                name=f"Vous l'avez déjà eu. Vous en avez donc {brute_inventory[item][1]}",
+                                value="Faites `/medallium` pour voir votre Médallium."
+                            )
+                            yokai_embed.set_footer(text=f"{coin} utilisée !")
+                            await Cf.save_inv(brute_inventory, ctx.author.id)
+                            return await ctx.send(embed=yokai_embed)
+
+                if verification:
+                    brute_inventory[item] = [class_id]
+                    try:
+                        brute_inventory[class_id] += 1
+                    except:
+                        brute_inventory[class_id] = 1
+                    await Cf.save_inv(brute_inventory, ctx.author.id)
+                    yokai_embed = discord.Embed(
+                        title=f"Vous avez eu le Yo-kai **{item}** ✨ ",
+                        description=f"Félicitations il est de rang **{class_name}**",
+                        color=discord.Color.from_str(data.yokai_data[class_id]["color"])
+                    )
+                    try :
+                        id = data.yokai_list_full[item]["id"]
+                        yokai_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{id}.png")
+                        yokai_embed.set_thumbnail(url=data.image_link[class_id])
+                    except KeyError :
+                        id = None
+                        yokai_embed.add_field(name="Image non disponible ! 😢", inline=False, value="En effet, nous ne possédons pas l'image de tous les Yo-kai, mais l'équipe travaille pour les apporter au complet et au plus vite.")
+        
+                    yokai_embed.add_field(
+                        name="Vous ne l'avez jamais eu !",
+                        value="Il a été ajouté a votre Médallium. Faites `/medallium` pour le voir."
+                    )
+                    yokai_embed.set_footer(text=f"{coin} utilisée !")
+                    return await ctx.send(embed=yokai_embed)
+                
+            #Obj part
+            elif item_type == "obj":
+                #add the item to the bag
+                bag = await Cf.get_bag(ctx.author.id)
+                item_desc = data.item[item]["desc"]
+                if bag == {}:
+                    bag = data.default_bag
+                    verification = False
+                else:
+                    verification = True
+
+                if verification:
+                    for elements in bag.keys():
+                        if elements == item:
+                            verification = False
+                            try:
+                                bag[item][1] += 1
+                            except:
+                                bag[item].append(2)
+                                
+                            #make the embed
+                            item_embed = discord.Embed(
+                                title="Vous avez eu un objet 📦 ! ",
+                                description=f"> **{item}**",
+                                color=discord.Color.from_str("#674202")
+                            )
+                            #get the image
+
+                            id = data.item[item]["id"]
+                            item_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{id}.png")
+                            
+                            item_embed.add_field(
+                                name=f"Vous l'avez déjà eu. Vous en avez donc {bag[item][1]}",
+                                value="Faites `/bag` pour voir votre sacoche."
+                            )
+                            item_embed.add_field(name="Mhh, voici quelques informations 📜", inline=False, value=f"> {item_desc}")
+                            item_embed.set_footer(text=f"{coin} utilisée !")
+                            await Cf.save_bag(bag, ctx.author.id)
+                            return await ctx.send(embed=item_embed)
+
+                if verification:
+                    bag[item] = [item_type]
+                    try:
+                        bag[item_type] += 1
+                    except:
+                        bag[item_type] = 1
+                    await Cf.save_bag(bag, ctx.author.id)
+                    item_embed = discord.Embed(
+                        title="Vous avez eu un objet 📦 ! ",
+                        description=f"> **{item}**",
+                        color=discord.Color.from_str("#674202")
+                    )
+                    #get the image
+
+                    id = data.item[item]["id"]
+                    item_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{id}.png")
+                    
+                    item_embed.add_field(
+                        name=f"Vous ne l'avez jamais eu !",
+                        value="Faites `/bag` pour voir votre sacoche."
+                    )
+                    item_embed.add_field(name="Mhh, voici quelques informations 📜", inline=False, value=f"> {item_desc}")
+                    
+                    item_embed.set_footer(text=f"{coin} utilisée !")
+                    return await ctx.send(embed=item_embed)
+                
+            elif item_type == "treasure":
+                #add the item to the bag
+                bag = await Cf.get_bag(ctx.author.id)
+                item_desc = data.item[item]["desc"]
+                if bag == {}:
+                    bag = data.default_bag
+                    verification = False
+                else:
+                    verification = True
+
+                if verification:
+                    for elements in bag.keys():
+                        if elements == item:
+                            verification = False
+                            try:
+                                bag[item][1] += 1
+                            except:
+                                bag[item].append(2)
+                                
+                            #make the embed
+                            item_embed = discord.Embed(
+                                title="Vous avez eu un trésor 🎉 ! ",
+                                description=f"> **{item}**",
+                                color=discord.Color.from_str("#FFC400")
+                            )
+                            #get the image
+
+                            id = data.item[item]["id"]
+                            item_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{id}.png")
+                            
+                            item_embed.add_field(
+                                name=f"Vous l'avez déjà eu. Vous en avez donc {bag[item][1]}",
+                                value="Faites `/bag` pour voir votre sacoche."
+                            )
+                            
+                            item_embed.add_field(name="Mhh, voici quelques informations 📜", inline=False, value=f"> {item_desc}\nFaites `/equip {item}` pour l'équiper, par la suite, faites /bkai pour qu'il s'applique.\n-# '/help equip' pour plus d'info.")
+                    
+                            item_embed.set_footer(text=f"{coin} utilisée !")
+                            await Cf.save_bag(bag, ctx.author.id)
+                            return await ctx.send(embed=item_embed)
+
+                if verification:
+                    bag[item] = [item_type]
+                    try:
+                        bag[item_type] += 1
+                    except:
+                        bag[item_type] = 1
+                    await Cf.save_bag(bag, ctx.author.id)
+                    #make the embed
+                    item_embed = discord.Embed(
+                        title="Vous avez eu un trésor 🎉 ! ",
+                        description=f"Le **{item}**",
+                        color=discord.Color.from_str("#FFC400")
+                    )
+                    #get the image
+
+                    id = data.item[item]["id"]
+                    item_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{id}.png")
+                    
+                    item_embed.add_field(
+                        name=f"Vous ne l'avez jamais eu !",
+                        value="Faites `/bag` pour voir votre sacoche."
+                    )
+                    
+                    item_embed.add_field(name="Mhh, voici quelques informations 📜", inline=False, value=f"> {item_desc}\nFaites `/equip {item}` pour l'équiper, par la suite, faites /bkai pour qu'il s'applique.\n-# '/help equip' pour plus d'info.")
+                    
+                    item_embed.set_footer(text=f"{coin} utilisée !")
+                    return await ctx.send(embed=item_embed)
+            
+        ### NORMAL PART ###
+        
+        #define the inv
+        brute_inventory = await Cf.get_inv(ctx.author.id)
+        
         iscooldown = True
         
         
@@ -86,8 +485,9 @@ class Yokai(commands.Cog):
                     )
                     return await ctx.send(embed=yokai_embed)
 
-        #define the inv
-        brute_inventory = await Cf.get_inv(ctx.author.id)
+
+
+        
         
         #choose the class of the yokai
         class_choice = data.yokai_data[random.choices(data.class_list, weights=data.proba_list, k=1)[0]]
@@ -111,7 +511,7 @@ class Yokai(commands.Cog):
         #define the id and so the api request to the image
         
         try :
-            id = Cf.yokai_list_full[Yokai_choice]["id"]
+            id = data.yokai_list_full[Yokai_choice]["id"]
             yokai_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{id}.png")
         except KeyError :
             id = None
@@ -144,6 +544,7 @@ class Yokai(commands.Cog):
                 "SpecialS": 0,
                 "DivinityS": 0,
                 "Boss": 0,
+                "Shiny": 0
             }
             verification = False
         else:
@@ -176,20 +577,26 @@ class Yokai(commands.Cog):
 
             if verification == True:
                 brute_inventory[Yokai_choice] = [class_id]
-                brute_inventory[class_id] += 1
+                try:
+                    brute_inventory[class_id] += 1
+                except:
+                    brute_inventory[class_id] = 1
                 brute_inventory["last_claim"] = time.time()
                 await Cf.save_inv(brute_inventory, ctx.author.id)
                 yokai_embed.add_field(
-                    name="Vous ne l'avez jamais eu !",
+                    name="Vous ne l'avez jamais eu ! 🆕",
                     value="Il a été ajouté a votre Médallium. Faites `/medallium` pour le voir."
                 )
 
         else:
             brute_inventory[Yokai_choice] = [class_id]
-            brute_inventory[class_id] += 1
+            try:
+                brute_inventory[class_id] += 1
+            except:
+                brute_inventory[class_id] = 1
             await Cf.save_inv(brute_inventory, ctx.author.id)
             yokai_embed.add_field(
-                name="Vous ne l'avez jamais eu !",
+                name="Vous ne l'avez jamais eu ! 🆕",
                 value="Il a été ajouté a votre Médallium. Faites `/medallium` pour le voir."
             )
 
@@ -269,6 +676,7 @@ class Yokai(commands.Cog):
 
         
         else :
+            yokai_embed.set_footer(text="La V5 est enfin là, faites `/help` pour plus d'info !")
             return await ctx.send(embed=yokai_embed)
             
             
@@ -277,11 +685,12 @@ class Yokai(commands.Cog):
             
     
     @commands.hybrid_command(name="bkai")
-    async def bkai(self, ctx = commands.Context):
+    @app_commands.autocomplete(coin=bingo_kai_autcomplete)
+    async def bkai(self, ctx = commands.Context, coin : str = None):
         """
         Alias de /bingo-kai.
         """
-        await self.bingo_yokai(ctx)
+        await self.bingo_yokai(ctx, coin)
 
     
 async def setup(bot) -> None:
