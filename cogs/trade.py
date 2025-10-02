@@ -28,8 +28,11 @@ class TradeConfirmView(discord.ui.View):
         try:
             await self.message.edit(content=f" ⏱ {self.destinataire.mention} n'a pas répondu à temps pour confirmer le cadeau.", embed=None, view=self)
         except discord.NotFound:
-            
             pass
+        
+        #remove the user from the queue
+        await self.bot.trade_queue.delete(id=self.author.id)
+        await self.bot.trade_queue.delete(id=self.destinataire.id)
 
     @discord.ui.button(label="Accepter le trade", style=discord.ButtonStyle.green)
     async def accept(self, interaction: discord.Interaction, button: discord.ui.Button):
@@ -193,6 +196,9 @@ class GiftConfirmView(discord.ui.View):
             await self.message.edit(content=f" ⏱ <@{self.author.id}> n'a pas répondu à temps pour confirmer le cadeau.", embed=None, view=self)
         except discord.NotFound:
             pass
+        #remove the user from the queue
+        await self.bot.trade_queue.delete(id=self.author.id)
+        await self.bot.trade_queue.delete(id=self.destinataire.id)
 
     @discord.ui.button(label="Confirmer le cadeau", style=discord.ButtonStyle.green)
     async def accept(self, interaction: discord.Interaction, button: discord.ui.Button):
