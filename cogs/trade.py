@@ -36,6 +36,7 @@ class TradeConfirmView(discord.ui.View):
 
     @discord.ui.button(label="Accepter le trade", style=discord.ButtonStyle.green)
     async def accept(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.response.defer()
         if not interaction.user.id == self.destinataire.id:
             return
         
@@ -147,6 +148,7 @@ class TradeConfirmView(discord.ui.View):
     
     @discord.ui.button(label="Refuser / Annuler", style=discord.ButtonStyle.red)
     async def decline(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.response.defer()
         if interaction.user.id not in [self.author.id, self.destinataire.id]:
             return
 
@@ -202,7 +204,7 @@ class GiftConfirmView(discord.ui.View):
 
     @discord.ui.button(label="Confirmer le cadeau", style=discord.ButtonStyle.green)
     async def accept(self, interaction: discord.Interaction, button: discord.ui.Button):
-       
+        await interaction.response.defer()
         
         # verify if the sender is the one who clicked the button
         if interaction.user.id != self.author.id:
@@ -275,7 +277,7 @@ class GiftConfirmView(discord.ui.View):
     
     @discord.ui.button(label="Annuler / Refuser", style=discord.ButtonStyle.red)
     async def decline(self, interaction: discord.Interaction, button: discord.ui.Button):
-    
+        await interaction.response.defer()
         if interaction.user.id != self.author.id:
             return
 
