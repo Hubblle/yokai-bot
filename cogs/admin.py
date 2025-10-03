@@ -433,6 +433,22 @@ class Admin_command(commands.Cog):
                                         )
         self.bot.logger.warning(msg=f"{ctx.author.name} a utilisé le /remove sur l'id {input_id}, le yokai {yokai}, la quantité {number}")
         return await ctx.send(embed=sucess_embed)
+    
+    @commands.hybrid_command(name="say")
+    @Check.is_in_dev_team()
+    async def say(self, ctx: Context, *, message: str) -> None:
+        """
+        The bot will say anything you want.
+
+        :param context: The hybrid command context.
+        :param message: The message that should be repeated by the bot.
+        """
+        #we get the chanel so nobody can see that we executed a command:
+        chanel = ctx.channel
+        
+        await chanel.send(message)
+        self.bot.logger.info(msg=f"{ctx.author.name} a envoyer le message classique : {message}")
+        return await ctx.send("Votre message a bien été envoyé !", ephemeral=True)
                 
                 
 
