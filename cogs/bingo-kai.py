@@ -611,7 +611,7 @@ class Yokai(commands.Cog):
             #make the embed
             coin_embed = discord.Embed(
                 title=f"Oh, vous avez eu une {coin} en bonus !",
-                description=f"Félicitations, vous pouvez l'utiliser avec `/bingo-kai {coin}`.",
+                description=f"Félicitations, vous pouvez l'utiliser avec `/bingo-kai {coin}`.\n-# A savoir: le /bkai avec des pièces n'a pas de cooldown, juste une limite journalière (=>vous pouvez le spam tant que vous avez des pièces)",
                 color=discord.Color.from_str(coin_color)
             )
             
