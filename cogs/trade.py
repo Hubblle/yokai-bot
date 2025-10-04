@@ -21,8 +21,8 @@ class TradeConfirmView(discord.ui.View):
         self.message : discord.Message
         self.bot = bot
     
-    async def on_timeout(self, message : discord.Message):
-        self.bot.logger.info(f"La demande de trade de {self.author.name} a {self.recipient.name} a timeout")
+    async def on_timeout(self):
+        self.bot.logger.info(f"La demande de trade de {self.author.name} a {self.destinataire.name} a timeout")
         for item in self.children:
             item.disabled = True
         try:
@@ -33,6 +33,8 @@ class TradeConfirmView(discord.ui.View):
         #remove the user from the queue
         await self.bot.trade_queue.delete(id=self.author.id)
         await self.bot.trade_queue.delete(id=self.destinataire.id)
+        self.stop() 
+
 
     @discord.ui.button(label="Accepter le trade", style=discord.ButtonStyle.green)
     async def accept(self, interaction: discord.Interaction, button: discord.ui.Button):
@@ -450,9 +452,9 @@ class Trade(commands.Cog):
 
             
         #ADD the user to the queue
-        await self.bot.trade_queue.add_member(id=ctx.author.id)
-            
+        await self.bot.trade_queue.add_member(id=ctx.author.id) 
         await self.bot.trade_queue.add_member(id=destinataire.id)
+        
         
         view = TradeConfirmView(ctx.author, destinataire, asked_yokai_form, offered_yokai, son_yokai, ton_yokai, self.bot)
         
