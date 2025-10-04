@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands
-from discord import app_commands
 import bot_package.data as data
 import bot_package.Custom_func as Cf
 
@@ -50,7 +49,7 @@ class Search(commands.Cog):
             for coin in data.coin_loot:
                 if query in data.coin_loot[coin]["element_in_order"]:
                     idx = data.coin_loot[coin]["element_in_order"].index(query)
-                    locations.append(f"> {coin} avec {data.coin_loot[coin]["proba_in_order"][idx]*100}% de chance.")
+                    locations.append(f"> {coin} avec {round(data.coin_loot[coin]["proba_in_order"][idx]*100, 5)}% de chance.")
            
             
             
@@ -89,7 +88,7 @@ class Search(commands.Cog):
             
             coin_embed = discord.Embed(  
                 title=f"__Voici la {query}__",
-                description=f"Probabilité : {coin_data["proba"]*10}% de chance au /bingo-kai.\n"+(f"Vous en avez **{number}** !" if have_it else "Vous ne l'avez pas."),
+                description=f"Probabilité : {round(coin_data["proba"]*10, 5)}% de chance au /bingo-kai.\n"+(f"Vous en avez **{number}** !" if have_it else "Vous ne l'avez pas."),
                 color=discord.Color.from_str(coin_data["color"])
             )
             coin_embed.add_field(name="Obtenable via", value="> /bingo-kai", inline=False)
@@ -117,7 +116,7 @@ class Search(commands.Cog):
             for coin in data.coin_loot:
                 if query in data.coin_loot[coin]["element_in_order"]:
                     idx = data.coin_loot[coin]["element_in_order"].index(query)
-                    locations.append(f"> {coin} avec {data.coin_loot[coin]["proba_in_order"][idx]*100}% de chance.")
+                    locations.append(f"> {coin} avec {round(data.coin_loot[coin]["proba_in_order"][idx]*100, 5)}% de chance.")
             
             t_data = data.item.get(query, {})
             
@@ -151,7 +150,7 @@ class Search(commands.Cog):
             for coin in data.coin_loot:
                 if query in data.coin_loot[coin]["element_in_order"]:
                     idx = data.coin_loot[coin]["element_in_order"].index(query)
-                    locations.append(f"> {coin} avec {data.coin_loot[coin]["proba_in_order"][idx]*100}% de chance.")
+                    locations.append(f"> {coin} avec {round(data.coin_loot[coin]["proba_in_order"][idx]*100, 5)}% de chance.")
             
             item_data = data.item.get(query, {})
             
