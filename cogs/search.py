@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
 from discord import app_commands
-from difflib import SequenceMatcher
 import bot_package.data as data
 import bot_package.Custom_func as Cf
 

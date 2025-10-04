@@ -3,9 +3,6 @@ from discord.ext import commands
 from discord.ext.commands import Context
 from discord import app_commands
 import os
-import json
-import random
-import time
 import bot_package.Custom_func as Cf
 import bot_package.Check as Check
 import bot_package.data as data

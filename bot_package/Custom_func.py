@@ -1,6 +1,4 @@
 import os
-
-import asyncio
 import json
 import bot_package.data as data
 from difflib import SequenceMatcher

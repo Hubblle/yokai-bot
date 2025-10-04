@@ -1,10 +1,5 @@
 import discord
 from discord.ext import commands
-from discord.ext.commands import Context
-import os
-import json
-import random
-import time
 import bot_package.Custom_func as Cf
 import bot_package.data as data
 
