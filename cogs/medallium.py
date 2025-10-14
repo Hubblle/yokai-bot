@@ -202,39 +202,18 @@ class Medallium(commands.Cog) :
         total_point = 0
         
         yokai_claimed_count = ""
-        for classes in yokai_per_class:
-            if classes == "Shiny":
-                try:
-                    brute_inventory[classes]
-                    total += list_len[classes]
-                
-                    actual += brute_inventory[classes]
-                    total_point += brute_inventory[classes]*data.class_to_point[classes]
-                    
-                    if brute_inventory[classes] == 0:
-                        pass
-                    elif len(classes) == 1:
-                        yokai_claimed_count += f"Yo-kai de rang **{await Cf.classid_to_class(classes, False)}**: `{brute_inventory[classes]}/{list_len[classes]}`\n"
-                    else:
-                        yokai_claimed_count += f"Yo-kai **{await Cf.classid_to_class(classes, False)}**: `{brute_inventory[classes]}/{list_len[classes]}`\n"
-                
-                except KeyError:
-                    total += list_len[classes]
-                    yokai_claimed_count += f"Yo-kai **Shiny**: `0/{list_len[classes]}`\n"
-                    pass
-                    
-            else:       
-                total += list_len[classes]
-                
-                actual += brute_inventory[classes]
-                total_point += brute_inventory[classes]*data.class_to_point[classes]
-                
-                if brute_inventory[classes] == 0:
-                    pass
-                elif len(classes) == 1:
-                    yokai_claimed_count += f"Yo-kai de rang **{await Cf.classid_to_class(classes, False)}**: `{brute_inventory[classes]}/{list_len[classes]}`\n"
-                else:
-                    yokai_claimed_count += f"Yo-kai **{await Cf.classid_to_class(classes, False)}**: `{brute_inventory[classes]}/{list_len[classes]}`\n"
+        for classes in yokai_per_class:     
+            total += list_len[classes]
+            
+            actual += brute_inventory[classes]
+            total_point += brute_inventory[classes]*data.class_to_point[classes]
+            
+            if brute_inventory[classes] == 0:
+                pass
+            elif len(classes) == 1:
+                yokai_claimed_count += f"Yo-kai de rang **{await Cf.classid_to_class(classes, False)}**: `{brute_inventory[classes]}/{list_len[classes]}`\n"
+            else:
+                yokai_claimed_count += f"Yo-kai **{await Cf.classid_to_class(classes, False)}**: `{brute_inventory[classes]}/{list_len[classes]}`\n"
                 
         #process the completion of the medallium
         completion = actual/total*100
