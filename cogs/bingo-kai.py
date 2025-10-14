@@ -513,10 +513,11 @@ class Yokai(commands.Cog):
         try :
             id = data.yokai_list_full[Yokai_choice]["id"]
             yokai_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{id}.png")
-        except KeyError :
-            id = None
+        except KeyError:
+            pass
+        if id == None :
             yokai_embed.add_field(name="Image non disponible ! 😢", inline=False, value="En effet, nous ne possédons pas l'image de tous les Yo-kai, mais l'équipe travaille pour les apporter au complet et au plus vite.")
-        
+
         
         if ctx.guild is not None:
             self.bot.logger.info(
