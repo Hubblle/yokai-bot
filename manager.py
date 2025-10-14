@@ -85,11 +85,10 @@ with open("./files/yokai_list.json") as yokai_list:
         "treasureS" : len(yokai_data["treasureS"]["yokai_list"]),
         "DivinityS" : len(yokai_data["DivinityS"]["yokai_list"]),
         "SpecialS" : len(yokai_data["SpecialS"]["yokai_list"]),
-        "Boss" : len(yokai_data["Boss"]["yokai_list"])
+        "Boss" : len(yokai_data["Boss"]["yokai_list"]),
+        "Shiny" : len(yokai_data["Shiny"]["yokai_list"])
     }
-#Make the class list and the proba    
-Class_list = ['E', 'D', 'C', 'B', 'A', 'S', 'LegendaryS', "treasureS", "SpecialS", 'DivinityS', "Boss"]
-Proba_list = [0.4175, 0.2, 0.12, 0.12, 0.08, 0.04, 0.0075, 0.0075, 0.0075, 0.005, 0.0025]   
+
         
         
 def adjust():
@@ -125,13 +124,14 @@ def adjust():
                     "treasureS" : 0,
                     "SpecialS" : 0,
                     "DivinityS" : 0,
-                    "Boss" : 0
+                    "Boss" : 0,
+                    "Shiny": 0
                 }
                 current_inv = get_inv(file.strip(".json"))
                 if current_inv != {} :
                     for yokai in current_inv :
                         #check if the yokai is part of the inv system
-                        if yokai in ["E", "D", "C", "B", "A", "S", "LegendaryS", "treasureS", "SpecialS", "DivinityS", "Boss", "last_claim", "", "claim"] :
+                        if yokai in ["E", "D", "C", "B", "A", "S", "LegendaryS", "treasureS", "SpecialS", "DivinityS", "Boss", "last_claim", "", "claim", "Shiny"] :
                             pass
                         
                         else :
@@ -193,7 +193,7 @@ def inv_info():
                     total_user += 1
                     total_size += os.path.getsize(fp)
         print("General info :")
-        print(f"    Number of inventory file : {total_user} \n    Size of ./files/inventory : {total_size/1000}MB")
+        print(f"    Number of inventory file : {total_user} \n    Size of ./files/inventory : {total_size/1000000}MB")
         
     #if they chose the advenced mode
     if choise == 2 :
@@ -209,7 +209,7 @@ def inv_info():
                     total_user += 1
                     total_size += os.path.getsize(fp)
         print("General info :")
-        print(f"    Number of inventory file : {total_user} \n    Size of ./files/inventory : {total_size/1000}MB")
+        print(f"    Number of inventory file : {total_user} \n    Size of ./files/inventory : {total_size/1000000}MB")
         line()
         
         #get the number of yokai per class
@@ -224,7 +224,8 @@ def inv_info():
             "treasureS" : 0,
             "SpecialS" : 0,
             "DivinityS" : 0,
-            "Boss" : 0
+            "Boss" : 0,
+            "Shiny": 0
         }
         
         yokai_per_class_total = {
@@ -238,7 +239,8 @@ def inv_info():
             "treasureS" : 0,
             "SpecialS" : 0,
             "DivinityS" : 0,
-            "Boss" : 0
+            "Boss" : 0,
+            "Shiny": 0
         }
         
         for dirpath, dirnames, filenames in os.walk("./files/inventory"):
