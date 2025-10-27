@@ -267,11 +267,11 @@ async def main(self : commands.Bot, ctx = commands.Context, coin : str = None):
         
         #Set last claim
         await Cf.save_bag(bag, ctx.author.id)
-        yokai_embed.set_footer(f"{treasure} utilisé !")
+        yokai_embed.set_footer(text=f"{treasure} utilisé !")
         await ctx.send(embed=yokai_embed)
         return await ctx.send(embed=coin_embed)
 
     
     else :
-        yokai_embed.set_footer(f"{treasure} utilisé !")
+        yokai_embed.set_footer(text=f"{treasure} utilisé !")
         return await ctx.send(embed=yokai_embed)
