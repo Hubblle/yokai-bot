@@ -4,7 +4,7 @@ import bot_package.Custom_func as Cf
 
 class TradeConfirmView(discord.ui.View):
     
-    def __init__(self, author : discord.User, destinataire : discord.User, asked_yokai_form, offered_yokai, son_yokai, ton_yokai, bot):
+    def __init__(self, author : discord.User, destinataire : discord.User, asked_yokai_form, offered_yokai, son_yokai, ton_yokai, bot, ctx):
         super().__init__(timeout=60)
         self.author = author
         self.destinataire = destinataire
@@ -14,6 +14,7 @@ class TradeConfirmView(discord.ui.View):
         self.ton_yokai = ton_yokai
         self.message : discord.Message
         self.bot = bot
+        self.ctx = ctx
     
     async def on_timeout(self):
         self.bot.logger.info(f"La demande de trade de {self.author.name} a {self.destinataire.name} a timeout")
@@ -25,8 +26,8 @@ class TradeConfirmView(discord.ui.View):
             pass
         
         #remove the user from the queue
-        await self.bot.trade_queue.delete(id=self.author.id)
-        await self.bot.trade_queue.delete(id=self.destinataire.id)
+        await self.bot.trade_queue.delete(self.ctx.interaction.id)
+
         self.stop() 
 
 
@@ -118,10 +119,8 @@ class TradeConfirmView(discord.ui.View):
         
         #remove the user from the queue
 
-        await self.bot.trade_queue.delete(id=self.author.id)
-            
+        await self.bot.trade_queue.delete(self.ctx.interaction.id)
 
-        await self.bot.trade_queue.delete(id=self.destinataire.id)
         
             
         #send the success embed
@@ -158,10 +157,8 @@ class TradeConfirmView(discord.ui.View):
                 
         
         #remove the user from the queue
-        await self.bot.trade_queue.delete(id=self.author.id)
-            
+        await self.bot.trade_queue.delete(self.ctx.interaction.id)
 
-        await self.bot.trade_queue.delete(id=self.destinataire.id)
         
 
         for item in self.children:
@@ -176,7 +173,7 @@ class TradeConfirmView(discord.ui.View):
 ## FOR THE GIFT ##     
 class GiftConfirmView(discord.ui.View):
     
-    def __init__(self, author : discord.User, recipient : discord.User, ton_yokai, offered_yokai, bot):
+    def __init__(self, author : discord.User, recipient : discord.User, ton_yokai, offered_yokai, bot, ctx):
         super().__init__(timeout=60)
         self.author = author
         self.recipient = recipient
@@ -184,6 +181,7 @@ class GiftConfirmView(discord.ui.View):
         self.ton_yokai = ton_yokai
         self.offered_yokai = offered_yokai  
         self.bot = bot
+        self.ctx = ctx
 
     
     async def on_timeout(self):
@@ -195,8 +193,8 @@ class GiftConfirmView(discord.ui.View):
         except discord.NotFound:
             pass
         #remove the user from the queue
-        await self.bot.trade_queue.delete(id=self.author.id)
-        await self.bot.trade_queue.delete(id=self.destinataire.id)
+        await self.bot.trade_queue.delete(self.ctx.interaction.id)
+
 
     @discord.ui.button(label="Confirmer le cadeau", style=discord.ButtonStyle.green)
     async def accept(self, interaction: discord.Interaction, button: discord.ui.Button):
@@ -252,8 +250,7 @@ class GiftConfirmView(discord.ui.View):
         await Cf.save_inv(recipient_inv, self.recipient.id)
         
         #remove the user from the queue
-        await self.bot.trade_queue.delete(id=self.author.id)
-        await self.bot.trade_queue.delete(id=self.recipient.id)
+        await self.bot.trade_queue.delete(self.ctx.interaction.id)
         
         success_embed = discord.Embed(colour=discord.Color.green(),
                                     title="__**Le cadeau a bien été envoyé !**__ ✅",
@@ -283,8 +280,7 @@ class GiftConfirmView(discord.ui.View):
         self.bot.logger.info(f"{self.author.name} a annulée son cadeau pour {self.recipient.name}, dans {interaction.guild.name}")
         
         #remove the user from the queue
-        await self.bot.trade_queue.delete(id=self.author.id)
-        await self.bot.trade_queue.delete(id=self.recipient.id)
+        await self.bot.trade_queue.delete(self.ctx.interaction.id)
         
 
         for item in self.children:
@@ -327,7 +323,7 @@ class Trade(commands.Cog):
         
         """
         
-
+        # A func to return an embed when one of them don't have the yokai
         def dont_have_it_embed(who : str):
             if who == "a":
                 embed = discord.Embed(color=discord.Color.red(),
@@ -340,6 +336,9 @@ class Trade(commands.Cog):
                                     description=f"Verifiez que l'orthographe est correct ou que il le(s) possède bien (`/medallium {destinataire.name}`)"
                                     )
             return embed
+        
+        
+        
         
         
         #Get what we need
@@ -400,7 +399,7 @@ class Trade(commands.Cog):
         
         
         #Check for them in the queue:
-        if await self.bot.trade_queue.show(id=ctx.author.id):
+        if await self.bot.trade_queue.show(ctx.author):
             error_embed = discord.Embed(title="Vous ne pouvez pas faire de trade !",
                                         color=discord.Color.red(),
                                         description="Vous avez déjà un cadeau / trade en cours, merci de le finaliser avant de lancer celui-ci."
@@ -408,7 +407,7 @@ class Trade(commands.Cog):
             return await ctx.send(embed=error_embed)
             
             
-        if await self.bot.trade_queue.show(id=destinataire.id):
+        if await self.bot.trade_queue.show(destinataire):
             error_embed = discord.Embed(title=f"Vous ne pouvez pas faire de trade avec {destinataire.name}!",
                                         color=discord.Color.red(),
                                         description=f"{destinataire.mention} a déjà un cadeau / trade en cours."
@@ -444,13 +443,13 @@ class Trade(commands.Cog):
 
         self.bot.logger.info(f"{ctx.author.name} a demandé un trade à {destinataire.name}, il demande {son_yokai} contre {ton_yokai}, dans {ctx.guild.name}")
 
-            
+
+        
         #ADD the user to the queue
-        await self.bot.trade_queue.add_member(id=ctx.author.id) 
-        await self.bot.trade_queue.add_member(id=destinataire.id)
+        await self.bot.trade_queue.add_member(ctx.interaction.id, [ctx.author, destinataire]) 
         
         
-        view = TradeConfirmView(ctx.author, destinataire, asked_yokai_form, offered_yokai, son_yokai, ton_yokai, self.bot)
+        view = TradeConfirmView(ctx.author, destinataire, asked_yokai_form, offered_yokai, son_yokai, ton_yokai, self.bot, ctx=ctx)
         
         view.message = await ctx.send(embed=ask_embed, view=view)
         
@@ -525,14 +524,14 @@ class Trade(commands.Cog):
         
         #check in the queue
 
-        if await self.bot.trade_queue.show(id=ctx.author.id):
+        if await self.bot.trade_queue.show(ctx.author):
             error_embed = discord.Embed(title="Vous ne pouvez pas faire de cadeau !",
                                         color=discord.Color.red(),
                                         description="Vous avez déjà un cadeau / trade en cours, merci de le finaliser avant de lancer ce cadeau."
                                         )
             return await ctx.send(embed=error_embed)
         
-        if await self.bot.trade_queue.show(id=destinataire.id):
+        if await self.bot.trade_queue.show(destinataire):
             error_embed = discord.Embed(title=f"Vous ne pouvez pas faire de cadeau à {destinataire.name} !",
                                         color=discord.Color.red(),
                                         description=f"{destinataire.mention} a déjà un cadeau / trade en cours."
@@ -546,8 +545,7 @@ class Trade(commands.Cog):
         
         #ADD the user to the queue
 
-        await self.bot.trade_queue.add_member(id=ctx.author.id)
-        await self.bot.trade_queue.add_member(id=destinataire.id) 
+        await self.bot.trade_queue.add_member(ctx.interaction.id, [ctx.author, destinataire]) 
         
         ask_embed = discord.Embed(color=discord.Color.green(),
                                 title=f"{ctx.author.display_name} Fait un cadeau à {destinataire.display_name} !",
@@ -560,10 +558,11 @@ class Trade(commands.Cog):
         ask_embed.set_author(name="🕰️ L'offre timeout au bout de 1min.")
         
 
+
         self.bot.logger.info(f"{ctx.author.name} fait un cadeau à {destinataire.name}, il offre {ton_yokai}, dans {ctx.guild.name}")
              
         
-        view = GiftConfirmView(author=ctx.author, recipient=destinataire, ton_yokai=ton_yokai, offered_yokai=offered_yokai, bot=self.bot)
+        view = GiftConfirmView(author=ctx.author, recipient=destinataire, ton_yokai=ton_yokai, offered_yokai=offered_yokai, bot=self.bot, ctx=ctx)
         
         view.message = await ctx.send(embed=ask_embed, view=view)    
             
