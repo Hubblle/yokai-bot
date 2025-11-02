@@ -281,6 +281,13 @@ class DiscordBot(commands.Bot):
         :param context: The context of the normal command that failed executing.
         :param error: The error that has been faced.
         """
+        if context.command.name in ["trade", "cadeau"]:
+            #Prevent recipient / author form being stuck in the queue
+            
+            await bot.trade_queue.delete(context.interaction.id)
+            
+        
+        
         if isinstance(error, commands.CommandOnCooldown):
             minutes, seconds = divmod(error.retry_after, 60)
             hours, minutes = divmod(minutes, 60)
@@ -344,22 +351,7 @@ class DiscordBot(commands.Bot):
                     f"{context.author} (ID: {context.author.id}) tried to execute an dev team only command in the bot's DMs, but the user was not in the dev team of the bot."
                 )
         
-        elif context.command.name in ["trade", "cadeau"]:
-            #Prevent recipient / author form being stuck in the queue
-            
-            await bot.trade_queue.delete(context.interaction.id)
-            
-            #mk error file
-            raw_error = traceback.format_exception(error)
-            formated_error = ""
-            
-            for line in raw_error :
-                formated_error += line
-            try :
-                error_info = await Error_manager.mk_error_file(error_trace=formated_error, ctx=context, command=context.command.name)
-            except:
-                return
-            self.logger.error(error_info)
+        
         
         else:
             raw_error = traceback.format_exception(error)
