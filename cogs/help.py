@@ -1,5 +1,6 @@
 from discord.ext import commands
 import discord
+from bot_package import Check
 
 class Help(commands.Cog, name="help"):
     """
@@ -134,6 +135,23 @@ class Help(commands.Cog, name="help"):
                                 color=discord.Color.red())"""
 
         await ctx.send(embed=emb)
+        
+    @commands.hybrid_command(name="say")
+    @Check.is_in_dev_team()
+    async def say(self, ctx: commands.Context, *, message: str) -> None:
+        """
+        The bot will say anything you want.
+
+        :param context: The hybrid command context.
+        :param message: The message that should be repeated by the bot.
+        """
+        #we get the chanel so nobody can see that we executed a command:
+        chanel = ctx.channel
+        
+        
+        await chanel.send(message)
+        self.bot.logger.info(msg=f"{ctx.author.name} a envoyer le message classique : {message}")
+        return await ctx.send("Votre message a bien été envoyé !", ephemeral=True)
 
 async def setup(bot) -> None:
     await bot.add_cog(Help(bot))

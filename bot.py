@@ -159,12 +159,20 @@ class DiscordBot(commands.Bot):
         statuses = ["✨V5 !", "/bkai", "/help"]
         await self.change_presence(activity=discord.Game(random.choice(statuses)))
 
+
+
+
+
     @status_task.before_loop
     async def before_status_task(self) -> None:
         """
         Before starting the status changing task, we make sure the bot is ready
         """
         await self.wait_until_ready()
+
+
+
+
 
     async def setup_hook(self) -> None:
         """
@@ -213,6 +221,9 @@ class DiscordBot(commands.Bot):
         
         self.status_task.start()
         
+        
+        
+        
 
     async def on_message(self, message: discord.Message) -> None:
         """
@@ -223,6 +234,9 @@ class DiscordBot(commands.Bot):
         if message.author == self.user or message.author.bot:
             return
         await self.process_commands(message)
+        
+        
+        
 
     async def on_command_completion(self, context: Context) -> None:
         """
@@ -244,7 +258,7 @@ class DiscordBot(commands.Bot):
                     f"Executed {executed_command} command by {context.author} (ID: {context.author.id}) in DMs"
                 )
 
-        # Check if user has already seen the message
+        """# Check if user has already seen the message
         from bot_package.Custom_func import manage_cooldown
         if await manage_cooldown(context.author.id, check_only=True):
             return
@@ -252,16 +266,13 @@ class DiscordBot(commands.Bot):
         # Add user to cooldown and send message
         await manage_cooldown(context.author.id)
         
-        message = ("Cher utilisateur, ce bot a commencé il y a déjà quelques mois, et grâce à toi, à vous tous, il est aujourd’hui sur plus de 150 serveurs partout sur Discord, la communauté en est contente.\n"
-                "Mais les choses changent, et moi, Hubble, developpeur principal du bot: **j’arrête officiellement de développer ce bot**, voici ce que cela veut dire :\n"
-                "- Le bot sera toujours disponible, cela ne changera pas.\n"
-                "- Le bot ne recevra plus de mises à jour faites par moi.\n"
-                "- La communauté peut toujours utiliser le GitHub pour en faire (voir en bas du /help).\n"
-                "Si vous avez des compétences en Python, votre aide sur le GitHub est la bienvenue, et je suis toujours là pour **aider avec le code !**\n"
-                "\n"
-                "Je tenais à remercier particulièrement les personnes qui m’ont aidé dans ce projet, toutes celles qui ont donné des retours sur le bot, et la communauté YW en général dont je ne faisais pas partie, mais qui a su m’accueillir avec respect ❤️.\n"
-                "Si vous avez des questions: https://discord.gg/K4H4xhHqUb")
-        await context.send(message, ephemeral=True)
+        message = ("Bonjour, suite à un bug dans le stockage des fichiers de vos Médallium, nous avons dû procéder à un 'retour en arrière'\n"
+                "Cela veut dire que votre Médallium est au stade où il en était **hier à 21h10 environ**\n"
+                "Nous sommes désolés de ce dérangement, néanmoins, nous ne procédons à **aucun remboursement** de quoi que ce soit perdu suite à la procédure.\n"
+                "Merci de votre compréhension, cordialement, l'équipe de maintenance de ScientifiBot Y.\n"
+                "Si vous avez des questions : https://discord.gg/K4H4xhHqUb")
+
+        await context.send(message, ephemeral=True)"""
         
     async def on_command_error(self, context: Context, error) -> None:
         """
@@ -270,6 +281,13 @@ class DiscordBot(commands.Bot):
         :param context: The context of the normal command that failed executing.
         :param error: The error that has been faced.
         """
+        if context.command.name in ["trade", "cadeau"]:
+            #Prevent recipient / author form being stuck in the queue
+            
+            await bot.trade_queue.delete(context.interaction.id)
+            
+        
+        
         if isinstance(error, commands.CommandOnCooldown):
             minutes, seconds = divmod(error.retry_after, 60)
             hours, minutes = divmod(minutes, 60)
@@ -332,6 +350,8 @@ class DiscordBot(commands.Bot):
                 self.logger.warning(
                     f"{context.author} (ID: {context.author.id}) tried to execute an dev team only command in the bot's DMs, but the user was not in the dev team of the bot."
                 )
+        
+        
         
         else:
             raw_error = traceback.format_exception(error)

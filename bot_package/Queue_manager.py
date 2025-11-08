@@ -1,7 +1,7 @@
 """
 Queue manager for trade / gift command
 """
-
+import discord
 
 class Queue():
     """a class for a trade queue object
@@ -9,37 +9,43 @@ class Queue():
     def __init__(self):
         self.queue = {}
     
-    async def add_member(self, id : int):
+    async def add_member(self, id : int, user: list[discord.User]):
         """Add a user to the queue
 
         Args:
-            id (int): the id of the user
+            id (int): the id of the interaction
+            user (list[discord.User]): the list of the users
         """
-        self.queue[id] = True
+        self.queue[id]= user
 
                     
-    async def show(self, id : int) -> bool:
+    async def show(self, user : discord.User) -> bool:
         """Return if a user is in the queue
 
         Args:
-            id (int): the id of the user
+            user (discord.User): the user
 
         Returns:
             bool: If the user is in the queue
         """
-        #try to see if the member has a queue (si c'est un homme je pense oui ;-)
-        try : 
-            qeue = self.queue[id]
-        except KeyError:
-            qeue = False
-        return qeue
+        #try to see if the member is in the queue
+        queue = False
+        for interaction in self.queue:
+            for users in self.queue[interaction]:
+                if users.id == user.id:
+                    queue = True
+                    
+        return queue
 
     async def delete(self, id : int):
         """Delete a user from the queue
 
         Args:
-            id (int): The user's id
+            id (int): The interaction id
         """
-        self.queue[id] = False
+        try:
+            self.queue.pop(id)
+        except:
+            pass
 
         
