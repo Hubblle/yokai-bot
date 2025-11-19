@@ -250,7 +250,7 @@ class Search(commands.Cog):
                 title=f"Tag: {matched_tag}",
                 description="Voici les Yo-kai correspondants :\n" +
                             "\n".join(yokai_list),
-                color=discord.Color.from_str(data.TAGS_DATA[matched_tag]["color"])
+                color=discord.Color.from_str(TAGS_DATA[matched_tag]["color"])
             )
             tag_embed.set_footer(text=f"Possédés: {poss}/{len(matched_yokai)}")
             await ctx.send(embed=tag_embed)
