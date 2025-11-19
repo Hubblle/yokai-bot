@@ -4,7 +4,7 @@ import bot_package.data as data
 import bot_package.Custom_func as Cf
 import json
 
-TAGS_DATA = data.tags_info
+TAGS_DATA = data.TAGS_DATA
 
 
 async def get_available_tags(ctx: discord.Interaction, current: str):
