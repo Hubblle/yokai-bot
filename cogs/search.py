@@ -4,9 +4,8 @@ import bot_package.data as data
 import bot_package.Custom_func as Cf
 import json
 
-# Charge les tags depuis tags.json
-with open("./files/tags.json", encoding="utf-8") as f:
-    TAGS_DATA = json.load(f)
+TAGS_DATA = data.tags_info
+
 
 async def get_available_tags(ctx: discord.Interaction, current: str):
     """Autocomplétion pour les tags disponibles"""
@@ -217,7 +216,7 @@ class Search(commands.Cog):
 
     async def tag_process(self, ctx: commands.Context, tag: str):
         """Traite la recherche par tag depuis tags.json"""
-        # Vérifie que le tag existe dans TAGS_DATA
+        # Checks that the tag exists in TAGS_DATA
         matched_tag = None
         for t in TAGS_DATA.keys():
             if await Cf.smart_match(tag, t):
@@ -228,13 +227,12 @@ class Search(commands.Cog):
             available_tags = ", ".join(TAGS_DATA.keys())
             return await ctx.send(f"❌ Le tag '{tag}' n'existe pas.\n**Tags disponibles:** {available_tags}", ephemeral=True)
         
-        # Récupère la liste des yokai pour ce tag depuis tags.json
+        # Retrieves the list of yokai for this tag from tags.json
         matched_yokai = TAGS_DATA[matched_tag]["list"]
-
         if matched_yokai:
             inv = await Cf.get_inv(ctx.author.id)
             
-            # Crée la liste avec formatage gras pour ceux possédés
+            # Creates the list with bold formatting for those owned
             yokai_list = []
             poss = 0
 
@@ -252,7 +250,7 @@ class Search(commands.Cog):
                 title=f"Tag: {matched_tag}",
                 description="Voici les Yo-kai correspondants :\n" +
                             "\n".join(yokai_list),
-                color=discord.Color.from_str(TAGS_DATA[matched_tag]["color"])
+                color=discord.Color.from_str(data.TAGS_DATA[matched_tag]["color"])
             )
             tag_embed.set_footer(text=f"Possédés: {poss}/{len(matched_yokai)}")
             await ctx.send(embed=tag_embed)
