@@ -2,18 +2,53 @@ import discord
 from discord.ext import commands
 import bot_package.data as data
 import bot_package.Custom_func as Cf
+import json
+
+TAGS_DATA = data.tags_info
+
+
+async def get_available_tags(ctx: discord.Interaction, current: str):
+    """Autocomplétion pour les tags disponibles"""
+    tags = list(TAGS_DATA.keys())
+    matching = [tag for tag in tags if tag.lower().startswith(current.lower())]
+    return [discord.app_commands.Choice(name=tag, value=tag) for tag in matching]
+
+
+
 
 class Search(commands.Cog):
-    """\nNew ✨!\nCherche un yokai, trésor, pièce ou même item.\ndonne toutes les infos à savoir dessus.\n"""
+    """
+    New ✨!
+    Cherche un yokai, trésor, pièce ou même item.
+    donne toutes les infos à savoir dessus.
+    """
+
     def __init__(self, bot):
         self.bot = bot
 
     @commands.hybrid_command(name="search")
-    async def search(self, ctx: commands.Context, query: str):
-        """\nNew ✨! Cherche un yokai, trésor, pièce ou même item.\ndonne toutes les infos à savoir dessus."""
+    async def search(self, ctx: commands.Context, query: str = None, tag: str = None):
+        """
+        New ✨! Cherche un yokai, trésor, pièce ou même item.
+        donne toutes les infos à savoir dessus.
+        """
 
-        
-        # Check Yo-kai
+        # vérifie les entrées
+        if (query is None and tag is None) or (query is not None and tag is not None):
+            return await ctx.send("❌ Veuillez remplir seulement une **option**.", ephemeral=True)
+
+        if tag is not None:
+            return await self.tag_process(ctx, tag)
+
+        return await self.query_process(ctx, query)
+    
+    @search.autocomplete("tag")
+    async def search_tag_autocomplete(self, interaction: discord.Interaction, current: str):
+        """Autocomplétion pour le paramètre tag"""
+        return await get_available_tags(interaction, current)
+
+    async def query_process(self, ctx: commands.Context, query: str):
+            # Check Yo-kai
         yokai = False
         for key in data.yokai_list_full:
             if await Cf.smart_match(query, key):
@@ -166,6 +201,62 @@ class Search(commands.Cog):
             return
         # Not found
         await ctx.send(f"❌ Aucun résultat pour '{query}'.", ephemeral=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+    async def tag_process(self, ctx: commands.Context, tag: str):
+        """Traite la recherche par tag depuis tags.json"""
+        # Checks that the tag exists in TAGS_DATA
+        matched_tag = None
+        for t in TAGS_DATA.keys():
+            if await Cf.smart_match(tag, t):
+                matched_tag = t
+                break
+        
+        if not matched_tag:
+            available_tags = ", ".join(TAGS_DATA.keys())
+            return await ctx.send(f"❌ Le tag '{tag}' n'existe pas.\n**Tags disponibles:** {available_tags}", ephemeral=True)
+        
+        # Retrieves the list of yokai for this tag from tags.json
+        matched_yokai = TAGS_DATA[matched_tag]["list"]
+        if matched_yokai:
+            inv = await Cf.get_inv(ctx.author.id)
+            
+            # Creates the list with bold formatting for those owned
+            yokai_list = []
+            poss = 0
+
+            for yokai in matched_yokai:
+                if yokai in inv:
+                    if len(inv[yokai]) > 1:
+                        yokai_list.append(f"> **{yokai}** (**{inv[yokai][1]}**)")
+                    else:
+                        yokai_list.append(f"> **{yokai}**")
+                    poss += 1
+                else:
+                    yokai_list.append(f"> {yokai}")
+            
+            tag_embed = discord.Embed(
+                title=f"Tag: {matched_tag}",
+                description="Voici les Yo-kai correspondants :\n" +
+                            "\n".join(yokai_list),
+                color=discord.Color.from_str(TAGS_DATA[matched_tag]["color"])
+            )
+            tag_embed.set_footer(text=f"Possédés: {poss}/{len(matched_yokai)}")
+            await ctx.send(embed=tag_embed)
+        else:
+            return await ctx.send(f"❌ Aucun yokai trouvé avec le tag '{matched_tag}'.", ephemeral=True)
+
 
 async def setup(bot):
     await bot.add_cog(Search(bot))
