@@ -86,32 +86,45 @@ class Admin_command(commands.Cog):
     
     
  
-    @commands.hybrid_command(name="show")
+    @commands.hybrid_command(name="inventory")
     async def show(self, ctx : commands.Context, input : str):
-        """give stats about input data.
-        
-        Available stats for now : `inventory`
-        
         """
-            
-            
-        if input == "inventory":
-
-            total_user = 0
-            total_size = 0
-            for dirpath, dirnames, filenames in os.walk("./files/inventory"):
-                for f in filenames:
-                    fp = os.path.join(dirpath, f)
-                    # skip if it is symbolic link
-                    if not os.path.islink(fp):
-                        total_user += 1
-                        total_size += os.path.getsize(fp)
-            
-            #mk the embed
-            stats_embed = discord.Embed(color=discord.Color.green(), title="Voici les stats de l'inventaire :")
-            stats_embed.add_field(name="Le nombre d'utilisateurs qui ont un inventaire :", value=f"`{total_user}` utilisateurs", inline=False)
-            stats_embed.add_field(name="Taille du dossier `inventory`", value=f"`{total_size}` octet", inline=False)
-            return await ctx.send(embed=stats_embed)
+        Donne des info sur les Medalliums/sacoches des utilisateurs du bot
+        """
+        
+        total_user_md = 0
+        total_size_md = 0
+        
+        total_user_bag = 0
+        total_size_bag = 0
+        
+        #Medallium part
+        for dirpath, _, filenames in os.walk("./files/inventory"):
+            for f in filenames:
+                fp = os.path.join(dirpath, f)
+                # skip if it is symbolic link
+                if not os.path.islink(fp):
+                    total_user_md += 1
+                    total_size_md += os.path.getsize(fp)
+                    
+        #Bag part
+        for dirpath, _, filenames in os.walk("./files/bag"):
+            for f in filenames:
+                fp = os.path.join(dirpath, f)
+                # skip if it is symbolic link
+                if not os.path.islink(fp):
+                    total_user_bag += 1
+                    total_size_bag += os.path.getsize(fp)
+        
+        
+        #mk the embed
+        stats_embed = discord.Embed(color=discord.Color.green(), title="Voici les stats de l'inventaire :")
+        stats_embed.add_field(name="Le nombre d'utilisateurs qui ont un inventaire :", value=f"`{total_user_md}` utilisateurs", inline=False)
+        stats_embed.add_field(name="Taille du dossier `inventory`", value=f"`{total_size_md}` octet", inline=False)
+        stats_embed.add_field(name="--------------------")
+        stats_embed.add_field(name="Le nombre d'utilisateurs qui ont une sacoche :", value=f"`{total_user_bag}` utilisateurs", inline=False)
+        stats_embed.add_field(name="Taille du dossier `bag`", value=f"`{total_size_bag}` octet", inline=False)
+        return await ctx.send(embed=stats_embed)
                        
         
         
@@ -124,8 +137,12 @@ class Admin_command(commands.Cog):
     @app_commands.autocomplete(rang=class_autcomplete)
     async def give(self, ctx : commands.Context, input_id : str, yokai : str, rang : str, where : str, number : str = '1'):
         """
-        Give un Yo-kai à un utilisateur donné.
-        `.give {id de l'utilisateur} {"yokai"} {rang} {bag/medallium} {quantité}`
+        Give un Yo-kai/Pièce/Trésor/Objet à un utilisateur donné.
+        `.give <id de l'utilisateur> <nom> <rang> <bag/medallium> <quantité>`
+        
+        Dans le cas où le rang est "json-mod":
+        `.give <id de l'utilisateur> <Valeur> json-mod <bag/medallium> <valeur de la clée>`
+        ⚠️ ** N'utilisez ce mode qui si vous savez ce que vous faites !**
         """
     
 
@@ -182,7 +199,23 @@ class Admin_command(commands.Cog):
             self.bot.logger.warning(msg=f"{ctx.author.name} a utilisé le /give sur l'id {input_id}, en mode json-mod, dans le {where}")
             return await ctx.send(embed=sucess_embed)
                     
-                
+        
+        if rang == "claim":
+            #In case they are trying to give claims
+            
+            inv = await Cf.get_inv(input_id)
+            
+            if inv == {}:
+                inv = data.default_medaillum
+
+            inv["claim"] = number
+            await save_inv(inv, input_id)
+            sucess_embed = discord.Embed(title=f"`{input_id}` a reçu {number} claims",
+                                        color=discord.Color.green(),
+                                        description=""
+                                        )
+            self.bot.logger.warning(msg=f"{ctx.author.name} a utilisé le /give sur l'id {input_id}, il a donné {number} claims")
+            return await ctx.send(embed=sucess_embed)
         
         
         
@@ -298,7 +331,7 @@ class Admin_command(commands.Cog):
     async def remove(self, ctx : commands.Context, input_id : str, yokai : str, rang : str, where : str, number : int = 1): 
         """
         Remove un Yo-kai à un utilisateur donné.
-        `.give {id de l'utilisateur} {"yokai"} {rang}`
+        `.remove <id de l'utilisateur> <nom> <rang> <bag/medallium> <quantité>`
         """
         
         
