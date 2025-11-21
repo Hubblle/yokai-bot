@@ -10,7 +10,7 @@ import bot_package.data as data
 
 
 async def class_autcomplete(interaction : discord.Interaction, current : str) -> list[app_commands.Choice[str]] :
-    choices = ["Shiny", "Boss", "Divinité / Enma", "Légendaire", "Spécial", "S", "A", "B", "C", "D", "E", "objet", "pièce", "json-mod"]
+    choices = ["Shiny", "Boss", "Divinité / Enma", "Légendaire", "Spécial", "S", "A", "B", "C", "D", "E", "objet", "pièce", "json-mod", "claim"]
     list = [
         app_commands.Choice(name=choices, value=choices)
         for choices in choices if current.lower() in choices.lower()
@@ -87,7 +87,7 @@ class Admin_command(commands.Cog):
     
  
     @commands.hybrid_command(name="inventory")
-    async def show(self, ctx : commands.Context, input : str):
+    async def inventory(self, ctx : commands.Context):
         """
         Donne des info sur les Medalliums/sacoches des utilisateurs du bot
         """
@@ -120,10 +120,10 @@ class Admin_command(commands.Cog):
         #mk the embed
         stats_embed = discord.Embed(color=discord.Color.green(), title="Voici les stats de l'inventaire :")
         stats_embed.add_field(name="Le nombre d'utilisateurs qui ont un inventaire :", value=f"`{total_user_md}` utilisateurs", inline=False)
-        stats_embed.add_field(name="Taille du dossier `inventory`", value=f"`{total_size_md}` octet", inline=False)
-        stats_embed.add_field(name="--------------------")
+        stats_embed.add_field(name="Taille du dossier `inventory`", value=f"`{total_size_md}` octets", inline=False)
+        stats_embed.add_field(name="--------------------",value="")
         stats_embed.add_field(name="Le nombre d'utilisateurs qui ont une sacoche :", value=f"`{total_user_bag}` utilisateurs", inline=False)
-        stats_embed.add_field(name="Taille du dossier `bag`", value=f"`{total_size_bag}` octet", inline=False)
+        stats_embed.add_field(name="Taille du dossier `bag`", value=f"`{total_size_bag}` octets", inline=False)
         return await ctx.send(embed=stats_embed)
                        
         
@@ -464,8 +464,57 @@ class Admin_command(commands.Cog):
         self.bot.logger.warning(msg=f"{ctx.author.name} a utilisé le /remove sur l'id {input_id}, le yokai {yokai}, la quantité {number}")
         return await ctx.send(embed=sucess_embed)
     
+    @commands.hybrid_command(name="export")
+    @Check.is_in_dev_team()
+    @app_commands.autocomplete(where=where_autcomplete)
+    async def export(self, ctx : commands.Context, input_id : str,where : str): 
+        """
+        Export le json brute de l'entrée demandée.
+        """
+        #make the file path
+        if where not in ["bag", "medallium"]:
+            return await ctx.send("Merci d'utiliser un \"where\" valide!", ephemeral=True)
+        
+        path = "./files/bag/" if where == "bag" else "./files/inventory/"
+        path += input_id+".json" 
+        
+        try:
+            await ctx.send("Voici le fichier !", file=discord.File(path))
+        except Exception as e:
+            await ctx.send(f"Error: {e}", ephemeral=True)
+            
     
-                
+    @commands.hybrid_command(name="import")
+    @Check.is_in_dev_team()
+    @app_commands.autocomplete(where=where_autcomplete)
+    async def import_func(self, ctx : commands.Context, input_id : str, where : str, file: discord.Attachment): 
+        """
+        Import le json brute de l'entrée demandée.
+        """
+        #make the file path
+        if where not in ["bag", "medallium"]:
+            return await ctx.send("Merci d'utiliser un \"where\" valide!", ephemeral=True)
+        
+        path = "./files/bag/" if where == "bag" else "./files/inventory/"
+        path += input_id + ".json"
+        
+        try:
+            # Download the file from Discord
+            file_content = await file.read()
+            
+            # Save the file to the specified path
+            with open(path, 'wb') as f:
+                f.write(file_content)
+            
+            sucess_embed = discord.Embed(
+                title=f"Fichier importé avec succès !",
+                description=f"Le fichier a été sauvegardé dans `{path}`",
+                color=discord.Color.green()
+            )
+            self.bot.logger.warning(msg=f"{ctx.author.name} a utilisé le /import sur l'id {input_id} dans le {where}")
+            await ctx.send(embed=sucess_embed)
+        except Exception as e:
+            await ctx.send(f"Erreur: {e}", ephemeral=True)
                 
 
 async def setup(bot : commands.Bot ) -> None:
