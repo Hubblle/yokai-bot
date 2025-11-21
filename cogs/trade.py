@@ -463,7 +463,7 @@ class Trade(commands.Cog):
     async def cadeau(self, ctx : commands.Context, ton_yokai : str, destinataire : discord.User):
         
         """
-        Cette commande vous permet de donner un Yo-kai
+        Cette commande vous permet de donner un Yo-kai.
         `/cadeau [Le Yo-kai que vous proposez] [L'utilisateur avec qui vous voulez l'échanger]`
 
         

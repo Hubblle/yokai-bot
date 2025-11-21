@@ -24,7 +24,7 @@ async def bingo_kai_autcomplete(interaction : discord.Interaction, current : str
 
 
 # Yokai command cog
-class Yokai(commands.Cog):
+class Bingo_kai(commands.Cog):
     
     """
     Tire au sort un Yo-kai de manière aléatoire.
@@ -695,4 +695,4 @@ class Yokai(commands.Cog):
 
     
 async def setup(bot) -> None:
-    await bot.add_cog(Yokai(bot))
+    await bot.add_cog(Bingo_kai(bot))

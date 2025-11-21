@@ -74,7 +74,7 @@ class Admin_command(commands.Cog):
         brute_inventory = {}
         await Cf.save_inv(brute_inventory, input_id)
         sucess_embed = discord.Embed(
-            title="Le Médallium de cette utilisateur a été vidé !",
+            title="Le Médallium de cet utilisateur a été vidé !",
             color= discord.Color.green()
         )
         #Log
@@ -109,7 +109,7 @@ class Admin_command(commands.Cog):
             
             #mk the embed
             stats_embed = discord.Embed(color=discord.Color.green(), title="Voici les stats de l'inventaire :")
-            stats_embed.add_field(name="Le nombre d'uilisateurs qui ont un inventaire :", value=f"`{total_user}` utilisateurs", inline=False)
+            stats_embed.add_field(name="Le nombre d'utilisateurs qui ont un inventaire :", value=f"`{total_user}` utilisateurs", inline=False)
             stats_embed.add_field(name="Taille du dossier `inventory`", value=f"`{total_size}` octet", inline=False)
             return await ctx.send(embed=stats_embed)
                        
@@ -367,7 +367,7 @@ class Admin_command(commands.Cog):
         if inv == {}:
             error_embed = discord.Embed(
                 title=f"Ce Yo-kai n'est pas dans le Médallium de {input_id}",
-                description="Merci de verifier si la commande est utilisée de manière valide (`/help Admin_command`)",
+                description="Merci de vérifier si la commande est utilisée de manière valide (`/help Admin_command`)",
                 color= discord.Color.red()
             )
             return await ctx.send(embed=error_embed)
@@ -385,8 +385,8 @@ class Admin_command(commands.Cog):
                 
                 except KeyError:
                     error_embed = discord.Embed(
-                        title=f"Cet élement n'est pas dans le {where} de {input_id}",
-                        description="Merci de verifier si la commande est utilisée de manière valide (`/help Admin_command`)",
+                        title=f"Cet élément n'est pas dans le {where} de {input_id}",
+                        description="Merci de vérifier si la commande est utilisée de manière valide (`/help Admin_command`)",
                         color= discord.Color.red()
                     )
                     return await ctx.send(embed=error_embed)
