@@ -323,6 +323,19 @@ class Trade(commands.Cog):
         
         """
         
+        
+        # Check bot permissions
+        if not ctx.channel.permissions_for(ctx.me).send_messages:
+            return await ctx.send("⛔ Je n'ai pas la permission d'envoyer des messages ici.")
+
+        if not ctx.channel.permissions_for(ctx.me).embed_links:
+            return await ctx.send("⛔ Je n'ai pas la permission d'envoyer des embeds ici.")
+
+        if not ctx.channel.permissions_for(ctx.me).view_channel:
+            return await ctx.send("⛔ Je n'ai pas accès à ce chanel.")
+        
+        
+        
         # A func to return an embed when one of them don't have the yokai
         def dont_have_it_embed(who : str):
             if who == "a":
@@ -472,6 +485,20 @@ class Trade(commands.Cog):
         -# Note :
         -# L'équipe du support n'est en aucun cas responsable si vous échangez un Yo-kai par erreur. Aucun Yo-kai ne sera remboursé.
         """
+        
+        
+        # Check bot permissions
+        if not ctx.channel.permissions_for(ctx.me).send_messages:
+            return await ctx.send("⛔ Je n'ai pas la permission d'envoyer des messages ici.")
+
+        if not ctx.channel.permissions_for(ctx.me).embed_links:
+            return await ctx.send("⛔ Je n'ai pas la permission d'envoyer des embeds ici.")
+
+        if not ctx.channel.permissions_for(ctx.me).view_channel:
+            return await ctx.send("⛔ Je n'ai pas accès à ce chanel.")
+        
+        
+        
         
         
         #Get what we need
