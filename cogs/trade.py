@@ -325,14 +325,15 @@ class Trade(commands.Cog):
         
         
         # Check bot permissions
+        if not ctx.channel.permissions_for(ctx.me).view_channel:
+            return await ctx.send("⛔ Je n'ai pas accès à ce chanel.")
+        
         if not ctx.channel.permissions_for(ctx.me).send_messages:
             return await ctx.send("⛔ Je n'ai pas la permission d'envoyer des messages ici.")
 
         if not ctx.channel.permissions_for(ctx.me).embed_links:
             return await ctx.send("⛔ Je n'ai pas la permission d'envoyer des embeds ici.")
 
-        if not ctx.channel.permissions_for(ctx.me).view_channel:
-            return await ctx.send("⛔ Je n'ai pas accès à ce chanel.")
         
         
         
@@ -488,14 +489,16 @@ class Trade(commands.Cog):
         
         
         # Check bot permissions
+        if not ctx.channel.permissions_for(ctx.me).view_channel:
+            return await ctx.send("⛔ Je n'ai pas accès à ce chanel.")
+        
         if not ctx.channel.permissions_for(ctx.me).send_messages:
             return await ctx.send("⛔ Je n'ai pas la permission d'envoyer des messages ici.")
 
         if not ctx.channel.permissions_for(ctx.me).embed_links:
             return await ctx.send("⛔ Je n'ai pas la permission d'envoyer des embeds ici.")
 
-        if not ctx.channel.permissions_for(ctx.me).view_channel:
-            return await ctx.send("⛔ Je n'ai pas accès à ce chanel.")
+        
         
         
         
