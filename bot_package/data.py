@@ -131,6 +131,9 @@ for dirpath, dirnames, filenames in os.walk("./files/coin"):
 #items info :
 item = open_json("./files/items.json")
 
+#tag info
+TAGS_DATA = open_json("./files/tags.json")
+
 
 default_medaillum  = {
                         "last_claim" : 10000,

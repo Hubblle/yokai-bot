@@ -58,9 +58,9 @@ with open("./files/full_name_fr.json") as yk_list_full:
 
 
 asset_for_class_id_to_class = {
-    "coin" : "pièce",
-    "obj" : "objet",
-    "treasure": "trésor"
+    "coin" : "Pièce",
+    "obj" : "Objet",
+    "treasure": "Trésor"
 }
 
 
@@ -144,6 +144,7 @@ async def save_bag(data : dict, id : int):
     with open(f"./files/bag/{str(id)}.json", "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
         
+        
 exlude_match=['Castelius I', 'Castelius III', 'Castelius II', 'Jibanyan', 'Jibanyan S', 'Robonyan', 'Oronyan', 'Komasan', 'Komajiro', 'Komasan S', 'Komajiro S', 'Corniot', 'Bicorniot', 'Sale de bain', 'Potache', 'Felipaix', 'Métaureaulog', 'M. Felipaix', 'Ornella', 'Sornella', 'Robonyan F', 'Ultramax N', 'Ultramax K', 'Oranyan', 'Gale de bain', 'Métaréaulog', 'Jibanyan B', 'Komasan B', 'Usapyon B', 'Jiganyan', 'Scientifiborg Y', 'Dépotache', 'Survolt', 'Supervolt', 'Usapyon', 'Oridjinn', 'Horridjinn', 'Superobonyan', 'Jibanyan T', 'Komasan T', 'Roi Jibanyan', 'Supernyan', 'Domniscian', 'Domniscian 2.0', 'Don Morleone', 'Don Dorleone', 'Robonyan 28', 'Usapyon T', 'Kuroi Jibanyan', 'ScientifiBot Y', 'UZApyon', 'Omai Tourbillonnant', 'Or Tourbillonnant']
 async def smart_match(s1: str, s2: str) -> bool:
     """
@@ -175,6 +176,7 @@ async def smart_match(s1: str, s2: str) -> bool:
     # Sequence matcher for fuzzy matching
     ratio = SequenceMatcher(None, s1_clean, s2_clean).ratio()
     return ratio > 0.85  # Adjust threshold as needed
+
 
 async def manage_cooldown(user_id: int, check_only: bool = False) -> bool:
     """Manage the cooldown list for goodbye message

@@ -9,7 +9,7 @@
   },
   "Marge": {
     "name_en": "Marcy",
-    "id": null
+    "id": "yf000011"
   },
   "Violette": {
     "name_en": "Blips",
@@ -1117,7 +1117,7 @@
   },
   "DON-CHAN": {
     "name_en": "DON-CHAN",
-    "id": null
+    "id": "yf000007"
   },
   "Métaureaulog": {
     "name_en": "Predictabull",
@@ -1365,7 +1365,7 @@
   },
   "Boucanyan": {
     "name_en": "Wondernyan",
-    "id": null
+    "id": "yf000001"
   },
   "Narinos": {
     "name_en": "Snottle",
@@ -1773,7 +1773,7 @@
   },
   "Pogorille": {
     "name_en": "Sing Kong",
-    "id": null
+    "id": "yf000002"
   },
   "Mulangeur": {
     "name_en": "Slippy",
@@ -2261,11 +2261,11 @@
   },
   "Chocobo-nyan": {
     "name_en": "Chocobonyan",
-    "id": null
+    "id": "yf000004"
   },
   "Mog-nyan": {
     "name_en": "Mooglenyan",
-    "id": null
+    "id": "yf000003"
   },
   "Wobblenyan": {
     "name_en": "Wobblenyan",
@@ -2529,11 +2529,11 @@
   },
   "Inamygal": {
     "name_en": "Tarantutor",
-    "id": null
+    "id": "yf000018"
   },
   "McKraken": {
     "name_en": "McKraken",
-    "id": null
+    "id": "yf000014"
   },
   "Volteface": {
     "name_en": "Duwheel",
@@ -2557,7 +2557,7 @@
   },
   "Firmain": {
     "name_en": "Hans Full",
-    "id": null
+    "id": "yf000009"
   },
   "Maximain": {
     "name_en": "Hans Galore",
@@ -2696,8 +2696,8 @@
     "id": "y573000"
   },
   "Boulet Frit": {
-    "name_en": null,
-    "id": null
+    "name_en": "Chicken Chukket",
+    "id": "y523000"
   },
   "El Galardo": {
     "name_en": "El Gutso",
@@ -2724,7 +2724,7 @@
     "id": "y730000"
   },
   "Whispavret": {
-    "name_en": null,
+    "name_en": "Whispocrates",
     "id": null
   },
   "Combattank(Dassensha Ro Shuku)": {
@@ -2736,15 +2736,15 @@
     "id": null
   },
   "Faux Kappa(du passé)": {
-    "name_en": null,
+    "name_en": "Faux Kappa",
     "id": null
   },
   "Komajiro Sun Quan": {
-    "name_en": null,
+    "name_en": "Komajiro Sun Quan",
     "id": null
   },
   "Mme. Papilla": {
-    "name_en": null,
+    "name_en": "Nurse Tongus",
     "id": null
   },
   "Perfœil(Ogu,Togu & Mogu)": {
@@ -2780,15 +2780,15 @@
     "id": "y722000"
   },
   "M.Spioche": {
-    "name_en": null,
+    "name_en": "Shovulcan",
     "id": null
   },
   "Pain Surprise": {
-    "name_en": null,
+    "name_en": "Punching Baguette",
     "id": null
   },
   "Usapyon T": {
-    "name_en": null,
+    "name_en": "Treasure USApyon",
     "id": null
   },
   "Whisper Kongming": {
@@ -2805,15 +2805,15 @@
   },
   "Bambinflammable": {
     "name_en": "Inflammaboy!",
-    "id": null
+    "id": "y571010"
   },
   "Bambinsupportable": {
-    "name_en": null,
-    "id": null
+    "name_en": "Unbearaboy!",
+    "id": "y571000"
   },
   "Holy Rabby": {
-    "name_en": null,
-    "id": null
+    "name_en": "Holy Rabby",
+    "id": "yf000020"
   },
   "Jibanyan Liu Bei": {
     "name_en": "Jibanyan Liu Bei",
@@ -2832,8 +2832,8 @@
     "id": "y667000"
   },
   "Sire Trompelamor": {
-    "name_en": null,
-    "id": null
+    "name_en": "King Deadward",
+    "id": "y742000"
   },
   "Balopendre": {
     "name_en": null,
@@ -2853,7 +2853,7 @@
   },
   "Kuroi Komasan": {
     "name_en": null,
-    "id": null
+    "id": "yf000019"
   },
   "Mathiptère": {
     "name_en": null,
@@ -2897,11 +2897,11 @@
   },
   "Baron Ananta(Jaou Kaira)": {
     "name_en": null,
-    "id": null
+    "id": "yf000006"
   },
   "Enma 2.0": {
-    "name_en": null,
-    "id": null
+    "name_en": "Enma Awoken",
+    "id": "y740000"
   },
   "Enma Infini": {
     "name_en": "Infinite Enma",
@@ -2913,170 +2913,170 @@
   },
   "Yami Enma": {
     "name_en": null,
-    "id": null
+    "id": "yf000005"
   },
   "Zazel le Bon": {
     "name_en": "Righteous Zazel",
     "id": "y739000"
   },
   "Ambronzio": {
-    "name_en": null,
+    "name_en": "Bronzlow",
     "id": null
   },
   "Barbebluff": {
-    "name_en": null,
+    "name_en": "Cap'n Rex",
     "id": null
   },
   "Barbefrousse": {
-    "name_en": null,
+    "name_en": "Cap'n Crash",
     "id": null
   },
   "Blingos": {
-    "name_en": null,
+    "name_en": "Goldy Bones",
     "id": null
   },
   "Bogos": {
-    "name_en": null,
+    "name_en": "Glitzy Bones",
     "id": null
   },
   "Chomino": {
-    "name_en": null,
+    "name_en": "Headasteam",
     "id": null
   },
   "Cycloptique": {
-    "name_en": null,
+    "name_en": "Retinado",
     "id": null
   },
   "Dr.Jobard": {
-    "name_en": null,
-    "id": null
+    "name_en": "Dr. Maddiman",
+    "id": "yf000015"
   },
   "Filomène": {
-    "name_en": null,
+    "name_en": "Kat Kraydel",
     "id": null
   },
   "Hagacurée": {
-    "name_en": null,
+    "name_en": "Spooklunk",
     "id": null
   },
   "Hydreux": {
-    "name_en": null,
+    "name_en": "Eyedra",
     "id": null
   },
   "Infiniris": {
-    "name_en": null,
+    "name_en": "Infinipea",
     "id": null
   },
   "Lady Démona": {
-    "name_en": null,
+    "name_en": "Dame Demona",
     "id": null
   },
   "Lady Maggie": {
-    "name_en": null,
-    "id": null
+    "name_en": "Dame Dredful",
+    "id": "yf000008"
   },
   "Lady Perpétua": {
-    "name_en": null,
-    "id": null
+    "name_en": "Dame Dedtime",
+    "id": "yf000010"
   },
   "Laure": {
-    "name_en": null,
-    "id": null
+    "name_en": "Kin",
+    "id": "yf000012"
   },
   "Majordogue ": {
-    "name_en": null,
+    "name_en": "Duke Doggy",
     "id": null
   },
   "Maribass": {
-    "name_en": null,
+    "name_en": "Floppa",
     "id": null
   },
   "Mariotte": {
-    "name_en": null,
+    "name_en": "Flippa",
     "id": null
   },
   "McKraken (2ème forme)": {
     "name_en": null,
-    "id": null
+    "id": "yf000013"
   },
   "Nébulor": {
-    "name_en": null,
+    "name_en": "Clipso",
     "id": null
   },
   "Ombraptor": {
-    "name_en": null,
-    "id": null
+    "name_en": "Massiface",
+    "id": "yf000016"
   },
   "Pr.Létripe": {
-    "name_en": null,
+    "name_en": "Dr. Nogut",
     "id": null
   },
   "Rancornet": {
-    "name_en": null,
+    "name_en": "Squisker",
     "id": null
   },
   "Sabroclair": {
-    "name_en": null,
-    "id": null
+    "name_en": "Phantasmurai",
+    "id": "yf000017"
   },
   "Styx VI": {
-    "name_en": null,
+    "name_en": "Styx Mk. VI",
     "id": null
   },
   "Taprice": {
-    "name_en": null,
+    "name_en": "Mallice",
     "id": null
   },
   "Thénuki": {
-    "name_en": null,
+    "name_en": "Teastroyer",
     "id": null
   },
   "Tourbœillon": {
-    "name_en": null,
+    "name_en": "Eyeclone",
     "id": null
   },
   "Marmonneur en série": {
-    "name_en": null,
+    "name_en": "Mass Mutterer",
     "id": null
   },
   "Crème Chantiwhisp": {
-    "name_en": null,
+    "name_en": "Whisped Cream",
     "id": null
   },
   "Pattes Rouges": {
-    "name_en": null,
+    "name_en": "Red Paws",
     "id": null
   },
   "Omai Tourbillonnant": {
-    "name_en": null,
+    "name_en": "Swirlious Omai",
     "id": null
   },
   "Griffes Dorées": {
-    "name_en": null,
+    "name_en": "Golden Claws",
     "id": null
   },
   "Or Tourbillonnant": {
-    "name_en": null,
+    "name_en": "Swirlious Gold",
     "id": null
   },
   "Capitaine Tonnerre": {
-    "name_en": null,
+    "name_en": "Captain Thunder",
     "id": null
   },
   "Ducanin": {
-    "name_en": null,
+    "name_en": "Duke Drooly",
     "id": null
   },
   "Ducfélin": {
-    "name_en": null,
+    "name_en": "Alicktokat",
     "id": null
   },
   "Zazelmar": {
-    "name_en": null,
+    "name_en": "Zazelmare",
     "id": null
   },
   "Emperose": {
-    "name_en": null,
+    "name_en": "Pink Emperor",
     "id": null
   },
   "Ultime Nyanmuraï": {

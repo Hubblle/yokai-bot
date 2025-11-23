@@ -10,7 +10,7 @@ import bot_package.data as data
 
 
 async def class_autcomplete(interaction : discord.Interaction, current : str) -> list[app_commands.Choice[str]] :
-    choices = ["Shiny", "Boss", "Divinité / Enma", "Légendaire", "Spécial", "S", "A", "B", "C", "D", "E", "objet", "pièce", "json-mod"]
+    choices = ["Shiny", "Boss", "Divinité / Enma", "Légendaire", "Spécial", "S", "A", "B", "C", "D", "E", "objet", "pièce", "json-mod", "claim"]
     list = [
         app_commands.Choice(name=choices, value=choices)
         for choices in choices if current.lower() in choices.lower()
@@ -74,7 +74,7 @@ class Admin_command(commands.Cog):
         brute_inventory = {}
         await Cf.save_inv(brute_inventory, input_id)
         sucess_embed = discord.Embed(
-            title="Le Médallium de cette utilisateur a été vidé !",
+            title="Le Médallium de cet utilisateur a été vidé !",
             color= discord.Color.green()
         )
         #Log
@@ -86,32 +86,45 @@ class Admin_command(commands.Cog):
     
     
  
-    @commands.hybrid_command(name="show")
-    async def show(self, ctx : commands.Context, input : str):
-        """give stats about input data.
-        
-        Available stats for now : `inventory`
-        
+    @commands.hybrid_command(name="inventory")
+    async def inventory(self, ctx : commands.Context):
         """
-            
-            
-        if input == "inventory":
-
-            total_user = 0
-            total_size = 0
-            for dirpath, dirnames, filenames in os.walk("./files/inventory"):
-                for f in filenames:
-                    fp = os.path.join(dirpath, f)
-                    # skip if it is symbolic link
-                    if not os.path.islink(fp):
-                        total_user += 1
-                        total_size += os.path.getsize(fp)
-            
-            #mk the embed
-            stats_embed = discord.Embed(color=discord.Color.green(), title="Voici les stats de l'inventaire :")
-            stats_embed.add_field(name="Le nombre d'uilisateurs qui ont un inventaire :", value=f"`{total_user}` utilisateurs", inline=False)
-            stats_embed.add_field(name="Taille du dossier `inventory`", value=f"`{total_size}` octet", inline=False)
-            return await ctx.send(embed=stats_embed)
+        Donne des info sur les Medalliums/sacoches des utilisateurs du bot
+        """
+        
+        total_user_md = 0
+        total_size_md = 0
+        
+        total_user_bag = 0
+        total_size_bag = 0
+        
+        #Medallium part
+        for dirpath, _, filenames in os.walk("./files/inventory"):
+            for f in filenames:
+                fp = os.path.join(dirpath, f)
+                # skip if it is symbolic link
+                if not os.path.islink(fp):
+                    total_user_md += 1
+                    total_size_md += os.path.getsize(fp)
+                    
+        #Bag part
+        for dirpath, _, filenames in os.walk("./files/bag"):
+            for f in filenames:
+                fp = os.path.join(dirpath, f)
+                # skip if it is symbolic link
+                if not os.path.islink(fp):
+                    total_user_bag += 1
+                    total_size_bag += os.path.getsize(fp)
+        
+        
+        #mk the embed
+        stats_embed = discord.Embed(color=discord.Color.green(), title="Voici les stats de l'inventaire :")
+        stats_embed.add_field(name="Le nombre d'utilisateurs qui ont un inventaire :", value=f"`{total_user_md}` utilisateurs", inline=False)
+        stats_embed.add_field(name="Taille du dossier `inventory`", value=f"`{total_size_md}` octets", inline=False)
+        stats_embed.add_field(name="--------------------",value="")
+        stats_embed.add_field(name="Le nombre d'utilisateurs qui ont une sacoche :", value=f"`{total_user_bag}` utilisateurs", inline=False)
+        stats_embed.add_field(name="Taille du dossier `bag`", value=f"`{total_size_bag}` octets", inline=False)
+        return await ctx.send(embed=stats_embed)
                        
         
         
@@ -124,8 +137,12 @@ class Admin_command(commands.Cog):
     @app_commands.autocomplete(rang=class_autcomplete)
     async def give(self, ctx : commands.Context, input_id : str, yokai : str, rang : str, where : str, number : str = '1'):
         """
-        Give un Yo-kai à un utilisateur donné.
-        `.give {id de l'utilisateur} {"yokai"} {rang} {bag/medallium} {quantité}`
+        Give un Yo-kai/Pièce/Trésor/Objet à un utilisateur donné.
+        `.give <id de l'utilisateur> <nom> <rang> <bag/medallium> <quantité>`
+        
+        Dans le cas où le rang est "json-mod":
+        `.give <id de l'utilisateur> <Valeur> json-mod <bag/medallium> <valeur de la clée>`
+        ⚠️ ** N'utilisez ce mode qui si vous savez ce que vous faites !**
         """
     
 
@@ -182,7 +199,23 @@ class Admin_command(commands.Cog):
             self.bot.logger.warning(msg=f"{ctx.author.name} a utilisé le /give sur l'id {input_id}, en mode json-mod, dans le {where}")
             return await ctx.send(embed=sucess_embed)
                     
-                
+        
+        if rang == "claim":
+            #In case they are trying to give claims
+            
+            inv = await Cf.get_inv(input_id)
+            
+            if inv == {}:
+                inv = data.default_medaillum
+
+            inv["claim"] = number
+            await save_inv(inv, input_id)
+            sucess_embed = discord.Embed(title=f"`{input_id}` a reçu {number} claims",
+                                        color=discord.Color.green(),
+                                        description=""
+                                        )
+            self.bot.logger.warning(msg=f"{ctx.author.name} a utilisé le /give sur l'id {input_id}, il a donné {number} claims")
+            return await ctx.send(embed=sucess_embed)
         
         
         
@@ -298,7 +331,7 @@ class Admin_command(commands.Cog):
     async def remove(self, ctx : commands.Context, input_id : str, yokai : str, rang : str, where : str, number : int = 1): 
         """
         Remove un Yo-kai à un utilisateur donné.
-        `.give {id de l'utilisateur} {"yokai"} {rang}`
+        `.remove <id de l'utilisateur> <nom> <rang> <bag/medallium> <quantité>`
         """
         
         
@@ -367,7 +400,7 @@ class Admin_command(commands.Cog):
         if inv == {}:
             error_embed = discord.Embed(
                 title=f"Ce Yo-kai n'est pas dans le Médallium de {input_id}",
-                description="Merci de verifier si la commande est utilisée de manière valide (`/help Admin_command`)",
+                description="Merci de vérifier si la commande est utilisée de manière valide (`/help Admin_command`)",
                 color= discord.Color.red()
             )
             return await ctx.send(embed=error_embed)
@@ -385,8 +418,8 @@ class Admin_command(commands.Cog):
                 
                 except KeyError:
                     error_embed = discord.Embed(
-                        title=f"Cet élement n'est pas dans le {where} de {input_id}",
-                        description="Merci de verifier si la commande est utilisée de manière valide (`/help Admin_command`)",
+                        title=f"Cet élément n'est pas dans le {where} de {input_id}",
+                        description="Merci de vérifier si la commande est utilisée de manière valide (`/help Admin_command`)",
                         color= discord.Color.red()
                     )
                     return await ctx.send(embed=error_embed)
@@ -431,8 +464,57 @@ class Admin_command(commands.Cog):
         self.bot.logger.warning(msg=f"{ctx.author.name} a utilisé le /remove sur l'id {input_id}, le yokai {yokai}, la quantité {number}")
         return await ctx.send(embed=sucess_embed)
     
+    @commands.hybrid_command(name="export")
+    @Check.is_in_dev_team()
+    @app_commands.autocomplete(where=where_autcomplete)
+    async def export(self, ctx : commands.Context, input_id : str,where : str): 
+        """
+        Export le json brute de l'entrée demandée.
+        """
+        #make the file path
+        if where not in ["bag", "medallium"]:
+            return await ctx.send("Merci d'utiliser un \"where\" valide!", ephemeral=True)
+        
+        path = "./files/bag/" if where == "bag" else "./files/inventory/"
+        path += input_id+".json" 
+        
+        try:
+            await ctx.send("Voici le fichier !", file=discord.File(path))
+        except Exception as e:
+            await ctx.send(f"Error: {e}", ephemeral=True)
+            
     
-                
+    @commands.hybrid_command(name="import")
+    @Check.is_in_dev_team()
+    @app_commands.autocomplete(where=where_autcomplete)
+    async def import_func(self, ctx : commands.Context, input_id : str, where : str, file: discord.Attachment): 
+        """
+        Import le json brute de l'entrée demandée.
+        """
+        #make the file path
+        if where not in ["bag", "medallium"]:
+            return await ctx.send("Merci d'utiliser un \"where\" valide!", ephemeral=True)
+        
+        path = "./files/bag/" if where == "bag" else "./files/inventory/"
+        path += input_id + ".json"
+        
+        try:
+            # Download the file from Discord
+            file_content = await file.read()
+            
+            # Save the file to the specified path
+            with open(path, 'wb') as f:
+                f.write(file_content)
+            
+            sucess_embed = discord.Embed(
+                title=f"Fichier importé avec succès !",
+                description=f"Le fichier a été sauvegardé dans `{path}`",
+                color=discord.Color.green()
+            )
+            self.bot.logger.warning(msg=f"{ctx.author.name} a utilisé le /import sur l'id {input_id} dans le {where}")
+            await ctx.send(embed=sucess_embed)
+        except Exception as e:
+            await ctx.send(f"Erreur: {e}", ephemeral=True)
                 
 
 async def setup(bot : commands.Bot ) -> None:

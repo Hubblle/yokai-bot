@@ -18,7 +18,7 @@ async def mk_error_file(error_trace, ctx, command):
     
     error_embed = discord.Embed(
                 title="Oh non, une erreur s'est produite !",
-                description="Vous pouvez réessayez plus tard. Ou transmettres les info suivantes :",
+                description="Vous pouvez réessayer plus tard. Ou transmettres les infos suivantes :",
                 color= discord.Color.red()
             )
     error_embed.add_field(name="Information :",

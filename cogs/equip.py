@@ -10,7 +10,7 @@ class Equip(commands.Cog):
     @commands.hybrid_command(name="equip")
     async def equip(self, ctx: commands.Context, treasure: str):
         """
-        New ✨! Equipe un trésor de votre sac, seulement un  trésor peut-être equiper à la fois.
+        New ✨! Equipe un trésor de votre sac, seulement un  trésor peut-être equipé à la fois.
         """
         user_id = ctx.author.id
         bag = await Cf.get_bag(user_id)  # Get the user's bag

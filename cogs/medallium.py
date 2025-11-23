@@ -395,7 +395,7 @@ class Medallium(commands.Cog) :
                 pass
             
             else:
-                yokai_claimed_count += f"**{await Cf.classid_to_class(classes, False)}**: `{brute_bag[classes]}`\n"
+                yokai_claimed_count += f"**{await Cf.classid_to_class(classes, False)}s**: `{brute_bag[classes]}`\n"
 
 
         main_embed.add_field(name="Voici vos statistiques :", value=yokai_claimed_count, inline=True)

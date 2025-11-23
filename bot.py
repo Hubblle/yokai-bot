@@ -248,7 +248,7 @@ class DiscordBot(commands.Bot):
         split = full_command_name.split(" ")
         executed_command = str(split[0])
         
-        if not executed_command in ["bingo-kai", "bkai", "trade", "cadeau"]:
+        if not executed_command in ["bingo-kai", "bkai", "trade", "cadeau", "import"]:
             if context.guild is not None:
                 self.logger.info(
                     f"Executed {executed_command} command in {context.guild.name} (ID: {context.guild.id}) by {context.author} (ID: {context.author.id})"
