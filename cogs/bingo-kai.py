@@ -677,7 +677,7 @@ class Bingo_kai(commands.Cog):
 
         
         else :
-            yokai_embed.set_footer(text="La V5 est enfin là, faites `/help` pour plus d'info !")
+            yokai_embed.set_footer(text="Mhh, trop préssé pour Noël ? Faites `/calendrier` !")
             return await ctx.send(embed=yokai_embed)
             
             
