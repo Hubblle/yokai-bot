@@ -126,8 +126,18 @@ class Admin_command(commands.Cog):
         stats_embed.add_field(name="Taille du dossier `bag`", value=f"`{total_size_bag}` octets", inline=False)
         return await ctx.send(embed=stats_embed)
                        
-        
-        
+    @commands.hybrid_command(name="avent")
+    @Check.is_in_dev_team()
+    async def avent(self,ctx : commands.context):
+        """Donne des infos sur l'évènement."""
+        avent_data = data.open_json(str("./files/avent.json"))
+        user = data.open_json(str("./files/avent_user_cooldown.json"))
+        total_user = len(user.keys())
+        stats_embed = discord.Embed(color=discord.Color.green(), title="Voici les stats de l'évènement Avent :")
+        stats_embed.add_field(name="Le nombre d'utilisateurs ayant reçu une récompense :", value=f"`{total_user}` utilisateurs", inline=False)
+        for day in avent_data["user_day"] :
+            stats_embed.add_field(name=f"jour {day} :", value=f"`{avent_data['user_day'][day]}` utilisateurs", inline=False)
+        return await ctx.send(embed=stats_embed)
         
         
       
