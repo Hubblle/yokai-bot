@@ -672,12 +672,13 @@ class Bingo_kai(commands.Cog):
             
             #Set last claim
             await Cf.save_bag(bag, ctx.author.id)
+            yokai_embed.set_footer(text="Mhh, trop préssé pour Noël ? Faites /calendrier !")
             await ctx.send(embed=yokai_embed)
             return await ctx.send(embed=coin_embed)
 
         
         else :
-            yokai_embed.set_footer(text="Mhh, trop préssé pour Noël ? Faites `/calendrier` !")
+            yokai_embed.set_footer(text="Mhh, trop préssé pour Noël ? Faites /calendrier !")
             return await ctx.send(embed=yokai_embed)
             
             
