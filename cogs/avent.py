@@ -108,7 +108,7 @@ class event(commands.Cog):
 
         last_claim = int(user[str(ctx.author.id)])
         if last_claim == days:
-            return await ctx.send("# je sais que l'embed est beau mais tu y a le droit que une fois par jours !!\n-#Si vous vous demandez pourquoi le message dit ça, c'est car le contributeur qui a fait le message de récompense y a passé bcp trop de temps xD...")
+            return await ctx.send("# je sais que l'embed est beau mais tu y a le droit que une fois par jours !!\n-# Si vous vous demandez pourquoi le message dit ça, c'est car le contributeur qui a fait le message de récompense y a passé bcp trop de temps xD...")
         else:
             user[str(ctx.author.id)] = days
             data.save_json("./files/avent_user_cooldown.json", user)    
