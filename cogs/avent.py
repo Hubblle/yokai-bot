@@ -1,12 +1,7 @@
-import json
 import discord
 from discord.ext import commands
 import bot_package.data as data
 import bot_package.Custom_func as Cf
-import cogs.admin as admin
-from discord.ext import tasks
-import schedule
-import time
 from datetime import datetime
 
 
