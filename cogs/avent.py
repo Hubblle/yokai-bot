@@ -11,7 +11,7 @@ from datetime import datetime
 
 
 
-async def give(self, ctx : commands.Context, input_id : str, yokai : str, rang : str, where : str, number : str = '1'):
+async def give(self, input_id : str, yokai : str, rang : str, where : str, number : str = '1'):
 
         
         if where == "bag":
@@ -30,16 +30,26 @@ async def give(self, ctx : commands.Context, input_id : str, yokai : str, rang :
             number = int(number)
         except :
             pass
+        
         if rang == "json-mod" :
             if inv == {}:
                 inv = default_inv
             inv[yokai] = number
             await save_inv(inv, input_id)
-            sucess_embed = discord.Embed(title=f"La valeur `{yokai}` a été modifié sur `{number}` dans le {where} de `{input_id}`",
-                                        color=discord.Color.green(),
-                                        description=""
-                                        )
             return
+        
+        
+        if rang == "claim":
+            #In case they are trying to give claims
+            
+            inv = await Cf.get_inv(input_id)
+            
+            if inv == {}:
+                inv = data.default_medaillum
+
+            inv["claim"] = number
+            await save_inv(inv, input_id)
+        
         
         class_name = rang
         class_id = await Cf.classid_to_class(class_name, True)
@@ -53,7 +63,7 @@ async def give(self, ctx : commands.Context, input_id : str, yokai : str, rang :
             await save_inv(data=inv, id=input_id)
             
         else :
-            for i in range(number) :
+            for _ in range(number) :
                 try:
                     inv[yokai]
                     try:
@@ -79,7 +89,10 @@ class event(commands.Cog):
 
     @commands.hybrid_command(name="calendrier")
     async def calendar(self, ctx: commands.Context):
-        """Donne la récompense du jour au user."""
+        """
+        Impatient avant Noël ?.
+        Le calendrier est là pour vous, mais c'est pas des chocolats dedans x) ! 
+        """
 
         user = data.open_json(str("./files/avent_user_cooldown.json"))
         today = datetime.now()
@@ -95,17 +108,14 @@ class event(commands.Cog):
 
         last_claim = int(user[str(ctx.author.id)])
         if last_claim == days:
-            return await ctx.send("# je sais que l'embed est beau mais tu y a le droit une fois par jours !!")
+            return await ctx.send("# je sais que l'embed est beau mais tu y a le droit que une fois par jours !!\n-#Si vous vous demandez pourquoi le message dit ça, c'est car le contributeur qui a fait le message de récompense y a passé bcp trop de temps xD...")
         else:
             user[str(ctx.author.id)] = days
             data.save_json("./files/avent_user_cooldown.json", user)    
 
 
-
-
             avent_data = data.open_json(str("./files/avent.json"))
             gift = avent_data.get(str(days))
-            print(f"{ctx.author.id} a récupéré sa récompense du jour {days}.")
 
             if days > 24:
                 return await ctx.send("Le calendrier de l'avent est terminé ! Revenez peut- être l'année prochaine !")
@@ -113,19 +123,19 @@ class event(commands.Cog):
             if not gift:
                 return await ctx.send(f"❌ Aucune donnée trouvée pour le jour {days}.")
 
-            # gift format expected: [yokai, rang, where, amount]
+            # gift format expected: [yokai, rang, where, amount (optional, default 1)]
             yokai = gift[0]
             rang = gift[1]
             where = gift[2]
             amount = gift[3] if len(gift) > 3 else 1
 
             if not where == "medallium" or "bag" or rang == "json-mod":
-                await give(self, ctx, str(ctx.author.id), yokai, rang, where, str(amount))
+                await give(self, str(ctx.author.id), yokai, rang, where, str(amount))
                 avent_data["user_day"][str(days)] += 1
                 data.save_json(str("./files/avent.json"), avent_data)
                 
                 embed = discord.Embed(
-                    title="encore un peu de patience avant noël !",
+                    title="encore un peu de patience avant Noël !",
                     description="Mais que vois-je ? ne serait-ce pas ta récompense du jour ?",
                     color=discord.Color.green()
                     )
