@@ -140,7 +140,8 @@ class event(commands.Cog):
                 elif where == "bag":
                     if rang == "pièce":
                         embed.add_field(name=f"aujourd'hui c'est le {days} novembre", value=f" c'est {amount if amount >1 else "une"} {yokai}!")
-                    embed.add_field(name=f"aujourd'hui c'est le {days} novembre", value=f" c'est {amount} {yokai}!")
+                    else:
+                        embed.add_field(name=f"aujourd'hui c'est le {days} novembre", value=f" c'est {amount} {yokai}!")
                 
                 elif rang == "claim":
                     embed.add_field(name=f"aujourd'hui c'est le {days} novembre", value=f"Tu a obtenu {amount} tirrages **gratuits** au bingo-kai !\n-# Tu peux donc faire /bkai {amount} fois sans plus attendre !")
