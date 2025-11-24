@@ -32,11 +32,7 @@ async def give(self, input_id : str, yokai : str, rang : str, where : str, numbe
             pass
         
         if rang == "json-mod" :
-            if inv == {}:
-                inv = default_inv
-            inv[yokai] = number
-            await save_inv(inv, input_id)
-            return
+            return # Prevent using json-mod in the calendar
         
         
         if rang == "claim":
@@ -95,13 +91,10 @@ class event(commands.Cog):
         """
 
         user = data.open_json(str("./files/avent_user_cooldown.json"))
-        today = datetime.now()
-        days = today.day
+        days = datetime.now().day
 
         if not str(ctx.author.id) in user.keys():
-            user = {
-                str(ctx.author.id): 0
-            }
+            user[str(ctx.author.id)] = 0
 
             data.save_json("./files/avent_user_cooldown.json", user)
 
@@ -118,7 +111,7 @@ class event(commands.Cog):
             gift = avent_data.get(str(days))
 
             if days > 24:
-                return await ctx.send("Le calendrier de l'avent est terminé ! Revenez peut- être l'année prochaine !")
+                return await ctx.send("Le calendrier de l'avent est terminé ! Revenez peut-être l'année prochaine !")
 
             if not gift:
                 return await ctx.send(f"❌ Aucune donnée trouvée pour le jour {days}.")
@@ -145,11 +138,14 @@ class event(commands.Cog):
                     embed.add_field(name=f"aujourd'hui c'est le {days} novembre", value=f"c'est **{amount}** magifique **{yokai}** de rang **{rang}**", inline=False)
 
                 elif where == "bag":
-                    embed.add_field(name=f"aujourd'hui c'est le {days} novembre", value=f" c'est un {yokai}!")
-
-                elif rang == "json-mod":
-                    embed.add_field(name=f"aujourd'hui c'est le {days} novembre", value=f"Tu a obtenu {amount} {yokai} !")
-                return await ctx.send(embed=embed)
+                    if rang == "pièce":
+                        embed.add_field(name=f"aujourd'hui c'est le {days} novembre", value=f" c'est {amount if amount >1 else "une"} {yokai}!")
+                    embed.add_field(name=f"aujourd'hui c'est le {days} novembre", value=f" c'est {amount} {yokai}!")
+                
+                elif rang == "claim":
+                    embed.add_field(name=f"aujourd'hui c'est le {days} novembre", value=f"Tu a obtenu {amount} tirrages **gratuits** au bingo-kai !\n-# Tu peux donc faire /bkai {amount} fois sans plus attendre !")
+                
+            
             else:
                 return await ctx.send("error")
         
