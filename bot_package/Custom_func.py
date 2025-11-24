@@ -58,9 +58,9 @@ with open("./files/full_name_fr.json") as yk_list_full:
 
 
 asset_for_class_id_to_class = {
-    "coin" : "Pièce",
-    "obj" : "Objet",
-    "treasure": "trésor" #We can't put a cap here, or it will interfeer with the Treasure Yo-kai (trésor = treasure)
+    "coin" : "pièce",
+    "obj" : "objet",
+    "treasure": "trésor"
 }
 
 
