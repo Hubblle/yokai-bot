@@ -428,15 +428,15 @@ def check():
     print("Checks")
     while True :
         print("Please, select a mode :")
-        print("   [1] Check coin files. \n   [2] Check yokai ids (images).")
+        print("   [1] Check coin files. \n   [2] Check yokai ids (images). \n   [3] Check tags.")
         line()
-        choise = input("Please, select a number [1-2] ")
+        choise = input("Please, select a number [1-3] ")
     
-        if choise == "1" or choise == "2" :
+        if choise == "1" or choise == "2" or choise == "3" :
             choise = int(choise)
             break
         
-        print("The number isn't right, please enter a number in range [1-2]")
+        print("The number isn't right, please enter a number in range [1-3]")
         input("Press any key to go back to the menu.")
         line(35)
     
@@ -518,6 +518,29 @@ def check():
                 
             
         asyncio.run(check_id())
+    
+    if choise == 3:
+        tag_list = open_json("./files/tags.json")
+        tag_output_total = ""
+        for tag in tag_list:
+            tag_output = f"\n  {tag}: "
+
+            try:
+                item_number = len(tag_list[tag]["list"])
+
+                all_items = open_json("./files/items.json").keys()
+                all_yokai = open_json("./files/full_name_fr.json").keys()
+                
+                all_all = list(all_yokai)+list(all_items)
+                
+                for item in tag_list[tag]["list"]:
+                    if item not in all_all:
+                        tag_output += f"\n    - {item} ❌ Not found"
+                
+            except Exception as e:
+                tag_output += f"📛 Error during file reading ! >>> {e}"
+            tag_output_total+=tag_output
+        print(tag_output_total)
         
     line()
     input("End of the program, press any key to go back to the main menu.")
