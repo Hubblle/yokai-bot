@@ -60,15 +60,15 @@ with open("./files/full_name_fr.json") as yk_list_full:
 asset_for_class_id_to_class = {
     "coin" : "Pièce",
     "obj" : "Objet",
-    "treasure": "Trésor"
+    "treasure": "trésor" #We can't put a cap here, or it will interfeer with the Treasure Yo-kai (trésor = treasure)
 }
 
 
-async def classid_to_class(id, reverse : bool = False):
+async def classid_to_class(id:str, reverse : bool = False)->str:
     """Transform class_id to the coresponding class_name (can be reversed)
 
     Args:
-        id (_type_): _description_
+        id (str): the id (or the name) of the class
         reverse (bool, optional): True: name to ID\nFlase: ID to name. Defaults to False.
 
     Returns:
