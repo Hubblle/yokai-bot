@@ -145,7 +145,7 @@ class event(commands.Cog):
                         embed.add_field(name=f"aujourd'hui c'est le {days} novembre", value=f" c'est {amount} {yokai}!")
                 
                 elif rang == "claim":
-                    embed.add_field(name=f"aujourd'hui c'est le {days} novembre", value=f"Tu a obtenu {amount} tirrages **gratuits** au bingo-kai !\n-# Tu peux donc faire /bkai {amount} fois sans plus attendre !")
+                    embed.add_field(name=f"aujourd'hui c'est le {days} novembre", value=f"Tu a obtenu {amount} tirages **gratuits** au bingo-kai !\n-# Tu peux donc faire /bkai {amount} fois sans plus attendre !")
                 return await ctx.send(embed=embed)
             
             else:
