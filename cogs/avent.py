@@ -45,6 +45,7 @@ async def give(self, input_id : str, yokai : str, rang : str, where : str, numbe
 
             inv["claim"] = number
             await save_inv(inv, input_id)
+            return
         
         
         class_name = rang
