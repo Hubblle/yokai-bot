@@ -122,7 +122,7 @@ class event(commands.Cog):
             where = gift[2]
             amount = gift[3] if len(gift) > 3 else 1
 
-            if not where == "medallium" or "bag" or rang == "json-mod":
+            if where in ["medallium","bag"]:
                 await give(self, str(ctx.author.id), yokai, rang, where, str(amount))
                 avent_data["user_day"][str(days)] += 1
                 data.save_json(str("./files/avent.json"), avent_data)
@@ -134,7 +134,7 @@ class event(commands.Cog):
                     )
                 embed.set_footer(text="Peut être que demain tu auras encore mieux que ça sauf si c'est déjà la fin !")
 
-                if where == "medallium" and not rang == "json-mod":
+                if where == "medallium" and not rang == "claim":
                     embed.add_field(name=f"aujourd'hui c'est le {days} novembre", value=f"c'est **{amount}** magifique **{yokai}** de rang **{rang}**", inline=False)
 
                 elif where == "bag":
