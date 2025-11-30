@@ -291,7 +291,7 @@ class Medallium(commands.Cog) :
                     discord.SelectOption(label="Tout !", description="Affiche toute la sacoche.", emoji="🌐"),
                     discord.SelectOption(label="Pièces", emoji="🪙"),
                     discord.SelectOption(label="Objets", emoji="📦"),
-                    discord.SelectOption(label="trésors", emoji="📿"),
+                    discord.SelectOption(label="Trésors", emoji="📿"),
                 ]
 
                 super().__init__(placeholder='Choisissez ce que vous voulez...', min_values=1, max_values=1, options=options)
@@ -325,7 +325,7 @@ class Medallium(commands.Cog) :
                     except discord.errors.HTTPException as e:
                         error_embed = discord.Embed(color=discord.Color.red(),
                                                     title="Oh non, une erreur s'est produite !",
-                                                    description="> Un bug sur cette commande se produit quand la sacoche est trop grand pour être affichée. (C'est un peu un flex quand même 🙃)")
+                                                    description="> Un bug sur cette commande se produit quand la sacoche est trop grande pour être affichée. (C'est un peu un flex quand même 🙃)")
                         error_embed.add_field(name="Vous devez donc spécifier un type pour que cela marche.",
                                             value="Vous pouvez utiliser le message ci-dessus.")
                         return await interaction.response.send_message(embed=error_embed)
