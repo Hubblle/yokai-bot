@@ -129,14 +129,14 @@ class event(commands.Cog):
                 data.save_json(str("./files/avent.json"), avent_data)
                 
                 embed = discord.Embed(
-                    title="encore un peu de patience avant Noël !",
-                    description="Mais que vois-je ? ne serait-ce pas ta récompense du jour ?",
+                    title="Encore un peu de patience avant Noël !",
+                    description="Mais que vois-je ? Ne serait-ce pas ta récompense du jour ?",
                     color=discord.Color.green()
                     )
-                embed.set_footer(text="Peut être que demain tu auras encore mieux que ça sauf si c'est déjà la fin !")
+                embed.set_footer(text="Peut être que demain tu auras encore mieux; sauf si c'est déjà la fin !")
 
                 if where == "medallium" and not rang == "claim":
-                    embed.add_field(name=f"aujourd'hui c'est le {days} novembre", value=f"c'est **{amount}** magifique **{yokai}** de rang **{rang}**", inline=False)
+                    embed.add_field(name=f"aujourd'hui c'est le {days} novembre", value=f"c'est **{amount}** {"magnifique" if amount >2 else "magnifiques"} **{yokai}** de rang **{rang}**", inline=False)
 
                 elif where == "bag":
                     if rang == "pièce":
@@ -145,7 +145,7 @@ class event(commands.Cog):
                         embed.add_field(name=f"aujourd'hui c'est le {days} novembre", value=f" c'est {amount} {yokai}!")
                 
                 elif rang == "claim":
-                    embed.add_field(name=f"aujourd'hui c'est le {days} novembre", value=f"Tu a obtenu {amount} tirages **gratuits** au bingo-kai !\n-# Tu peux donc faire /bkai {amount} fois sans plus attendre !")
+                    embed.add_field(name=f"aujourd'hui c'est le {days} novembre", value=f"Tu as obtenu {amount} tirages **gratuits** au bingo-kai !\n-# Tu peux donc faire /bkai {amount} fois sans plus attendre !")
                 return await ctx.send(embed=embed)
             
             else:
