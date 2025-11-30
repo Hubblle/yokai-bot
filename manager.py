@@ -459,7 +459,11 @@ def check():
                     if proba_total == 1:
                         coin_output += "total proba ✅ // "
                     else:
-                        coin_output += f"total proba = {proba_total} ❌ // "
+                        coin_output += f"total proba adjusted ↗️ ({proba_total})// "
+                        for loots in coin_file["list"]:
+                            coin_file["list"][loots][1] = round(coin_file["list"][loots][1]/proba_total, 6)
+                        save_json(f"./files/coin/{coin}.json", coin_file)
+                        
                     coin_output += f"total items: {item_number}"
 
                     all_items = open_json("./files/items.json").keys()
