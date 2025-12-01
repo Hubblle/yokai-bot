@@ -137,6 +137,9 @@ class event(commands.Cog):
 
                 if where == "medallium" and not rang == "claim":
                     embed.add_field(name=f"aujourd'hui c'est le {days} décembre", value=f"c'est **{amount}** {"magnifique" if amount >2 else "magnifiques"} **{yokai}** de rang **{rang}**", inline=False)
+                    yk_data : dict = data.yokai_list_full[yokai]
+                    id = yk_data.get("id", "1")
+                    embed.set_image(url=f"https://api.quark-dev.com/yk/img/{id}.png")
 
                 elif where == "bag":
                     if rang == "pièce":
