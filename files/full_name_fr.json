@@ -2213,11 +2213,11 @@
   },
   "Sanventurier": {
     "name_en": "Knomad Koma",
-    "id": null
+    "id": "yf000134"
   },
   "Jiroventurier": {
     "name_en": "Knomad Jiro",
-    "id": null
+    "id": "yf000133"
   },
   "Superobonyan": {
     "name_en": "Showbonyan",
@@ -2601,7 +2601,7 @@
   },
   "Dodorothée": {
     "name_en": "Beddy-Byes",
-    "id": null
+    "id": "yf000135"
   },
   "Minustrel": {
     "name_en": "Slackerjack",
@@ -2717,7 +2717,7 @@
   },
   "Bermite(Doyagari)": {
     "name_en": null,
-    "id": null
+    "id": "yf000136"
   },
   "Procrastinocchio": {
     "name_en": "Procrastinocchio",
@@ -2729,11 +2729,11 @@
   },
   "Combattank(Dassensha Ro Shuku)": {
     "name_en": null,
-    "id": null
+    "id": "yf000138"
   },
   "Doyen Bermite(Doya Osa)": {
     "name_en": null,
-    "id": null
+    "id": "yf000137"
   },
   "Faux Kappa(du passé)": {
     "name_en": "Faux Kappa",
@@ -2749,11 +2749,11 @@
   },
   "Perfœil(Ogu,Togu & Mogu)": {
     "name_en": null,
-    "id": null
+    "id": "yf000139"
   },
   "Plantignon(Pakkun)": {
     "name_en": null,
-    "id": null
+    "id": "yf000140"
   },
   "Professeur Plumage": {
     "name_en": "Professor Plumage",
@@ -2761,7 +2761,7 @@
   },
   "Shirokuma": {
     "name_en": null,
-    "id": null
+    "id": "yf000141"
   },
   "Abyssinyan": {
     "name_en": "Gusto",
@@ -2837,7 +2837,7 @@
   },
   "Balopendre": {
     "name_en": null,
-    "id": null
+    "id": "yf000142"
   },
   "Jibanyan (Lightside)": {
     "name_en": null,
@@ -2845,7 +2845,7 @@
   },
   "Katimantis": {
     "name_en": null,
-    "id": null
+    "id": "yf000143"
   },
   "Kuroi Jibanyan": {
     "name_en": null,
@@ -2857,11 +2857,11 @@
   },
   "Mathiptère": {
     "name_en": null,
-    "id": null
+    "id": "yf000144"
   },
   "Nathasticot": {
     "name_en": null,
-    "id": null
+    "id": "yf000145"
   },
   "ScientifiBot Y": {
     "name_en": "ScientifiBot Y",
@@ -2877,7 +2877,7 @@
   },
   "UZApyon": {
     "name_en": null,
-    "id": null
+    "id": "yf000146"
   },
   "Whisper 2040": {
     "name_en": null,
@@ -2885,7 +2885,7 @@
   },
   "Yamambaa": {
     "name_en": null,
-    "id": null
+    "id": "yf000147"
   },
   "Yo Kai Watch Kuroi": {
     "name_en": null,
@@ -2961,7 +2961,7 @@
   },
   "Hydreux": {
     "name_en": "Eyedra",
-    "id": null
+    "id": "yf000132"
   },
   "Infiniris": {
     "name_en": "Infinipea",
@@ -3181,53 +3181,57 @@
   },
   "N J W Noël": {
     "name_en": null,
-    "id": null
+    "id": "yf000148"
   },
   "Jibanyan de Noël": {
     "name_en": null,
-    "id": null
+    "id": "yf000151"
   },
   "Komasan de Noël": {
     "name_en": null,
-    "id": null
+    "id": "yf000150"
   },
   "Komajiro de Noël": {
     "name_en": null,
-    "id": null
+    "id": "yf000149"
   },
   "Komami de Noël": {
     "name_en": null,
-    "id": null
+    "id": "yf000152"
   },
-  "Christmas Tree": {
+  "Christmas Treet": {
     "name_en": null,
-    "id": null
+    "id": "yf000153"
   },
   "Kyodai Santa": {
     "name_en": null,
-    "id": null
+    "id": "yf000154"
   },
   "Komastar de Noël": {
     "name_en": null,
-    "id": null
+    "id": "yf000155"
   },
   "Blizzaria de Noël": {
     "name_en": null,
-    "id": null
+    "id": "yf000156"
   },
   "Robonyan de Noël": {
     "name_en": null,
-    "id": null
+    "id": "yf000157"
   },
   "Jibanyan cadeau": {
     "name_en": null,
-    "id": null
+    "id": "yf000158"
   },
   "Shogunyan Hivernale": {
     "name_en": null,
-    "id": null
+    "id": "yf000159"
   },
   "Alpinella hivernale": {
+    "name_en": null,
+    "id": "yf000160"
+  },
+  "Christmas Tree": {
     "name_en": null,
     "id": null
   }
