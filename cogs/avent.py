@@ -136,16 +136,16 @@ class event(commands.Cog):
                 embed.set_footer(text="Peut être que demain tu auras encore mieux; sauf si c'est déjà la fin !")
 
                 if where == "medallium" and not rang == "claim":
-                    embed.add_field(name=f"aujourd'hui c'est le {days} novembre", value=f"c'est **{amount}** {"magnifique" if amount >2 else "magnifiques"} **{yokai}** de rang **{rang}**", inline=False)
+                    embed.add_field(name=f"aujourd'hui c'est le {days} décembre", value=f"c'est **{amount}** {"magnifique" if amount >2 else "magnifiques"} **{yokai}** de rang **{rang}**", inline=False)
 
                 elif where == "bag":
                     if rang == "pièce":
-                        embed.add_field(name=f"aujourd'hui c'est le {days} novembre", value=f" c'est {amount if amount >1 else "une"} {yokai}!")
+                        embed.add_field(name=f"aujourd'hui c'est le {days} décembre", value=f" c'est {amount if amount >1 else "une"} {yokai}!")
                     else:
-                        embed.add_field(name=f"aujourd'hui c'est le {days} novembre", value=f" c'est {amount} {yokai}!")
+                        embed.add_field(name=f"aujourd'hui c'est le {days} décembre", value=f" c'est {amount} {yokai}!")
                 
                 elif rang == "claim":
-                    embed.add_field(name=f"aujourd'hui c'est le {days} novembre", value=f"Tu as obtenu {amount} tirages **gratuits** au bingo-kai !\n-# Tu peux donc faire /bkai {amount} fois sans plus attendre !")
+                    embed.add_field(name=f"aujourd'hui c'est le {days} décembre", value=f"Tu as obtenu {amount} tirages **gratuits** au bingo-kai !\n-# Tu peux donc faire /bkai {amount} fois sans plus attendre !")
                 return await ctx.send(embed=embed)
             
             else:
