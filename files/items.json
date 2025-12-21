@@ -565,8 +565,8 @@
         "desc" : "Une fois équipé l'utilisateur ne peux qu'avoir des yokai de rang E dans les tirages classique",
         "slot" : 5,
         "action" : 1,
-        "value1" : 1,
-        "value2" : "rang E",
+        "value1" : 1000000000000,
+        "value2" : "E",
         "_comment" : "ajoute 100% de proba aux rang E"
     },
     "Trésor de l'amour" : {
