@@ -11,7 +11,12 @@ import importlib
 
 
 
+
         
+
+
+
+
 
 async def bingo_kai_autcomplete(interaction : discord.Interaction, current : str) -> list[app_commands.Choice[str]] :
     coin = data.coin_list
@@ -19,6 +24,11 @@ async def bingo_kai_autcomplete(interaction : discord.Interaction, current : str
         app_commands.Choice(name=coin, value=coin)
         for coin in coin if current.lower() in coin.lower()
     ]
+
+
+
+
+
 
 
 
@@ -50,6 +60,9 @@ class Bingo_kai(commands.Cog):
                     
                     
 
+
+
+
     @commands.hybrid_command(name="bingo-kai",)
     @app_commands.autocomplete(coin=bingo_kai_autcomplete)
     async def bingo_yokai(self, ctx = commands.Context, coin : str = None):
@@ -58,18 +71,16 @@ class Bingo_kai(commands.Cog):
         La commande possède un cooldown de 1h30 (1h sur le serveur de support ;) )
         """
         
+
+
+
+
+
         #Check if they have a treasure equiped
         bag = await Cf.get_bag(ctx.author.id)
         equipped_treasure = bag.get("equipped_treasure")
         
-        if not equipped_treasure == None:
-            #get the id to run the right script
-            id = data.item[equipped_treasure]["id"]
-            #now run the custom bkai
-            module = self.__getattribute__(id)
-            return await module.main(self, ctx, coin)
-        
-        
+                
         if not coin in data.coin_list and not coin == None:
             #check if the coin is right
             error_embed = discord.Embed(title="Oh non, la pièce que vous avez demandée n'existe pas...", description="Merci de verifier l'orthographe, faites `/bag` pour voir vos pièces.")
@@ -91,7 +102,8 @@ class Bingo_kai(commands.Cog):
                     error_embed = discord.Embed(title="Oh non, vous n'avez pas cette pièce...", description="Vous devez d'abord l'avoir dans le `/bingo-kai` classique avant de l'utiliser :/")
                     return await ctx.send(embed=error_embed)
             
-            
+
+
             # Get current time and convert to midnight timestamp
             current_time = time.time()
             current_day = time.localtime(current_time)
@@ -106,6 +118,10 @@ class Bingo_kai(commands.Cog):
                 bag["last_daily_reset"] = midnight
                 await Cf.save_bag(bag, ctx.author.id)
             
+
+
+
+
             
             try:
                 amount = bag["amount"]
@@ -128,6 +144,7 @@ class Bingo_kai(commands.Cog):
                 )
                 return await ctx.send(embed=error_embed)
 
+
             #define the data we need!
             try:
                 loot_brute = data.coin_loot[coin]["list"]
@@ -138,13 +155,21 @@ class Bingo_kai(commands.Cog):
                 error_embed = discord.Embed(title="Oh non, cette pièce n'est pas encore disponible...", description="> Elle n'a pas encore été faite, mais cela arrive au plus vite !")
                 return await ctx.send(embed=error_embed)
             
-            if amount == 20: 
+            #set the ceilling and proba by verified equiped treasure
+            if equipped_treasure == "Trésor de l'eau":
+                ceilling = 25
+                probaT = 60
+            else:
+                ceilling = 20
+                probaT = 30
+
+            if amount == ceilling: 
                 error_embed = discord.Embed(title="Oh non, vous avez fait votre maximum de tirage avec des pièces pour aujourd'hui...", description="Recommencez demain !")
                 bag["amount"] = "max"
                 await Cf.save_bag(bag, ctx.author.id)
                 return await ctx.send(embed=error_embed)
         
-            if amount > 6 :
+            if amount > probaT :
                 proba = amount / 30 #constant
                 anti_proba = 1 - proba
                 if random.choices([True, False], weights=[proba, anti_proba])[0]:
@@ -157,15 +182,22 @@ class Bingo_kai(commands.Cog):
             bag["amount"] = amount
             await Cf.save_bag(bag, ctx.author.id)
             
-            
-            
-            
+
             
             #make the choice:
             item = random.choices(loot_order, proba_order)[0]
             
             #now get the type of the item
             item_type = loot_brute[item][0]
+            
+
+
+
+
+
+
+
+
             
             #log
             if ctx.guild is not None:
@@ -177,6 +209,12 @@ class Bingo_kai(commands.Cog):
                     f"Executed bingo-kai command by {ctx.author} (ID: {ctx.author.id}) in DMs // He had '{item}' ({item_type}) / {coin}"
             )
             
+            
+
+
+
+
+
             
             #if its an object, check in the item list to see if it's a treasure or a random obj
             if item_type == "obj":
@@ -425,6 +463,46 @@ class Bingo_kai(commands.Cog):
                     item_embed.set_footer(text=f"{coin} utilisée !")
                     return await ctx.send(embed=item_embed)
             
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         ### NORMAL PART ###
         
         #define the inv
@@ -462,13 +540,22 @@ class Bingo_kai(commands.Cog):
                 last_claim = int(brute_inventory["last_claim"])
 
                 #is 1h30 past last claim ?
-                #or is it 1h when executed in the support server ?
-                if ctx.guild.id == 1341432288562511914:
+                #or is it 1h when executed in the support or partner server ?
+                #and subtract 10m if sun's trésor are equip ?
+                if ctx.guild.id == os.getenv("guild_partner_id") or os.getenv("guild_partner_id"):
                     cooldown = 3600
                     cooldown_str = "1h"
+                    if equipped_treasure == "Trésor du soleil":
+                        cooldown_str = "50min"
                 else:
                     cooldown = 5400
                     cooldown_str = "1h30"
+                    if equipped_treasure == "Trésor du soleil":
+                        cooldown_str = "1h20"
+                
+                if equipped_treasure == "Trésor du soleil":
+                    cooldown -= 600
+ 
 
                 if not time.time() >= last_claim + cooldown:
                     minimum_time_to_claim = last_claim + cooldown
@@ -487,10 +574,26 @@ class Bingo_kai(commands.Cog):
 
 
 
-        
-        
+
+
+
+
+
+
+
+
+
+
+
+        weights=data.proba_list
+        classlist = data.class_list
+        #add weight to class depending of the equiped treasure
+        if not equipped_treasure == None:
+            if equipped_treasure == "Trésor du feu" or "Trésor du poison" or "Trésor de l'amour" or "Trésor du ciel" or "Trésor de la forêt" or "Trésor légendaire":
+                weights[classlist.index(data.item[equipped_treasure]["value1"])] += data.item[equipped_treasure]["value2"]
+
         #choose the class of the yokai
-        class_choice = data.yokai_data[random.choices(data.class_list, weights=data.proba_list, k=1)[0]]
+        class_choice = data.yokai_data[random.choices(data.class_list, weights=weights, k=1)[0]]
 
         #get the good name of the class and his id
         class_name = class_choice["class_name"]
