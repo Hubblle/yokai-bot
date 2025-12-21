@@ -134,6 +134,12 @@ item = open_json("./files/items.json")
 #tag info
 TAGS_DATA = open_json("./files/tags.json")
 
+#money info
+MONEY_DATA = open_json("./files/monnaie.json")
+
+#blacklist info for normal bkai
+with open_json("./files/blacklisted-yokai.json") as f:
+    blacklist = list(f.blacklist)
 
 default_medaillum  = {
                         "last_claim" : 10000,
