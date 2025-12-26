@@ -11,26 +11,12 @@ import importlib
 
 
 
-
-        
-
-
-
-
-
 async def bingo_kai_autcomplete(interaction : discord.Interaction, current : str) -> list[app_commands.Choice[str]] :
     coin = data.coin_list
     return [
         app_commands.Choice(name=coin, value=coin)
         for coin in coin if current.lower() in coin.lower()
     ]
-
-
-
-
-
-
-
 
 
 # Yokai command cog
@@ -70,9 +56,6 @@ class Bingo_kai(commands.Cog):
         Tire au sort un Yo-kai de manière aléatoire.
         La commande possède un cooldown de 1h30 (1h sur le serveur de support ;) )
         """
-        
-
-
 
 
 
@@ -118,9 +101,6 @@ class Bingo_kai(commands.Cog):
                 bag["last_daily_reset"] = midnight
                 await Cf.save_bag(bag, ctx.author.id)
             
-
-
-
 
             
             try:
@@ -189,14 +169,6 @@ class Bingo_kai(commands.Cog):
             
             #now get the type of the item
             item_type = loot_brute[item][0]
-            
-
-
-
-
-
-
-
 
             
             #log
@@ -208,13 +180,6 @@ class Bingo_kai(commands.Cog):
                 self.bot.logger.info(
                     f"Executed bingo-kai command by {ctx.author} (ID: {ctx.author.id}) in DMs // He had '{item}' ({item_type}) / {coin}"
             )
-            
-            
-
-
-
-
-
             
             #if its an object, check in the item list to see if it's a treasure or a random obj
             if item_type == "obj":
@@ -462,45 +427,6 @@ class Bingo_kai(commands.Cog):
                     
                     item_embed.set_footer(text=f"{coin} utilisée !")
                     return await ctx.send(embed=item_embed)
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         ### NORMAL PART ###
