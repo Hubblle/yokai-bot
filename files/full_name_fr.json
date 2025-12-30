@@ -469,7 +469,7 @@
   },
   "Komistigri": {
     "name_en": "Komiger",
-    "id": null
+    "id": "yf000021"
   },
   "Bababou": {
     "name_en": "Daiz",
@@ -673,7 +673,7 @@
   },
   "Frérosse": {
     "name_en": "Bruff",
-    "id": null
+    "id": "yf000022"
   },
   "Nimpégase": {
     "name_en": "Negasus",
@@ -2213,11 +2213,11 @@
   },
   "Sanventurier": {
     "name_en": "Knomad Koma",
-    "id": null
+    "id": "yf000134"
   },
   "Jiroventurier": {
     "name_en": "Knomad Jiro",
-    "id": null
+    "id": "yf000133"
   },
   "Superobonyan": {
     "name_en": "Showbonyan",
@@ -2373,7 +2373,7 @@
   },
   "Coco Barjo": {
     "name_en": "J. Ne-Sais-Quoi",
-    "id": null
+    "id": "yf000023"
   },
   "Enma l'Ancien": {
     "name_en": "Ancient Enma",
@@ -2517,15 +2517,15 @@
   },
   "Orqéophyte": {
     "name_en": "Orcalyte",
-    "id": null
+    "id": "yf000025"
   },
   "Boucanos": {
     "name_en": "Plundros",
-    "id": null
+    "id": "yf000131"
   },
   "Porcinator": {
     "name_en": "Hoggles",
-    "id": null
+    "id": "yf000024"
   },
   "Inamygal": {
     "name_en": "Tarantutor",
@@ -2537,23 +2537,23 @@
   },
   "Volteface": {
     "name_en": "Duwheel",
-    "id": null
+    "id": "yf000026"
   },
   "Voltéophyte": {
     "name_en": "Duolyte",
-    "id": null
+    "id": "yf000027"
   },
   "Didgeai": {
     "name_en": "Chirpster",
-    "id": null
+    "id": "yf000028"
   },
   "Didgéophyte": {
     "name_en": "Chirpolyte",
-    "id": null
+    "id": "yf000029"
   },
   "Méganyan": {
     "name_en": "Meganyan",
-    "id": null
+    "id": "yf000030"
   },
   "Firmain": {
     "name_en": "Hans Full",
@@ -2561,39 +2561,39 @@
   },
   "Maximain": {
     "name_en": "Hans Galore",
-    "id": null
+    "id": "yf000031"
   },
   "Tromplœil": {
     "name_en": "Eyephoon",
-    "id": null
+    "id": "yf000032"
   },
   "Tornadoculaire": {
     "name_en": "Torneyedo",
-    "id": null
+    "id": "yf000033"
   },
   "Fatracteur": {
     "name_en": "Junkernaut",
-    "id": null
+    "id": "yf000034"
   },
   "Supermanager": {
     "name_en": "Supermanager",
-    "id": null
+    "id": "yf000035"
   },
   "Thibonimenteur": {
     "name_en": "Hoaxy-Coaxy",
-    "id": null
+    "id": "yf000036"
   },
   "Agent X": {
     "name_en": "Agent X",
-    "id": null
+    "id": "yf000037"
   },
   "Yo-kaiju": {
     "name_en": "Yo-kaiju",
-    "id": null
+    "id": "yf000038"
   },
   "Yopple-bot": {
     "name_en": "Yopple-Bot",
-    "id": null
+    "id": "yf000039"
   },
   "No-bot": {
     "name_en": "No-Bot",
@@ -2601,31 +2601,31 @@
   },
   "Dodorothée": {
     "name_en": "Beddy-Byes",
-    "id": null
+    "id": "yf000135"
   },
   "Minustrel": {
     "name_en": "Slackerjack",
-    "id": null
+    "id": "yf000040"
   },
   "Magnustrel": {
     "name_en": "Slackolyte",
-    "id": null
+    "id": "yf000041"
   },
   "King Keskler": {
     "name_en": "Rongo Swirll",
-    "id": null
+    "id": "yf000042"
   },
   "Don Morleone": {
     "name_en": "Ghoulfather",
-    "id": null
+    "id": "yf000043"
   },
   "Don Spiration": {
     "name_en": "Don Spiracy",
-    "id": null
+    "id": "yf000044"
   },
   "Karmagister": {
     "name_en": "Zenlightener",
-    "id": null
+    "id": "yf000045"
   },
   "Clochemar": {
     "name_en": "Hollow Guard",
@@ -2633,59 +2633,59 @@
   },
   "Rôdin": {
     "name_en": "Skulk",
-    "id": null
+    "id": "yf000046"
   },
   "Tata la Terreur": {
     "name_en": "Tattleterror",
-    "id": null
+    "id": "yf000047"
   },
   "Garegamelle": {
     "name_en": "Yellskitchen",
-    "id": null
+    "id": "yf000048"
   },
   "Hacharné": {
     "name_en": "Soulcleaver",
-    "id": null
+    "id": "yf000049"
   },
   "Don Dorleone": {
     "name_en": "The Goldfather",
-    "id": null
+    "id": "yf000050"
   },
   "Morquis": {
     "name_en": "Whaleman",
-    "id": null
+    "id": "yf000051"
   },
   "Ténorque": {
     "name_en": "Narwail",
-    "id": null
+    "id": "yf000052"
   },
   "Sequestrella": {
     "name_en": "Maiden Ruin",
-    "id": null
+    "id": "yf000053"
   },
   "Mécagolem": {
     "name_en": "IcarOS",
-    "id": null
+    "id": "yf000054"
   },
   "Shamanaconda": {
     "name_en": "The Woebra",
-    "id": null
+    "id": "yf000055"
   },
   "Robonyan 28": {
     "name_en": "Robonyan 28",
-    "id": null
+    "id": "yf000056"
   },
   "Robonyan 3000": {
     "name_en": "Robonyan 3000",
-    "id": null
+    "id": "yf000057"
   },
   "Roi Shogun": {
     "name_en": "Shogun King",
-    "id": null
+    "id": "yf000058"
   },
   "Hypertaupe": {
     "name_en": "Holey Moley",
-    "id": null
+    "id": "yf000059"
   },
   "Bambincroyable": {
     "name_en": "Unbelievaboy!",
@@ -2717,7 +2717,7 @@
   },
   "Bermite(Doyagari)": {
     "name_en": null,
-    "id": null
+    "id": "yf000136"
   },
   "Procrastinocchio": {
     "name_en": "Procrastinocchio",
@@ -2725,35 +2725,35 @@
   },
   "Whispavret": {
     "name_en": "Whispocrates",
-    "id": null
+    "id": "yf000060"
   },
   "Combattank(Dassensha Ro Shuku)": {
     "name_en": null,
-    "id": null
+    "id": "yf000138"
   },
   "Doyen Bermite(Doya Osa)": {
     "name_en": null,
-    "id": null
+    "id": "yf000137"
   },
   "Faux Kappa(du passé)": {
     "name_en": "Faux Kappa",
-    "id": null
+    "id": "yf000061"
   },
   "Komajiro Sun Quan": {
     "name_en": "Komajiro Sun Quan",
-    "id": null
+    "id": "yf000062"
   },
   "Mme. Papilla": {
     "name_en": "Nurse Tongus",
-    "id": null
+    "id": "yf000063"
   },
   "Perfœil(Ogu,Togu & Mogu)": {
     "name_en": null,
-    "id": null
+    "id": "yf000139"
   },
   "Plantignon(Pakkun)": {
     "name_en": null,
-    "id": null
+    "id": "yf000140"
   },
   "Professeur Plumage": {
     "name_en": "Professor Plumage",
@@ -2761,11 +2761,11 @@
   },
   "Shirokuma": {
     "name_en": null,
-    "id": null
+    "id": "yf000141"
   },
   "Abyssinyan": {
-    "name_en": null,
-    "id": null
+    "name_en": "Gusto",
+    "id": "yf000064"
   },
   "Grande Gallardo": {
     "name_en": "El Gutso Grande",
@@ -2773,7 +2773,7 @@
   },
   "Junior": {
     "name_en": null,
-    "id": null
+    "id": "yf000065"
   },
   "Justicier Komasqué": {
     "name_en": "Kaped Komander",
@@ -2781,15 +2781,15 @@
   },
   "M.Spioche": {
     "name_en": "Shovulcan",
-    "id": null
+    "id": "yf000066"
   },
   "Pain Surprise": {
     "name_en": "Punching Baguette",
-    "id": null
+    "id": "yf000067"
   },
   "Usapyon T": {
     "name_en": "Treasure USApyon",
-    "id": null
+    "id": "yf000068"
   },
   "Whisper Kongming": {
     "name_en": "Whisper Kongming",
@@ -2837,19 +2837,19 @@
   },
   "Balopendre": {
     "name_en": null,
-    "id": null
+    "id": "yf000142"
   },
   "Jibanyan (Lightside)": {
     "name_en": null,
-    "id": null
+    "id": "yf000069"
   },
   "Katimantis": {
     "name_en": null,
-    "id": null
+    "id": "yf000143"
   },
   "Kuroi Jibanyan": {
     "name_en": null,
-    "id": null
+    "id": "yf000070"
   },
   "Kuroi Komasan": {
     "name_en": null,
@@ -2857,11 +2857,11 @@
   },
   "Mathiptère": {
     "name_en": null,
-    "id": null
+    "id": "yf000144"
   },
   "Nathasticot": {
     "name_en": null,
-    "id": null
+    "id": "yf000145"
   },
   "ScientifiBot Y": {
     "name_en": "ScientifiBot Y",
@@ -2869,7 +2869,7 @@
   },
   "Tsuchinoko (Lightside)": {
     "name_en": null,
-    "id": null
+    "id": "yf000071"
   },
   "Typ": {
     "name_en": null,
@@ -2877,19 +2877,19 @@
   },
   "UZApyon": {
     "name_en": null,
-    "id": null
+    "id": "yf000146"
   },
   "Whisper 2040": {
     "name_en": null,
-    "id": null
+    "id": "yf000072"
   },
   "Yamambaa": {
     "name_en": null,
-    "id": null
+    "id": "yf000147"
   },
   "Yo Kai Watch Kuroi": {
     "name_en": null,
-    "id": null
+    "id": "yf000073"
   },
   "Le dernier Nyanmuraï": {
     "name_en": "The Last Nyanmurai",
@@ -2921,31 +2921,31 @@
   },
   "Ambronzio": {
     "name_en": "Bronzlow",
-    "id": null
+    "id": "yf000074"
   },
   "Barbebluff": {
     "name_en": "Cap'n Rex",
-    "id": null
+    "id": "yf000075"
   },
   "Barbefrousse": {
     "name_en": "Cap'n Crash",
-    "id": null
+    "id": "yf000076"
   },
   "Blingos": {
     "name_en": "Goldy Bones",
-    "id": null
+    "id": "yf000077"
   },
   "Bogos": {
     "name_en": "Glitzy Bones",
-    "id": null
+    "id": "yf000078"
   },
   "Chomino": {
     "name_en": "Headasteam",
-    "id": null
+    "id": "yf000079"
   },
   "Cycloptique": {
     "name_en": "Retinado",
-    "id": null
+    "id": "yf000080"
   },
   "Dr.Jobard": {
     "name_en": "Dr. Maddiman",
@@ -2953,23 +2953,23 @@
   },
   "Filomène": {
     "name_en": "Kat Kraydel",
-    "id": null
+    "id": "yf000081"
   },
   "Hagacurée": {
     "name_en": "Spooklunk",
-    "id": null
+    "id": "yf000082"
   },
   "Hydreux": {
     "name_en": "Eyedra",
-    "id": null
+    "id": "yf000132"
   },
   "Infiniris": {
     "name_en": "Infinipea",
-    "id": null
+    "id": "yf000083"
   },
   "Lady Démona": {
     "name_en": "Dame Demona",
-    "id": null
+    "id": "yf000084"
   },
   "Lady Maggie": {
     "name_en": "Dame Dredful",
@@ -2985,15 +2985,15 @@
   },
   "Majordogue ": {
     "name_en": "Duke Doggy",
-    "id": null
+    "id": "yf000085"
   },
   "Maribass": {
     "name_en": "Floppa",
-    "id": null
+    "id": "yf000086"
   },
   "Mariotte": {
     "name_en": "Flippa",
-    "id": null
+    "id": "yf000087"
   },
   "McKraken (2ème forme)": {
     "name_en": null,
@@ -3001,7 +3001,7 @@
   },
   "Nébulor": {
     "name_en": "Clipso",
-    "id": null
+    "id": "yf000088"
   },
   "Ombraptor": {
     "name_en": "Massiface",
@@ -3009,11 +3009,11 @@
   },
   "Pr.Létripe": {
     "name_en": "Dr. Nogut",
-    "id": null
+    "id": "yf000089"
   },
   "Rancornet": {
     "name_en": "Squisker",
-    "id": null
+    "id": "yf000090"
   },
   "Sabroclair": {
     "name_en": "Phantasmurai",
@@ -3021,161 +3021,217 @@
   },
   "Styx VI": {
     "name_en": "Styx Mk. VI",
-    "id": null
+    "id": "yf000091"
   },
   "Taprice": {
     "name_en": "Mallice",
-    "id": null
+    "id": "yf000092"
   },
   "Thénuki": {
     "name_en": "Teastroyer",
-    "id": null
+    "id": "yf000093"
   },
   "Tourbœillon": {
     "name_en": "Eyeclone",
-    "id": null
+    "id": "yf000094"
   },
   "Marmonneur en série": {
     "name_en": "Mass Mutterer",
-    "id": null
+    "id": "yf000095"
   },
   "Crème Chantiwhisp": {
     "name_en": "Whisped Cream",
-    "id": null
+    "id": "yf000096"
   },
   "Pattes Rouges": {
     "name_en": "Red Paws",
-    "id": null
+    "id": "yf000097"
   },
   "Omai Tourbillonnant": {
     "name_en": "Swirlious Omai",
-    "id": null
+    "id": "yf000098"
   },
   "Griffes Dorées": {
     "name_en": "Golden Claws",
-    "id": null
+    "id": "yf000099"
   },
   "Or Tourbillonnant": {
     "name_en": "Swirlious Gold",
-    "id": null
+    "id": "yf000100"
   },
   "Capitaine Tonnerre": {
     "name_en": "Captain Thunder",
-    "id": null
+    "id": "yf000101"
   },
   "Ducanin": {
     "name_en": "Duke Drooly",
-    "id": null
+    "id": "yf000102"
   },
   "Ducfélin": {
     "name_en": "Alicktokat",
-    "id": null
+    "id": "yf000103"
   },
   "Zazelmar": {
     "name_en": "Zazelmare",
-    "id": null
+    "id": "yf000104"
   },
   "Emperose": {
     "name_en": "Pink Emperor",
-    "id": null
+    "id": "yf000105"
   },
   "Ultime Nyanmuraï": {
-    "name_en": null,
-    "id": null
+    "name_en": "The Lastest Nyanmurai",
+    "id": "yf000106"
   },
   "Chihuaglagla Shiny": {
     "name_en": null,
-    "id": null
+    "id": "yf000107"
   },
   "Granpapéti Shiny": {
     "name_en": null,
-    "id": null
+    "id": "yf000108"
   },
   "Pioubidou Shiny": {
     "name_en": null,
-    "id": null
+    "id": "yf000109"
   },
   "Umilie Shiny": {
     "name_en": null,
-    "id": null
+    "id": "yf000110"
   },
   "Komajiro Shiny": {
     "name_en": null,
-    "id": null
+    "id": "yf000111"
   },
   "Agonigiri Shiny": {
     "name_en": null,
-    "id": null
+    "id": "yf000112"
   },
   "Coléroptère Shiny": {
     "name_en": null,
-    "id": null
+    "id": "yf000113"
   },
   "Kappacap Shiny": {
     "name_en": null,
-    "id": null
+    "id": "yf000114"
   },
   "Appak Shiny": {
     "name_en": null,
-    "id": null
+    "id": "yf000115"
   },
   "Félipaix Shiny": {
     "name_en": null,
-    "id": null
+    "id": "yf000116"
   },
   "Mr Félipaix Shiny": {
     "name_en": null,
-    "id": null
+    "id": "yf000117"
   },
   "Scatcheur Shiny": {
     "name_en": null,
-    "id": null
+    "id": "yf000118"
   },
   "Scarmouche Shiny": {
     "name_en": null,
-    "id": null
+    "id": "yf000119"
   },
   "Nanpart Shiny": {
     "name_en": null,
-    "id": null
+    "id": "yf000120"
   },
   "Passpa Shiny": {
     "name_en": null,
-    "id": null
+    "id": "yf000121"
   },
   "Marcognito Shiny": {
     "name_en": null,
-    "id": null
+    "id": "yf000122"
   },
   "Ninjamévu Shiny": {
     "name_en": null,
-    "id": null
+    "id": "yf000123"
   },
   "Tapur Shiny": {
     "name_en": null,
-    "id": null
+    "id": "yf000124"
   },
   "Suspicioni Shiny": {
     "name_en": null,
-    "id": null
+    "id": "yf000125"
   },
   "Froahuahua Shiny": {
     "name_en": null,
-    "id": null
+    "id": "yf000126"
   },
   "Puissanfon Shiny": {
     "name_en": null,
-    "id": null
+    "id": "yf000127"
   },
   "Komistigri Shiny": {
     "name_en": null,
-    "id": null
+    "id": "yf000128"
   },
   "Onigirix Shiny": {
     "name_en": null,
-    "id": null
+    "id": "yf000129"
   },
   "Rhinolimit Shiny": {
+    "name_en": null,
+    "id": "yf000130"
+  },
+  "N J W Noël": {
+    "name_en": null,
+    "id": "yf000148"
+  },
+  "Jibanyan de Noël": {
+    "name_en": null,
+    "id": "yf000151"
+  },
+  "Komasan de Noël": {
+    "name_en": null,
+    "id": "yf000150"
+  },
+  "Komajiro de Noël": {
+    "name_en": null,
+    "id": "yf000149"
+  },
+  "Komami de Noël": {
+    "name_en": null,
+    "id": "yf000152"
+  },
+  "Christmas Treet": {
+    "name_en": null,
+    "id": "yf000153"
+  },
+  "Kyodai Santa": {
+    "name_en": null,
+    "id": "yf000154"
+  },
+  "Komastar de Noël": {
+    "name_en": null,
+    "id": "yf000155"
+  },
+  "Blizzaria de Noël": {
+    "name_en": null,
+    "id": "yf000156"
+  },
+  "Robonyan de Noël": {
+    "name_en": null,
+    "id": "yf000157"
+  },
+  "Jibanyan cadeau": {
+    "name_en": null,
+    "id": "yf000158"
+  },
+  "Shogunyan Hivernale": {
+    "name_en": null,
+    "id": "yf000159"
+  },
+  "Alpinella hivernale": {
+    "name_en": null,
+    "id": "yf000160"
+  },
+  "Christmas Tree": {
     "name_en": null,
     "id": null
   }

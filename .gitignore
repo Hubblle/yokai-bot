@@ -3,6 +3,9 @@ configuration.json
 bot-data.json
 .env
 cooldownlist.json
+avent.json
+avent_user_cooldown.json
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
