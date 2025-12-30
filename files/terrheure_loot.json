@@ -1,0 +1,55 @@
+{
+    "1":{
+        "type": "orbe",
+        "amount": 1
+    },
+    "2":{
+        "type": "yokair",
+        "class": "E"
+    
+    },
+    "4" : {
+        "type" :"orbe",
+        "amount" : 40
+    },
+    "5":{
+        "type": "coin",
+        "coin_list": ["pièce rouge", "pièce verte"],
+        "amount": 1
+    },
+    "10":{
+        "type": "yokail",
+        "rang": "s",
+        "yokai_list": ["gorgouille","orquanos","gargaros"]
+    },
+    "15" :{
+        "type" :"orbe",
+        "amount" : 100
+    },
+    "20":{
+        "type": "treasure",
+        "name": "Trésor oni"
+    },
+    "30":{
+        "type": "yokair",
+        "class":"Boss"
+    },
+    "35":{
+        "type" :"orbe",
+        "amount" : 600
+    },
+    "40":{
+        "type":"coin",
+        "coin_list" :["pièce monstrueuse","pièce démoniaque","pièce spécial","pièce légendaire"]
+
+    },
+    "45":{
+        "type":"orbe",
+        "amount": 1000
+    },
+    "50":{
+        "type": "yokail",
+        "rang": "shiny",
+        "yokai_list":["gargaros shiny","gorgouille shiny","orquanos shiny"]
+    }
+}
