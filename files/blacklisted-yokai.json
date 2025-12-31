@@ -1,6 +1,9 @@
 {
-    "blacklist": [
-        "nom1",
-        "nom2"
+    "yokai": [
+        "Orqanos shiny",
+        "Ogralos shiny",
+        "Gargaros shiny"
+    ],
+    "rang": [
     ]
 }

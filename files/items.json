@@ -533,7 +533,6 @@
         "type" : "treasure",
         "desc" : "Boost ton taux de drop de rang S",
         "slot" : 3,
-        "action" : 1,
         "value1" : 0.05,
         "value2" : "S",
         "_comment" : "ajoute Value1 sur la rareté value2"
@@ -544,7 +543,6 @@
         "type" : "treasure",
         "desc" : "Permet de réduire le cooldown du bingo-kai de 10 min",
         "slot" : 3,
-        "action" : 2,
         "value1" : 5,
         "_comment" : "réduis le cooldown de chaque Bkai normal de 5min"
     },
@@ -554,7 +552,6 @@
         "type" : "treasure",
         "desc" : "Augmente le taux de pourcentage d'obtenir un bon nombre de tirages de bkai à pièce quotidien max",
         "slot" : 2,
-        "action" : 3,
         "value1" : 5,
         "_comment" : "ajoute plus de possiblité aux nombres de tirage quotidien max entre 6 et 20 deviens entre 6 et 25"
     },
@@ -564,8 +561,7 @@
         "type" : "treasure",
         "desc" : "Une fois équipé l'utilisateur ne peux qu'avoir des yokai de rang E dans les tirages classique",
         "slot" : 5,
-        "action" : 1,
-        "value1" : 1000000000000,
+        "value1" : 1,
         "value2" : "E",
         "_comment" : "ajoute 100% de proba aux rang E"
     },
@@ -575,7 +571,6 @@
         "type" : "treasure",
         "desc" : "Une fois équipé , l'utilisateur obtient plus de chances d'obtenir des Yo-kai divinité",
         "slot" : 4,
-        "action" : 1,
         "value1" : 0.0025,
         "value2" : "divinité",
         "_comment" : "ajoute 0.25% de proba aux divinité"
@@ -586,7 +581,6 @@
         "type" : "treasure",
         "desc" : "Une fois équipé , l'utilisateur obtient plus de chances d'obtenir des Yo-kai spécial",
         "slot" : 4,
-        "action" : 1,
         "value1" : 0.0025,
         "value2" : "spécial",
         "_comment" : "ajoute 0.25% de proba aux spécial"
@@ -597,7 +591,6 @@
         "type" : "treasure",
         "desc" : "Une fois équipé , l'utilisateur obtient plus de chances d'obtenir des Yo-kai de rang A",
         "slot" : 2,
-        "action" : 1,
         "value1" : 0.05,
         "value2" : "spécial",
         "_comment" : "ajoute 5% de proba aux rangs A"
@@ -608,9 +601,17 @@
         "type" : "treasure",
         "desc" : "Une fois équipé , l'utilisateur a plus de chances d'obtenir des Yo-kai légendaire",
         "slot" : 4,
-        "action" : 1,
         "value1" : 0.03,
         "value2" : "spécial",
         "_comment" : "ajoute 3% de proba aux légendaires"
+    },
+    "Trésor oni" : {
+        "name_en" : "oni treasure",
+        "id" : "i1009",
+        "type" : "treasure",
+        "desc" : "ce trésor n'a pas encore d'effet connu",
+        "slot" : 1,
+        "value1" : 4,
+        "_comment" : "pas d'effet connu"
     }
 }
