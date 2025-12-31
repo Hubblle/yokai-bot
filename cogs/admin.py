@@ -6,6 +6,7 @@ import os
 import bot_package.Custom_func as Cf
 import bot_package.Check as Check
 import bot_package.data as data
+import bot_package.economy as eco
 
 
 
@@ -139,13 +140,46 @@ class Admin_command(commands.Cog):
             stats_embed.add_field(name=f"jour {day} :", value=f"`{avent_data['user_day'][day]}` utilisateurs", inline=False)
         return await ctx.send(embed=stats_embed)
         
+
+
+
         
+    @commands.hybrid_command(name="economie_mod")
+    @Check.is_in_dev_team()
+    # @app_commands.autocomplete(methode=["add","set","reset"])
+    async def economie_mod(self, ctx : commands.context, input_id:str,methode:str,amount=0):
+        if not methode in ["add","set","reset","del"]:
+            return await ctx.send("Merci d'utiliser une méthode valide ! (add, set, reset, del)", ephemeral=True)
+        elif not isinstance(amount, int):
+            return await ctx.send("Merci de fournir un montant valide.", ephemeral=True)
+        elif ctx.guild.get_member(int(input_id)):
+            return await ctx.send("Merci de fournir un identifiant utilisateur valide.", ephemeral=True)
+        else:
+            if methode == "add" :
+                await eco.add(input_id, amount)
+                self.bot.logger.warning(msg=f'{ctx.author.name} à give {amount} orb à {input_id}')
+                return await ctx.send(f"{amount} orbe on été ajouté au compte de <@{input_id}>.")
+            if methode == "set":
+                await eco.reset(input_id)
+                await eco.add(input_id,amount)
+                self.bot.logger.warning(msg=f'{ctx.author.name} à mit le wallet de {input_id} à {amount}')
+                return await ctx.send(f"Le compte de <@{input_id}> a été mis à {amount} orbe.")
+            if methode == "reset":
+                await eco.reset(input_id)
+                
+                self.bot.logger.warning(msg=f'{ctx.author.name} à réinitialisé le wallet de {input_id}')
+                return await ctx.send(f"Le compte de <@{input_id}> a été réinitialisé à 0 orbe.")
+            if methode == "del":
+                await eco.del_info(input_id)
+                self.bot.logger.warning(msg=f'{ctx.author.name} à supprimer les info de {input_id}')
+                return await ctx.send(f"Les informations économiques de <@{input_id}> ont été supprimées.")
+
       
     @commands.hybrid_command(name="give")
     @Check.is_in_dev_team()
     @app_commands.autocomplete(where=where_autcomplete)
     @app_commands.autocomplete(rang=class_autcomplete)
-    async def give(self, ctx : commands.Context, input_id : str, yokai : str, rang : str, where : str, number : str = '1'):
+    async def give(self, ctx : commands.Context, input_id : str, yokai : str, rang : str, where : str, rank_orbe: str = "False", number : str = '1'):
         """
         Give un Yo-kai/Pièce/Trésor/Objet à un utilisateur donné.
         `.give <id de l'utilisateur> <nom> <rang> <bag/medallium> <quantité>`
@@ -202,7 +236,7 @@ class Admin_command(commands.Cog):
             #now, mod the json as asked
             inv[yokai] = number
             await save_inv(inv, input_id)
-            sucess_embed = discord.Embed(title=f"La valeur `{yokai}` a été modifié sur `{number}` dans le {where} de `{input_id}`",
+            sucess_embed = discord.Embed(title=f"La valeur `{yokai}` a été modifié sur `{number}` dans le {where} de `<@{input_id}>`",
                                         color=discord.Color.green(),
                                         description=""
                                         )
@@ -220,7 +254,7 @@ class Admin_command(commands.Cog):
 
             inv["claim"] = number
             await save_inv(inv, input_id)
-            sucess_embed = discord.Embed(title=f"`{input_id}` a reçu {number} claims",
+            sucess_embed = discord.Embed(title=f"`<@{input_id}>` a reçu {number} claims",
                                         color=discord.Color.green(),
                                         description=""
                                         )
@@ -305,6 +339,9 @@ class Admin_command(commands.Cog):
                     try:
                         #stack the yokai
                         inv[yokai][1] += 1
+                        # give orb if the argument is true
+                        if bool(rank_orbe):
+                            eco.add_rank_orbe(input_id,rang)
                     except :
                         #return an exception if the yokai was not stacked
                         #so we know there is only one and we can add the mention of two yokai ( .append(2) )
@@ -322,7 +359,7 @@ class Admin_command(commands.Cog):
                 #save the inv
                 await save_inv(data=inv, id=input_id)
             
-        sucess_embed = discord.Embed(title=f"Yo-Kai ajouté(s) {"au Médallium" if rang == "medallium" else "à la sacoche"} de {input_id}",
+        sucess_embed = discord.Embed(title=f"Yo-Kai ajouté(s) au Médallium de {input_id}",
                                         color=discord.Color.green(),
                                         description=f"**{yokai}** de rang **{rang}**\n> quantité : {number}"
                                         )

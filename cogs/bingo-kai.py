@@ -7,7 +7,14 @@ import time
 import os
 import bot_package.Custom_func as Cf
 import bot_package.data as data
+import bot_package.economy as eco
 import importlib
+import cogs.event_bkai as event
+
+
+        
+
+
 
 
 
@@ -17,6 +24,13 @@ async def bingo_kai_autcomplete(interaction : discord.Interaction, current : str
         app_commands.Choice(name=coin, value=coin)
         for coin in coin if current.lower() in coin.lower()
     ]
+
+
+
+
+
+
+
 
 
 # Yokai command cog
@@ -30,23 +44,8 @@ class Bingo_kai(commands.Cog):
     
     def __init__(self, bot:commands.Bot):
         self.bot = bot
-        ## Custom bkai scripts importation
-        # Import custom bingo-kai scripts
-        for filename in os.listdir("cogs/treasure_bkai"):
-            if filename.endswith(".py"):
-                fn = filename[:-3]  # Remove .py extension
-                try:
-                    #import the module as an atribute
-                    module = importlib.import_module(f"cogs.treasure_bkai.{fn}")
-                    setattr(self.__class__, fn, module)
-                    self.bot.logger.info(f"Custom Bingo-kai {fn} loaded")
-                    
-                except Exception as e:
-                    self.bot.logger.error(f"Error while loading custom Bingo-kai {fn}: {e}")
-                    
-                    
 
-
+                    
 
 
     @commands.hybrid_command(name="bingo-kai",)
@@ -56,8 +55,6 @@ class Bingo_kai(commands.Cog):
         Tire au sort un Yo-kai de manière aléatoire.
         La commande possède un cooldown de 1h30 (1h sur le serveur de support ;) )
         """
-
-
 
         #Check if they have a treasure equiped
         bag = await Cf.get_bag(ctx.author.id)
@@ -101,6 +98,9 @@ class Bingo_kai(commands.Cog):
                 bag["last_daily_reset"] = midnight
                 await Cf.save_bag(bag, ctx.author.id)
             
+
+
+
 
             
             try:
@@ -169,6 +169,14 @@ class Bingo_kai(commands.Cog):
             
             #now get the type of the item
             item_type = loot_brute[item][0]
+            
+
+
+
+
+
+
+
 
             
             #log
@@ -180,6 +188,13 @@ class Bingo_kai(commands.Cog):
                 self.bot.logger.info(
                     f"Executed bingo-kai command by {ctx.author} (ID: {ctx.author.id}) in DMs // He had '{item}' ({item_type}) / {coin}"
             )
+            
+            
+
+
+
+
+
             
             #if its an object, check in the item list to see if it's a treasure or a random obj
             if item_type == "obj":
@@ -427,6 +442,8 @@ class Bingo_kai(commands.Cog):
                     
                     item_embed.set_footer(text=f"{coin} utilisée !")
                     return await ctx.send(embed=item_embed)
+            
+
 
 
         ### NORMAL PART ###
@@ -473,15 +490,14 @@ class Bingo_kai(commands.Cog):
                     cooldown_str = "1h"
                     if equipped_treasure == "Trésor du soleil":
                         cooldown_str = "50min"
+                        cooldown -= 600
                 else:
                     cooldown = 5400
                     cooldown_str = "1h30"
                     if equipped_treasure == "Trésor du soleil":
                         cooldown_str = "1h20"
-                
-                if equipped_treasure == "Trésor du soleil":
-                    cooldown -= 600
- 
+                        cooldown -= 600
+
 
                 if not time.time() >= last_claim + cooldown:
                     minimum_time_to_claim = last_claim + cooldown
@@ -493,21 +509,10 @@ class Bingo_kai(commands.Cog):
                         color=discord.Color.red()
                     )
                     yokai_embed.add_field(
-                        name="__Il vous reste :__",
-                        value=f"{remaining_time[3]}h {remaining_time[4]}min et {remaining_time[5]}s."
+                        name="__prochain tirage :__",
+                        value=f"<t:{minimum_time_to_claim}:R>."
                     )
                     return await ctx.send(embed=yokai_embed)
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -519,13 +524,20 @@ class Bingo_kai(commands.Cog):
                 weights[classlist.index(data.item[equipped_treasure]["value1"])] += data.item[equipped_treasure]["value2"]
 
         #choose the class of the yokai
-        class_choice = data.yokai_data[random.choices(data.class_list, weights=weights, k=1)[0]]
+        if equipped_treasure == "Trésor du poison":
+            class_choice = "E" 
+        else:
+            class_choice = data.yokai_data[random.choices(data.class_list, weights=weights, k=1)[0]]
+            while class_choice["class_name"] in data.blacklist["rang"]:
+                class_choice = data.yokai_data[random.choices(data.class_list, weights=weights, k=1)[0]]
 
         #get the good name of the class and his id
         class_name = class_choice["class_name"]
         class_id = class_choice["class_id"]
         #choose the Yo-kai in the class
         Yokai_choice = random.choices(class_choice["yokai_list"])
+        while Yokai_choice in data.blacklist["yokai"]:
+            Yokai_choice = random.choices(class_choice["yokai_list"])
         Yokai_choice = Yokai_choice[0]
         
         
@@ -596,12 +608,16 @@ class Bingo_kai(commands.Cog):
                         name=f"Vous l'avez déjà eu. Vous en avez donc {brute_inventory[Yokai_choice][1]}",
                         value="Faites `/medallium` pour voir votre Médallium."
                     )
-
                     #Set last claim
                     brute_inventory["last_claim"] = time.time()
                     #SAVE the inv
                     await Cf.save_inv(brute_inventory, ctx.author.id)
 
+                    #add orbe depending of the class
+                    await eco.add_rank_orbe(ctx.author.id, class_id)
+                    yokai_embed.add_field(name="vous l'avez déjà eu, dommage.",
+                                          value=f"voici {data.class_to_point[class_id]} orbes oni en cadeau."
+                                          )                               
                     
             
 
@@ -630,7 +646,6 @@ class Bingo_kai(commands.Cog):
                 value="Il a été ajouté a votre Médallium. Faites `/medallium` pour le voir."
             )
 
-        
         #Choose if they get a coin or not:
         if random.choices([True, False], weights=[0.1, 0.9])[0] :
             #choose the coin and coin related stuff
@@ -707,10 +722,13 @@ class Bingo_kai(commands.Cog):
 
         
         else :
+
             yokai_embed.set_footer(text="Mhh, trop préssé pour Noël ? Faites /calendrier !")
-            return await ctx.send(embed=yokai_embed)
-            
-            
+            await ctx.send(embed=yokai_embed)
+    
+            if random.choices([True, False], weights=[1, 99])[0] :
+                event.terheure(ctx)            
+   
 
                 
             
