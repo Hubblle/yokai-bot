@@ -725,8 +725,11 @@ class Bingo_kai(commands.Cog):
 
             yokai_embed.set_footer(text="Mhh, trop préssé pour Noël ? Faites /calendrier !")
             await ctx.send(embed=yokai_embed)
-    
-            if random.choices([True, False], weights=[1, 99])[0] :
+            if equipped_treasure == "Trésor oni":
+                    chance = 5
+            else :
+                    chance = 1
+            if random.choices([True, False], weights=[chance, 100-chance])[0] :
                 event.terheure(ctx)            
    
 
