@@ -609,9 +609,9 @@
         "name_en" : "oni treasure",
         "id" : "i1009",
         "type" : "treasure",
-        "desc" : "ce trésor n'a pas encore d'effet connu",
+        "desc" : "une fois equipé , l'utilisateur a plus de chance de declencher une terrheure",
         "slot" : 1,
         "value1" : 4,
-        "_comment" : "pas d'effet connu"
+        "_comment" : "1% -> 5% de chance d'activer la terrheure"
     }
 }
