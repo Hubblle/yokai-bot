@@ -83,11 +83,22 @@ async def give(input_id : str, yokai : str, rang : str, where : str, number : st
                 
 
 
+
+
+
+
+
+
+
+
+
+
+
 # def the button and its characteristics
 class button(discord.ui.View):
-    def __init__(self):
-        super().__init__(timeout=10)
-        self.users_in = []
+    def __init__(self, ctx):
+        super().__init__(timeout=300)
+        self.users_in = [ctx.author.id]
 
     @discord.ui.button(label='rejoindre la terrheure', style=discord.ButtonStyle.blurple, custom_id='join')
     async def confirm(self, interaction: discord.Interaction, button: discord.ui.Button):
@@ -99,62 +110,63 @@ class button(discord.ui.View):
 
 
 
-class terrheure(commands.Cog):
-    def __init__(self, bot):
-        self.bot = bot
+class terrheure():
+    def __init__(self):
+        pass
 
-    @commands.hybrid_command(name="terrheure")
     async def terrheure(self,ctx):
 
         #defined the view(the button), the start of the embed, sent it and save his id
-        view = button()
+        view = button(ctx)
         embed = discord.Embed(title="La terrheure à commencer !")
-        embed.set_footer(text="**merci de ne pas supprimer ce message**")
-        await ctx.send(embed=embed, view=view)
-        message = ctx.message.id
+        embed.set_footer(text="merci de ne pas supprimer ce message")
+        message = await ctx.send(embed=embed, view=view)
 
         # wait the end of the terrheure and modif the first embed
-        await asyncio.sleep(10)
-        embed_end = discord.Embed(title="La terrheure est finie !")
-        embed_end.set_footer(text="**merci de ne pas supprimer ce message**")
-        await message.edit(embed=embed_end)
+        await asyncio.sleep(300)
+        embed_end = discord.Embed(title="La terrheure est finie !",
+                                  description=f"cliquez sur le bouton ci-dessous pour rejoindre la terrheure ! \n plus le nombre de personne sera élevé, plus les récompenses seront grandes ! \n la terrheure durera 5 minutes.",
+                                  color=discord.Color.dark_red())
+        embed_end.set_footer(text="merci de ne pas supprimer ce message")
+        await message.edit(embed=embed_end, view=None)
 
 
-# c'est moche mais c'est pas fini
         #start define a embed
         new_embed = discord.Embed(
             title="La terreur est terminée !",
+            color=discord.Color.dark_red()
             )
         
         # give the reward if the number of participant is equal or superior
         users_len = len(view.users_in)
         for recompense in loot.keys():
-            if int(recompense) <= view.users_in:
+            if int(recompense) <= users_len:
                 reward = loot[str(recompense)]
 
                 # if reward is orbe use eco file to give it
                 if reward["type"] == "orbe":
                     phrase = f"{reward["amount"]} orbe oni pour chaque personne"
-                    for id in self.users_in:
-                        economy.add(id,reward["amount"])
+                    for id in view.users_in:
+                        await economy.add(id,reward["amount"])
 
                 # if reward is yokair(yokai rang)
                 # choose a random yokai in this rang and give him
                 # use a shorter version of give in admin cog
                 elif reward["type"] == "yokair":
-                    gifted_yokai = random.choice(data.yokai_data[reward["class"]]["[yokai_list]"])
+                    gifted_yokai = random.choice(data.yokai_data[reward["class"]]["yokai_list"])
                     phrase = f"le yokai {gifted_yokai} de rang {reward["class"]}"
-                    for id in self.users_in:
-                        give(id,gifted_yokai,reward["class"],"medallium")
+                    for id in view.users_in:
+                        await give(id,gifted_yokai,reward["class"],"medallium")
 
                 # if reward is a coin 
                 # choose a random coin in a list
                 # and give him with the shorter give
                 elif reward["type"] == "coin":
                     gifted_coin = random.choice(loot[recompense]["coin_list"])
+                    print(type(reward))
                     phrase = f"{reward["amount"]} {gifted_coin}"
-                    for id in self.users_in:
-                        give(id, gifted_coin,"coin","bag")
+                    for id in view.users_in:
+                        await give(id, gifted_coin,"coin","bag", reward["amount"])
 
                 # if reward is yokail(yokai list)
                 # choose a random yokai in this list and give him
@@ -162,31 +174,29 @@ class terrheure(commands.Cog):
                 elif reward["type"] == "yokail":
                     gifted_yokai = random.choice(reward["yokai_list"])
                     phrase = f"le yokai {gifted_yokai} de rang {reward["rang"]}"
-                    for id in self.users_in:
-                        give(id,gifted_yokai,reward["rang"],"medallium")
+                    for id in view.users_in:
+                        await give(id,gifted_yokai,reward["rang"],"medallium")
 
                 # if reward is treasure
                 # give the selected treasure
                 # use a shorter version of give in admin cog
                 elif reward["type"] == "treasure":
                     phrase = f"le magnifique {reward["name"]}"
-                    for id in self.users_in:
-                        give(id,reward["name"],"treasure","bag")
+                    for id in view.users_in:
+                        await give(id,reward["name"],"treasure","bag")
 
 
                 # add a field to the embed corresponding of the reward of all stage
                 new_embed.add_field(name=f"Récompenses pour avoir atteint {recompense} personne:", value=phrase)
-
+            else:
+                break
 
         # modif the first message by the embed with
         # all the reward
-        await message.edit(embed=new_embed)
+        await message.edit(embed=new_embed, view=None)
 
         # make a list with the mention of all the participants 
         list_part = ""
-        for user in self.users_in:
+        for user in view.users_in:
             list_part += f"<@{user}> " 
         await ctx.send(f"liste des participants : {list_part}")     
-
-async def setup(bot):
-    await bot.add_cog(terrheure(bot))
