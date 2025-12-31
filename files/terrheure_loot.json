@@ -40,7 +40,8 @@
     },
     "40":{
         "type":"coin",
-        "coin_list" :["pièce monstrueuse","pièce démoniaque","pièce spécial","pièce légendaire"]
+        "coin_list" :["pièce monstrueuse","pièce démoniaque","pièce spécial","pièce légendaire"],
+        "amount": 2
 
     },
     "45":{
