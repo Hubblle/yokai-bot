@@ -40,7 +40,7 @@
     },
     "40":{
         "type":"coin",
-        "coin_list" :["pièce monstrueuse","pièce démoniaque","pièce spécial","pièce légendaire"],
+        "coin_list" :["Pièce monstrueuse","Pièce démoniaque","Pièce spécial","Pièce légendaire"],
         "amount": 2
 
     },
@@ -53,4 +53,5 @@
         "rang": "shiny",
         "yokai_list":["gargaros shiny","gorgouille shiny","orquanos shiny"]
     }
+
 }
