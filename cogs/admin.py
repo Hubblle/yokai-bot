@@ -150,8 +150,6 @@ class Admin_command(commands.Cog):
     async def economie_mod(self, ctx : commands.context, input_id:str,methode:str,amount=0):
         if not methode in ["add","set","reset","del"]:
             return await ctx.send("Merci d'utiliser une méthode valide ! (add, set, reset, del)", ephemeral=True)
-        elif not isinstance(amount, int):
-            return await ctx.send("Merci de fournir un montant valide.", ephemeral=True)
         elif ctx.guild.get_member(int(input_id)):
             return await ctx.send("Merci de fournir un identifiant utilisateur valide.", ephemeral=True)
         else:
