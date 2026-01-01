@@ -14,6 +14,9 @@ class economy(commands.Cog):
 
     @commands.hybrid_command(name="orbe")
     async def orbe(self, ctx, user: discord.Member = None):
+        """
+        Affiche votre solde d'orbe oni, ou celui de l'utilisateur spécifié.
+        """
         if not user == None and not str(user.id) in data.MONEY_DATA.keys():
             return await ctx.send("Cet utilisateur n'a pas encore gagné d'orbes oni.")
         else:
