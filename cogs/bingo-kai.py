@@ -485,7 +485,7 @@ class Bingo_kai(commands.Cog):
                 #is 1h30 past last claim ?
                 #or is it 1h when executed in the support or partner server ?
                 #and subtract 10m if sun's trésor are equip ?
-                if ctx.guild.id == os.getenv("guild_partner_id") or os.getenv("guild_partner_id"):
+                if ctx.guild.id in [os.getenv("guild_partner_id")] + os.getenv("guild_partner_id"):
                     cooldown = 3600
                     cooldown_str = "1h"
                     if equipped_treasure == "Trésor du soleil":
@@ -521,7 +521,9 @@ class Bingo_kai(commands.Cog):
         #add weight to class depending of the equiped treasure
         if not equipped_treasure == None:
             if equipped_treasure == "Trésor du feu" or "Trésor du poison" or "Trésor de l'amour" or "Trésor du ciel" or "Trésor de la forêt" or "Trésor légendaire":
-                weights[classlist.index(data.item[equipped_treasure]["value1"])] += data.item[equipped_treasure]["value2"]
+                pourcent = data.item[equipped_treasure]["value2"]
+                weights[classlist.index(data.item[equipped_treasure]["value1"])] += pourcent
+                weights[0] -= pourcent
 
         #choose the class of the yokai
         if equipped_treasure == "Trésor du poison":
@@ -716,14 +718,12 @@ class Bingo_kai(commands.Cog):
             
             #Set last claim
             await Cf.save_bag(bag, ctx.author.id)
-            yokai_embed.set_footer(text="Mhh, trop préssé pour Noël ? Faites /calendrier !")
             await ctx.send(embed=yokai_embed)
             return await ctx.send(embed=coin_embed)
 
         
         else :
 
-            yokai_embed.set_footer(text="Mhh, trop préssé pour Noël ? Faites /calendrier !")
             await ctx.send(embed=yokai_embed)
             if equipped_treasure == "Trésor oni":
                     chance = 5
