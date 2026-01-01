@@ -1,10 +1,7 @@
 import discord
-from discord.ext import commands
 
 import random
 import asyncio
-import time
-import json
 
 import bot_package.Custom_func as Cf
 import bot_package.economy as economy
@@ -19,7 +16,7 @@ loot = data.terrheure
 
 
 
-# equivalence of def give un admin
+# equivalence of def give in admin
 async def give(input_id : str, yokai : str, rang : str, where : str, number : str = '1'):
 
     number = int(number)
@@ -103,10 +100,10 @@ class button(discord.ui.View):
     @discord.ui.button(label='rejoindre la terrheure', style=discord.ButtonStyle.blurple, custom_id='join')
     async def confirm(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id not in self.users_in:
-            await interaction.response.send_message('tu a rejoint la terrheure', ephemeral=True)
+            await interaction.response.send_message("tu a rejoint la terr'heure", ephemeral=True)
             self.users_in.append(interaction.user.id)
         else:
-            await interaction.response.send_message('tu es déjà dans la terrheure', ephemeral=True)
+            await interaction.response.send_message("tu es déjà dans la terr'heure", ephemeral=True)
 
 
 
@@ -118,24 +115,23 @@ class terrheure():
 
         #defined the view(the button), the start of the embed, sent it and save his id
         view = button(ctx)
-        embed = discord.Embed(title="La terrheure à commencer !")
+        embed = discord.Embed(title="La terr'heure à commencer !",
+                              description=f"cliquez sur le bouton ci-dessous pour rejoindre la terr'heure ! \n plus le nombre de personne sera élevé, plus les récompenses seront grandes ! \n la terrheure durera 5 minutes.",
+                              color=discord.Color.dark_red())
         embed.set_footer(text="merci de ne pas supprimer ce message")
         message = await ctx.send(embed=embed, view=view)
 
         # wait the end of the terrheure and modif the first embed
         await asyncio.sleep(300)
-        embed_end = discord.Embed(title="La terrheure est finie !",
-                                  description=f"cliquez sur le bouton ci-dessous pour rejoindre la terrheure ! \n plus le nombre de personne sera élevé, plus les récompenses seront grandes ! \n la terrheure durera 5 minutes.",
+        embed_end = discord.Embed(title="La terr'heure est finie !",
                                   color=discord.Color.dark_red())
         embed_end.set_footer(text="merci de ne pas supprimer ce message")
-        await message.edit(embed=embed_end, view=None)
+        try:
+            await message.edit(embed=embed_end, view=None)
+        except discord.errors.NotFound:
+            message = await ctx.send(embed_end)
 
 
-        #start define a embed
-        new_embed = discord.Embed(
-            title="La terreur est terminée !",
-            color=discord.Color.dark_red()
-            )
         
         # give the reward if the number of participant is equal or superior
         users_len = len(view.users_in)
@@ -143,7 +139,7 @@ class terrheure():
             if int(recompense) <= users_len:
                 reward = loot[str(recompense)]
 
-                # if reward is orbe use eco file to give it
+                # if reward is orbe use eco module to give it
                 if reward["type"] == "orbe":
                     phrase = f"{reward["amount"]} orbe oni pour chaque personne"
                     for id in view.users_in:
@@ -187,13 +183,16 @@ class terrheure():
 
 
                 # add a field to the embed corresponding of the reward of all stage
-                new_embed.add_field(name=f"Récompenses pour avoir atteint {recompense} personne:", value=phrase)
+                embed_end.add_field(name=f"Récompenses pour avoir atteint {recompense} personne:", value=phrase)
             else:
                 break
 
         # modif the first message by the embed with
         # all the reward
-        await message.edit(embed=new_embed, view=None)
+        try:
+            await message.edit(embed=embed_end, view=None)
+        except discord.errors.NotFound:
+            await ctx.send(embed_end)
 
         # make a list with the mention of all the participants 
         list_part = ""
