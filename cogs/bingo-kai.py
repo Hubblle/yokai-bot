@@ -149,8 +149,8 @@ class Bingo_kai(commands.Cog):
                 await Cf.save_bag(bag, ctx.author.id)
                 return await ctx.send(embed=error_embed)
         
-            if amount > probaT :
-                proba = amount / 30 #constant
+            if amount > 6 :
+                proba = amount / ProbaT #constant
                 anti_proba = 1 - proba
                 if random.choices([True, False], weights=[proba, anti_proba])[0]:
                     error_embed = discord.Embed(title="Oh non, vous avez fait votre maximum de tirage avec des pièces pour aujourd'hui...", description="Recommencez demain !")
