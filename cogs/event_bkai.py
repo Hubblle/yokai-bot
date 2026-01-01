@@ -1,4 +1,5 @@
 import discord
+from discord.ext import commands
 
 import random
 import asyncio
@@ -111,7 +112,7 @@ class terrheure():
     def __init__(self):
         pass
 
-    async def terrheure(self,ctx):
+    async def terrheure(self,ctx:commands.Context):
 
         #defined the view(the button), the start of the embed, sent it and save his id
         view = button(ctx)
@@ -197,5 +198,7 @@ class terrheure():
         # make a list with the mention of all the participants 
         list_part = ""
         for user in view.users_in:
-            list_part += f"<@{user}> " 
-        await ctx.send(f"liste des participants : {list_part}")     
+            list_part += f"<@{user}> "
+            
+        
+        await message.reply(f"liste des participants de la terr'heure: {list_part}")    
