@@ -1,8 +1,5 @@
 import json
 import bot_package.data as data
-import discord
-from discord.ext import commands
-import bot_package.data as data
 
 # this function is call for saw if the user have data
 # and if he don't have info calculate he number of orbe
@@ -58,3 +55,4 @@ async def add_rank_orbe(user_id: int, rank) -> None:
     with open("./files/monnaie.json", "w") as money_file:
 
         json.dump(data.MONEY_DATA, money_file, indent=4) 
+
