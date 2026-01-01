@@ -23,10 +23,11 @@ class economy(commands.Cog):
                                   )
             embed.set_author(name=ctx.author.name, icon_url=ctx.author.display_avatar.url)
             embed.add_field(name="Orbes oni :", value=f"{ecof[str(ctx.author.id)]} orbes oni")
-            embed.set_footer(text="tkt elle serviront plus tard soit dans un shop soit dans un classement ou les 2 qui sait?")
+            embed.set_footer(text="pas d'inquitétude cher utilisateur, elle serviront plus tard soit dans un shop soit dans un classement ou les 2 qui sait?")
             return await ctx.send(embed=embed)
     
 
 
 async def setup(bot):
+
     await bot.add_cog(economy(bot))
