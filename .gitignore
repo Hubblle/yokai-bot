@@ -5,7 +5,7 @@ bot-data.json
 cooldownlist.json
 avent.json
 avent_user_cooldown.json
-
+monnaie.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
