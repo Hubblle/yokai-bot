@@ -9,7 +9,7 @@ import bot_package.Custom_func as Cf
 import bot_package.data as data
 import bot_package.economy as eco
 import importlib
-import cogs.event_bkai as event
+import cogs.bkai_events.event_bkai as event
 
 
         
