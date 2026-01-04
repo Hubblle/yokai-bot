@@ -266,12 +266,11 @@ class Bingo_kai(commands.Cog):
                                 color=discord.Color.from_str(data.yokai_data[class_id]["color"])
                             )
                             #get the image
-                            try :
-                                id = data.yokai_list_full[item]["id"]
-                                yokai_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{id}.png")
-                                yokai_embed.set_thumbnail(url=data.image_link[class_id])
-                            except KeyError :
-                                id = None
+                            
+                            id = data.yokai_list_full.get("item", {}).get("id", None)
+                            yokai_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{id}.png")
+                            yokai_embed.set_thumbnail(url=data.image_link[class_id])
+
                             
                             yokai_embed.add_field(
                                 name=f"Vous l'avez déjà eu. Vous en avez donc {brute_inventory[item][1]}",
@@ -553,11 +552,10 @@ class Bingo_kai(commands.Cog):
         
         #define the id and so the api request to the image
         
-        try :
-            id = data.yokai_list_full[Yokai_choice]["id"]
-            yokai_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{id}.png")
-        except KeyError:
-            pass
+
+        id = data.yokai_list_full.get("Yokai_choice", {}).get("id", None)
+        yokai_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{id}.png")
+
         if id == None :
             yokai_embed.add_field(name="Image non disponible ! 😢", inline=False, value="En effet, nous ne possédons pas l'image de tous les Yo-kai, mais l'équipe travaille pour les apporter au complet et au plus vite.")
 
