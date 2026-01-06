@@ -267,7 +267,7 @@ class Bingo_kai(commands.Cog):
                             )
                             #get the image
                             
-                            id = data.yokai_list_full.get("item", {}).get("id", None)
+                            id = data.yokai_list_full.get(item, {}).get("id", None)
                             yokai_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{id}.png")
                             yokai_embed.set_thumbnail(url=data.image_link[class_id])
 
@@ -553,7 +553,7 @@ class Bingo_kai(commands.Cog):
         #define the id and so the api request to the image
         
 
-        id = data.yokai_list_full.get("Yokai_choice", {}).get("id", None)
+        id = data.yokai_list_full.get(Yokai_choice, {}).get("id", None) #I feel ashamed of what I did here
         yokai_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{id}.png")
 
         if id == None :
