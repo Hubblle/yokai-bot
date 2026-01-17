@@ -257,6 +257,9 @@ class GiftConfirmView(discord.ui.View):
                                     description="> Ci-dessous vous pouvez voir le bilan."
                                     )
         success_embed.add_field(name=f"{self.recipient.name} a eu le(s) Yo-kai :", value=self.offered_yokai, inline=False)
+        
+        self.bot.logger.info(f"{self.author.name} a confirmé son cadeau pour {self.recipient.name}, il offrait {self.offered_yokai}, dans {interaction.guild.name}")
+       
 
         self.value = True 
         
