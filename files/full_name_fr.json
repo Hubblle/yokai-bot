@@ -1181,7 +1181,7 @@
   },
   "Triptyk": {
     "name_en": "Slimamander",
-    "id": "y298000"
+    "id": "yf000197"
   },
   "Snobéa": {
     "name_en": "Snobetty",
@@ -1197,7 +1197,7 @@
   },
   "Potofeu": {
     "name_en": "Wobblewok",
-    "id": "y302000"
+    "id": "yf000199"
   },
   "Poilux": {
     "name_en": "Furgus",
@@ -1225,7 +1225,7 @@
   },
   "Crocho": {
     "name_en": "Sproink",
-    "id": "y309000"
+    "id": "yf000203"
   },
   "Babarouf": {
     "name_en": "Rawry",
@@ -1265,7 +1265,7 @@
   },
   "Carpitaine": {
     "name_en": "SV Snaggerjag",
-    "id": "y319000"
+    "id": "yf000198"
   },
   "Mlle Coucou": {
     "name_en": "Lady Longnek",
@@ -1585,11 +1585,11 @@
   },
   "Extrabuki": {
     "name_en": "Kabuking",
-    "id": "y479000"
+    "id": "yf000207"
   },
   "Jiganyan": {
     "name_en": "Rubeus J",
-    "id": "y480000"
+    "id": "yf000205"
   },
   "Alga Sensei": {
     "name_en": "Seaweed Sns.",
@@ -1597,7 +1597,7 @@
   },
   "Grolos": {
     "name_en": "Gutsy Bones",
-    "id": "y482000"
+    "id": "yf000204"
   },
   "Trempetta": {
     "name_en": "Drenchetta",
@@ -1609,7 +1609,7 @@
   },
   "Komak": {
     "name_en": "Hardy Hound",
-    "id": "y485000"
+    "id": "yf000206"
   },
   "Suprarachnus": {
     "name_en": "Arachnevil",
@@ -2505,15 +2505,15 @@
   },
   "Gargaros": {
     "name_en": "Gargaros",
-    "id": "y360000"
+    "id": "yf000200"
   },
   "Ogralos": {
     "name_en": "Ogralus",
-    "id": "y361000"
+    "id": "yf000201"
   },
   "Orqanos": {
     "name_en": "Orcanos",
-    "id": "y362000"
+    "id": "yf000202"
   },
   "Orqéophyte": {
     "name_en": "Orcalyte",
@@ -2873,7 +2873,7 @@
   },
   "Typ": {
     "name_en": null,
-    "id": null
+    "id": "yf000208"
   },
   "UZApyon": {
     "name_en": null,
@@ -3378,5 +3378,17 @@
   "Zazel (2ème forme)": {
     "name_en": null,
     "id": "yf000196"
+  },
+    "Orqanos shiny": {
+    "name_en": null,
+    "id": null
+  },
+  "Ogralos shiny": {
+    "name_en": null,
+    "id": null
+  },
+  "Gargaros shiny": {
+    "name_en": null,
+    "id": null
   }
 }
