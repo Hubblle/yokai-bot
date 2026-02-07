@@ -2597,7 +2597,7 @@
   },
   "No-bot": {
     "name_en": "No-Bot",
-    "id": null
+    "id": "yf000209"
   },
   "Dodorothée": {
     "name_en": "Beddy-Byes",
@@ -2629,7 +2629,7 @@
   },
   "Clochemar": {
     "name_en": "Hollow Guard",
-    "id": null
+    "id": "yf000210"
   },
   "Rôdin": {
     "name_en": "Skulk",
@@ -3231,10 +3231,6 @@
     "name_en": null,
     "id": "yf000160"
   },
-  "Christmas Tree": {
-    "name_en": null,
-    "id": null
-  },
   "Anghihihille": {
     "name_en": null,
     "id": "yf000161"
@@ -3379,16 +3375,16 @@
     "name_en": null,
     "id": "yf000196"
   },
-    "Orqanos shiny": {
+  "Orqanos shiny": {
     "name_en": null,
-    "id": null
+    "id": "yf000202"
   },
   "Ogralos shiny": {
     "name_en": null,
-    "id": null
+    "id": "yf000201"
   },
   "Gargaros shiny": {
     "name_en": null,
-    "id": null
+    "id": "yf000200"
   }
 }
