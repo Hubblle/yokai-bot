@@ -5,6 +5,33 @@ import aiohttp
 import asyncio
 VERSION = 3
 
+
+
+if os.name == "nt":  # Only execute on Windows
+    def fix_encoding(obj):
+        #the func that encode well everything; bcs we are french, we use é, à, è
+            if isinstance(obj, dict):
+                return {fix_encoding(k): fix_encoding(v) for k, v in obj.items()}
+            elif isinstance(obj, list):
+                return [fix_encoding(item) for item in obj]
+            elif isinstance(obj, str):
+                try:
+                    return obj.encode('latin-1').decode('utf-8')
+                except UnicodeEncodeError:
+                    return obj
+                except UnicodeDecodeError:
+                    return obj
+            else:
+                return obj
+
+else:
+    def fix_encoding(obj):            
+        return obj
+
+
+
+
+
 def line(num : int = 1):
     for i in range(num):
         print(" ")
@@ -15,6 +42,8 @@ async def check_image(session, yokai_name, yokai_data):
     if not yokai_data.get('id'):
         return yokai_name, None
         
+    
+    asyncio.sleep(0.2)
     url = f"https://api.quark-dev.com/yk/img/{yokai_data['id']}.png"
     try:
         async with session.get(url) as response:
@@ -71,9 +100,35 @@ def classid_to_class(id, reverse : bool = False):
     return ""
 
 
+#Get bag func
+ 
+def get_bag(id : int):
+    """
+    A func to get the bag of a user (with his id)
+    """
+    if os.path.exists(f"./files/bag/{str(id)}.json"):
+        with open(f"./files/bag/{str(id)}.json") as f:
+            data = fix_encoding(json.load(f))
+    else :
+        #retrun nothing if there's nothing to :/
+        data = {}
+       
+    return data
+
+
+
+#save bag func
+def save_bag(data : dict, id : int):
+    """
+    A func to save the bag of a user (with his id)
+    """
+    with open(f"./files/bag/{str(id)}.json", "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+
+
 #Get Yo-kai lists :
 with open("./files/yokai_list.json") as yokai_list:
-    yokai_data = json.load(yokai_list)
+    yokai_data : dict = json.load(yokai_list)
     list_len = {
         "E" : len(yokai_data["E"]["yokai_list"]),
         "D" : len(yokai_data["D"]["yokai_list"]),
@@ -93,22 +148,22 @@ with open("./files/yokai_list.json") as yokai_list:
         
 def adjust():
     line(35)
-    print("Welcome to the ajustement program !")
+    print("Welcome to the adjust software !")
     while True :
         print("Please, select a mode :")
-        print("   [1] Total number of yokai. \n   [2] Nothing. \n")
+        print("   [1] Total number of yokai. \n   [2] Total in the bag. \n")
         line()
-        choise = input("Please, select a number [1-2] ")
+        choice = input("Please, select a number [1-2] ")
     
-        if choise == "1" or choise == "2":
-            choise = int(choise)
+        if choice == "1" or choice == "2":
+            choice = int(choice)
             break
     
         print("The number isn't right, please enter a number in range [1-2]")
         input("Press any key to go back to the menu.")
     
     
-    if choise == 1:
+    if choice == 1:
         corrected_classes = 0
         
         for dirpath, dirnames, filenames in os.walk("./files/inventory"):
@@ -144,11 +199,39 @@ def adjust():
                             corrected_classes += 1
                         
                     save_inv(current_inv, file.strip(".json"))
-                    print("The inventorys have been adjusted sucessfully !")
-                    print(f"{corrected_classes} total were adjusted")
+        print("The inventories were adjusted successfully !")
+        print(f"{corrected_classes} total were adjusted")
                     
-    if choise == 2:
-        print("that func wasn't coded yet :/")
+    if choice == 2:
+        corrected_classes = 0
+        
+        for dirpath, dirnames, filenames in os.walk("./files/bag"):
+            for file in filenames :
+                things_per_class = {
+                    "coin":0,
+                    "obj": 0,
+                    "treasure": 0
+                }
+                
+                current_bag = get_bag(file.strip(".json"))
+                if current_bag != {} :
+                    for things in current_bag :
+                        #check if the object is part of the inv system
+                        if type(current_bag[things]) != list :
+                            pass
+                        
+                        else :
+                            things_class = current_bag[things][0]
+                            things_per_class[things_class] += 1
+                    
+                    for classes in things_per_class :
+                        if things_per_class[classes] != current_bag[classes]:
+                            current_bag[classes] = things_per_class[classes]
+                            corrected_classes += 1
+                        
+                    save_bag(current_bag, file.strip(".json"))
+        print("The bags were adjusted successfully !")
+        print(f"{corrected_classes} total were adjusted")
             
             
                     
@@ -161,7 +244,49 @@ def adjust():
          
          
          
-         
+def match_adjust():
+    line(35)
+    exclude = []
+    
+    from difflib import SequenceMatcher
+    def match(s1, s2):
+        if s2 in exclude:
+            return False
+
+        # Remove spaces and make lowercase
+        s1_clean = s1.lower().replace(' ', '')
+        s2_clean = s2.lower().replace(' ', '')
+        
+        # Check for roman numerals vs numbers
+        roman_map = {'i': '1', 'ii': '2', 'iii': '3', 'iv': '4', 'v': '5'}
+        for roman, num in roman_map.items():
+            s1_clean = s1_clean.replace(roman, num)
+            s2_clean = s2_clean.replace(roman, num)
+        
+        
+        # Sequence matcher for fuzzy matching
+        ratio = SequenceMatcher(None, s1_clean, s2_clean).ratio()
+        return ratio > 0.85  # Adjust threshold as needed
+    
+    
+    full_name_fr : dict = open_json("./files/full_name_fr.json")
+    
+    #get all the yokais
+    full_list = list(full_name_fr.keys())
+    
+    
+    for yokai in full_list:
+        for yokai_compare in full_list:
+            if yokai != yokai_compare:
+                if match(yokai, yokai_compare):
+                    exclude.append(yokai_compare)
+                    print(f" Match found ! {yokai} >> {yokai_compare}")
+        
+    print("Total yokai excluded: "+str(len(exclude)))
+    save_json("./files/exclude_match.json", {"list":exclude})
+    line()
+    input("Press any key to go back to the main menu.")
+    return
 
 
 def inv_info():
@@ -249,6 +374,9 @@ def inv_info():
                 for yokai in current_inv :
                     #check if the yokai is part of the inv system
                     if yokai in ["E", "D", "C", "B", "A", "S", "LegendaryS", "treasureS", "SpecialS", "DivinityS", "Boss","Shiny", "last_claim", "", "claim"] :
+                        pass
+                    
+                    elif not type(current_inv[yokai]) == list:
                         pass
                     
                     else :
@@ -588,13 +716,190 @@ def adjust_id():
     input("End of the program, press any key to go back to the main menu.")
         
 
+def avent_manager():
+    line(35)
+    print("Welcome to the avent calendar manager !")
+    while True :
+        print("Please, select a mode :")
+        print("   [1] View advent statistics. \n   [2] Check advent data. \n   [3] Edit a day. \n   [4] Go back.")
+        line()
+        choise = input("Please, select a number [1-4] ")
+    
+        if choise in ["1", "2", "3", "4"]:
+            choise = int(choise)
+            break
+        
+        print("The number isn't right, please enter a number in range [1-4]")
+        input("Press any key to go back to the menu.")
+        line(35)
+    
+    avent_data = open_json("./files/avent.json")
+    
+    if choise == 1:
+        # View statistics
+        line()
+        print("=== Avent Calendar Statistics ===")
+        total_days = len([k for k in avent_data.keys() if k.isdigit()])
+        print(f"Total days configured: {total_days}")
+        line()
+        
+        print("Rewards claimed per day:")
+        user_day = avent_data.get("user_day", {})
+        for day in range(1, total_days + 1):
+            claims = user_day.get(str(day), 0)
+            gift = avent_data.get(str(day))
+            if gift:
+                gift_name = gift[0]
+                print(f"  Day {day:2d}: {claims:3d} claims - {gift_name}")
+            else:
+                print(f"  Day {day:2d}: ❌ No data")
+        
+        line()
+        print(f"Total claims across all days: {sum(user_day.values())}")
+    
+    elif choise == 2:
+        # Check advent data with yokai/item/coin validation
+        line()
+        print("=== Checking Avent Data ===")
+        errors = 0
+        
+        # Load reference data
+        yokai_list_raw = open_json("./files/yokai_list.json")
+        items = open_json("./files/items.json")
+        coins = open_json("./files/coin.json")
+        
+        # Build complete yokai list
+        all_yokai = []
+        for cat in yokai_list_raw:
+            all_yokai.extend(yokai_list_raw[cat]["yokai_list"])
+        
+        # Check days 1-24
+        for day in range(1, 25):
+            gift = avent_data.get(str(day))
+            if not gift:
+                print(f"❌ Day {day}: Missing data")
+                errors += 1
+                continue
+            
+            # Validate structure: [name, rang, where, amount]
+            if len(gift) < 3:
+                print(f"❌ Day {day}: Incomplete data (need at least 3 fields)")
+                errors += 1
+                continue
+            
+            name, rang, where = gift[0], gift[1], gift[2]
+            amount = gift[3] if len(gift) > 3 else 1
+            
+            # Validate where
+            if where not in ["medallium", "bag"]:
+                print(f"❌ Day {day}: Invalid 'where' value: {where}")
+                errors += 1
+                continue
+            
+            # Validate rang
+            valid_ranks = ["Shiny", "Boss", "Divinité / Enma", "Légendaire", "Spécial", "S", "A", "B", "C", "D", "E", "objet", "pièce", "claim", "trésor", "Trésor"]
+            if rang not in valid_ranks:
+                print(f"❌ Day {day}: Invalid rank: {rang}")
+                errors += 1
+            
+            # Validate amount
+            if not isinstance(amount, int) or amount <= 0:
+                print(f"❌ Day {day}: Invalid amount: {amount}")
+                errors += 1
+            
+            # Validate existence based on where and rang
+            if where == "medallium":
+                if rang == "claim":
+                    # Claims don't need validation
+                    pass
+                elif name not in all_yokai:
+                    print(f"❌ Day {day}: Yokai '{name}' not found in yokai_list.json")
+                    errors += 1
+                else:
+                    print(f"✓ Day {day}: Yokai '{name}' found")
+            
+            elif where == "bag":
+                if rang == "pièce":
+                    if name not in coins:
+                        print(f"❌ Day {day}: Coin '{name}' not found in coin.json")
+                        errors += 1
+                    else:
+                        print(f"✓ Day {day}: Coin '{name}' found")
+                elif rang == "objet":
+                    if name not in items:
+                        print(f"❌ Day {day}: Item '{name}' not found in items.json")
+                        errors += 1
+                    else:
+                        print(f"✓ Day {day}: Item '{name}' found")
+                else:
+                    print(f"❌ Day {day}: Invalid rang for bag: {rang}")
+                    errors += 1
+        
+        # Validate user_day structure
+        if "user_day" not in avent_data:
+            print("❌ Missing 'user_day' tracking object")
+            errors += 1
+        else:
+            user_day = avent_data["user_day"]
+            for day in range(1, 25):
+                if str(day) not in user_day:
+                    print(f"⚠️  Day {day}: Missing entry in user_day (auto-fixing...)")
+                    avent_data["user_day"][str(day)] = 0
+                    errors += 1
+        
+        line()
+        if errors == 0:
+            print("✅ All checks passed! Advent data is valid.")
+        else:
+            print(f"⚠️  Found {errors} issue(s)")
+            save_json("./files/avent.json", avent_data)
+            print("Data auto-corrections saved.")
+    
+    elif choise == 3:
+        # Edit a day
+        line()
+        try:
+            day = int(input("Enter the day number [1-24]: "))
+            if day < 1 or day > 24:
+                print("Invalid day number!")
+                input("Press any key to continue...")
+                return
+            
+            current_gift = avent_data.get(str(day), [])
+            print(f"\nCurrent data for day {day}: {current_gift}")
+            
+            print("\nEnter new gift data (press Enter to keep current value):")
+            name = input(f"  Name [{current_gift[0] if len(current_gift) > 0 else 'N/A'}]: ") or (current_gift[0] if len(current_gift) > 0 else "")
+            rang = input(f"  Rank [{current_gift[1] if len(current_gift) > 1 else 'N/A'}]: ") or (current_gift[1] if len(current_gift) > 1 else "")
+            where = input(f"  Where [{current_gift[2] if len(current_gift) > 2 else 'N/A'}]: ") or (current_gift[2] if len(current_gift) > 2 else "")
+            
+            try:
+                amount = int(input(f"  Amount [{current_gift[3] if len(current_gift) > 3 else 1}]: ") or (current_gift[3] if len(current_gift) > 3 else 1))
+            except ValueError:
+                amount = current_gift[3] if len(current_gift) > 3 else 1
+            
+            avent_data[str(day)] = [name, rang, where, amount]
+            save_json("./files/avent.json", avent_data)
+            print(f"✅ Day {day} updated successfully!")
+        
+        except ValueError:
+            print("Invalid input!")
+        
+        input("Press any key to continue...")
+    
+    line()
+    input("End of the program, press any key to go back to the main menu.")
+
+
 func_list = {
     1 : inv_info,
     2 : key_manager,
     3 : adjust,
     4 : organise_list,
     5 : check,
-    6 : adjust_id
+    6 : adjust_id,
+    7 : avent_manager,
+    8 : match_adjust
 }
 
 line(35)
@@ -611,9 +916,11 @@ while True :
     print("[4] Organise the list")
     print("[5] Checks")
     print("[6] Adjust yokai ids")
+    print("[7] Avent calendar manager")
+    print("[8] match manager")
     
     
-    choise_range = "1-6"
+    choise_range = "1-8"
     choise = input(f"Please select a number [{choise_range}] : ")
 
     if int(choise) in func_list.keys() :
@@ -622,4 +929,3 @@ while True :
         print(f"The number isn't right, please enter a number in range [{choise_range}]")
         input("Press any key to go back to the main menu.")
     line(35)
-    
