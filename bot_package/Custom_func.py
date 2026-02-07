@@ -145,7 +145,7 @@ async def save_bag(data : dict, id : int):
         json.dump(data, f, indent=2, ensure_ascii=False)
         
         
-exlude_match=['Castelius I', 'Castelius III', 'Castelius II', 'Jibanyan', 'Jibanyan S', 'Robonyan', 'Oronyan', 'Komasan', 'Komajiro', 'Komasan S', 'Komajiro S', 'Corniot', 'Bicorniot', 'Sale de bain', 'Potache', 'Felipaix', 'Métaureaulog', 'M. Felipaix', 'Ornella', 'Sornella', 'Robonyan F', 'Ultramax N', 'Ultramax K', 'Oranyan', 'Gale de bain', 'Métaréaulog', 'Jibanyan B', 'Komasan B', 'Usapyon B', 'Jiganyan', 'Scientifiborg Y', 'Dépotache', 'Survolt', 'Supervolt', 'Usapyon', 'Oridjinn', 'Horridjinn', 'Superobonyan', 'Jibanyan T', 'Komasan T', 'Roi Jibanyan', 'Supernyan', 'Domniscian', 'Domniscian 2.0', 'Don Morleone', 'Don Dorleone', 'Robonyan 28', 'Usapyon T', 'Kuroi Jibanyan', 'ScientifiBot Y', 'UZApyon', 'Omai Tourbillonnant', 'Or Tourbillonnant']
+exlude_match= data.open_json("./files/exclude_match.json")["list"]
 async def smart_match(s1: str, s2: str) -> bool:
     """
     A func that return if s1 match s2

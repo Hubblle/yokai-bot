@@ -30,6 +30,12 @@ Un script de gestion pour le bot.
 6. **Ajustement des identifiants** (`adjust_id()`)  
    - Ajoute les Yo-kai manquants à la liste des identifiants (`./files/full_name_fr.json`)  
 
+7. **Ajustement du calendrier** (`avent_manager()`)  
+   - Outil de management pour les event calendrier de l'avent
+
+8. **Ajustement des match** (`match_adjust()`)
+   - Outil qui permet d'exclure automatiquement les yokais qui risquent de faire bugué le match automatique du trade/search
+
 ## Utilisation
 
 Lancez le script et choisissez une option depuis le menu principal :  
@@ -44,6 +50,8 @@ Choisissez une action :
 [4] Organiser la liste.
 [5] Vérifications
 [6] Ajuster les identifiants Yo-kai
+[7] Ajuste l'event du calendrier de l'avent
+[8] Ajuster le système de match
 
 ## Dépendances de la structure des fichiers
 
