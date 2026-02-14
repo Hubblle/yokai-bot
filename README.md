@@ -26,3 +26,8 @@ Pour toutes questions, créer un ticket : https://discord.gg/K4H4xhHqUb
 Le script manager.py est fourni pour toutes taches de maintenance sur le bot (voir manager.md)
 
 Il est important de noter que après l'ajout de Yo-kai dans la liste, il faut utiliser la fonction "6. **Ajustement des identifiants** (`adjust_id()`)", ou les ajouter manuellement au fichier `./files/full_name_fr.json` sinon le bot risque de provoquer des erreurs quand on les obtients.
+
+## API des images
+Les contributeur de ScientifiBot Y ont participé à la création d'une api qui permet de récuperer des images pour les +800 Yo-kai du bot.
+
+Cette API est publique, mais elle ne possède pas la même Licence que le code, merci de voir: https://api.quark-dev.com/licence.html
