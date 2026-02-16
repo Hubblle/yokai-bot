@@ -184,21 +184,26 @@ def adjust():
                 }
                 current_inv = get_inv(file.strip(".json"))
                 if current_inv != {} :
-                    for yokai in current_inv :
-                        #check if the yokai is part of the inv system
-                        if yokai in ["E", "D", "C", "B", "A", "S", "LegendaryS", "treasureS", "SpecialS", "DivinityS", "Boss", "last_claim", "", "claim", "Shiny"] :
-                            pass
+                    try:
+                        for yokai in current_inv :
+                            #check if the yokai is part of the inv system
+                            if yokai in ["E", "D", "C", "B", "A", "S", "LegendaryS", "treasureS", "SpecialS", "DivinityS", "Boss", "last_claim", "", "claim", "Shiny"] :
+                                pass
+                            
+                            else :
+                                yokai_class = current_inv[yokai][0]
+                                yokai_per_class[yokai_class] += 1
                         
-                        else :
-                            yokai_class = current_inv[yokai][0]
-                            yokai_per_class[yokai_class] += 1
+                        for classes in yokai_per_class :
+                            if yokai_per_class[classes] != current_inv[classes]:
+                                current_inv[classes] = yokai_per_class[classes]
+                                corrected_classes += 1
+                        save_inv(current_inv, file.strip(".json"))
+                        
+                    except Exception as e:
+                        print("Unknown error durring the processing of Medallium id: "+file)
+                        
                     
-                    for classes in yokai_per_class :
-                        if yokai_per_class[classes] != current_inv[classes]:
-                            current_inv[classes] = yokai_per_class[classes]
-                            corrected_classes += 1
-                        
-                    save_inv(current_inv, file.strip(".json"))
         print("The inventories were adjusted successfully !")
         print(f"{corrected_classes} total were adjusted")
                     
@@ -450,12 +455,17 @@ def key_manager():
     
     if choise == 2:
         line()
-        chosen_yokai = input("Please, select the Yokai : ")
-        chosen_class = input("Please choose the rank for the Yokai : ")
+        print("Please, select the Yokai to replace: ")
+        chosen_yokai = input(">>> ")
+        print("Please choose the rank for the Yokai : ")
+        chosen_class = input(">>> ")
         print(f"Yokai choosen -> {chosen_yokai} // class -> {chosen_class}")
+        print("####")
         line()
-        replacement_yokai = input("Please, choose the replacement Yokai : ")
-        replacement_class = input("Please, choose the replacement class : ")
+        print("Please, choose the replacement Yokai : ")
+        replacement_yokai = input(">>> ")
+        print("Please, choose the replacement class : ")
+        replacement_class = input(">>> ")
         
         number = 0
         for dirpath, dirnames, filenames in os.walk("./files/inventory"):
