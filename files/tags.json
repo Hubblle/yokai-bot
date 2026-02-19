@@ -1,5 +1,5 @@
 {
-    "nyan":{
+    "Nyan":{
         "color":"#FF2900",
         "list":[
             "Jibanyan",
@@ -65,56 +65,65 @@
             "Kuroi Jibanyan",
             "Le dernier Nyanmuraï",
             "Ultime Nyanmuraï",
-            "Roi shogun"
+            "Roi shogun",
+            "As de nyan",
+            "Hovernyan Cao Cao",
+            "Hovernyan S"
         ]
     },
-    "nourriture":{
+    "Nourriture":{
         "color":"#F5F5DC",
         "list":[
             "Sumochi",
             "Agonigiri"
         ]
     },
-    "enma":{
+    "Enma":{
         "color":"#0000FF",
         "list":[
             "Enma",
+            "Enma 2.0",
+            "Enma Assassin",
             "Enma l'Ancien",
             "Enma Solaire",
             "Enma Infini",
             "Enma funèbre",
             "Baron Ananta(Jaou Kaira)",
-            "Yami Enma"
+            "Jeune Baron Ananta(Merek)",
+            "Yami Enma",
+            "Yasha Enma"
         ]
     },
-    "komasan":{
+    "Komasan":{
         "color":"#27F5E0",
         "list":[
             "Komasan",
-            "komajiro",
+            "Komajiro",
             "Komasan S",
-            "komajiro S",
+            "Komajiro S",
             "Komasan T",
             "Komaous",
-            "komashura",
-            "robokoma",
-            "komak",
-            "komastar",
-            "komaventurier",
-            "wibblekoma",
-            "dix de Komajiro",
-            "komanubis",
-            "komasan B",
+            "Komashura",
+            "Robokoma",
+            "Komak",
+            "Komastar",
+            "Komaventurier",
+            "Wibblekoma",
+            "Dix de Komajiro",
+            "Komanubis",
+            "Komasan B",
             "Valet Komasan",
             "Komasan Sun Ce",
-            "komajiro Sun Quan",
-            "justicier Komasqué",
+            "Komajiro Sun Quan",
+            "Justicier Komasqué",
             "Kuroi Komasan",
-            "jibakoma",
-            "Komajiro shiny"
+            "Jibakoma",
+            "Komajiro shiny",
+            "Komistigri Shiny"
+
         ]
     },
-    "noel event":{
+    "Noël Event":{
         "color":"#00FF00",
         "list":[
             "Komastar de Noël",
@@ -132,7 +141,7 @@
             "Jibanyan cadeau"
         ]
     },
-    "halloween event":{
+    "Halloween Event":{
         "color":"#FFA500",
         "list":[
             "Kuroi Corniot",
@@ -143,6 +152,41 @@
             "Shogunyan Halloween (Goku Bushinyan)"
         ]
     },
+    "St-Valentin Event":{
+        "color":"#E72650",
+        "list":[
+            "Abyssinyan St-Valentin",
+            "Angélik St-Valentin",
+            "Baku St-Valentin",
+            "Blizzaria St-Valentin",
+            "Camélia St-Valentin",
+            "Chocolina",
+            "Choubidou St-Valentin",
+            "Cupistol St-Valentin",
+            "Dr Néant St-Valentin",
+            "Entout' Hâtila St-Valentin",
+            "Faustille St-Valentin",
+            "Frérosse St-Valentin",
+            "Insomnelle St-Valentin",
+            "Jibanyan St-Valentin",
+            "Kay Mandeuse St-Valentin",
+            "Komajiro St-Valentin",
+            "Komami St-Valentin",
+            "Komasan St-Valentin",
+            "Komashura St-Valentin",
+            "Komastigri St-Valentin",
+            "Komaous St-Valentin",
+            "Nimpégase St-Valentin",
+            "Papilla St-Valentin",
+            "Parantonn St-Valentin",
+            "Pitou St-Valentin",
+            "Robonyan St-Valentin",
+            "Sailornyan St-Valentin",
+            "Taupe Modèle St-Valentin",
+            "Whisper Cupidon"
+        ]
+    },
+    
     "Rang E":{
         "color":"#9D97BF",
         "list":[
@@ -228,10 +272,12 @@
         "list":[
             "Afronaute",
             "Agonigiri",
+            "Anghihihille",
             "Antonnerre",
             "Avallée",
             "Axelérator",
             "Baku",
+            "Barbuzz", 
             "Benjirouette",
             "Big O'Max",
             "Blablara",
@@ -245,6 +291,8 @@
             "Clic-bull",
             "Crassiella",
             "Cupistol",
+            "Céfasslopode",
+            "Dracounet",
             "El Galardo",
             "Erzestine",
             "Ficheline",
@@ -267,6 +315,7 @@
             "Marra",
             "Matchou",
             "Mochimacho",
+            "Murhaine",
             "Mélobê",
             "Métaureaulog",
             "Narinos",
@@ -284,12 +333,16 @@
             "Pfffuji",
             "Pikor",
             "Pioubidou",
+            "Poulpatouch",
             "Quésacourt",
             "Ragioni",
             "Rengainaël",
+            "Ronain",
             "Sale de bain",
             "Salsalga",
             "Samuren",
+            "Scoltine",
+            "Sirénée",
             "Sumochi",
             "Sumodon",
             "Suspicioni",
@@ -297,10 +350,13 @@
             "Toutouïe",
             "Traviolette",
             "Trodésolé",
+            "Tyragédie",
             "Tête de lard",
             "Vasco de Gamiaou",
             "Werner Avif",
             "Yokœil",
+            "Yvantouse",
+            "Ébobby",
             "Écchinose",
             "Épigerien"
         ]
@@ -311,8 +367,10 @@
             "Adolfo Jeton",
             "Alga Sensei",
             "Algacarena",
+            "Amédélègue",
             "Andrécup",
             "Apélicain",
+            "Athlaitue",
             "Bababou",
             "Barbokai",
             "Bastata",
@@ -322,12 +380,14 @@
             "Bouh",
             "Bouldacier",
             "Castelius III",
+            "Charlognard",
             "Cigaillard",
             "Claquille",
             "Coach Antonic",
             "Criquetif",
             "Croquin",
             "Crânéidoscope",
+            "Céodieux",
             "DON-CHAN",
             "Dagamberge",
             "Escoffregriffe",
@@ -335,11 +395,13 @@
             "Fantimoré",
             "Fatalutin",
             "Feulion",
+            "Flagesté",
             "Fortuné",
             "Fourchelangue",
             "Gale de bain",
             "Hiblusion",
             "Hibrouille",
+            "Hâtila",
             "Jacquasseur",
             "Jojojoyeux",
             "Lama Laya",
@@ -347,6 +409,7 @@
             "Les frères Topla",
             "Lionguiste",
             "Lord Écibel",
+            "M. Orthograffe",
             "Maracraque",
             "Margoth",
             "Maudestique",
@@ -361,6 +424,7 @@
             "Métaréaulog",
             "Noproblemo",
             "Ornella",
+            "Otempourmoa",
             "Pagno",
             "Papana Split",
             "Papécolo",
@@ -373,8 +437,9 @@
             "Pégaz",
             "Pépésbrouf",
             "Ralbouc",
-            "Ratatam",
+            "Raltesse",
             "Raton glandeur",
+            "Rocky Badboya",
             "Rouminet",
             "Sabrille",
             "Sabruine",
@@ -387,6 +452,7 @@
             "Tatartelette",
             "Taï basse",
             "Tendino",
+            "Tengubre",
             "Trempetta",
             "Télémir",
             "Umilie",
@@ -397,7 +463,8 @@
             "Whispavret",
             "Whisper",
             "Yogaratoi",
-            "Zozoparleur"
+            "Zozoparleur",
+            "Émousstik"
         ]
     },
     "Rang B":{
@@ -497,6 +564,7 @@
             "Puissanfon",
             "Racaïd",
             "Rapiaf",
+            "Ratatam",
             "Robocorniot",
             "Robodracou",
             "Robonoko",
@@ -541,6 +609,7 @@
             "Aloyau Ier",
             "Antoilette",
             "Appak",
+            "As de nyan", 
             "Bricolos",
             "Brumella",
             "Buchinyan",
@@ -725,9 +794,12 @@
             "Geeko",
             "Godichezilla",
             "Guillotin",
+            "Hiivon",
             "Holy Rabby",
             "Horridjinn",
             "Hotei",
+            "Hovernyan Cao Cao",
+            "Hovernyan S",
             "Injustin",
             "Jibanyan Liu Bei",
             "Jibanyan S",
@@ -747,6 +819,7 @@
             "Mata Hase",
             "Maudicko",
             "Maître Nyada",
+            "Meuhlinda",
             "Morféa",
             "Nunchucky",
             "Obskyurbi",
@@ -757,6 +830,7 @@
             "Oridjinn",
             "Oronyan",
             "Orox",
+            "Orqanos Lu Bu",
             "Papy Charles",
             "Popcorne",
             "Précyeux",
@@ -805,7 +879,9 @@
             "Pandore",
             "Phémniscian",
             "Shivatenguerre",
-            "Sire Trompelamor"
+            "Sire Trompelamor",
+            "Somnoracle", 
+            "Sorcophage"
         ]
     },
     "Rang Spécial":{
@@ -859,17 +935,24 @@
             "Domniscian 2.0",
             "Enma",
             "Enma 2.0",
+            "Enma Assassin",
             "Enma Infini",
             "Enma Solaire",
             "Enma funèbre",
             "Enma l'Ancien",
+            "Jeune Baron Ananta(Merek)",
+            "Orihime Tsukuyomi",
+            "Suzaku",
+            "Suzaku (Forme célèste)",
             "Yami Enma",
+            "Yasha Enma",
             "Zazel le Bon"
         ]
     },
     "Rang Boss":{
        "color":"#730000",
         "list":[
+            "Agent Rixe",
             "Agent X",
             "Ambronzio",
             "Barbebluff",
@@ -879,6 +962,7 @@
             "Boucanos",
             "Capitaine Tonnerre",
             "Carpitaine",
+            "Chamériste",
             "Chomino",
             "Clochemar",
             "Crème Chantiwhisp",
@@ -966,7 +1050,8 @@
             "Voltéophyte",
             "Yo-kaiju",
             "Yopple-bot",
-            "Zazelmar"
+            "Zazelmar",
+            "Zazel (2ème Forme)"
         ]
     },
     "Rang Shiny":{
