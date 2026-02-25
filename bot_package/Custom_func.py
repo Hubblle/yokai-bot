@@ -2,6 +2,7 @@ import os
 import json
 import bot_package.data as data
 from difflib import SequenceMatcher
+import aiofiles
 
 """
 A module containing utility functions for the bot
@@ -99,10 +100,11 @@ async def get_inv(id : int):
     A func to get the inv of a user (with his id)
     """
     if os.path.exists(f"./files/inventory/{str(id)}.json"):
-        with open(f"./files/inventory/{str(id)}.json") as f:
-            data = fix_encoding(json.load(f))
+        async with aiofiles.open(f"./files/inventory/{str(id)}.json") as f:
+            content = await f.read()
+            data = fix_encoding(json.loads(content))
     else :
-        #retrun nothing if there's nothing to :/
+        # Return nothing if there's nothing to :/
         data = {}
        
     return data
@@ -114,8 +116,8 @@ async def save_inv(data : dict, id : int):
     """
     A func to save the inv of a user (with his id)
     """
-    with open(f"./files/inventory/{str(id)}.json", "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
+    async with aiofiles.open(f"./files/inventory/{str(id)}.json", "w", encoding="utf-8") as f:
+        await f.write(json.dumps(data, indent=2, ensure_ascii=False))
         
         
         
@@ -126,8 +128,9 @@ async def get_bag(id : int):
     A func to get the bag of a user (with his id)
     """
     if os.path.exists(f"./files/bag/{str(id)}.json"):
-        with open(f"./files/bag/{str(id)}.json") as f:
-            data = fix_encoding(json.load(f))
+        async with aiofiles.open(f"./files/bag/{str(id)}.json") as f:
+            content = await f.read()
+            data = fix_encoding(json.loads(content))
     else :
         #retrun nothing if there's nothing to :/
         data = {}
@@ -141,8 +144,8 @@ async def save_bag(data : dict, id : int):
     """
     A func to save the bag of a user (with his id)
     """
-    with open(f"./files/bag/{str(id)}.json", "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
+    async with aiofiles.open(f"./files/bag/{str(id)}.json", "w", encoding="utf-8") as f:
+        await f.write(json.dumps(data, indent=2, ensure_ascii=False))
         
         
 exlude_match= data.open_json("./files/exclude_match.json")["list"]
