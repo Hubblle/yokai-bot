@@ -3530,5 +3530,13 @@
   "Jibanyan St-Valentin": {
     "name_en": null,
     "id": "yf000246"
+  },
+  "Hubble":{
+    "name_en":"Hubble",
+    "id":"hubble"
+  },
+  "Mart1max":{
+    "name_en":"Mart1max",
+    "id":null
   }
 }
