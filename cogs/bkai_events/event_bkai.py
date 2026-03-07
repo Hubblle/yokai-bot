@@ -95,7 +95,7 @@ async def give(input_id : str, yokai : str, rang : str, where : str, number : st
 # def the button and its characteristics
 class button(discord.ui.View):
     def __init__(self, ctx):
-        super().__init__(timeout=300)
+        super().__init__(timeout=350)
         self.users_in = [ctx.author.id]
 
     @discord.ui.button(label='rejoindre la terrheure', style=discord.ButtonStyle.blurple, custom_id='join')
@@ -108,7 +108,7 @@ class button(discord.ui.View):
 
 
 
-class terrheure():
+class Terrheure():
     def __init__(self):
         pass
 
@@ -116,7 +116,7 @@ class terrheure():
 
         #defined the view(the button), the start of the embed, sent it and save his id
         view = button(ctx)
-        embed = discord.Embed(title="La terr'heure à commencer !",
+        embed = discord.Embed(title="La terr'heure a commencé !",
                               description=f"cliquez sur le bouton ci-dessous pour rejoindre la terr'heure ! \n plus le nombre de personne sera élevé, plus les récompenses seront grandes ! \n la terrheure durera 5 minutes.",
                               color=discord.Color.dark_red())
         embed.set_footer(text="merci de ne pas supprimer ce message")
@@ -160,7 +160,6 @@ class terrheure():
                 # and give him with the shorter give
                 elif reward["type"] == "coin":
                     gifted_coin = random.choice(loot[recompense]["coin_list"])
-                    print(type(reward))
                     phrase = f"{reward["amount"]} {gifted_coin}"
                     for id in view.users_in:
                         await give(id, gifted_coin,"coin","bag", reward["amount"])
@@ -200,5 +199,7 @@ class terrheure():
         for user in view.users_in:
             list_part += f"<@{user}> "
             
-        
-        await message.reply(f"liste des participants de la terr'heure: {list_part}")    
+        part_embed = discord.Embed(title="fin de la terr'heure !", description=f"la terr'heure a réuni {users_len} participants !",
+        color=discord.Color.green())
+        part_embed.add_field(name="participants :", value=list_part)
+        await message.reply(embed=part_embed)    

@@ -136,12 +136,12 @@ class Bingo_kai(commands.Cog):
                 return await ctx.send(embed=error_embed)
             
             #set the ceilling and proba by verified equiped treasure
+            ceilling = 20
+            probaT = 30
             if equipped_treasure == "Trésor de l'eau":
                 ceilling = 25
                 probaT = 60
-            else:
-                ceilling = 20
-                probaT = 30
+
 
             if amount == ceilling: 
                 error_embed = discord.Embed(title="Oh non, vous avez fait votre maximum de tirage avec des pièces pour aujourd'hui...", description="Recommencez demain !")
@@ -484,7 +484,7 @@ class Bingo_kai(commands.Cog):
                 #is 1h30 past last claim ?
                 #or is it 1h when executed in the support or partner server ?
                 #and subtract 10m if sun's trésor are equip ?
-                if ctx.guild.id in [os.getenv("guild_partner_id")] + os.getenv("guild_partner_id"):
+                if ctx.guild.id in [os.getenv("guild_partner_id")] + os.getenv("SUPPORT_GUILD_ID"):
                     cooldown = 3600
                     cooldown_str = "1h"
                     if equipped_treasure == "Trésor du soleil":
@@ -519,9 +519,11 @@ class Bingo_kai(commands.Cog):
         classlist = data.class_list
         #add weight to class depending of the equiped treasure
         if not equipped_treasure == None:
-            if equipped_treasure == "Trésor du feu" or "Trésor du poison" or "Trésor de l'amour" or "Trésor du ciel" or "Trésor de la forêt" or "Trésor légendaire":
-                pourcent = data.item[equipped_treasure]["value2"]
-                weights[classlist.index(data.item[equipped_treasure]["value1"])] += pourcent
+            if equipped_treasure in ["Trésor du feu", "Trésor de l'amour", "Trésor du ciel", "Trésor de la forêt", "Trésor légendaire"]:
+                pourcent = data.item[equipped_treasure].get("value1", 0)
+                class_boost = data.item[equipped_treasure].get("value2")
+                print(class_boost)
+                weights[classlist.index(class_boost)] += pourcent
                 weights[0] -= pourcent
 
         #choose the class of the yokai
@@ -724,11 +726,13 @@ class Bingo_kai(commands.Cog):
 
             await ctx.send(embed=yokai_embed)
             if equipped_treasure == "Trésor oni":
-                    chance = 5
+                    chance = data.item[equipped_treasure].get("value1")
             else :
                     chance = 1
             if random.choices([True, False], weights=[chance, 100-chance])[0] :
-                event.terheure(ctx)            
+                print("terrheure START")
+                evenement = event.Terrheure()
+                await evenement.terrheure(ctx)
    
 
                 
