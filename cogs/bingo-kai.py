@@ -528,21 +528,21 @@ class Bingo_kai(commands.Cog):
 
         #choose the class of the yokai
         if equipped_treasure == "Trésor du poison":
-            class_choice = "E" 
+            class_choice = data.yokai_data.get("E") 
         else:
             class_choice = data.yokai_data[random.choices(data.class_list, weights=weights, k=1)[0]]
             while class_choice["class_name"] in data.blacklist["rang"]:
                 class_choice = data.yokai_data[random.choices(data.class_list, weights=weights, k=1)[0]]
 
         #get the good name of the class and his id
-        class_name = data.yokai_data[class_choice].get("class_name")
-        class_id = data.yokai_data[class_choice].get("class_id")
+        class_name = class_choice.get("class_name")
+        class_id = class_choice.get("class_id")
         #choose the Yo-kai in the class
-        Yokai_choice = random.choice(data.yokai_data[class_choice]["yokai_list"])
+        Yokai_choice = random.choice(class_choice["yokai_list"])
         
-        while Yokai_choice[0] in data.blacklist.get("yokai") :
-            Yokai_choice = random.choice(data.yokai_data[class_choice]["yokai_list"])
-        Yokai_choice = Yokai_choice[0]
+        while Yokai_choice in data.blacklist.get("yokai") :
+            Yokai_choice = random.choice(class_choice["yokai_list"])
+        Yokai_choice = Yokai_choice
 
         yokai_embed = discord.Embed(
             title=f"Vous avez eu le Yo-kai **{Yokai_choice}** ✨ ",
