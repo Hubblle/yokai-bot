@@ -535,14 +535,13 @@ class Bingo_kai(commands.Cog):
                 class_choice = data.yokai_data[random.choices(data.class_list, weights=weights, k=1)[0]]
 
         #get the good name of the class and his id
-        class_name = class_choice["class_name"]
-        class_id = class_choice["class_id"]
+        class_name = data.yokai_data[class_choice].get("class_name")
+        class_id = data.yokai_data[class_choice].get("class_id")
         #choose the Yo-kai in the class
-        Yokai_choice = random.choices(class_choice["yokai_list"])
-        while Yokai_choice in data.blacklist["yokai"]:
-            Yokai_choice = random.choices(class_choice["yokai_list"])
+        Yokai_choice = random.choice(data.yokai_data[class_choice]["yokai_list"])
         Yokai_choice = Yokai_choice[0]
-        
+        while Yokai_choice in data.blacklist.get("yokai") :
+            Yokai_choice = random.choice(data.yokai_data[class_choice]["yokai_list"])
         
 
         yokai_embed = discord.Embed(

@@ -611,7 +611,7 @@
         "type" : "treasure",
         "desc" : "une fois equipé , l'utilisateur a plus de chance de declencher une terrheure",
         "slot" : 1,
-        "value1" : 4,
+        "value1" : 5,
         "_comment" : "1% -> 5% de chance d'activer la terrheure"
     }
 }
