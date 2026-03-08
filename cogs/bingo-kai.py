@@ -539,10 +539,10 @@ class Bingo_kai(commands.Cog):
         class_id = data.yokai_data[class_choice].get("class_id")
         #choose the Yo-kai in the class
         Yokai_choice = random.choice(data.yokai_data[class_choice]["yokai_list"])
-        Yokai_choice = Yokai_choice[0]
-        while Yokai_choice in data.blacklist.get("yokai") :
-            Yokai_choice = random.choice(data.yokai_data[class_choice]["yokai_list"])
         
+        while Yokai_choice[0] in data.blacklist.get("yokai") :
+            Yokai_choice = random.choice(data.yokai_data[class_choice]["yokai_list"])
+        Yokai_choice = Yokai_choice[0]
 
         yokai_embed = discord.Embed(
             title=f"Vous avez eu le Yo-kai **{Yokai_choice}** ✨ ",
