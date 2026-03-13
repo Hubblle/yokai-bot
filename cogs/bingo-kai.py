@@ -484,7 +484,11 @@ class Bingo_kai(commands.Cog):
                 #is 1h30 past last claim ?
                 #or is it 1h when executed in the support or partner server ?
                 #and subtract 10m if sun's trésor are equip ?
+<<<<<<< HEAD
                 if ctx.guild.id in [os.getenv("guild_partner_id")] + os.getenv("SUPPORT_GUILD_ID"):
+=======
+                if ctx.guild.id in [os.getenv("guild_partner_id")] + [os.getenv("SUPPORT_GUILD_ID")]:
+>>>>>>> f65447695d2f1844730915b435b9c803c93f4ad0
                     cooldown = 3600
                     cooldown_str = "1h"
                     if equipped_treasure == "Trésor du soleil":
@@ -528,13 +532,14 @@ class Bingo_kai(commands.Cog):
 
         #choose the class of the yokai
         if equipped_treasure == "Trésor du poison":
-            class_choice = "E" 
+            class_choice = data.yokai_data.get("E") 
         else:
             class_choice = data.yokai_data[random.choices(data.class_list, weights=weights, k=1)[0]]
             while class_choice["class_name"] in data.blacklist["rang"]:
                 class_choice = data.yokai_data[random.choices(data.class_list, weights=weights, k=1)[0]]
 
         #get the good name of the class and his id
+<<<<<<< HEAD
         class_name = data.yokai_data[class_choice].get("class_name")
         class_id = data.yokai_data[class_choice].get("class_id")
         #choose the Yo-kai in the class
@@ -542,7 +547,16 @@ class Bingo_kai(commands.Cog):
         Yokai_choice = Yokai_choice[0]
         while Yokai_choice in data.blacklist.get("yokai") :
             Yokai_choice = random.choice(data.yokai_data[class_choice]["yokai_list"])
+=======
+        class_name = class_choice.get("class_name")
+        class_id = class_choice.get("class_id")
+        #choose the Yo-kai in the class
+        Yokai_choice = random.choice(class_choice["yokai_list"])
+>>>>>>> f65447695d2f1844730915b435b9c803c93f4ad0
         
+        while Yokai_choice in data.blacklist.get("yokai") :
+            Yokai_choice = random.choice(class_choice["yokai_list"])
+        Yokai_choice = Yokai_choice
 
         yokai_embed = discord.Embed(
             title=f"Vous avez eu le Yo-kai **{Yokai_choice}** ✨ ",
