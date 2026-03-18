@@ -140,7 +140,7 @@ class Admin_command(commands.Cog):
         
     @commands.hybrid_command(name="economie_mod")
     @Check.is_in_dev_team()
-    async def economie_mod(self, ctx : commands.context, input_id:str,methode=Literal["add","set","reset","del"],amount=0):
+    async def economie_mod(self, ctx : commands.context, input_id:str,methode:Literal["add","set","reset","del"],amount=0):
         if not methode in ["add","set","reset","del"]:
             return await ctx.send("Merci d'utiliser une méthode valide ! (add, set, reset, del)", ephemeral=True)
         elif ctx.guild.get_member(int(input_id)):
@@ -169,7 +169,7 @@ class Admin_command(commands.Cog):
     @commands.hybrid_command(name="give")
     @Check.is_in_dev_team()
     @app_commands.autocomplete(rang=class_autcomplete)
-    async def give(self, ctx : commands.Context, input_id : str, yokai : str, rang : str, where=Literal["bag","medallium"], rank_orbe: bool = False, number : str = '1'):
+    async def give(self, ctx : commands.Context, input_id : str, yokai : str, rang : str, where:Literal["bag","medallium"], rank_orbe: bool = False, number : str = '1'):
         """
         Give un Yo-kai/Pièce/Trésor/Objet à un utilisateur donné.
         `.give <id de l'utilisateur> <nom> <rang> <bag/medallium> <orbe:True/False> <quantité>`
@@ -364,7 +364,7 @@ class Admin_command(commands.Cog):
     @commands.hybrid_command(name="remove")
     @Check.is_in_dev_team()
     @app_commands.autocomplete(rang=class_autcomplete)
-    async def remove(self, ctx : commands.Context, input_id : str, yokai : str, rang : str, where=Literal["bag","medallium"], number : int = 1): 
+    async def remove(self, ctx : commands.Context, input_id : str, yokai : str, rang : str, where:Literal["bag","medallium"], number : int = 1): 
         """
         Remove un Yo-kai à un utilisateur donné.
         `.remove <id de l'utilisateur> <nom> <rang> <bag/medallium> <quantité>`
@@ -502,7 +502,7 @@ class Admin_command(commands.Cog):
     
     @commands.hybrid_command(name="export")
     @Check.is_in_dev_team()
-    async def export(self, ctx : commands.Context, input_id : str,where=Literal["bag","medallium"]): 
+    async def export(self, ctx : commands.Context, input_id : str,where:Literal["bag","medallium"]): 
         """
         Export le json brute de l'entrée demandée.
         """
@@ -521,7 +521,7 @@ class Admin_command(commands.Cog):
     
     @commands.hybrid_command(name="import")
     @Check.is_in_dev_team()
-    async def import_func(self, ctx : commands.Context, input_id : str, file: discord.Attachment,where=Literal["bag","medallium"]): 
+    async def import_func(self, ctx : commands.Context, input_id : str, file: discord.Attachment,where:Literal["bag","medallium"]): 
         """
         Import le json brute de l'entrée demandée.
         """
