@@ -120,7 +120,7 @@ class Terrheure():
         embed = discord.Embed(title="La terr'heure a commencé !",
                               description=f"cliquez sur le bouton ci-dessous pour rejoindre la terr'heure ! \n plus le nombre de personne sera élevé, plus les récompenses seront grandes !",
                               color=discord.Color.dark_red())
-        embed.add_field(name="Temps restant:", value=f"<t:{time.time()+300}:R>")
+        embed.add_field(name="Temps restant:", value=f"<t:{int(time.time())+300}:R>")
         embed.set_footer(text="merci de ne pas supprimer ce message")
         message = await ctx.send(embed=embed, view=view)
 
@@ -193,8 +193,10 @@ class Terrheure():
         # all the reward
         try:
             await message.edit(embed=embed_end, view=None)
+            await message.reply(embed=embed_end)
         except discord.errors.NotFound:
-            await ctx.send(embed_end)
+            await ctx.send(embed=embed_end)
+        
 
         # make a list with the mention of all the participants 
         list_part = ""
