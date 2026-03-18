@@ -349,7 +349,7 @@ class Admin_command(commands.Cog):
                 #save the inv
                 await save_inv(data=inv, id=input_id)
             
-        sucess_embed = discord.Embed(title=f"Yo-Kai ajouté(s) au Médallium de {input_id}",
+        sucess_embed = discord.Embed(title=f"Yo-Kai ajouté(s) {"au Médallium" if where=="medallium" else "à la sacoche"} de {input_id}",
                                         color=discord.Color.green(),
                                         description=f"**{yokai}** de rang **{rang}**\n> quantité : {number}"
                                         )
@@ -493,7 +493,7 @@ class Admin_command(commands.Cog):
                     inv[class_id] -= 1
                 await save_inv(data=inv, id=input_id)
             
-        sucess_embed = discord.Embed(title=f"Le(s) Yo-Kai a été retiré du Médallium de {input_id}",
+        sucess_embed = discord.Embed(title=f"Le(s) Yo-Kai a été retiré {"du Médallium" if where=="medallium" else "de la sacoche"} de {input_id}",
                                         color=discord.Color.green(),
                                         description=f"**{yokai}** de rang **{rang}** \n> quantité : {number} "
                                         )
