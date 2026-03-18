@@ -7,6 +7,7 @@ import asyncio
 import bot_package.Custom_func as Cf
 import bot_package.economy as economy
 import bot_package.data as data
+import time
 
 loot = data.terrheure
 
@@ -117,8 +118,9 @@ class Terrheure():
         #defined the view(the button), the start of the embed, sent it and save his id
         view = button(ctx)
         embed = discord.Embed(title="La terr'heure a commencé !",
-                              description=f"cliquez sur le bouton ci-dessous pour rejoindre la terr'heure ! \n plus le nombre de personne sera élevé, plus les récompenses seront grandes ! \n la terrheure durera 5 minutes.",
+                              description=f"cliquez sur le bouton ci-dessous pour rejoindre la terr'heure ! \n plus le nombre de personne sera élevé, plus les récompenses seront grandes !",
                               color=discord.Color.dark_red())
+        embed.add_field(name="Temps restant:", value=f"<t:{time.time()+300}:R>")
         embed.set_footer(text="merci de ne pas supprimer ce message")
         message = await ctx.send(embed=embed, view=view)
 
@@ -164,7 +166,7 @@ class Terrheure():
                     for id in view.users_in:
                         await give(id, gifted_coin,"coin","bag", reward["amount"])
 
-                # if reward is yokail(yokai list)
+                # if reward is yokail (yokai list)
                 # choose a random yokai in this list and give him
                 # use a shorter version of give in admin cog
                 elif reward["type"] == "yokail":
