@@ -58,7 +58,7 @@ class Bingo_kai(commands.Cog):
 
         #Check if they have a treasure equiped
         bag = await Cf.get_bag(ctx.author.id)
-        equipped_treasure = bag.get("equipped_treasure")
+        equipped_treasure = bag.get("equipped_treasure", None)
         
                 
         if not coin in data.coin_list and not coin == None:
@@ -717,11 +717,16 @@ class Bingo_kai(commands.Cog):
             
             #Set last claim
             await Cf.save_bag(bag, ctx.author.id)
+            if equipped_treasure:
+                yokai_embed.set_footer(text=f"{equipped_treasure} utilisé !")
             await ctx.send(embed=yokai_embed)
             return await ctx.send(embed=coin_embed)
 
         
         else :
+            
+            if equipped_treasure:
+                yokai_embed.set_footer(text=f"{equipped_treasure} utilisé !")
 
             await ctx.send(embed=yokai_embed)
             if equipped_treasure == "Trésor oni":

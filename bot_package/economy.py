@@ -1,7 +1,7 @@
 import json
 import bot_package.data as data
 
-# this function is call for saw if the user have data
+# this function is call to see if the user already have any data
 # and if he don't have info calculate he number of orbe
 async def create_user_info(user_id: int) -> None:
     if not str(user_id) in data.MONEY_DATA.keys():
@@ -21,6 +21,7 @@ async def create_user_info(user_id: int) -> None:
                     point = data.class_to_point[info[0]]
                     bonus_copies = int(info[1]) - 1
                     data.MONEY_DATA[str(user_id)] += point * bonus_copies
+                    
     data.save_json("./files/monnaie.json", data.MONEY_DATA)
 
 
@@ -30,7 +31,7 @@ async def add(user_id: int, amount: int) -> None:
     data.MONEY_DATA[str(user_id)] += amount
     data.save_json("./files/monnaie.json", data.MONEY_DATA)
         
-# use to set at 0 the wallet of a spécific user
+# use to set at 0 the wallet of a specific user
 async def reset(user_id: int) -> None:
     data.MONEY_DATA[str(user_id)] = 0
     data.save_json("./files/monnaie.json", data.MONEY_DATA)
@@ -43,7 +44,7 @@ async def del_info(user_id: int) -> None:
 
 
 
-
+#add the orbs corresponding to a certain rank
 async def add_rank_orbe(user_id: int, rank) -> None:
     await create_user_info(user_id)
     p = data.class_to_point[rank]
