@@ -7,6 +7,16 @@ import os
 import time
 
 class Rank(commands.Cog):
+    """
+    New ✨! 
+    **Plusieurs commandes qui vous permettent de regarder des info sur le classement global du bot.**
+    
+    Vous pouvez regarder pour:
+    - Les points.
+    - La complétion (le pourcentage de complétion).
+    -# Les statistiques sont actualisés toutes les deux minutes.
+    
+    """
     def __init__(self, bot):
         self.bot : commands.Bot = bot
         self.last_top = 0
@@ -17,7 +27,9 @@ class Rank(commands.Cog):
 
     @commands.hybrid_command(name="top")
     async def top(self, ctx:commands.Context, category:Literal["Points", "Complétion"]):
-        """Affiche le top 10 du bot"""
+        """
+        New ✨! Affiche le top 10 du bot
+        """
         
         #defer cause the actualisation takes a long time
         await ctx.defer()
@@ -85,7 +97,9 @@ class Rank(commands.Cog):
 
     @commands.hybrid_command(name="rank")
     async def rank(self, ctx, category: Literal["Points", "Complétion"], user:discord.Member = None):
-        """Affiche le rang de l'utilisateur dans le top du bot"""
+        """
+        New ✨! Affiche le rang de l'utilisateur dans le top du bot
+        """
         
         await ctx.defer()
         

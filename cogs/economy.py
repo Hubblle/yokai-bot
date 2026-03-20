@@ -8,6 +8,13 @@ ecof = data.MONEY_DATA
 
 
 class economy(commands.Cog):
+    """
+    New ✨! 
+    Contient toutes les opérations liées au Orbes.
+    
+    Vous obtenez des orbes lorsque vous obtenez un Yo-kai en double au bingo-kai,
+    la valeur d'orbe que vous obtenez correspond à la valeur en points (voir `/stats`) du rang.
+    """
 
     def __init__(self, bot):
         self.bot = bot
@@ -15,7 +22,7 @@ class economy(commands.Cog):
     @commands.hybrid_command(name="orbe")
     async def orbe(self, ctx, user: discord.Member = None):
         """
-        Affiche votre solde d'orbe oni, ou celui de l'utilisateur spécifié.
+        New ✨!  Affiche votre solde d'orbe oni, ou celui de l'utilisateur spécifié.
         """
         if not user == None and not str(user.id) in data.MONEY_DATA.keys():
             return await ctx.send("Cet utilisateur n'a pas encore gagné d'orbes oni.")

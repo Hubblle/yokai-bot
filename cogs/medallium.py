@@ -11,7 +11,7 @@ import bot_package.data as data
 #Medallium command cog
 class Medallium(commands.Cog) :
     """
-    New ✨!\nPermet de voir votre Médallium (inventaire), tous les Yo-kai que vous avez eu avec le /bingo-kai et votre sacoche avec tous vos objets et pièces.
+    Permet de voir votre Médallium (inventaire), tous les Yo-kai que vous avez eu avec le /bingo-kai et votre sacoche avec tous vos objets et pièces.
     """
     
     
@@ -234,7 +234,7 @@ class Medallium(commands.Cog) :
     @commands.hybrid_command(name="bag")
     async def bag(self, ctx = commands.Context, user : discord.User = None ):
         """
-        New ✨! Permet de voir votre sacoche, tous les objets / pièces que vous avez eu avec le /bingo-kai. 
+        Permet de voir votre sacoche, tous les objets / pièces que vous avez eu avec le /bingo-kai. 
         Utilisez */bag {user}* pour voir la sacoche d'un autre utilisateur.
         """
         #define the user
@@ -412,7 +412,7 @@ class Medallium(commands.Cog) :
     @commands.hybrid_command(name="stats")
     async def stats(self, ctx: commands.Context):
         """
-        New ✨! Donne des statistiques sur plein de choses !
+        Donne des statistiques sur plein de choses !
         """
         #get what we need:
         drop_proba_formated = ""

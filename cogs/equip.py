@@ -4,13 +4,13 @@ import bot_package.Custom_func as Cf
 
 class Equip(commands.Cog):
     """
-    New ✨!\nModule pour équiper vos trésors.
+    Module pour équiper vos trésors.
     """
 
     @commands.hybrid_command(name="equip")
     async def equip(self, ctx: commands.Context, treasure: str):
         """
-        New ✨! Equipe un trésor de votre sac, seulement un  trésor peut-être equipé à la fois.
+        Equipe un trésor de votre sac, seulement un  trésor peut-être equipé à la fois.
         """
         user_id = ctx.author.id
         bag = await Cf.get_bag(user_id)  # Get the user's bag
@@ -66,7 +66,7 @@ class Equip(commands.Cog):
     @commands.hybrid_command(name="unequip")
     async def unequip(self, ctx: commands.Context):
         """
-        New ✨! Déséquipe le trésor actuellement équipé.
+        Déséquipe le trésor actuellement équipé.
         """
         user_id = ctx.author.id
         bag = await Cf.get_bag(user_id)  # Get the user's bag

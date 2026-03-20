@@ -719,6 +719,9 @@ class Bingo_kai(commands.Cog):
             await Cf.save_bag(bag, ctx.author.id)
             if equipped_treasure:
                 yokai_embed.set_footer(text=f"{equipped_treasure} utilisé !")
+            else:
+                message = random.choice(["La V6 est là: fais /help pour plus d'info !","Regardes le top 10 avec /top !","Regardes ton rang avec /rank !","Combien d'orbes as tu ? Regardes avec /orbe !"])
+                yokai_embed.set_footer(text=message)
             await ctx.send(embed=yokai_embed)
             return await ctx.send(embed=coin_embed)
 
@@ -727,7 +730,11 @@ class Bingo_kai(commands.Cog):
             
             if equipped_treasure:
                 yokai_embed.set_footer(text=f"{equipped_treasure} utilisé !")
-
+            else:
+                message = random.choice(["La V6 est là: fais /help pour plus d'info !","Regardes le top 10 avec /top !","Regardes ton rang avec /rank !","Combien d'orbes as tu ? Regardes avec /orbe !"])
+                yokai_embed.set_footer(text=message)
+                
+                
             await ctx.send(embed=yokai_embed)
             if equipped_treasure == "Trésor oni":
                     chance = data.item[equipped_treasure].get("value1")
