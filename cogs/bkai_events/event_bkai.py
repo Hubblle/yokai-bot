@@ -102,10 +102,10 @@ class button(discord.ui.View):
     @discord.ui.button(label='rejoindre la terrheure', style=discord.ButtonStyle.blurple, custom_id='join')
     async def confirm(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id not in self.users_in:
-            await interaction.response.send_message("tu a rejoint la terr'heure", ephemeral=True)
+            await interaction.response.send_message("tu as rejoint la terr'heure !", ephemeral=True)
             self.users_in.append(interaction.user.id)
         else:
-            await interaction.response.send_message("tu es déjà dans la terr'heure", ephemeral=True)
+            await interaction.response.send_message("tu es déjà dans la terr'heure...", ephemeral=True)
 
 
 
@@ -160,7 +160,7 @@ class Terrheure():
 
                 # if reward is orbe use eco module to give it
                 if reward["type"] == "orbe":
-                    phrase = f"{reward["amount"]} orbe oni pour chaque personne"
+                    phrase = f"{reward["amount"]} orbes oni pour chaque personne"
                     for id in view.users_in:
                         await economy.add(id,reward["amount"])
 
@@ -180,7 +180,7 @@ class Terrheure():
                     gifted_coin = random.choice(loot[recompense]["coin_list"])
                     phrase = f"{reward["amount"]} {gifted_coin}"
                     for id in view.users_in:
-                        await give(id, gifted_coin,"coin","bag", reward["amount"])
+                        await give(id, gifted_coin,"Pièce","bag", reward["amount"])
 
                 # if reward is yokail (yokai list)
                 # choose a random yokai in this list and give him
@@ -201,7 +201,7 @@ class Terrheure():
 
 
                 # add a field to the embed corresponding of the reward of all stage
-                end_embed.add_field(name=f"Récompenses pour avoir atteint {recompense} personne:", value=phrase)
+                end_embed.add_field(name=f"Récompenses pour avoir atteint {recompense} personnes:", value=phrase)
             else:
                 break
         
