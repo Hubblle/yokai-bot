@@ -734,8 +734,7 @@ class Bingo_kai(commands.Cog):
             else :
                     chance = 1
             if random.choices([True, False], weights=[chance, 100-chance])[0] :
-                print("terrheure START")
-                evenement = event.Terrheure()
+                evenement = event.Terrheure(self.bot)
                 await evenement.terrheure(ctx)
    
 
