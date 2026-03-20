@@ -134,6 +134,11 @@ item = open_json("./files/items.json")
 #tag info
 TAGS_DATA = open_json("./files/tags.json")
 
+#Sort tags data
+for value in TAGS_DATA.values():
+    value["list"].sort()
+    
+    
 #money info
 MONEY_DATA = open_json("./files/monnaie.json")
 
