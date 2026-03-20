@@ -484,7 +484,7 @@ class Bingo_kai(commands.Cog):
                 #is 1h30 past last claim ?
                 #or is it 1h when executed in the support or partner server ?
                 #and subtract 10m if sun's trésor are equip ?
-                if ctx.guild.id in [os.getenv("guild_partner_id")] + [os.getenv("SUPPORT_GUILD_ID")]:
+                if str(ctx.guild.id) in [os.getenv("guild_partner_id")] + [os.getenv("SUPPORT_GUILD_ID")]:
                     cooldown = 3600
                     cooldown_str = "1h"
                     if equipped_treasure == "Trésor du soleil":
