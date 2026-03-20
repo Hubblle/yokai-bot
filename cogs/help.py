@@ -60,7 +60,8 @@ class Help(commands.Cog, name="help"):
             # Itère à travers les cogs et récupère les descriptions
             cogs_desc = ''
             for cog in self.bot.cogs:
-                cogs_desc += f'`{cog}` {self.bot.cogs[cog].__doc__}\n'
+                if not cog == "help" or cog == "Admin_command":
+                    cogs_desc += f'`{cog}` {self.bot.cogs[cog].__doc__}\n'
 
             # Ajoute la 'liste' des cogs à l'embed
             emb.add_field(name='Modules', value=cogs_desc, inline=False)
