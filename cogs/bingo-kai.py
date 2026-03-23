@@ -515,7 +515,7 @@ class Bingo_kai(commands.Cog):
 
 
 
-        weights=data.proba_list
+        weights=data.proba_list.copy()
         classlist = data.class_list
         #add weight to class depending of the equiped treasure
         if not equipped_treasure == None:
