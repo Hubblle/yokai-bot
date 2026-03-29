@@ -7,6 +7,10 @@ import bot_package.Custom_func as Cf
 import bot_package.Check as Check
 import bot_package.data as data
 import bot_package.economy as eco
+<<<<<<< HEAD
+=======
+from typing import Literal
+>>>>>>> 481693b595ae9101c90af4aa3010e15d4baace51
 
 
 
@@ -19,13 +23,6 @@ async def class_autcomplete(interaction : discord.Interaction, current : str) ->
     list.append(app_commands.Choice(name="Trésor (yokai)", value="Trésor"))
     list.append(app_commands.Choice(name="Trésor (objet)", value="trésor"))
     return list
-
-async def where_autcomplete(interaction : discord.Interaction, current : str) -> list[app_commands.Choice[str]] :
-    choices = ["bag", "medallium"]
-    return [
-        app_commands.Choice(name=choices, value=choices)
-        for choices in choices if current.lower() in choices.lower()
-    ]
 
 #Bot admin commands
 class Admin_command(commands.Cog):
@@ -146,8 +143,12 @@ class Admin_command(commands.Cog):
         
     @commands.hybrid_command(name="economie_mod")
     @Check.is_in_dev_team()
+<<<<<<< HEAD
     # @app_commands.autocomplete(methode=["add","set","reset"])
     async def economie_mod(self, ctx : commands.context, input_id:str,methode:str,amount=0):
+=======
+    async def economie_mod(self, ctx : commands.context, input_id:str,methode:Literal["add","set","reset","del"],amount=0):
+>>>>>>> 481693b595ae9101c90af4aa3010e15d4baace51
         if not methode in ["add","set","reset","del"]:
             return await ctx.send("Merci d'utiliser une méthode valide ! (add, set, reset, del)", ephemeral=True)
         elif ctx.guild.get_member(int(input_id)):
@@ -155,32 +156,51 @@ class Admin_command(commands.Cog):
         else:
             if methode == "add" :
                 await eco.add(input_id, amount)
+<<<<<<< HEAD
                 self.bot.logger.warning(msg=f'{ctx.author.name} à give {amount} orb à {input_id}')
+=======
+                self.bot.logger.warning(msg=f'{ctx.author.name} gave {amount} orb to {input_id}')
+>>>>>>> 481693b595ae9101c90af4aa3010e15d4baace51
                 return await ctx.send(f"{amount} orbe on été ajouté au compte de <@{input_id}>.")
             if methode == "set":
                 await eco.reset(input_id)
                 await eco.add(input_id,amount)
+<<<<<<< HEAD
                 self.bot.logger.warning(msg=f'{ctx.author.name} à mit le wallet de {input_id} à {amount}')
+=======
+                self.bot.logger.warning(msg=f'{ctx.author.name} as set the wallet of {input_id} to {amount}')
+>>>>>>> 481693b595ae9101c90af4aa3010e15d4baace51
                 return await ctx.send(f"Le compte de <@{input_id}> a été mis à {amount} orbe.")
             if methode == "reset":
                 await eco.reset(input_id)
                 
+<<<<<<< HEAD
                 self.bot.logger.warning(msg=f'{ctx.author.name} à réinitialisé le wallet de {input_id}')
                 return await ctx.send(f"Le compte de <@{input_id}> a été réinitialisé à 0 orbe.")
             if methode == "del":
                 await eco.del_info(input_id)
                 self.bot.logger.warning(msg=f'{ctx.author.name} à supprimer les info de {input_id}')
+=======
+                self.bot.logger.warning(msg=f'{ctx.author.name} as reset the wallet of {input_id}')
+                return await ctx.send(f"Le compte de <@{input_id}> a été réinitialisé à 0 orbe.")
+            if methode == "del":
+                await eco.del_info(input_id)
+                self.bot.logger.warning(msg=f'{ctx.author.name} deleted the wallet info of {input_id}')
+>>>>>>> 481693b595ae9101c90af4aa3010e15d4baace51
                 return await ctx.send(f"Les informations économiques de <@{input_id}> ont été supprimées.")
 
       
     @commands.hybrid_command(name="give")
     @Check.is_in_dev_team()
-    @app_commands.autocomplete(where=where_autcomplete)
     @app_commands.autocomplete(rang=class_autcomplete)
+<<<<<<< HEAD
     async def give(self, ctx : commands.Context, input_id : str, yokai : str, rang : str, where : str, rank_orbe: str = "False", number : str = '1'):
+=======
+    async def give(self, ctx : commands.Context, input_id : str, yokai : str, rang : str, where:Literal["bag","medallium"], rank_orbe: bool = False, number : str = '1'):
+>>>>>>> 481693b595ae9101c90af4aa3010e15d4baace51
         """
         Give un Yo-kai/Pièce/Trésor/Objet à un utilisateur donné.
-        `.give <id de l'utilisateur> <nom> <rang> <bag/medallium> <quantité>`
+        `.give <id de l'utilisateur> <nom> <rang> <bag/medallium> <orbe:True/False> <quantité>`
         
         Dans le cas où le rang est "json-mod":
         `.give <id de l'utilisateur> <Valeur> json-mod <bag/medallium> <valeur de la clée>`
@@ -338,7 +358,11 @@ class Admin_command(commands.Cog):
                         #stack the yokai
                         inv[yokai][1] += 1
                         # give orb if the argument is true
+<<<<<<< HEAD
                         if bool(rank_orbe):
+=======
+                        if rank_orbe:
+>>>>>>> 481693b595ae9101c90af4aa3010e15d4baace51
                             eco.add_rank_orbe(input_id,rang)
                     except :
                         #return an exception if the yokai was not stacked
@@ -357,7 +381,11 @@ class Admin_command(commands.Cog):
                 #save the inv
                 await save_inv(data=inv, id=input_id)
             
+<<<<<<< HEAD
         sucess_embed = discord.Embed(title=f"Yo-Kai ajouté(s) au Médallium de {input_id}",
+=======
+        sucess_embed = discord.Embed(title=f"Yo-Kai ajouté(s) {"au Médallium" if where=="medallium" else "à la sacoche"} de {input_id}",
+>>>>>>> 481693b595ae9101c90af4aa3010e15d4baace51
                                         color=discord.Color.green(),
                                         description=f"**{yokai}** de rang **{rang}**\n> quantité : {number}"
                                         )
@@ -371,9 +399,8 @@ class Admin_command(commands.Cog):
  
     @commands.hybrid_command(name="remove")
     @Check.is_in_dev_team()
-    @app_commands.autocomplete(where=where_autcomplete)
     @app_commands.autocomplete(rang=class_autcomplete)
-    async def remove(self, ctx : commands.Context, input_id : str, yokai : str, rang : str, where : str, number : int = 1): 
+    async def remove(self, ctx : commands.Context, input_id : str, yokai : str, rang : str, where:Literal["bag","medallium"], number : int = 1): 
         """
         Remove un Yo-kai à un utilisateur donné.
         `.remove <id de l'utilisateur> <nom> <rang> <bag/medallium> <quantité>`
@@ -502,7 +529,7 @@ class Admin_command(commands.Cog):
                     inv[class_id] -= 1
                 await save_inv(data=inv, id=input_id)
             
-        sucess_embed = discord.Embed(title=f"Le(s) Yo-Kai a été retiré du Médallium de {input_id}",
+        sucess_embed = discord.Embed(title=f"Le(s) Yo-Kai a été retiré {"du Médallium" if where=="medallium" else "de la sacoche"} de {input_id}",
                                         color=discord.Color.green(),
                                         description=f"**{yokai}** de rang **{rang}** \n> quantité : {number} "
                                         )
@@ -511,8 +538,7 @@ class Admin_command(commands.Cog):
     
     @commands.hybrid_command(name="export")
     @Check.is_in_dev_team()
-    @app_commands.autocomplete(where=where_autcomplete)
-    async def export(self, ctx : commands.Context, input_id : str,where : str): 
+    async def export(self, ctx : commands.Context, input_id : str,where:Literal["bag","medallium"]): 
         """
         Export le json brute de l'entrée demandée.
         """
@@ -531,8 +557,7 @@ class Admin_command(commands.Cog):
     
     @commands.hybrid_command(name="import")
     @Check.is_in_dev_team()
-    @app_commands.autocomplete(where=where_autcomplete)
-    async def import_func(self, ctx : commands.Context, input_id : str, where : str, file: discord.Attachment): 
+    async def import_func(self, ctx : commands.Context, input_id : str, file: discord.Attachment,where:Literal["bag","medallium"]): 
         """
         Import le json brute de l'entrée demandée.
         """

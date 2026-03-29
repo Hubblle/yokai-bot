@@ -531,7 +531,7 @@
         "name_en" : "treasure of fire",
         "id" : "i1001",
         "type" : "treasure",
-        "desc" : "Boost ton taux de drop de rang S",
+        "desc" : "Augmente ton taux de drop des rang S",
         "slot" : 3,
         "value1" : 0.05,
         "value2" : "S",
@@ -543,17 +543,22 @@
         "type" : "treasure",
         "desc" : "Permet de réduire le cooldown du bingo-kai de 10 min",
         "slot" : 3,
+<<<<<<< HEAD
         "value1" : 5,
         "_comment" : "réduis le cooldown de chaque Bkai normal de 5min"
+=======
+        "value1" : 10,
+        "_comment" : "réduis le cooldown de chaque Bkai normal de 10min"
+>>>>>>> 481693b595ae9101c90af4aa3010e15d4baace51
     },
     "Trésor de l'eau" : {
         "name_en" : "treasure of water",
         "id" : "i1003",
         "type" : "treasure",
-        "desc" : "Augmente le taux de pourcentage d'obtenir un bon nombre de tirages de bkai à pièce quotidien max",
+        "desc" : "Augmente le taux de chance d'obtenir un bon nombre de tirages de bkai à pièce quotidien maximal",
         "slot" : 2,
         "value1" : 5,
-        "_comment" : "ajoute plus de possiblité aux nombres de tirage quotidien max entre 6 et 20 deviens entre 6 et 25"
+        "_comment" : "ajoute plus de possiblité aux nombres de tirage quotidien, le max entre 6 et 20 deviens entre 6 et 25"
     },
     "Trésor du poison" : {
         "name_en" : "treasure of poison",
@@ -572,7 +577,7 @@
         "desc" : "Une fois équipé , l'utilisateur obtient plus de chances d'obtenir des Yo-kai divinité",
         "slot" : 4,
         "value1" : 0.0025,
-        "value2" : "divinité",
+        "value2" : "DivinityS",
         "_comment" : "ajoute 0.25% de proba aux divinité"
     },
     "Trésor du ciel" : {
@@ -582,7 +587,7 @@
         "desc" : "Une fois équipé , l'utilisateur obtient plus de chances d'obtenir des Yo-kai spécial",
         "slot" : 4,
         "value1" : 0.0025,
-        "value2" : "spécial",
+        "value2" : "SpecialS",
         "_comment" : "ajoute 0.25% de proba aux spécial"
     },
     "Trésor de la forêt" : {
@@ -592,7 +597,7 @@
         "desc" : "Une fois équipé , l'utilisateur obtient plus de chances d'obtenir des Yo-kai de rang A",
         "slot" : 2,
         "value1" : 0.05,
-        "value2" : "spécial",
+        "value2" : "A",
         "_comment" : "ajoute 5% de proba aux rangs A"
     },
     "Trésor légendaire" : {
@@ -602,14 +607,18 @@
         "desc" : "Une fois équipé , l'utilisateur a plus de chances d'obtenir des Yo-kai légendaire",
         "slot" : 4,
         "value1" : 0.03,
-        "value2" : "spécial",
+        "value2" : "LegendaryS",
         "_comment" : "ajoute 3% de proba aux légendaires"
     },
     "Trésor oni" : {
         "name_en" : "oni treasure",
         "id" : "i1009",
         "type" : "treasure",
+<<<<<<< HEAD
         "desc" : "une fois equipé , l'utilisateur a plus de chance de declencher une terrheure",
+=======
+        "desc" : "une fois equipé , l'utilisateur a plus de chance de déclencher une terrheure",
+>>>>>>> 481693b595ae9101c90af4aa3010e15d4baace51
         "slot" : 1,
         "value1" : 5,
         "_comment" : "1% -> 5% de chance d'activer la terrheure"

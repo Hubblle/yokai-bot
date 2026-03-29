@@ -3199,7 +3199,7 @@
     "name_en": null,
     "id": "yf000152"
   },
-  "Christmas Treet": {
+  "Christmas Tree": {
     "name_en": null,
     "id": "yf000153"
   },
@@ -3232,6 +3232,7 @@
     "id": "yf000160"
   },
   "Anghihihille": {
+<<<<<<< HEAD
     "name_en": null,
     "id": "yf000161"
   },
@@ -3538,5 +3539,865 @@
   "Mart1max":{
     "name_en":"Mart1max",
     "id":null
+=======
+    "name_en": null,
+    "id": "yf000161"
+  },
+  "Barbuzz": {
+    "name_en": null,
+    "id": "yf000162"
+  },
+  "Céfasslopode": {
+    "name_en": null,
+    "id": "yf000163"
+  },
+  "Dracounet": {
+    "name_en": null,
+    "id": "yf000164"
+  },
+  "Murhaine": {
+    "name_en": null,
+    "id": "yf000165"
+  },
+  "Poulpatouch": {
+    "name_en": null,
+    "id": "yf000166"
+  },
+  "Ronain": {
+    "name_en": null,
+    "id": "yf000167"
+  },
+  "Sirénée": {
+    "name_en": null,
+    "id": "yf000168"
+  },
+  "Tyragédie": {
+    "name_en": null,
+    "id": "yf000169"
+  },
+  "Yvantouse": {
+    "name_en": null,
+    "id": "yf000170"
+  },
+  "Ébobby": {
+    "name_en": null,
+    "id": "yf000171"
+  },
+  "Amédélègue": {
+    "name_en": null,
+    "id": "yf000172"
+  },
+  "Scoltine": {
+    "name_en": null,
+    "id": "yf000173"
+  },
+  "Athlaitue": {
+    "name_en": null,
+    "id": "yf000174"
+  },
+  "Charlognard": {
+    "name_en": null,
+    "id": "yf000175"
+  },
+  "Céodieux": {
+    "name_en": null,
+    "id": "yf000176"
+  },
+  "Escrocorico": {
+    "name_en": null,
+    "id": "yf000177"
+  },
+  "Flagesté": {
+    "name_en": null,
+    "id": "yf000178"
+  },
+  "Hâtila": {
+    "name_en": null,
+    "id": "yf000179"
+  },
+  "M. Orthograffe": {
+    "name_en": null,
+    "id": "yf000180"
+  },
+  "Otempourmoa": {
+    "name_en": null,
+    "id": "yf000181"
+  },
+  "Raltesse": {
+    "name_en": null,
+    "id": "yf000182"
+  },
+  "Rocky Badboya": {
+    "name_en": null,
+    "id": "yf000183"
+  },
+  "Tengubre": {
+    "name_en": null,
+    "id": "yf000184"
+  },
+  "Émousstik": {
+    "name_en": null,
+    "id": "yf000185"
+  },
+  "As de nyan": {
+    "name_en": null,
+    "id": "yf000186"
+  },
+  "Hiivon": {
+    "name_en": null,
+    "id": "yf000187"
+  },
+  "Hovernyan Cao Cao": {
+    "name_en": null,
+    "id": "yf000188"
+  },
+  "Hovernyan S": {
+    "name_en": null,
+    "id": "yf000189"
+  },
+  "Meuhlinda": {
+    "name_en": null,
+    "id": "yf000190"
+  },
+  "Orqanos Lu Bu": {
+    "name_en": null,
+    "id": "yf000191"
+  },
+  "Somnoracle": {
+    "name_en": null,
+    "id": "yf000192"
+  },
+  "Sorcophage": {
+    "name_en": null,
+    "id": "yf000193"
+  },
+  "Agent Rixe": {
+    "name_en": null,
+    "id": "yf000194"
+  },
+  "Chamériste": {
+    "name_en": null,
+    "id": "yf000195"
+  },
+  "Zazel (2ème forme)": {
+    "name_en": null,
+    "id": "yf000196"
+  },
+  "Orqanos shiny": {
+    "name_en": null,
+    "id": "yf000202"
+  },
+  "Ogralos shiny": {
+    "name_en": null,
+    "id": "yf000201"
+  },
+  "Gargaros shiny": {
+    "name_en": null,
+    "id": "yf000200"
+  },
+  "Jeune Baron Ananta(Merek)": {
+    "name_en": null,
+    "id": "yf000211"
+  },
+  "Orihime Tsukuyomi": {
+    "name_en": null,
+    "id": "yf000212"
+  },
+  "Suzaku": {
+    "name_en": null,
+    "id": "yf000213"
+  },
+  "Suzaku (Forme célèste)": {
+    "name_en": null,
+    "id": "yf000214"
+  },
+  "Yasha Enma": {
+    "name_en": null,
+    "id": "yf000215"
+  },
+  "Enma Assassin": {
+    "name_en": null,
+    "id": "yf000216"
+  },
+  "Choubidou St-Valentin": {
+    "name_en": null,
+    "id": "yf000217"
+  },
+  "Nimpégase St-Valentin": {
+    "name_en": null,
+    "id": "yf000218"
+  },
+  "Papilla St-Valentin": {
+    "name_en": null,
+    "id": "yf000219"
+  },
+  "Chocolina": {
+    "name_en": null,
+    "id": "yf000220"
+  },
+  "Blizzaria St-Valentin": {
+    "name_en": null,
+    "id": "yf000221"
+  },
+  "Sailornyan St-Valentin": {
+    "name_en": null,
+    "id": "yf000222"
+  },
+  "Camélia St-Valentin": {
+    "name_en": null,
+    "id": "yf000223"
+  },
+  "Kay Mandeuse St-Valentin": {
+    "name_en": null,
+    "id": "yf000224"
+  },
+  "Pitou St-Valentin": {
+    "name_en": null,
+    "id": "yf000225"
+  },
+  "Baku St-Valentin": {
+    "name_en": null,
+    "id": "yf000226"
+  },
+  "Komami St-Valentin": {
+    "name_en": null,
+    "id": "yf000227"
+  },
+  "Insomnelle St-Valentin": {
+    "name_en": null,
+    "id": "yf000228"
+  },
+  "Angélik St-Valentin": {
+    "name_en": null,
+    "id": "yf000229"
+  },
+  "Taupe Modèle St-Valentin": {
+    "name_en": null,
+    "id": "yf000230"
+  },
+  "Cupistol St-Valentin": {
+    "name_en": null,
+    "id": "yf000231"
+  },
+  "Dr Néant St-Valentin": {
+    "name_en": null,
+    "id": "yf000232"
+  },
+  "Faustille St-Valentin": {
+    "name_en": null,
+    "id": "yf000233"
+  },
+  "Entout' Hâtila St-Valentin": {
+    "name_en": null,
+    "id": "yf000234"
+  },
+  "Rugis St-Valentin": {
+    "name_en": null,
+    "id": "yf000235"
+  },
+  "Komashura St-Valentin": {
+    "name_en": null,
+    "id": "yf000236"
+  },
+  "Parantonn St-Valentin": {
+    "name_en": null,
+    "id": "yf000237"
+  },
+  "Frérosse St-Valentin": {
+    "name_en": null,
+    "id": "yf000238"
+  },
+  "Komajiro St-Valentin": {
+    "name_en": null,
+    "id": "yf000239"
+  },
+  "Abyssinyan St-Valentin": {
+    "name_en": null,
+    "id": "yf000240"
+  },
+  "Whisper Cupidon": {
+    "name_en": null,
+    "id": "yf000241"
+  },
+  "Robonyan St-Valentin": {
+    "name_en": null,
+    "id": "yf000242"
+  },
+  "Komistigri St-Valentin": {
+    "name_en": null,
+    "id": "yf000243"
+  },
+  "Komaous St-Valentin": {
+    "name_en": null,
+    "id": "yf000244"
+  },
+  "Komasan St-Valentin": {
+    "name_en": null,
+    "id": "yf000245"
+  },
+  "Jibanyan St-Valentin": {
+    "name_en": null,
+    "id": "yf000246"
+  },
+  "Hubble": {
+    "name_en": "Hubble",
+    "id": "hubble"
+  },
+  "Mart1max": {
+    "name_en": "Mart1max",
+    "id": null
+  },
+  "Mistigrinyan": {
+    "name_en": "Greynyan",
+    "id": "yf000246"
+  },
+  "Pariasolal": {
+    "name_en": "Shamasol",
+    "id": "yf000247"
+  },
+  "Poulux": {
+    "name_en": "Feargus",
+    "id": "yf000248"
+  },
+  "Poulpardon": {
+    "name_en": "Sorrypus",
+    "id": "yf000249"
+  },
+  "Comte Zapzap": {
+    "name_en": "Count Zapaway",
+    "id": "yf000250"
+  },
+  "Marmitor": {
+    "name_en": null,
+    "id": "yf000251"
+  },
+  "Scientifiborg Cuivré": {
+    "name_en": null,
+    "id": "yf000252"
+  },
+  "Charivari": {
+    "name_en": "Mistank",
+    "id": "yf000253"
+  },
+  "Harrisson": {
+    "name_en": "Punkupine",
+    "id": "yf000254"
+  },
+  "Scientifiborg Argenté": {
+    "name_en": null,
+    "id": "yf000255"
+  },
+  "Usapyon (Mode Empereur)": {
+    "name_en": "Usapyon (Emperor Mode)",
+    "id": "yf000256"
+  },
+  "Usapyon (Mode Envahisseur)": {
+    "name_en": "Usapyon (Invader Mode) ",
+    "id": "yf000257"
+  },
+  "Usapyon (Style Conduite)": {
+    "name_en": "Usapyon (Driving Style)",
+    "id": "yf000258"
+  },
+  "Usapyon (Style Football)": {
+    "name_en": "Usapyon (Football Style)",
+    "id": "yf000259"
+  },
+  "Usapyon (Style Marin)": {
+    "name_en": "Usapyon (Marine Style)",
+    "id": "yf000260"
+  },
+  "Usapyon (Style Militaire)": {
+    "name_en": "Usapyon (Military Style)",
+    "id": "yf000261"
+  },
+  "Ananyan": {
+    "name_en": "Pinenyan",
+    "id": "yf000262"
+  },
+  "Capitaine Dodo": {
+    "name_en": "Capitain Dodo",
+    "id": "yf000263"
+  },
+  "Carpitaine (Forme amicale)": {
+    "name_en": null,
+    "id": "yf000264"
+  },
+  "Cerinyan": {
+    "name_en": null,
+    "id": "yf000265"
+  },
+  "Cindy Jaws": {
+    "name_en": "Cindy Jaws",
+    "id": "yf000266"
+  },
+  "Citronyan": {
+    "name_en": "Lemonyan",
+    "id": "yf000267"
+  },
+  "Coconyan": {
+    "name_en": "Coconutnyan",
+    "id": "yf000268"
+  },
+  "Crocho (Forme amicale)": {
+    "name_en": null,
+    "id": "yf000269"
+  },
+  "Duriannyan": {
+    "name_en": "Duriannyan",
+    "id": "yf000270"
+  },
+  "Grolos (Forme amicale)": {
+    "name_en": null,
+    "id": "yf000271"
+  },
+  "Gustaf": {
+    "name_en": "Gustaf",
+    "id": "yf000272"
+  },
+  "Jiganyan (Forme amicale)": {
+    "name_en": null,
+    "id": "yf000273"
+  },
+  "Komak (Forme amicale)": {
+    "name_en": null,
+    "id": "yf000274"
+  },
+  "Komami": {
+    "name_en": "Komami",
+    "id": "yf000275"
+  },
+  "Litchinyan": {
+    "name_en": "Litchinyan",
+    "id": "yf000276"
+  },
+  "Pêchenyan": {
+    "name_en": "Peachnyan",
+    "id": "yf000277"
+  },
+  "Pommnyan": {
+    "name_en": null,
+    "id": "yf000278"
+  },
+  "Scientifiborg Doré": {
+    "name_en": null,
+    "id": "yf000279"
+  },
+  "Triptyk (Forme amicale)": {
+    "name_en": null,
+    "id": "yf000280"
+  },
+  "Catleen": {
+    "name_en": null,
+    "id": "yf000281"
+  },
+  "Extrabuki (Forme amicale)": {
+    "name_en": null,
+    "id": "yf000282"
+  },
+  "Gargaros (Forme amicale)": {
+    "name_en": null,
+    "id": "yf000283"
+  },
+  "Gentou": {
+    "name_en": null,
+    "id": "yf000284"
+  },
+  "Hakushu": {
+    "name_en": null,
+    "id": "yf000285"
+  },
+  "Hydreux (Forme amicale)": {
+    "name_en": null,
+    "id": "yf000286"
+  },
+  "Kirene": {
+    "name_en": null,
+    "id": "yf000287"
+  },
+  "Kuuten": {
+    "name_en": null,
+    "id": "yf000288"
+  },
+  "M. Ronronchon": {
+    "name_en": "Mr. Crabbycat",
+    "id": "yf000289"
+  },
+  "Noruka": {
+    "name_en": null,
+    "id": "yf000290"
+  },
+  "Ogralos (Forme amicale)": {
+    "name_en": null,
+    "id": "yf000291"
+  },
+  "Orqanos (Forme amicale)": {
+    "name_en": null,
+    "id": "yf000292"
+  },
+  "Potofeu (Forme amicale)": {
+    "name_en": null,
+    "id": "yf000293"
+  },
+  "Scientifiborg Noir": {
+    "name_en": null,
+    "id": "yf000294"
+  },
+  "Scientifiborg Shou": {
+    "name_en": null,
+    "id": "yf000295"
+  },
+  "Shuka": {
+    "name_en": "Juno",
+    "id": "yf000296"
+  },
+  "Shutendoji": {
+    "name_en": null,
+    "id": "yf000297"
+  },
+  "Soruka": {
+    "name_en": null,
+    "id": "yf000298"
+  },
+  "Tamamo": {
+    "name_en": null,
+    "id": "yf000299"
+  },
+  "Cabotin Cristal": {
+    "name_en": null,
+    "id": "yf000300"
+  },
+  "Camaïeul Cristal": {
+    "name_en": null,
+    "id": "yf000301"
+  },
+  "Déballerine Cristal": {
+    "name_en": null,
+    "id": "yf000302"
+  },
+  "Gorgouille Cristal": {
+    "name_en": null,
+    "id": "yf000303"
+  },
+  "Komashura (Lightside)": {
+    "name_en": null,
+    "id": null
+  },
+  "Komashura (Shadowside)": {
+    "name_en": null,
+    "id": "yf000304"
+  },
+  "Komashura Cristal": {
+    "name_en": null,
+    "id": "yf000305"
+  },
+  "Savantard (Lightside)": {
+    "name_en": null,
+    "id": "yf000306"
+  },
+  "Savantard Cristal": {
+    "name_en": null,
+    "id": "yf000307"
+  },
+  "Shogunyan (Lightside)": {
+    "name_en": null,
+    "id": "yf000308"
+  },
+  "Shogunyan (Shadowside)": {
+    "name_en": null,
+    "id": "yf000309"
+  },
+  "Slurpent Cristal": {
+    "name_en": null,
+    "id": "yf000310"
+  },
+  "Arachnus (Lightside)": {
+    "name_en": null,
+    "id": "yf000311"
+  },
+  "Arachnus (Shadowside)": {
+    "name_en": null,
+    "id": "yf000312"
+  },
+  "Barakabo (Lightside)": {
+    "name_en": null,
+    "id": null
+  },
+  "Barakabo (Shadowside)": {
+    "name_en": null,
+    "id": "yf000313"
+  },
+  "Blizzaria (Lightside)": {
+    "name_en": null,
+    "id": "yf000314"
+  },
+  "Blizzaria (Shadowside)": {
+    "name_en": null,
+    "id": "yf000315"
+  },
+  "Crapop (Lightside)": {
+    "name_en": null,
+    "id": "yf000316"
+  },
+  "Crapop (Shadowside)": {
+    "name_en": null,
+    "id": "yf000317"
+  },
+  "Damona (Lightside)": {
+    "name_en": null,
+    "id": "yf000318"
+  },
+  "Damona (Shadowside)": {
+    "name_en": null,
+    "id": "yf000319"
+  },
+  "Domniscian (Shadowside)": {
+    "name_en": null,
+    "id": "yf000320"
+  },
+  "Drâgo (Lightside)": {
+    "name_en": null,
+    "id": null
+  },
+  "Drâgo (Shadowside)": {
+    "name_en": null,
+    "id": "yf000321"
+  },
+  "Feulion (Lightside)": {
+    "name_en": null,
+    "id": "yf000322"
+  },
+  "Feulion (Shadowside)": {
+    "name_en": null,
+    "id": "yf000323"
+  },
+  "Granpapéti (Lightside)": {
+    "name_en": null,
+    "id": "yf000324"
+  },
+  "Granpapéti (Shadowside)": {
+    "name_en": null,
+    "id": "yf000325"
+  },
+  "Jibanyan (Shadowside)": {
+    "name_en": null,
+    "id": "yf000326"
+  },
+  "Jibanyan Cosplay (Fouétar)": {
+    "name_en": null,
+    "id": "yf000327"
+  },
+  "Jibanyan Cosplay (Grégrigry)": {
+    "name_en": null,
+    "id": "yf000328"
+  },
+  "Komajiro (Lightside)": {
+    "name_en": null,
+    "id": "yf000329"
+  },
+  "Komajiro (Shadowside)": {
+    "name_en": null,
+    "id": "yf000330"
+  },
+  "Komasan (Lightside)": {
+    "name_en": null,
+    "id": "yf000331"
+  },
+  "Komasan (Shadowside)": {
+    "name_en": null,
+    "id": "yf000332"
+  },
+  "Kyubi (Lightside)": {
+    "name_en": null,
+    "id": "yf000333"
+  },
+  "Kyubi (Shadowside)": {
+    "name_en": null,
+    "id": "yf000334"
+  },
+  "Octorgombre (Lightside)": {
+    "name_en": null,
+    "id": "yf000335"
+  },
+  "Octorgombre (Shadowside)": {
+    "name_en": null,
+    "id": "yf000336"
+  },
+  "Octorgone (Lightside)": {
+    "name_en": null,
+    "id": "yf000337"
+  },
+  "Octorgone (Shadowside)": {
+    "name_en": null,
+    "id": "yf000338"
+  },
+  "Tsuchinoko (Shadowside)": {
+    "name_en": null,
+    "id": "yf000339"
+  },
+  "Typ (Shadowside)": {
+    "name_en": null,
+    "id": "yf000340"
+  },
+  "Yo Kai Watch Kuroi (Watch Version)": {
+    "name_en": null,
+    "id": "yf000341"
+  },
+  "Zazel (Shadowside)": {
+    "name_en": null,
+    "id": "yf000342"
+  },
+  "Abyssinyan (Godside)": {
+    "name_en": null,
+    "id": "yf000343"
+  },
+  "Byakko": {
+    "name_en": null,
+    "id": "yf000344"
+  },
+  "Byakko (Forme céleste)": {
+    "name_en": null,
+    "id": "yf000345"
+  },
+  "Domniscian 2.0 Enragé (Bousou Hinoshin)": {
+    "name_en": null,
+    "id": "yf000346"
+  },
+  "Enma (Shadowside)": {
+    "name_en": null,
+    "id": "yf000347"
+  },
+  "Enma 2.0 (Shadowside)": {
+    "name_en": null,
+    "id": "yf000348"
+  },
+  "Enma Enragé (Bousou Enma)": {
+    "name_en": null,
+    "id": "yf000349"
+  },
+  "Enma l'Ancien jeune": {
+    "name_en": null,
+    "id": "yf000350"
+  },
+  "Lord Acala (Fudou Myouou)": {
+    "name_en": null,
+    "id": "yf000351"
+  },
+  "Lord Acala jeune": {
+    "name_en": null,
+    "id": "yf000352"
+  },
+  "Norukasoruka": {
+    "name_en": null,
+    "id": "yf000353"
+  },
+  "Rinne": {
+    "name_en": null,
+    "id": "yf000354"
+  },
+  "Ruten": {
+    "name_en": null,
+    "id": "yf000355"
+  },
+  "Shien": {
+    "name_en": null,
+    "id": "yf000356"
+  },
+  "Shien (Démon)": {
+    "name_en": null,
+    "id": "yf000357"
+  },
+  "Yamambaa (Godside)": {
+    "name_en": null,
+    "id": "yf000358"
+  },
+  "Capitaine Tonnerre (Mode sérieux)": {
+    "name_en": null,
+    "id": "yf000359"
+  },
+  "Crème Chantiwhisp (Corée/Japon Ver.)": {
+    "name_en": null,
+    "id": "yf000360"
+  },
+  "Octorgone Printanier": {
+    "name_en": null,
+    "id": "yf000361"
+  },
+  "Shogunyan Printanier": {
+    "name_en": null,
+    "id": "yf000362"
+  },
+  "Barakabo Printanier": {
+    "name_en": null,
+    "id": "yf000363"
+  },
+  "Blizzaria Printanière": {
+    "name_en": null,
+    "id": "yf000364"
+  },
+  "Gorgouille Printanier": {
+    "name_en": null,
+    "id": "yf000365"
+  },
+  "Sirènité Printanière": {
+    "name_en": null,
+    "id": "yf000366"
+  },
+  "Kyubi (Saison des pluies)": {
+    "name_en": null,
+    "id": "yf000367"
+  },
+  "Komasan (Parapluie)": {
+    "name_en": null,
+    "id": "yf000368"
+  },
+  "Sakuranyan": {
+    "name_en": null,
+    "id": "yf000369"
+  },
+  "Komasan Printanier": {
+    "name_en": null,
+    "id": "yf000370"
+  },
+  "Wibblekoma Printanier": {
+    "name_en": null,
+    "id": "yf000371"
+  },
+  "Jibanyan (Parapluie)": {
+    "name_en": null,
+    "id": "yf000372"
+  },
+  "Insomnelle Printanière": {
+    "name_en": null,
+    "id": "yf000373"
+  },
+  "Dragô Printanier": {
+    "name_en": null,
+    "id": "yf000374"
+  },
+  "Wobblenyan Printanier": {
+    "name_en": null,
+    "id": "yf000375"
+  },
+  "Komajiro (Parapluie)": {
+    "name_en": null,
+    "id": "yf000376"
+  },
+  "Angélik (Parapluie)": {
+    "name_en": null,
+    "id": "yf000377"
+  },
+  "Dracounet (Saison des pluies)": {
+    "name_en": null,
+    "id": "yf000378"
+  },
+  "Sailornyan Printanière": {
+    "name_en": null,
+    "id": "yf000379"
+  },
+  "Komajiro Printanier": {
+    "name_en": null,
+    "id": "yf000380"
+>>>>>>> 481693b595ae9101c90af4aa3010e15d4baace51
   }
 }

@@ -7,6 +7,10 @@ import asyncio
 import bot_package.Custom_func as Cf
 import bot_package.economy as economy
 import bot_package.data as data
+<<<<<<< HEAD
+=======
+import time
+>>>>>>> 481693b595ae9101c90af4aa3010e15d4baace51
 
 loot = data.terrheure
 
@@ -101,21 +105,34 @@ class button(discord.ui.View):
     @discord.ui.button(label='rejoindre la terrheure', style=discord.ButtonStyle.blurple, custom_id='join')
     async def confirm(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id not in self.users_in:
+<<<<<<< HEAD
             await interaction.response.send_message("tu a rejoint la terr'heure", ephemeral=True)
             self.users_in.append(interaction.user.id)
         else:
             await interaction.response.send_message("tu es déjà dans la terr'heure", ephemeral=True)
+=======
+            await interaction.response.send_message("tu as rejoint la terr'heure !", ephemeral=True)
+            self.users_in.append(interaction.user.id)
+        else:
+            await interaction.response.send_message("tu es déjà dans la terr'heure...", ephemeral=True)
+>>>>>>> 481693b595ae9101c90af4aa3010e15d4baace51
 
 
 
 class Terrheure():
+<<<<<<< HEAD
     def __init__(self):
         pass
+=======
+    def __init__(self, bot:commands.Bot):
+        self.bot = bot
+>>>>>>> 481693b595ae9101c90af4aa3010e15d4baace51
 
     async def terrheure(self,ctx:commands.Context):
 
         #defined the view(the button), the start of the embed, sent it and save his id
         view = button(ctx)
+<<<<<<< HEAD
         embed = discord.Embed(title="La terr'heure a commencé !",
                               description=f"cliquez sur le bouton ci-dessous pour rejoindre la terr'heure ! \n plus le nombre de personne sera élevé, plus les récompenses seront grandes ! \n la terrheure durera 5 minutes.",
                               color=discord.Color.dark_red())
@@ -123,6 +140,18 @@ class Terrheure():
         message = await ctx.send(embed=embed, view=view)
 
         # wait the end of the terrheure and modif the first embed
+=======
+        embed = discord.Embed(title="La terr'heure a commencée !",
+                              description=f"cliquez sur le bouton ci-dessous pour rejoindre la terr'heure ! \n plus le nombre de personne sera élevé, plus les récompenses seront grandes !",
+                              color=discord.Color.dark_red())
+        embed.add_field(name="Temps restant:", value=f"<t:{int(time.time())+300}:R>")
+        embed.set_footer(text="merci de ne pas supprimer ce message")
+        message = await ctx.send(embed=embed, view=view)
+        
+        self.bot.logger.info(f"Terrheure started in server {ctx.guild.id}/{ctx.guild.name}, started by {ctx.author.id}/{ctx.author.name}")
+
+        # wait the end of the terrheure and edit the first embed
+>>>>>>> 481693b595ae9101c90af4aa3010e15d4baace51
         await asyncio.sleep(300)
         embed_end = discord.Embed(title="La terr'heure est finie !",
                                   color=discord.Color.dark_red())
@@ -130,19 +159,46 @@ class Terrheure():
         try:
             await message.edit(embed=embed_end, view=None)
         except discord.errors.NotFound:
+<<<<<<< HEAD
             message = await ctx.send(embed_end)
 
 
         
         # give the reward if the number of participant is equal or superior
         users_len = len(view.users_in)
+=======
+            pass
+        except discord.errors.Forbidden:
+            pass
+        
+
+        # make a list with the mention of all the participants 
+        list_part = ""
+        for user in view.users_in:
+            list_part += f"<@{user}> "
+            
+        
+        # give the reward if the number of participant is equal or superior
+        users_len = len(view.users_in)    
+        
+        end_embed = discord.Embed(title="fin de la terr'heure !", description=f"la terr'heure a réuni {users_len} participants !",
+        color=discord.Color.green())
+        end_embed.add_field(name="participants :", value=list_part,inline=False)
+        
+        
+        
+>>>>>>> 481693b595ae9101c90af4aa3010e15d4baace51
         for recompense in loot.keys():
             if int(recompense) <= users_len:
                 reward = loot[str(recompense)]
 
                 # if reward is orbe use eco module to give it
                 if reward["type"] == "orbe":
+<<<<<<< HEAD
                     phrase = f"{reward["amount"]} orbe oni pour chaque personne"
+=======
+                    phrase = f"{reward["amount"]} orbes oni pour chaque personne"
+>>>>>>> 481693b595ae9101c90af4aa3010e15d4baace51
                     for id in view.users_in:
                         await economy.add(id,reward["amount"])
 
@@ -162,9 +218,15 @@ class Terrheure():
                     gifted_coin = random.choice(loot[recompense]["coin_list"])
                     phrase = f"{reward["amount"]} {gifted_coin}"
                     for id in view.users_in:
+<<<<<<< HEAD
                         await give(id, gifted_coin,"coin","bag", reward["amount"])
 
                 # if reward is yokail(yokai list)
+=======
+                        await give(id, gifted_coin,"Pièce","bag", reward["amount"])
+
+                # if reward is yokail (yokai list)
+>>>>>>> 481693b595ae9101c90af4aa3010e15d4baace51
                 # choose a random yokai in this list and give him
                 # use a shorter version of give in admin cog
                 elif reward["type"] == "yokail":
@@ -183,6 +245,7 @@ class Terrheure():
 
 
                 # add a field to the embed corresponding of the reward of all stage
+<<<<<<< HEAD
                 embed_end.add_field(name=f"Récompenses pour avoir atteint {recompense} personne:", value=phrase)
             else:
                 break
@@ -203,3 +266,17 @@ class Terrheure():
         color=discord.Color.green())
         part_embed.add_field(name="participants :", value=list_part)
         await message.reply(embed=part_embed)    
+=======
+                end_embed.add_field(name=f"Récompenses pour avoir atteint {recompense} personnes:", value=phrase)
+            else:
+                break
+        
+        try:
+            await message.reply(embed=end_embed)    
+        except discord.NotFound:
+            await ctx.send(embed=end_embed)
+        except discord.Forbidden:
+            pass
+        
+        self.bot.logger.info(f"Terrheure stopped in server {ctx.guild.id}/{ctx.guild.name}, started by {ctx.author.id}/{ctx.author.name}, {users_len} users")
+>>>>>>> 481693b595ae9101c90af4aa3010e15d4baace51

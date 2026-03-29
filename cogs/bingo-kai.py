@@ -58,7 +58,11 @@ class Bingo_kai(commands.Cog):
 
         #Check if they have a treasure equiped
         bag = await Cf.get_bag(ctx.author.id)
+<<<<<<< HEAD
         equipped_treasure = bag.get("equipped_treasure")
+=======
+        equipped_treasure = bag.get("equipped_treasure", None)
+>>>>>>> 481693b595ae9101c90af4aa3010e15d4baace51
         
                 
         if not coin in data.coin_list and not coin == None:
@@ -485,10 +489,14 @@ class Bingo_kai(commands.Cog):
                 #or is it 1h when executed in the support or partner server ?
                 #and subtract 10m if sun's trésor are equip ?
 <<<<<<< HEAD
+<<<<<<< HEAD
                 if ctx.guild.id in [os.getenv("guild_partner_id")] + os.getenv("SUPPORT_GUILD_ID"):
 =======
                 if ctx.guild.id in [os.getenv("guild_partner_id")] + [os.getenv("SUPPORT_GUILD_ID")]:
 >>>>>>> f65447695d2f1844730915b435b9c803c93f4ad0
+=======
+                if str(ctx.guild.id) in [os.getenv("guild_partner_id")] + [os.getenv("SUPPORT_GUILD_ID")]:
+>>>>>>> 481693b595ae9101c90af4aa3010e15d4baace51
                     cooldown = 3600
                     cooldown_str = "1h"
                     if equipped_treasure == "Trésor du soleil":
@@ -519,7 +527,11 @@ class Bingo_kai(commands.Cog):
 
 
 
+<<<<<<< HEAD
         weights=data.proba_list
+=======
+        weights=data.proba_list.copy()
+>>>>>>> 481693b595ae9101c90af4aa3010e15d4baace51
         classlist = data.class_list
         #add weight to class depending of the equiped treasure
         if not equipped_treasure == None:
@@ -540,6 +552,7 @@ class Bingo_kai(commands.Cog):
 
         #get the good name of the class and his id
 <<<<<<< HEAD
+<<<<<<< HEAD
         class_name = data.yokai_data[class_choice].get("class_name")
         class_id = data.yokai_data[class_choice].get("class_id")
         #choose the Yo-kai in the class
@@ -553,6 +566,12 @@ class Bingo_kai(commands.Cog):
         #choose the Yo-kai in the class
         Yokai_choice = random.choice(class_choice["yokai_list"])
 >>>>>>> f65447695d2f1844730915b435b9c803c93f4ad0
+=======
+        class_name = class_choice.get("class_name")
+        class_id = class_choice.get("class_id")
+        #choose the Yo-kai in the class
+        Yokai_choice = random.choice(class_choice["yokai_list"])
+>>>>>>> 481693b595ae9101c90af4aa3010e15d4baace51
         
         while Yokai_choice in data.blacklist.get("yokai") :
             Yokai_choice = random.choice(class_choice["yokai_list"])
@@ -731,11 +750,20 @@ class Bingo_kai(commands.Cog):
             
             #Set last claim
             await Cf.save_bag(bag, ctx.author.id)
+<<<<<<< HEAD
+=======
+            if equipped_treasure:
+                yokai_embed.set_footer(text=f"{equipped_treasure} utilisé !")
+            else:
+                message = random.choice(["La V6 est là: fais /help pour plus d'info !","Regardes le top 10 avec /top !","Regardes ton rang avec /rank !","Combien d'orbes as tu ? Regardes avec /orbe !"])
+                yokai_embed.set_footer(text=message)
+>>>>>>> 481693b595ae9101c90af4aa3010e15d4baace51
             await ctx.send(embed=yokai_embed)
             return await ctx.send(embed=coin_embed)
 
         
         else :
+<<<<<<< HEAD
 
             await ctx.send(embed=yokai_embed)
             if equipped_treasure == "Trésor oni":
@@ -746,6 +774,24 @@ class Bingo_kai(commands.Cog):
                 print("terrheure START")
                 evenement = event.Terrheure()
                 await evenement.terrheure(ctx)
+=======
+            
+            if equipped_treasure:
+                yokai_embed.set_footer(text=f"{equipped_treasure} utilisé !")
+            else:
+                message = random.choice(["La V6 est là: fais /help pour plus d'info !","Regardes le top 10 avec /top !","Regardes ton rang avec /rank !","Combien d'orbes as tu ? Regardes avec /orbe !"])
+                yokai_embed.set_footer(text=message)
+                
+                
+            await ctx.send(embed=yokai_embed)
+            """if equipped_treasure == "Trésor oni":
+                    chance = data.item[equipped_treasure].get("value1")
+            else :
+                    chance = 
+            if random.choices([True, False], weights=[chance, 100-chance])[0] :
+                evenement = event.Terrheure(self.bot)
+                await evenement.terrheure(ctx)"""
+>>>>>>> 481693b595ae9101c90af4aa3010e15d4baace51
    
 
                 

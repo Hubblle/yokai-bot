@@ -14,6 +14,7 @@
     },
     "5":{
         "type": "coin",
+<<<<<<< HEAD
         "coin_list": ["pièce rouge", "pièce verte"],
         "amount": 1
     },
@@ -21,6 +22,14 @@
         "type": "yokail",
         "rang": "s",
         "yokai_list": ["gorgouille","orquanos","gargaros"]
+=======
+        "coin_list": ["Pièce rouge", "Pièce verte"],
+        "amount": 1
+    },
+    "10":{
+        "type": "yokair",
+        "class": "S"
+>>>>>>> 481693b595ae9101c90af4aa3010e15d4baace51
     },
     "15" :{
         "type" :"orbe",
@@ -40,18 +49,25 @@
     },
     "40":{
         "type":"coin",
+<<<<<<< HEAD
         "coin_list" :["Pièce monstrueuse","Pièce démoniaque","Pièce spécial","Pièce légendaire"],
+=======
+        "coin_list" :["Pièce monstrueuse","Pièce démoniaque","Pièce spéciale","Pièce légendaire"],
+>>>>>>> 481693b595ae9101c90af4aa3010e15d4baace51
         "amount": 2
 
     },
     "45":{
         "type":"orbe",
         "amount": 1000
+<<<<<<< HEAD
     },
     "50":{
         "type": "yokail",
         "rang": "shiny",
         "yokai_list":["gargaros shiny","gorgouille shiny","orquanos shiny"]
+=======
+>>>>>>> 481693b595ae9101c90af4aa3010e15d4baace51
     }
 
 }
