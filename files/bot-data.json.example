@@ -15,16 +15,16 @@
 
     },
     "emoji" : {
-    "treasureS" : "treasureS",
-    "B" : "B",
-    "E" : "E",
-    "C" : "C",
-    "A" : "A",
-    "D" : "D",
-    "S" : "S",
-    "DivinityS": "Divinity",
-    "LegendaryS": "Legendary",
-    "SpecialS": "Special",
-    "Boss": "Boss"
+    "treasureS" : "Emoji markdown for Treasure",
+    "B" : "Emoji markdown for B",
+    "E" : "Emoji markdown for E",
+    "C" : "Emoji markdown for C",
+    "A" : "Emoji markdown for A",
+    "D" : "Emoji markdown for D",
+    "S" : "Emoji markdown for S",
+    "DivinityS": "Emoji markdown for Divinity",
+    "LegendaryS": "Emoji markdown for Legendary",
+    "SpecialS": "Emoji markdown for Special",
+    "Boss": "Emoji markdown for Boss"
  }
 }
