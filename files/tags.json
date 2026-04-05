@@ -212,6 +212,19 @@
             "Wobblenyan Printanier"
         ]
     },
+    "Event Pâques":{
+        "color":"#FFFAFA",
+        "list":[
+            "Usapyon de Pâques",
+            "Feulion de Pâques",
+            "Jibanyan de Pâques",
+            "Pitou de Pâques",
+            "Œuxcellence de Pâques",
+            "Mata Hase de Pâques",
+            "Komasan de Pâques",
+            "Kœud de Pâques"
+        ]
+    },
 
     "Nouveaux":{
         "color":"#4169e1",
