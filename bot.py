@@ -156,7 +156,7 @@ class DiscordBot(commands.Bot):
         """
         Setup the game status task of the bot.
         """
-        statuses = ["✨V5 !", "/bkai", "/help"]
+        statuses = ["✨V6 !", "/bkai", "/help"]
         await self.change_presence(activity=discord.Game(random.choice(statuses)))
 
 
