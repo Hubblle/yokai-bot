@@ -8,6 +8,7 @@ import bot_package.Check as Check
 import bot_package.data as data
 import bot_package.economy as eco
 from typing import Literal
+import time
 
 
 
@@ -33,11 +34,85 @@ class Admin_command(commands.Cog):
     
     def __init__(self, bot:commands.Bot):
         self.bot = bot
+        self.last_top = 0
+        self.all_top={
+            "Complétion":[],
+            "Points":[]
+        }
 
     
     
     
-    
+    @commands.hybrid_command(name="admin_top")
+    @Check.is_in_dev_team()
+    async def top(self, ctx:commands.Context, category:Literal["Points", "Complétion"]):
+        """
+        New ✨! Affiche le top 10 du bot
+        """
+        
+        #defer cause the actualisation takes a long time
+        await ctx.defer()
+        
+        guild = ctx.message.guild
+        if guild is None:
+            return await ctx.send("Cette commande ne peut être utilisée que dans un serveur !", ephemeral=True)
+
+        limit = 10
+
+        if time.time() - self.last_top >= 120:
+            self.last_top=time.time()
+            
+            self.all_top["Complétion"].clear()
+            self.all_top["Points"].clear()
+            
+            files = [f for f in os.listdir("./files/inventory") if f.endswith(".json")]
+            ids = [int(f.removesuffix(".json")) for f in files]
+            member_data = []
+
+            for id in ids:
+                inv = await Cf.get_inv(id)
+                if inv == {}:
+                    inv = data.default_medaillum
+
+                total_points = 0
+                total_yokai = 0
+                claimed_yokai = 0
+                for cls, pts in data.class_to_point.items():
+                    count = inv.get(cls, 0)
+                    total_points += count * pts
+                    total_yokai += data.list_len.get(cls, 0)
+                    claimed_yokai += count
+
+                completion = (claimed_yokai / total_yokai * 100) if total_yokai > 0 else 0
+
+                self.all_top["Complétion"].append((id,completion))
+                self.all_top["Points"].append((id,total_points))
+
+
+
+        to_sort = self.all_top[category]
+        sorted_data = sorted(to_sort, key=lambda x: x[1], reverse=True)
+        if category == "Points":
+            title = f"Top {limit} par points 🏆"
+        elif category == "Complétion":
+            title = f"Top {limit} par complétion 💯"
+
+        top_limit = min(limit, len(sorted_data))
+        top_list = sorted_data[:top_limit]
+
+        description = ""
+        for idx, mdata in enumerate(top_list, start=1):
+
+            member = await self.bot.fetch_user(mdata[0])
+            
+            member_name = member.name
+            if category == "Points":
+                description += f"**{idx}. {member_name}** — {mdata[1]} points\n"
+            else:
+                description += f"**{idx}. {member_name}** — {mdata[1]:.2f}% complété\n"
+
+        embed = discord.Embed(title=title, description=description, color=discord.Color.gold())
+        return await ctx.send(embed=embed)
  
     @commands.hybrid_command(name="reset")
     @Check.is_in_dev_team()
