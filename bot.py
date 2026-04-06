@@ -3,7 +3,7 @@ Based on
 Copyright © Krypton 2019-Present template
 Version: 6.3.0
 """
-VERSION = 6.1
+VERSION = 6.2
 
 #import general stuff
 import json
