@@ -229,9 +229,12 @@ class Search(commands.Cog):
         
         # Retrieves the list of yokai for this tag from tags.json
         matched_yokai = TAGS_DATA[matched_tag]["list"]
+        # get the user's inventory and bag and merge them
         if matched_yokai:
-            inv = await Cf.get_inv(ctx.author.id) + await Cf.get_bag(ctx.author.id)
-            
+            inv = await Cf.get_inv(ctx.author.id) 
+            bag = await Cf.get_bag(ctx.author.id)
+            inv.update(bag)
+
             # Creates the list with bold formatting for those owned
             yokai_list = []
             poss = 0
