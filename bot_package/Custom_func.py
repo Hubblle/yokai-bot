@@ -147,6 +147,38 @@ async def save_bag(data : dict, id : int):
     async with aiofiles.open(f"./files/bag/{str(id)}.json", "w", encoding="utf-8") as f:
         await f.write(json.dumps(data, indent=2, ensure_ascii=False))
         
+
+
+
+#Get list func
+#nearly same as bag
+async def get_list(id : int):
+    """
+    A func to get the list of a user (with his id)
+    """
+    if os.path.exists(f"./files/history/{str(id)}.json"):
+        async with aiofiles.open(f"./files/list/{str(id)}.json") as f:
+            content = await f.read()
+            data = fix_encoding(json.loads(content))
+    else :
+        #retrun nothing if there's nothing to :/
+        data = []
+       
+    return data
+
+
+
+#save list func
+#nearly same as bag
+async def save_list(data : list, id : int):
+    """
+    A func to save the list of a user (with his id)
+    """
+    async with aiofiles.open(f"./files/history/{str(id)}.json", "w", encoding="utf-8") as f:
+        await f.write(json.dumps(data, indent=2, ensure_ascii=False))
+
+
+
         
 exlude_match= data.open_json("./files/exclude_match.json")["list"]
 async def smart_match(s1: str, s2: str) -> bool:
