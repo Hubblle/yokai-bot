@@ -722,22 +722,22 @@ class Bingo_kai(commands.Cog):
         #give the amount of points if there is a streak of a class
         inventory_history = await Cf.get_inv(ctx.author.id)  #get the medallium
             
-        if inventory_history.get("streak", None) == None:inventory_history["streak"] = ["E",0]
+        if inventory_history.get("streak", None) == None:inventory_history["streak"] = [0,"E",0]
         
 
-        if inventory_history["streak"][0] == class_id:
-            inventory_history["streak"][1] += 1
+        if inventory_history["streak"][1] == class_id:
+            inventory_history["streak"][2] += 1
         else:
-            inventory_history["streak"][0] = class_id
-            inventory_history["streak"][1] = 1
+            inventory_history["streak"][1] = class_id
+            inventory_history["streak"][2] = 1
 
 
 
         streak_embed = False
 
         three_times = ["E", "D", "C", "B", "A"]  #list of the classes which need to be roll 3 times to unlock the streak
-        streak = inventory_history["streak"][1]
-        history_class_id = inventory_history["streak"][0]
+        streak = inventory_history["streak"][2]
+        history_class_id = inventory_history["streak"][1]
         class_name_streak = await Cf.classid_to_class(history_class_id)
         if history_class_id in three_times:
             if streak >= 3:

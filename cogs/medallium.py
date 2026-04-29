@@ -56,10 +56,13 @@ class Medallium(commands.Cog) :
             "Shiny": {}
         }
 
+        
+        blacklist = ["streak"]
+        
         #sort the Yo-kai by class
         for elements in brute_inventory:
             #Don't take any numbers
-            if not type(brute_inventory[elements]) == int and not type(brute_inventory[elements]) == float:
+            if not type(brute_inventory[elements]) == int and not type(brute_inventory[elements]) == float and not elements in blacklist:
                 categorie = brute_inventory[elements]
 
                 #Check if it's stack
