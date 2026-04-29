@@ -233,6 +233,10 @@ class Bingo_kai(commands.Cog):
                 if brute_inventory == {}:
                     brute_inventory = {
                         "last_claim": 10000,
+                        "streak": [
+                            "E",
+                            0
+                        ],
                         "E": 0,
                         "D": 0,
                         "C": 0,
@@ -576,6 +580,10 @@ class Bingo_kai(commands.Cog):
         if brute_inventory == {}:
             brute_inventory = {
                 "last_claim": time.time(),
+                "streak": [
+                    "E",
+                    0
+                ],
                 "E": 0,
                 "D": 0,
                 "C": 0,
@@ -747,59 +755,43 @@ class Bingo_kai(commands.Cog):
    
 
 
+
         #give the amount of points if there is a streak of a class
-        brute_history = await Cf.get_list(ctx.author.id)  #get the history
-        brute_history.append(class_name)  #add the last result
-        streakend = False
-        list = []
-        i = 0  #number of iteration
-        streak = 1
-        three_times = ["E", "D", "C", "B", "A"]  #list of the classes wich need to be rool 3 times to unlock the streak
-        for class_list in reversed(brute_history):  #start at the last value
-            list.append(class_list) #redo a list
-            if i > 0:  #check only the second time
-                #print(f"i: {i}")                                       #for debug
-                #print(f"list i : {list[i]}\nlist i-1: {list[i-1]}")    #for debug
-                if list[i] == list[i-1]: #check if the two values are the same
-                    #print("Vrai")   #for debug
-                    streak += 1
-                    class_name_list = str(list[i])
-                else:
-                    streakend = True
-                    if class_name_list in three_times: #check if the streak should start at 3 or 2
-                        if streak >= 3:
-                            #print(f"streak 2 :{streak}")  #for debug
-                            point_of_rank = data.class_to_point[class_name_list]
-                            amount = 2*streak*point_of_rank #the formula. Two is a magic numbers, he correspond to a random coefficient
-                            await eco.add(ctx.author.id, amount) #add orbs
-                        elif streak >= 2:
-                            #print(f"streak 2 :{streak}")  #for debug
-                            point_of_rank = data.class_to_point[class_name_list]
-                            amount = 2*streak*point_of_rank #the formula. Two is a magic numbers, he correspond to a random coefficient
-                            await eco.add(ctx.author.id, amount) #add orbs
-                    break
-            i += 1
+        inventory_history = await Cf.get_inv(ctx.author.id)  #get the medallium
+        
+        try:
+            inventory_history["streak"]
+        except:
+            inventory_history["streak"] = ["E", 0]
 
-        #streakend is used for if there is only one class in the history
-        if streakend == False:
-            if class_name_list in three_times:
-                if streak >= 3:
-                    #print(f"streak 2 :{streak}")  #for debug
-                    point_of_rank = data.class_to_point[class_name_list]
-                    amount = 2*streak*point_of_rank #the formula. Two is a magic numbers, he correspond to a random coefficient
-                    await eco.add(ctx.author.id, amount) #add orbs
-                elif streak >= 2:
-                    #print(f"streak 2 :{streak}")  #for debug
-                    point_of_rank = data.class_to_point[class_name_list]
-                    amount = 2*streak*point_of_rank #the formula. Two is a magic numbers, he correspond to a random coefficient
-                    await eco.add(ctx.author.id, amount) #add orbs
+        if inventory_history["streak"][0] == class_id:
+            inventory_history["streak"][1] += 1
+        else:
+            inventory_history["streak"][0] = class_id
+            inventory_history["streak"][1] = 0
 
-        list = list[::-1]
-        brute_history = list
-        await Cf.save_list(brute_history, ctx.author.id)
+
+
+        three_times = ["E", "D", "C", "B", "A"]  #list of the classes wich need to be roll 3 times to unlock the streak
+        streak = inventory_history["streak"][1]
+        history_class_id = inventory_history["streak"][0]
+
+        if history_class_id in three_times:
+            if streak >= 3:
+                point_of_rank = data.class_to_point[history_class_id] #get the amount of point from the class
+                amount = 2*streak*point_of_rank                       #the formula. Two is a magic numbers, he correspond to a random coefficient
+                await eco.add(ctx.author.id, amount)                  #add orbs
+
+        elif streak >= 2:
+            point_of_rank = data.class_to_point[history_class_id] #get the amount of point from the class
+            amount = 2*streak*point_of_rank                       #the formula. Two is a magic numbers, he correspond to a random coefficient
+            await eco.add(ctx.author.id, amount)                  #add orbs
+
+        await Cf.save_inv(inventory_history, ctx.author.id)
 
                 
             
+
     
     @commands.hybrid_command(name="bkai")
     @app_commands.autocomplete(coin=bingo_kai_autcomplete)
