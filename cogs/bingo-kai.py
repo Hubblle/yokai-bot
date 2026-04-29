@@ -131,7 +131,7 @@ class Bingo_kai(commands.Cog):
                 loot_order = data.coin_loot[coin]["element_in_order"]
                 proba_order = data.coin_loot[coin]["proba_in_order"]
             #check if the coin loot is available
-            except Exception:
+            except KeyError:
                 error_embed = discord.Embed(title="Oh non, cette pièce n'est pas encore disponible...", description="> Elle n'a pas encore été faite, mais cela arrive au plus vite !")
                 return await ctx.send(embed=error_embed)
             
@@ -202,10 +202,9 @@ class Bingo_kai(commands.Cog):
                 
             #get rid of the coin they used
             bag = await Cf.get_bag(ctx.author.id)
-            try :
-                more_than_one = bag[coin][1] > 1
-            except :
-                more_than_one = False
+
+            more_than_one = bag.get(coin,[0,0])[1] > 1
+
                 
             
             if more_than_one == True :
@@ -231,25 +230,8 @@ class Bingo_kai(commands.Cog):
 
                 brute_inventory = await Cf.get_inv(ctx.author.id)
                 if brute_inventory == {}:
-                    brute_inventory = {
-                        "last_claim": 10000,
-                        "streak": [
-                            "E",
-                            0
-                        ],
-                        "E": 0,
-                        "D": 0,
-                        "C": 0,
-                        "B": 0,
-                        "A": 0,
-                        "S": 0,
-                        "LegendaryS": 0,
-                        "treasureS": 0,
-                        "SpecialS": 0,
-                        "DivinityS": 0,
-                        "Boss": 0,
-                        "Shiny": 0
-                    }
+                    brute_inventory = data.default_medaillum
+                    brute_inventory["last_claim"] = time.time()
                     verification = False
                 else:
                     verification = True
@@ -260,7 +242,7 @@ class Bingo_kai(commands.Cog):
                             verification = False
                             try:
                                 brute_inventory[item][1] += 1
-                            except:
+                            except IndexError:
                                 brute_inventory[item].append(2)
                                 
                             #make the embed
@@ -288,7 +270,7 @@ class Bingo_kai(commands.Cog):
                     brute_inventory[item] = [class_id]
                     try:
                         brute_inventory[class_id] += 1
-                    except:
+                    except KeyError:
                         brute_inventory[class_id] = 1
                     await Cf.save_inv(brute_inventory, ctx.author.id)
                     yokai_embed = discord.Embed(
@@ -328,7 +310,7 @@ class Bingo_kai(commands.Cog):
                             verification = False
                             try:
                                 bag[item][1] += 1
-                            except:
+                            except IndexError:
                                 bag[item].append(2)
                                 
                             #make the embed
@@ -355,7 +337,7 @@ class Bingo_kai(commands.Cog):
                     bag[item] = [item_type]
                     try:
                         bag[item_type] += 1
-                    except:
+                    except KeyError:
                         bag[item_type] = 1
                     await Cf.save_bag(bag, ctx.author.id)
                     item_embed = discord.Embed(
@@ -393,7 +375,7 @@ class Bingo_kai(commands.Cog):
                             verification = False
                             try:
                                 bag[item][1] += 1
-                            except:
+                            except IndexError:
                                 bag[item].append(2)
                                 
                             #make the embed
@@ -422,7 +404,7 @@ class Bingo_kai(commands.Cog):
                     bag[item] = [item_type]
                     try:
                         bag[item_type] += 1
-                    except:
+                    except KeyError:
                         bag[item_type] = 1
                     await Cf.save_bag(bag, ctx.author.id)
                     #make the embed
@@ -466,10 +448,8 @@ class Bingo_kai(commands.Cog):
                     break
 
         #Verify if there is a claim in their inv
-        try:
-            free_claim = brute_inventory["claim"]
-        except:
-            free_claim = 0
+
+        free_claim = brute_inventory.get("claim",0)
 
         if free_claim > 0:
             brute_inventory["claim"] -= 1
@@ -578,25 +558,8 @@ class Bingo_kai(commands.Cog):
         #is the Yo-kai in the inventory
         #try the inv
         if brute_inventory == {}:
-            brute_inventory = {
-                "last_claim": time.time(),
-                "streak": [
-                    "E",
-                    0
-                ],
-                "E": 0,
-                "D": 0,
-                "C": 0,
-                "B": 0,
-                "A": 0,
-                "S": 0,
-                "LegendaryS": 0,
-                "treasureS": 0,
-                "SpecialS": 0,
-                "DivinityS": 0,
-                "Boss": 0,
-                "Shiny": 0
-            }
+            brute_inventory = data.default_medaillum
+            brute_inventory["last_claim"] = time.time()
             verification = False
         else:
             verification = True
@@ -609,7 +572,7 @@ class Bingo_kai(commands.Cog):
                     try:
                         #stack the Yo-kai
                         brute_inventory[Yokai_choice][1] += 1
-                    except:
+                    except IndexError:
                         brute_inventory[Yokai_choice].append(2)
 
                     #Generate the embed
@@ -634,7 +597,7 @@ class Bingo_kai(commands.Cog):
                 brute_inventory[Yokai_choice] = [class_id]
                 try:
                     brute_inventory[class_id] += 1
-                except:
+                except KeyError:
                     brute_inventory[class_id] = 1
                 brute_inventory["last_claim"] = time.time()
                 await Cf.save_inv(brute_inventory, ctx.author.id)
@@ -647,7 +610,7 @@ class Bingo_kai(commands.Cog):
             brute_inventory[Yokai_choice] = [class_id]
             try:
                 brute_inventory[class_id] += 1
-            except:
+            except KeyError:
                 brute_inventory[class_id] = 1
             await Cf.save_inv(brute_inventory, ctx.author.id)
             yokai_embed.add_field(
@@ -705,7 +668,7 @@ class Bingo_kai(commands.Cog):
                         try:
                         #stack the Yo-kai
                             bag[coin][1] += 1
-                        except:
+                        except IndexError:
                             bag[coin].append(2)
                         verification = False
 
@@ -758,21 +721,21 @@ class Bingo_kai(commands.Cog):
 
         #give the amount of points if there is a streak of a class
         inventory_history = await Cf.get_inv(ctx.author.id)  #get the medallium
+            
+        if inventory_history.get("streak", None) == None:inventory_history["streak"] = ["E",0]
         
-        try:
-            inventory_history["streak"]
-        except:
-            inventory_history["streak"] = ["E", 0]
 
         if inventory_history["streak"][0] == class_id:
             inventory_history["streak"][1] += 1
         else:
             inventory_history["streak"][0] = class_id
-            inventory_history["streak"][1] = 0
+            inventory_history["streak"][1] = 1
 
 
 
-        three_times = ["E", "D", "C", "B", "A"]  #list of the classes wich need to be roll 3 times to unlock the streak
+        streak_embed = False
+
+        three_times = ["E", "D", "C", "B", "A"]  #list of the classes which need to be roll 3 times to unlock the streak
         streak = inventory_history["streak"][1]
         history_class_id = inventory_history["streak"][0]
         class_name_streak = await Cf.classid_to_class(history_class_id)
@@ -792,14 +755,15 @@ class Bingo_kai(commands.Cog):
             amount = 2*streak*point_of_rank                       #the formula. Two is a magic numbers, he correspond to a random coefficient
             await eco.add(ctx.author.id, amount)                  #add orbs
             streak_embed = discord.Embed(
-                title=f"Streak de {streak} des yo-kai de rang {class_name_streak}",
+                title=f"Streak de {streak} des Yo-Kai de rang {class_name_streak} 🔥",
                 description=f"Félicitations, vous venez de gagner {amount} orbes",
                 color=discord.Color.orange()
             )
             
 
         await Cf.save_inv(inventory_history, ctx.author.id)
-        return await ctx.send(embed=streak_embed)
+        if streak_embed:
+            await ctx.send(embed=streak_embed)
 
                 
             
