@@ -152,6 +152,7 @@ blacklist = open_json("./files/blacklisted-yokai.json")
 default_medaillum  = {
                         "last_claim" : 10000,
                         "streak": [
+                            0,
                             "E",
                             0
                         ],
