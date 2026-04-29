@@ -775,19 +775,31 @@ class Bingo_kai(commands.Cog):
         three_times = ["E", "D", "C", "B", "A"]  #list of the classes wich need to be roll 3 times to unlock the streak
         streak = inventory_history["streak"][1]
         history_class_id = inventory_history["streak"][0]
-
+        class_name_streak = await Cf.classid_to_class(history_class_id)
         if history_class_id in three_times:
             if streak >= 3:
                 point_of_rank = data.class_to_point[history_class_id] #get the amount of point from the class
                 amount = 2*streak*point_of_rank                       #the formula. Two is a magic numbers, he correspond to a random coefficient
                 await eco.add(ctx.author.id, amount)                  #add orbs
+                streak_embed = discord.Embed(
+                title=f"Streak de {streak} des yo-kai de rang {class_name_streak}",
+                description=f"Félicitations, vous venez de gagner {amount} orbes",
+                color=discord.Color.orange()
+                )
 
         elif streak >= 2:
             point_of_rank = data.class_to_point[history_class_id] #get the amount of point from the class
             amount = 2*streak*point_of_rank                       #the formula. Two is a magic numbers, he correspond to a random coefficient
             await eco.add(ctx.author.id, amount)                  #add orbs
+            streak_embed = discord.Embed(
+                title=f"Streak de {streak} des yo-kai de rang {class_name_streak}",
+                description=f"Félicitations, vous venez de gagner {amount} orbes",
+                color=discord.Color.orange()
+            )
+            
 
         await Cf.save_inv(inventory_history, ctx.author.id)
+        return await ctx.send(embed=streak_embed)
 
                 
             
