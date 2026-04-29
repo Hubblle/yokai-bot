@@ -147,8 +147,6 @@ async def save_bag(data : dict, id : int):
     async with aiofiles.open(f"./files/bag/{str(id)}.json", "w", encoding="utf-8") as f:
         await f.write(json.dumps(data, indent=2, ensure_ascii=False))
         
-
-
         
 exlude_match= data.open_json("./files/exclude_match.json")["list"]
 async def smart_match(s1: str, s2: str) -> bool:
