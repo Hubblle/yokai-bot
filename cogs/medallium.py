@@ -138,13 +138,109 @@ class Medallium(commands.Cog) :
                                                     value=yokai_list_formated)
                                 inv_embed.set_author(name=f"Médallium de {user.name}")
                         return await interaction.response.send_message(embed=inv_embed)
+                    #if the medallium is to big to be in one message
                     except discord.errors.HTTPException as e:
-                        error_embed = discord.Embed(color=discord.Color.red(),
-                                                    title="Oh non, une erreur s'est produite !",
-                                                    description="> Un bug sur cette commande se produit quand le Médallium est trop grand pour être affiché. (C'est un peu un flex quand même 🙃)")
-                        error_embed.add_field(name="Vous devez donc spécifier un rang pour que cela marche.",
-                                            value="Vous pouvez utiliser le message ci-dessus.")
-                        return await interaction.response.send_message(embed=error_embed)
+                        try:
+                            if self.values[0] == "Tout !":
+                                yo_kai_show = ["E","D","C"]
+
+                            for classes in yokai_per_class:
+                                yokai_list_brute = yokai_per_class[classes]
+                                classes_name = await Cf.classid_to_class(classes, False)
+                                class_id = classes
+                                
+                                if class_id in yo_kai_show:
+
+                                    yokai_list_formated += f"Rang {classes_name}:\n"
+
+                                    if yokai_list_brute != {}:
+                                        for elements in yokai_list_brute:
+                                            if yokai_list_brute[elements] > 1:
+                                                yokai_list_formated += f"> {elements} **`(x{str(yokai_list_brute[elements])})`**\n"
+                                            else:
+                                                yokai_list_formated += f"> {elements}\n"
+                                    
+                                if class_id == "C":
+                                    #the message for select the page.
+                                    #Page one: Every yo-kai of class E, D and C
+                                    #Page two: Every yo-kai of class B and A
+                                    #Page three: Every yo-kai of class S, tresure, special, legendary, boss, divinity and shiny
+                                    class Inv_dropdown(discord.ui.Select):
+                                        def __init__(self):
+                                            options = [
+                                            discord.SelectOption(label="Page 1", description="Affiche la page 1 du médallium.", emoji="1️⃣"),
+                                            discord.SelectOption(label="Page 2", description="Affiche la page 2 du médallium.", emoji="2️⃣"),
+                                            discord.SelectOption(label="Page 3", description="Affiche la page 3 du médallium.", emoji="3️⃣"),
+                                            ]
+
+                                            super().__init__(placeholder='Choisissez la page du Médallium que vous voulez...', min_values=1, max_values=1, options=options)
+                                        async def callback(self, interaction, ctx=ctx):
+                                            try:
+                                                yokai_list_formated = ""
+                                                if self.values[0] == "Page 1":
+                                                    yo_kai_show = ["E","D","C"]
+                                                elif self.values[0] == "Page 2":
+                                                    yo_kai_show = ["B","A"]
+                                                elif self.values[0] == "Page 3":
+                                                    yo_kai_show = ["S","treasurS","SpecialS", "LegendaryS", "DivinityS", "Boss", "Shiny"]
+
+                                                for classes in yokai_per_class:
+                                                    yokai_list_brute = yokai_per_class[classes]
+                                                    classes_name = await Cf.classid_to_class(classes, False)
+                                                    class_id = classes
+                                
+                                                    if class_id in yo_kai_show:
+
+                                                        yokai_list_formated += f"Rang {classes_name}:\n"
+
+                                                        if yokai_list_brute != {}:
+                                                            for elements in yokai_list_brute:
+                                                                if yokai_list_brute[elements] > 1:
+                                                                    yokai_list_formated += f"> {elements} **`(x{str(yokai_list_brute[elements])})`**\n"
+                                                                else:
+                                                                   yokai_list_formated += f"> {elements}\n"
+                                                inv_embed = discord.Embed(
+                                                    title=f"Voici votre Médallium :",
+                                                    description=yokai_list_formated,
+                                                    color=discord.colour.Color.orange()
+                                                    )
+                                                return await interaction.response.send_message(embed=inv_embed)
+                                            
+                                            #in case there is to many yo-kai, shouldn't be the case but who know?
+                                            except discord.errors.HTTPException:
+                                                error_embed = discord.Embed(color=discord.Color.red(),
+                                                            title="Oh non, une erreur s'est produite !",
+                                                            description="> Un bug sur cette commande se produit quand le Médallium est trop grand pour être affiché. (C'est un peu un flex quand même 🙃)")
+                                                error_embed.add_field(name="Vous devez donc spécifier un rang pour que cela marche.",
+                                                            value="Vous pouvez utiliser le message ci-dessus.")
+                                                return await interaction.response.send_message(embed=error_embed)
+
+
+                                    class Inv_dropdown_view(discord.ui.View):
+                                        def __init__(self):
+                                            super().__init__(timeout=300)
+                                            self.add_item(Inv_dropdown())
+                                            async def on_timeout(self):
+                                                for item in self.children:
+                                                    item.disabled = True
+                                                    try:
+                                                        await self.message.edit( embed=self.message.embeds[0], view=self)
+                                                    except discord.NotFound:
+                                                        pass
+                                    
+                                    Dropdown = Inv_dropdown_view()
+
+                                    main_embed = discord.Embed(title="__Médallium - Page 1__", description=yokai_list_formated,  colour=0xf58f00)
+                                    Dropdown.message = await ctx.send(embed=main_embed, view=Dropdown)
+
+                        #in case we got another error
+                        except discord.errors.HTTPException:
+                            error_embed = discord.Embed(color=discord.Color.red(),
+                                                        title="Oh non, une erreur s'est produite !",
+                                                        description="> Un bug sur cette commande se produit quand le Médallium est trop grand pour être affiché. (C'est un peu un flex quand même 🙃)")
+                            error_embed.add_field(name="Vous devez donc spécifier un rang pour que cela marche.",
+                                                value="Vous pouvez utiliser le message ci-dessus.")
+                            return await interaction.response.send_message(embed=error_embed)
 
                 else:
                     asked_class = await Cf.classid_to_class(self.values[0], True)
