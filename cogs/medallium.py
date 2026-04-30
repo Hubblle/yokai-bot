@@ -144,6 +144,8 @@ class Medallium(commands.Cog) :
                             if self.values[0] == "Tout !":
                                 yo_kai_show = ["E","D","C"]
 
+                            yokai_list_formated = ""
+
                             for classes in yokai_per_class:
                                 yokai_list_brute = yokai_per_class[classes]
                                 classes_name = await Cf.classid_to_class(classes, False)
