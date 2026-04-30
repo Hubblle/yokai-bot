@@ -209,8 +209,7 @@ class Medallium(commands.Cog) :
                                                 return await interaction.message.edit(embed=inv_embed) #change the message send before for not flood the channel
                                             
                                             #in case there is to many yo-kai, shouldn't be the case but who know? Edit: it's the case for nearly 100% medallium
-                                            except discord.errors.HTTPException as e:
-                                                print(e)
+                                            except discord.errors.HTTPException:
                                                 error_embed = discord.Embed(color=discord.Color.red(),
                                                             title="Oh non, une erreur s'est produite !",
                                                             description="> Un bug sur cette commande se produit quand le Médallium est trop grand pour être affiché. (C'est un peu un flex quand même 🙃)")
@@ -237,8 +236,7 @@ class Medallium(commands.Cog) :
                                     Dropdown.message = await ctx.send(embed=main_embed, view=Dropdown)
 
                         #in case there is to many yo-kai, shouldn't be the case but who know? Edit: it's the case for nearly 100% medallium
-                        except discord.errors.HTTPException as e:
-                            print(e)
+                        except discord.errors.HTTPException:
                             error_embed = discord.Embed(color=discord.Color.red(),
                                                         title="Oh non, une erreur s'est produite !",
                                                         description="> Un bug sur cette commande se produit quand le Médallium est trop grand pour être affiché. (C'est un peu un flex quand même 🙃)")
