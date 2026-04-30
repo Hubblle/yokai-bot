@@ -96,17 +96,17 @@ class Medallium(commands.Cog) :
             def __init__(self):
                 options = [
                     discord.SelectOption(label="Tout !", description="Affiche tout le Médallium si possible.", emoji="🌐"),
-                    discord.SelectOption(label="E", emoji="✨"),
-                    discord.SelectOption(label="D", emoji="✨"),
-                    discord.SelectOption(label="C", emoji="✨"),
-                    discord.SelectOption(label="B", emoji="✨"),
-                    discord.SelectOption(label="A", emoji="✨"),
-                    discord.SelectOption(label="S", emoji="✨"),
-                    discord.SelectOption(label="Légendaire", emoji="✨"),
-                    discord.SelectOption(label="Trésor", emoji="✨"),
-                    discord.SelectOption(label="Spécial", emoji="✨"),
-                    discord.SelectOption(label="Divinité / Enma", emoji="✨"),
-                    discord.SelectOption(label="Boss", emoji="✨"),
+                    discord.SelectOption(label="E", emoji=emoji["E"]),
+                    discord.SelectOption(label="D", emoji=emoji["D"]),
+                    discord.SelectOption(label="C", emoji=emoji["C"]),
+                    discord.SelectOption(label="B", emoji=emoji["B"]),
+                    discord.SelectOption(label="A", emoji=emoji["A"]),
+                    discord.SelectOption(label="S", emoji=emoji["S"]),
+                    discord.SelectOption(label="Légendaire", emoji=emoji["LegendaryS"]),
+                    discord.SelectOption(label="Trésor", emoji=emoji["treasureS"]),
+                    discord.SelectOption(label="Spécial", emoji=emoji["SpecialS"]),
+                    discord.SelectOption(label="Divinité / Enma", emoji=emoji["DivinityS"]),
+                    discord.SelectOption(label="Boss", emoji=emoji["Boss"]),
                     discord.SelectOption(label="Shiny", emoji="✨")
                 ]
 
