@@ -96,17 +96,17 @@ class Medallium(commands.Cog) :
             def __init__(self):
                 options = [
                     discord.SelectOption(label="Tout !", description="Affiche tout le Médallium si possible.", emoji="🌐"),
-                    discord.SelectOption(label="E", emoji=emoji["E"]),
-                    discord.SelectOption(label="D", emoji=emoji["D"]),
-                    discord.SelectOption(label="C", emoji=emoji["C"]),
-                    discord.SelectOption(label="B", emoji=emoji["B"]),
-                    discord.SelectOption(label="A", emoji=emoji["A"]),
-                    discord.SelectOption(label="S", emoji=emoji["S"]),
-                    discord.SelectOption(label="Légendaire", emoji=emoji["LegendaryS"]),
-                    discord.SelectOption(label="Trésor", emoji=emoji["treasureS"]),
-                    discord.SelectOption(label="Spécial", emoji=emoji["SpecialS"]),
-                    discord.SelectOption(label="Divinité / Enma", emoji=emoji["DivinityS"]),
-                    discord.SelectOption(label="Boss", emoji=emoji["Boss"]),
+                    discord.SelectOption(label="E", emoji="✨"),
+                    discord.SelectOption(label="D", emoji="✨"),
+                    discord.SelectOption(label="C", emoji="✨"),
+                    discord.SelectOption(label="B", emoji="✨"),
+                    discord.SelectOption(label="A", emoji="✨"),
+                    discord.SelectOption(label="S", emoji="✨"),
+                    discord.SelectOption(label="Légendaire", emoji="✨"),
+                    discord.SelectOption(label="Trésor", emoji="✨"),
+                    discord.SelectOption(label="Spécial", emoji="✨"),
+                    discord.SelectOption(label="Divinité / Enma", emoji="✨"),
+                    discord.SelectOption(label="Boss", emoji="✨"),
                     discord.SelectOption(label="Shiny", emoji="✨")
                 ]
 
@@ -151,7 +151,7 @@ class Medallium(commands.Cog) :
                                 
                                 if class_id in yo_kai_show:
 
-                                    yokai_list_formated += f"Rang {classes_name}:\n"
+                                    yokai_list_formated += f"# __**Rang {classes_name}:**__\n"
 
                                     if yokai_list_brute != {}:
                                         for elements in yokai_list_brute:
@@ -177,8 +177,10 @@ class Medallium(commands.Cog) :
                                         async def callback(self, interaction, ctx=ctx):
                                             try:
                                                 yokai_list_formated = ""
+
+                                                #list of classes per pages
                                                 if self.values[0] == "Page 1":
-                                                    yo_kai_show = ["E","D","C"]
+                                                    yo_kai_show = ["E","D", "C"]
                                                 elif self.values[0] == "Page 2":
                                                     yo_kai_show = ["B","A"]
                                                 elif self.values[0] == "Page 3":
@@ -191,7 +193,7 @@ class Medallium(commands.Cog) :
                                 
                                                     if class_id in yo_kai_show:
 
-                                                        yokai_list_formated += f"Rang {classes_name}:\n"
+                                                        yokai_list_formated += f"# __**Rang {classes_name}:**__\n"
 
                                                         if yokai_list_brute != {}:
                                                             for elements in yokai_list_brute:
@@ -199,15 +201,16 @@ class Medallium(commands.Cog) :
                                                                     yokai_list_formated += f"> {elements} **`(x{str(yokai_list_brute[elements])})`**\n"
                                                                 else:
                                                                    yokai_list_formated += f"> {elements}\n"
-                                                inv_embed = discord.Embed(
-                                                    title=f"Voici votre Médallium :",
+                                                inv_embed = discord.Embed( #create the embed
+                                                    title=f"__Médallium - {self.values[0]}:__",
                                                     description=yokai_list_formated,
                                                     color=discord.colour.Color.orange()
                                                     )
-                                                return await interaction.response.send_message(embed=inv_embed)
+                                                return await interaction.message.edit(embed=inv_embed) #change the message send before for not flood the channel
                                             
-                                            #in case there is to many yo-kai, shouldn't be the case but who know?
-                                            except discord.errors.HTTPException:
+                                            #in case there is to many yo-kai, shouldn't be the case but who know? Edit: it's the case for nearly 100% medallium
+                                            except discord.errors.HTTPException as e:
+                                                print(e)
                                                 error_embed = discord.Embed(color=discord.Color.red(),
                                                             title="Oh non, une erreur s'est produite !",
                                                             description="> Un bug sur cette commande se produit quand le Médallium est trop grand pour être affiché. (C'est un peu un flex quand même 🙃)")
@@ -230,11 +233,12 @@ class Medallium(commands.Cog) :
                                     
                                     Dropdown = Inv_dropdown_view()
 
-                                    main_embed = discord.Embed(title="__Médallium - Page 1__", description=yokai_list_formated,  colour=0xf58f00)
+                                    main_embed = discord.Embed(title="__Médallium - Page 1:__", description=yokai_list_formated,  colour=0xf58f00)
                                     Dropdown.message = await ctx.send(embed=main_embed, view=Dropdown)
 
-                        #in case we got another error
-                        except discord.errors.HTTPException:
+                        #in case there is to many yo-kai, shouldn't be the case but who know? Edit: it's the case for nearly 100% medallium
+                        except discord.errors.HTTPException as e:
+                            print(e)
                             error_embed = discord.Embed(color=discord.Color.red(),
                                                         title="Oh non, une erreur s'est produite !",
                                                         description="> Un bug sur cette commande se produit quand le Médallium est trop grand pour être affiché. (C'est un peu un flex quand même 🙃)")
