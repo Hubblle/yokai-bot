@@ -203,7 +203,7 @@ class Bingo_kai(commands.Cog):
             #get rid of the coin they used
             bag = await Cf.get_bag(ctx.author.id)
 
-            more_than_one = bag.get(coin,[0,0])[1] > 1
+            more_than_one = (len(bag.get(coin,[0,0])) > 1 and bag.get(coin,[0,0])[1] > 1)
 
                 
             
