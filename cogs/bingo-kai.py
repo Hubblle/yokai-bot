@@ -745,7 +745,7 @@ class Bingo_kai(commands.Cog):
                 amount = 2*streak*point_of_rank                       #the formula. Two is a magic numbers, he correspond to a random coefficient
                 await eco.add(ctx.author.id, amount)                  #add orbs
                 streak_embed = discord.Embed(
-                title=f"Streak de {streak} des yo-kai de rang {class_name_streak}",
+                title=f"Série de {streak} Yo-Kai de rang {class_name_streak}",
                 description=f"Félicitations, vous venez de gagner {amount} orbes",
                 color=discord.Color.orange()
                 )
@@ -755,7 +755,7 @@ class Bingo_kai(commands.Cog):
             amount = 2*streak*point_of_rank                       #the formula. Two is a magic numbers, he correspond to a random coefficient
             await eco.add(ctx.author.id, amount)                  #add orbs
             streak_embed = discord.Embed(
-                title=f"Streak de {streak} des Yo-Kai de rang {class_name_streak} 🔥",
+                title=f"Série de {streak} Yo-Kai de rang {class_name_streak} 🔥",
                 description=f"Félicitations, vous venez de gagner {amount} orbes",
                 color=discord.Color.orange()
             )
