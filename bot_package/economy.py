@@ -15,7 +15,7 @@ async def create_user_info(user_id: int) -> None:
         user_inventory = data.open_json(f"./files/inventory/{user_id}.json")
         for yokai in user_inventory.items():
             nom, info = yokai
-            if isinstance(info, list):
+            if isinstance(info, list) and len(info)<=2:
                 if len(info) > 1:
 
                     point = data.class_to_point[info[0]]
