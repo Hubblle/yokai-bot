@@ -150,7 +150,7 @@ class Bingo_kai(commands.Cog):
                 return await ctx.send(embed=error_embed)
         
             if amount > 6 :
-                proba = amount / ProbaT #constant
+                proba = amount / probaT #constant
                 anti_proba = 1 - proba
                 if random.choices([True, False], weights=[proba, anti_proba])[0]:
                     error_embed = discord.Embed(title="Oh non, vous avez fait votre maximum de tirage avec des pièces pour aujourd'hui...", description="Recommencez demain !")
@@ -694,7 +694,7 @@ class Bingo_kai(commands.Cog):
                 message = random.choice(["La V6 est là: fais /help pour plus d'info !","Regardes le top 10 avec /top !","Regardes ton rang avec /rank !","Combien d'orbes as tu ? Regardes avec /orbe !"])
                 yokai_embed.set_footer(text=message)
             await ctx.send(embed=yokai_embed)
-            return await ctx.send(embed=coin_embed)
+            await ctx.send(embed=coin_embed)
 
         
         else :
@@ -764,9 +764,54 @@ class Bingo_kai(commands.Cog):
         await Cf.save_inv(inventory_history, ctx.author.id)
         if streak_embed:
             await ctx.send(embed=streak_embed)
+    
+        #choose to give or not the coin
+        winning_bingo_kai = random.choices([True, False], weights = [0.01,0.99])
 
-                
+        winning_bingo_kai = True
+        if winning_bingo_kai:
+            winning_bkai_embed = discord.Embed(
+            title="Tu as reçu l'accès à un tirage au bingo kai doré!",
+            description="Fait /bingo-kai-gagnant pour utiliser ton tirage!",
+            color=discord.Color.yellow()
+            )
             
+            brute_bag = await Cf.get_bag(ctx.author.id)
+            verification = True
+            
+            #check if the bag is empty
+            if brute_bag == {} :
+                brute_bag = {
+                    "coin" : 1,
+                    "obj" : 0,
+                    "treasure" : 0,
+                    "golden coin" : ["coin"]
+                }
+                verification = False
+            
+            if verification == True:
+                #get all the coins
+                for elements in brute_bag.keys():
+                    if elements == "Pièce gagnante":
+                        #stack the coin
+                        try:
+                        #stack the Yo-kai
+                            brute_bag["Pièce gagnante"][1] += 1
+                        except IndexError:
+                            brute_bag["Pièce gagnante"].append(2)
+                        verification = False
+
+                if verification == True:  
+                    brute_bag["Pièce gagnante"] = ["coin"]
+                    brute_bag["coin"] += 1
+            
+            #gold_bkai_embed.set_thumbnail(url="")
+
+            await Cf.save_bag(brute_bag, ctx.author.id)
+            await ctx.send(embed=winning_bkai_embed)
+            
+            
+
 
     
     @commands.hybrid_command(name="bkai")
@@ -777,6 +822,149 @@ class Bingo_kai(commands.Cog):
         """
         await self.bingo_yokai(ctx, coin)
 
+
+    @commands.hybrid_command(name="bingo-kai-gagnant")
+    async def bingo_kai_gagnant(self, ctx = commands.Context):
+        """
+        Tire au sort un Yo-kai de manière aléatoire, mais avec de meilleur yo-kai que le bingo-kai classique
+        Pour utiliser la commande, vous devez posséder un tirage (obtenable dans le bingo-kai)
+        """
+            
+        brute_inventory = await Cf.get_inv(ctx.author.id)
+        brute_bag = await Cf.get_bag(ctx.author.id)
+
+        #look if there is a golden coin, else return that there isn't one
+        try:
+            brute_bag["Pièce gagnante"]
+        except KeyError:
+            not_has = discord.Embed(
+                title=f"Tu n'as pas de pièce gagnante :/",
+                color=discord.Color.orange()
+            )
+            self.bot.logger.info(
+                f"Executed bingo-kai-gagnant command by {ctx.author} (ID: {ctx.author.id}) but he didn't have a golden coin"
+                )
+            return await ctx.send(embed=not_has)
+
+        #remove the coin
+        try:
+            if brute_bag["Pièce gagnante"][1] > 2:
+                brute_bag["Pièce gagnante"][1] -= 1
+            elif brute_bag["Pièce gagnante"][1] == 2:
+                brute_bag["Pièce gagnante"].remove(brute_bag["Pièce gagnante"][1])
+        except IndexError:
+            brute_bag.pop("Pièce gagnante")
+            brute_bag["coin"] -= 1
+
+
+        weights=data.golden_proba_list.copy() #will do a bingo-kai roll, but with better luck
+        class_choice = data.yokai_data[random.choices(data.class_list, weights=weights, k=1)[0]]
+        while class_choice["class_name"] in data.blacklist["rang"]:
+            class_choice = data.yokai_data[random.choices(data.class_list, weights=weights, k=1)[0]]
+
+        #get the good name of the class and his id
+        class_name = class_choice.get("class_name")
+        class_id = class_choice.get("class_id")
+        #choose the Yo-kai in the class
+        Yokai_choice = random.choice(class_choice["yokai_list"])
+        
+        while Yokai_choice in data.blacklist.get("yokai") :
+            Yokai_choice = random.choice(class_choice["yokai_list"])
+        Yokai_choice = Yokai_choice
+
+        yokai_embed = discord.Embed(
+            title=f"Vous avez eu le Yo-kai **{Yokai_choice}** ✨ ",
+            description=f"Félicitations il est de rang **{class_name}**",
+            color=discord.Color.from_str(data.yokai_data[class_id]["color"])
+        )
+        yokai_embed.set_thumbnail(url=data.image_link[class_id])
+        
+        #define the id and so the api request to the image
+        
+
+        id = data.yokai_list_full.get(Yokai_choice, {}).get("id", None)
+        yokai_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{id}.png")
+
+        if id == None :
+            yokai_embed.add_field(name="Image non disponible ! 😢", inline=False, value="En effet, nous ne possédons pas l'image de tous les Yo-kai, mais l'équipe travaille pour les apporter au complet et au plus vite.")
+
+        #logs the roll
+        if ctx.guild is not None:
+            self.bot.logger.info(
+                f"Executed bingo-kai-gagnant command in {ctx.guild.name} (ID: {ctx.guild.id}) by {ctx.author} (ID: {ctx.author.id}) // He had '{Yokai_choice}' / Rank: {class_name}"
+            )
+        else:
+            self.bot.logger.info(
+                f"Executed bingo-kai-gagnant command by {ctx.author} (ID: {ctx.author.id}) in DMs // He had '{Yokai_choice}' / Rank: {class_name}"
+                )
+
+
+        #is the Yo-kai in the inventory
+        verification = True
+
+        if verification == True:
+            #get all the yokais
+            for elements in brute_inventory.keys():
+                if elements == Yokai_choice:
+                    verification = False
+                    try:
+                    #stack the Yo-kai
+                        brute_inventory[Yokai_choice][1] += 1
+                    except IndexError:
+                        brute_inventory[Yokai_choice].append(2)
+
+                    #Generate the embed
+                    yokai_embed.add_field(
+                        name=f"Vous l'avez déjà eu. Vous en avez donc {brute_inventory[Yokai_choice][1]}",
+                        value="Faites `/medallium` pour voir votre Médallium."
+                        )
+                    #SAVE the inv
+                    await Cf.save_inv(brute_inventory, ctx.author.id)
+
+                    #add orbe depending of the class
+                    await eco.add_rank_orbe(ctx.author.id, class_id)
+                    yokai_embed.add_field(name="vous l'avez déjà eu, dommage.",
+                                value=f"voici {data.class_to_point[class_id]} orbes oni en cadeau."
+                                )                               
+                    
+            
+            if verification == True:
+                brute_inventory[Yokai_choice] = [class_id]
+            try:
+                brute_inventory[class_id] += 1
+            except KeyError:
+                brute_inventory[class_id] = 1
+            await Cf.save_inv(brute_inventory, ctx.author.id)
+            yokai_embed.add_field(
+                name="Vous ne l'avez jamais eu ! 🆕",
+                value="Il a été ajouté a votre Médallium. Faites `/medallium` pour le voir."
+            )
+
+        else:
+            brute_inventory[Yokai_choice] = [class_id]
+            try:
+                brute_inventory[class_id] += 1
+            except KeyError:
+                brute_inventory[class_id] = 1
+            await Cf.save_inv(brute_inventory, ctx.author.id)
+            yokai_embed.add_field(
+                name="Vous ne l'avez jamais eu ! 🆕",
+                value="Il a été ajouté a votre Médallium. Faites `/medallium` pour le voir."
+            )
+        message = random.choice(["La V6 est là: fais /help pour plus d'info !","Regardes le top 10 avec /top !","Regardes ton rang avec /rank !","Combien d'orbes as tu ? Regardes avec /orbe !"])
+        yokai_embed.set_footer(text=message)
+        yokai_embed.set_footer(text="Tu as utilisé un tirage du bingo-kai gagnant!")
+                
+        await Cf.save_bag(brute_bag, ctx.author.id)
+        return await ctx.send(embed=yokai_embed)
+
+
+    @commands.hybrid_command(name="bkai-gagnant")
+    async def bkai_gagnant(self, ctx = commands.Context):
+        """
+        Alias de /bingo-kai-gagnant.
+        """
+        await self.bingo_kai_gagnant(ctx)
     
 async def setup(bot) -> None:
     await bot.add_cog(Bingo_kai(bot))
