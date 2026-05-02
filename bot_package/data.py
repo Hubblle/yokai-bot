@@ -69,6 +69,7 @@ with open("./files/yokai_list.json") as yokai_list:
 class_list = ['E', 'D', 'C', 'B', 'A', 'S', 'LegendaryS', "treasureS", "SpecialS", 'DivinityS', "Boss", "Shiny"]
 proba_list = [0.4165, 0.2, 0.12, 0.12, 0.08, 0.04, 0.0075, 0.0075, 0.0075, 0.005, 0.0025, 0.0010]
 #                E     D     C     B     A     S      L       t       Sp      D       B      Sh
+golden_proba_list = [0.0, 0.2, 0.2, 0.2, 0.15, 0.1, 0.05, 0.05, 0.005, 0.025, 0.01, 0.01]
 
 
 #Get the full list
