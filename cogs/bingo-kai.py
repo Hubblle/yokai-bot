@@ -768,7 +768,6 @@ class Bingo_kai(commands.Cog):
         #choose to give or not the coin
         winning_bingo_kai = random.choices([True, False], weights = [0.01,0.99])
 
-        winning_bingo_kai = True
         if winning_bingo_kai:
             winning_bkai_embed = discord.Embed(
             title="Tu as reçu l'accès à un tirage au bingo kai doré!",
