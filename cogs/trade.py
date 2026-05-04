@@ -243,6 +243,7 @@ class GiftConfirmView(discord.ui.View):
 class Trade(commands.Cog):
     
     """
+    New ✨
     Permet de trade un/des Yo-kai contre un/des Yo-kai avec un autre utilisateur
     """
     
@@ -257,15 +258,15 @@ class Trade(commands.Cog):
     async def trade(self, ctx : commands.Context, destinataire : discord.User, son_yokai:str="", son_item:str="", ton_yokai:str="", ton_item:str=""):
         
         """
-        
-        Cette commande permet d'échanger des Yo-kai entre deux utilisateurs. 
+        New ✨
+        Cette commande permet d'échanger des Yo-kai ou Items entre deux utilisateurs. 
         Elle s'utilise ainsi :
-        `/trade <Le Yo-kai que vous proposez>  <L'utilisateur avec qui vous voulez l'échanger>  <Le Yo-kai que vous voulez en retour>`
+        `/trade <L'utilisateur avec qui vous voulez l'échanger> [Le Yo-kai que vous voulez en retour] [L'Item que vous voulez en retour] [L'Item que vous proposez] [Le Yo-kai que vous proposez]`
 
         - L'utilisateur qui exécute la commande peut annuler l'échange avant qu'il soit accepté.
         - L'utilisateur qui reçoit la proposition peut la refuser ou l'accepter. Il dispose de 1 minute avant que la demande soit annulée.
-        - Vous pouvez trade plusieurs Yo-kai en les séparent par une virgule ; `/trade {Onisoi, Potache} {utilisateur} {Darabajoie, Espi}`
-        
+        - Vous pouvez trade plusieurs Yo-kai/Items en les séparent par une virgule ; `/trade  {utilisateur} son_yokai="Darabajoie, Espi" ton_yokai="Onisoi, Potache"`
+        - Les "items" peuvent être des objets ou des Trésors
         -----------------------------------------------------
         \n
 
@@ -449,11 +450,13 @@ class Trade(commands.Cog):
     async def cadeau(self, ctx : commands.Context, destinataire : discord.User,  ton_yokai : str = "", ton_item: str = ""):
         
         """
-        Cette commande vous permet de donner un Yo-kai.
-        `/cadeau [Le Yo-kai que vous proposez] [L'utilisateur avec qui vous voulez l'échanger]`
+        New ✨
+        Cette commande vous permet de donner un Yo-kai ou un Item.
+        `/cadeau <L'utilisateur à que vous voulez faire le cadeau> [Le Yo-kai que vous proposez] [L'item que vous proposez]`
 
         
         - L'utilisateur qui fait la proposition peut l'annuler ou la confirmer. Il dispose de 1 minute avant que l'offre soit annulée.
+        - Les "items" peuvent être des objets ou des Trésors
         
         -# Note :
         -# L'équipe du support n'est en aucun cas responsable si vous échangez un Yo-kai par erreur. Aucun Yo-kai ne sera remboursé.
