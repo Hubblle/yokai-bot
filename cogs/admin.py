@@ -72,7 +72,7 @@ class Admin_command(commands.Cog):
             for id in ids:
                 inv = await Cf.get_inv(id)
                 if inv == {}:
-                    inv = data.default_medaillum
+                    inv = data.default_medallium
 
                 total_points = 0
                 total_yokai = 0
@@ -274,7 +274,7 @@ class Admin_command(commands.Cog):
             
         elif where == "medallium":
             inv = await Cf.get_inv(input_id)
-            default_inv = data.default_medaillum
+            default_inv = data.default_medallium
             async def save_inv(data, id):
                 await Cf.save_inv(data=data, id=id)
             
@@ -315,7 +315,7 @@ class Admin_command(commands.Cog):
             inv = await Cf.get_inv(input_id)
             
             if inv == {}:
-                inv = data.default_medaillum
+                inv = data.default_medallium
 
             inv["claim"] = number
             await save_inv(inv, input_id)
@@ -468,7 +468,7 @@ class Admin_command(commands.Cog):
             
         elif where == "medallium":
             inv = await Cf.get_inv(input_id)
-            default_inv = data.default_medaillum
+            default_inv = data.default_medallium
             async def save_inv(data, id):
                 await Cf.save_inv(data=data, id=id)
             

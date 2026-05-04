@@ -30,7 +30,7 @@ async def give(input_id : str, yokai : str, rang : str, where : str, number : st
             
     elif where == "medallium":
         inv = await Cf.get_inv(input_id)
-        default_inv = data.default_medaillum
+        default_inv = data.default_medallium
         async def save_inv(data, id):
             await Cf.save_inv(data=data, id=id)
 
@@ -44,7 +44,7 @@ async def give(input_id : str, yokai : str, rang : str, where : str, number : st
     if rang == "claim":
         inv = await Cf.get_inv(input_id)
         if inv == {}:
-            inv = data.default_medaillum
+            inv = data.default_medallium
 
         inv["claim"] = number
         await save_inv(inv, input_id)

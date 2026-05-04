@@ -68,7 +68,7 @@ Hey, bonjour à toi cher utilisateur, ce message t'est affiché pour te préveni
 
                 inv = await Cf.get_inv(id)
                 if inv == {}:
-                    inv = data.default_medaillum
+                    inv = data.default_medallium
 
                 total_points = 0
                 total_yokai = 0
