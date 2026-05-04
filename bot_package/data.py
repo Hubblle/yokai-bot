@@ -149,7 +149,7 @@ terrheure = open_json("./files/terrheure_loot.json")
 blacklist = open_json("./files/blacklisted-yokai.json")
 
 
-default_medaillum  = {
+default_medallium  = {
                         "last_claim" : 10000,
                         "streak": [
                             0, # Magic value, is never used or modified
