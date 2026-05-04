@@ -1,10 +1,11 @@
 import discord
 from discord.ext import commands
 import bot_package.Custom_func as Cf
+from bot_package.data import default_medallium
 
 class TradeConfirmView(discord.ui.View):
     
-    def __init__(self, author : discord.User, destinataire : discord.User, asked_yokai_form, offered_yokai, son_yokai, ton_yokai, bot, ctx):
+    def __init__(self, author : discord.User, destinataire : discord.User, asked_yokai_form, offered_yokai, son_yokai, son_item, ton_yokai, ton_item, bot, ctx):
         super().__init__(timeout=60)
         self.author = author
         self.destinataire = destinataire
@@ -12,12 +13,14 @@ class TradeConfirmView(discord.ui.View):
         self.offered_yokai = offered_yokai
         self.son_yokai = son_yokai
         self.ton_yokai = ton_yokai
+        self.son_item = son_item
+        self.ton_item = ton_item
         self.message : discord.Message
         self.bot = bot
         self.ctx = ctx
     
     async def on_timeout(self):
-        self.bot.logger.info(f"La demande de trade de {self.author.name} a {self.destinataire.name} a timeout")
+        self.bot.logger.info(f"La demande de trade de {self.author.name} à {self.destinataire.name} a timeout")
         for item in self.children:
             item.disabled = True
         try:
@@ -41,81 +44,42 @@ class TradeConfirmView(discord.ui.View):
         author_inv = await Cf.get_inv(self.author.id)
         recipient_inv = await Cf.get_inv(self.destinataire.id)
         
+        author_bag = await Cf.get_bag(self.author.id)
+        recipient_bag = await Cf.get_bag(self.destinataire.id)
+        
         son_yokai = self.son_yokai
         ton_yokai = self.ton_yokai
         
-        #ADD the yokais in the invs
-        #ADD to the author inv and +1 to the class count
+        son_item = self.son_item
+        ton_item = self.ton_item
+        
+        #ADD the things in the invs
+
         for asked_yokai in son_yokai:
-            try:
-                author_inv[asked_yokai]
-                try:
-                    #stack the yokai
-                    author_inv[asked_yokai][1] += 1
-                except :
-                    author_inv[asked_yokai].append(2)
-            except KeyError:
-                author_inv[asked_yokai] = [recipient_inv[asked_yokai][0]]
-                author_inv[author_inv[asked_yokai][0]] += 1
+            await Cf.add(self.author.id, asked_yokai, recipient_inv[asked_yokai][0], "medallium")
+        for asked_item in son_item:
+            await Cf.add(self.author.id, asked_item, recipient_bag[asked_item][0], "bag")
                 
         #ADD to the recipient inv
-        for asked_yokai in ton_yokai :
-            try :
-                recipient_inv[asked_yokai]
-                try :
-                    #stack the Yo-kai
-                    recipient_inv[asked_yokai][1] += 1
-                except :
-                    recipient_inv[asked_yokai].append(2)
-            except KeyError :
-                recipient_inv[asked_yokai] = [author_inv[asked_yokai][0]]
-                recipient_inv[author_inv[asked_yokai][0]] += 1
+        
+        for offered_yokai in ton_yokai:
+            await Cf.add(self.destinataire.id, offered_yokai, author_inv[offered_yokai][0], "medallium")
+        for offered_item in ton_item:
+            await Cf.add(self.destinataire.id, offered_item, author_bag[offered_item][0], "bag")
             
         
-        #REMOVE the yokai from the invs
-        # FIRST ; do they have more than one of this yokai ?
-        for asked_yokai in ton_yokai:
-            try :
-                one_more_author = author_inv[asked_yokai][1] > 1
-            except :
-                one_more_author = False
-                
-            
-            
-            if one_more_author == True :
-                #just remove the mention of several yokai if there are juste two
-                if author_inv[asked_yokai][1] == 2:
-                    author_inv[asked_yokai].remove(author_inv[asked_yokai][1])
-                else:
-                    author_inv[asked_yokai][1] -= 1
-                    
-            else :
-                author_inv.pop(asked_yokai)
-                author_inv[recipient_inv[asked_yokai][0]] -= 1
-            
-            
-        # FIRST ; do they have more than one of this yokai ?
-        for asked_yokai in son_yokai :   
-            try :
-                one_more_recipient = recipient_inv[asked_yokai][1] > 1
-            except :
-                one_more_recipient = False
-            
-                
-            if one_more_recipient == True :
-                #just remove the mention of several yokai if there are juste two
-                if recipient_inv[asked_yokai][1] == 2:
-                    recipient_inv[asked_yokai].remove(recipient_inv[asked_yokai][1])
-                else:
-                    recipient_inv[asked_yokai][1] -= 1
-                    
-            else :
-                recipient_inv.pop(asked_yokai)
-                recipient_inv[author_inv[asked_yokai][0]] -= 1
-                
-        #Save the inv
-        await Cf.save_inv(author_inv, self.author.id)
-        await Cf.save_inv(recipient_inv, self.destinataire.id)
+        #REMOVE
+        for asked_yokai in son_yokai:
+            await Cf.remove(self.destinataire.id, asked_yokai, recipient_inv[asked_yokai][0], "medallium")
+        for asked_item in son_item:
+            await Cf.remove(self.destinataire.id, asked_item, recipient_bag[asked_item][0], "bag")
+                 
+
+        for offered_yokai in ton_yokai:
+            await Cf.remove(self.author.id, offered_yokai, author_inv[offered_yokai][0], "medallium")
+        for offered_item in ton_item:
+            await Cf.remove(self.author.id, offered_item, author_bag[offered_item][0], "bag")
+        
         
         #remove the user from the queue
 
@@ -128,10 +92,10 @@ class TradeConfirmView(discord.ui.View):
                                     title="__**Le trade a été effectué**__ ✅",
                                     description="> Ci-dessous vous pouvez voir le bilan du trade."
                                     )
-        success_embed.add_field(name=f"{self.author.name} a eu le(s) Yo-kai :", value=self.asked_yokai_form, inline=False)
-        success_embed.add_field(name=f"{self.destinataire.name} a eu le(s) Yo-kai :", value=self.offered_yokai, inline=False)
+        success_embed.add_field(name=f"{self.author.name} a obtenu :", value=self.asked_yokai_form, inline=False)
+        success_embed.add_field(name=f"{self.destinataire.name} a obtenu :", value=self.offered_yokai, inline=False)
         
-        self.bot.logger.info(f"{self.destinataire.name} a accepté le trade de {self.author.name}, il demandait {son_yokai} contre {ton_yokai}, dans {interaction.guild.name}")
+        self.bot.logger.info(f"{self.destinataire.name} a accepté le trade de {self.author.name}, il demandait {self.asked_yokai_form} contre {self.offered_yokai}, dans {interaction.guild.name}")
         
         for item in self.children:
             item.disabled = True
@@ -173,13 +137,15 @@ class TradeConfirmView(discord.ui.View):
 ## FOR THE GIFT ##     
 class GiftConfirmView(discord.ui.View):
     
-    def __init__(self, author : discord.User, recipient : discord.User, ton_yokai, offered_yokai, bot, ctx):
+    def __init__(self, author : discord.User, recipient : discord.User, ton_yokai, offered_yokai, ton_item, offered_item, bot, ctx):
         super().__init__(timeout=60)
         self.author = author
         self.recipient = recipient
         self.value = None     
         self.ton_yokai = ton_yokai
         self.offered_yokai = offered_yokai  
+        self.ton_item=ton_item
+        self.offered_item=offered_item
         self.bot = bot
         self.ctx = ctx
 
@@ -204,50 +170,30 @@ class GiftConfirmView(discord.ui.View):
         if interaction.user.id != self.author.id:
             return
         
-        recipient_inv = await Cf.get_inv(self.recipient.id)
         
         author_inv = await Cf.get_inv(self.author.id)
         
-        #ADD the yokais in the inv
-        #ADD to the recipient inv
-        for asked_yokai in self.ton_yokai :
-            try :
-                recipient_inv[asked_yokai]
-                try :
-                    #stack the Yo-kai
-                    recipient_inv[asked_yokai][1] += 1
-                except :
-                    recipient_inv[asked_yokai].append(2)
-            except KeyError :
-                recipient_inv[asked_yokai] = [author_inv[asked_yokai][0]]
-                recipient_inv[author_inv[asked_yokai][0]] += 1
+        author_bag = await Cf.get_bag(self.author.id)
+
+        
+        ton_yokai = self.ton_yokai
+        ton_item = self.ton_item
+        
+        #ADD the things in the invs
+        
+        for offered_yokai in ton_yokai:
+            await Cf.add(self.recipient.id, offered_yokai, author_inv[offered_yokai][0], "medallium")
+        for offered_item in ton_item:
+            await Cf.add(self.recipient.id, offered_item, author_bag[offered_item][0], "bag")
             
         
-        #REMOVE the yokai from the invs
-        # FIRST ; do they have more than one of this yokai ?
-        for asked_yokai in self.ton_yokai:
-            try :
-                one_more_author = author_inv[asked_yokai][1] > 1
-            except :
-                one_more_author = False
-                
-            
-            
-            if one_more_author == True :
-                #just remove the mention of several yokai if there are juste two
-                if author_inv[asked_yokai][1] == 2:
-                    author_inv[asked_yokai].remove(author_inv[asked_yokai][1])
-                else:
-                    author_inv[asked_yokai][1] -= 1
-                    
-            else :
-                author_inv.pop(asked_yokai)
-                author_inv[recipient_inv[asked_yokai][0]] -= 1
-            
-                
-        #Save the inv
-        await Cf.save_inv(author_inv, self.author.id)
-        await Cf.save_inv(recipient_inv, self.recipient.id)
+        #REMOVE
+                 
+        for offered_yokai in ton_yokai:
+            await Cf.remove(self.author.id, offered_yokai, author_inv[offered_yokai][0], "medallium")
+        for offered_item in ton_item:
+            await Cf.remove(self.author.id, offered_item, author_bag[offered_item][0], "bag")
+        
         
         #remove the user from the queue
         await self.bot.trade_queue.delete(self.ctx.interaction.id)
@@ -256,9 +202,9 @@ class GiftConfirmView(discord.ui.View):
                                     title="__**Le cadeau a bien été envoyé !**__ ✅",
                                     description="> Ci-dessous vous pouvez voir le bilan."
                                     )
-        success_embed.add_field(name=f"{self.recipient.name} a eu le(s) Yo-kai :", value=self.offered_yokai, inline=False)
+        success_embed.add_field(name=f"{self.recipient.name} a eu :", value=self.offered_yokai+self.offered_item, inline=False)
         
-        self.bot.logger.info(f"{self.author.name} a confirmé son cadeau pour {self.recipient.name}, il offrait {self.offered_yokai}, dans {interaction.guild.name}")
+        self.bot.logger.info(f"{self.author.name} a confirmé son cadeau pour {self.recipient.name}, il offrait {self.offered_yokai+self.offered_item}, dans {interaction.guild.name}")
        
 
         self.value = True 
@@ -308,7 +254,7 @@ class Trade(commands.Cog):
     
     
     @commands.hybrid_command(name="trade")
-    async def trade(self, ctx : commands.Context , ton_yokai : str, destinataire : discord.User, son_yokai):
+    async def trade(self, ctx : commands.Context, destinataire : discord.User, son_yokai:str="", son_item:str="", ton_yokai:str="", ton_item:str=""):
         
         """
         
@@ -344,12 +290,12 @@ class Trade(commands.Cog):
         def dont_have_it_embed(who : str):
             if who == "a":
                 embed = discord.Embed(color=discord.Color.red(),
-                                    title="Ce(s) Yo-kai n'est pas dans votre Médallium 🤔",
+                                    title="Ce(s) Yo-kai/Item n'est pas dans votre Médallium/Sacoche 🤔",
                                     description="Verifiez que l'orthographe est correct ou que vous le(s) possédez bien (`/medallium`)"
                                     )
             else:
                 embed = discord.Embed(color=discord.Color.red(),
-                                    title=f"Ce(s) Yo-kai n'est pas dans le Médallium de {destinataire.name} 🤔",
+                                    title=f"Ce(s) Yo-kai/Item n'est pas dans le Médallium/Sacoche de {destinataire.name} 🤔",
                                     description=f"Verifiez que l'orthographe est correct ou que il le(s) possède bien (`/medallium {destinataire.name}`)"
                                     )
             return embed
@@ -361,50 +307,66 @@ class Trade(commands.Cog):
         #Get what we need
         author_inv = await Cf.get_inv(ctx.author.id)
         recipient_inv = await Cf.get_inv(destinataire.id)
+        author_bag = await Cf.get_bag(ctx.author.id)
+        recipient_bag= await Cf.get_bag(destinataire.id)
         
         #Format the yokai(s) in a tuple with separator ","
 
-        son_yokai = list(son_yokai.split(sep=", "))
-        ton_yokai = list(ton_yokai.split(sep=", "))
+        son_yokai = list(son_yokai.split(sep=", ")) if son_yokai != "" else []
+        ton_yokai = list(ton_yokai.split(sep=", ")) if ton_yokai != "" else []
         
+        son_item = list(son_item.split(sep=", ")) if son_item != "" else []
+        ton_item = list(ton_item.split(sep=", ")) if ton_item != "" else []
         
+        if (len(son_item) == len(son_yokai) == 0) or (len(ton_item) == len(ton_yokai) == 0):
+            error_embed = discord.Embed(title="Vous devez au moins specifier un item/Yo-Kai pour vous et le destinataire",
+                                        color=discord.Color.red(),
+                                        description="Merci de refaire la commande !"
+                                        )
+            return await ctx.send(embed=error_embed)
+            
         
         #Do they have the yokai :
-        author_have_it = False
-        recipient_have_it = False
 
+        async def have_it(inv:dict, checks:list)-> bool:
+            if checks == []:return True
+            if inv == {}:return False
+            
+            counter = 0
+            for asked in checks:
+                for item in inv:
+                    if await Cf.smart_match(asked, item):
+                        checks[checks.index(asked)] = item
+                        counter += 1
+                        
+            if counter == len(checks):
+                return True
+            return False
         
-        #check for the author
-        corect_yokai_number_author = 0
-        if not author_inv == {} :
-            for asked_yokai in ton_yokai:
-                for yokai in author_inv :
-                    if await Cf.smart_match(asked_yokai, yokai):
-                        idx = ton_yokai.index(asked_yokai)
-                        ton_yokai[idx] = yokai
-                        corect_yokai_number_author += 1
-            if len(ton_yokai) == corect_yokai_number_author:
-                author_have_it = True
-                    
-        
-        #check for the recipient
-        corect_yokai_number_recipient = 0
-        if not recipient_inv == {} :
-            for asked_yokai in son_yokai :
-                for yokai in recipient_inv :
-                    if await Cf.smart_match(asked_yokai, yokai):
-                        idx = son_yokai.index(asked_yokai)
-                        son_yokai[idx] = yokai
-                        corect_yokai_number_recipient += 1
-            if len(son_yokai) == corect_yokai_number_recipient :
-                recipient_have_it = True
                 
-
-        #if one of them don't have it 
-        if not author_have_it:
+                
+        #Check they have everything
+        if not ( await have_it(author_inv,ton_yokai) and await have_it(author_bag,ton_item)):
             return await ctx.send(embed=dont_have_it_embed("a"))
-        if not recipient_have_it :
+            
+        if not (await have_it(recipient_bag, son_item) and await have_it(recipient_inv, son_yokai)):
             return await ctx.send(embed=dont_have_it_embed("r"))
+        
+        for item in ton_item:
+            if author_bag.get(item,[""])[0] == "coin":
+                error_embed = discord.Embed(title="Vous ne pouvez pas faire de trade de pièces !",
+                                        color=discord.Color.red(),
+                                        description="Cela est une sécurité, la fonction sera sûrement rétablie dans une prochaine mise à jour !"
+                                        )
+                return await ctx.send(embed=error_embed)
+        
+        for item in son_item:
+            if recipient_bag.get(item,[""])[0] == "coin":
+                error_embed = discord.Embed(title="Vous ne pouvez pas faire de trade de pièces !",
+                                        color=discord.Color.red(),
+                                        description="Cela est une sécurité, la fonction sera sûrement rétablie dans une prochaine mise à jour !"
+                                        )
+                return await ctx.send(embed=error_embed)
         
         #check if they try to trade them self
         if ctx.author == destinataire :
@@ -433,13 +395,19 @@ class Trade(commands.Cog):
             return await ctx.send(embed=error_embed)
         
         #format the asked yokai :      
-        asked_yokai_form = ""
+        asked_yokai_form= ""
+        asked_item_form= ""
         for asked_yokai in son_yokai :
             asked_yokai_form += f"> Le Yo-kai **{asked_yokai}** de rang **{await Cf.classid_to_class(recipient_inv[asked_yokai][0])}**\n "
+        for asked_item in son_item:
+            asked_item_form += f"> - **{asked_item}**\n "
         
-        offered_yokai = ""
+        offered_yokai= ""
+        offered_item= ""
         for asked_yokai in ton_yokai :
             offered_yokai += f"> Le Yo-kai **{asked_yokai}** de rang **{await Cf.classid_to_class(author_inv[asked_yokai][0])}**\n "
+        for asked_item in ton_item:
+            offered_item += f"> - **{asked_item}**\n "
         
         
 
@@ -447,18 +415,19 @@ class Trade(commands.Cog):
                                 title=f"Demande de trade entre {ctx.author.display_name} et {destinataire.display_name} !",
                                 description=f" {destinataire.mention} Merci de réagir pour accepter, ou pour refuser.\n **Vous pouvez voir les details du trade ci dessous.** \n -----------------------------------------------------"
                                 )
+
         ask_embed.add_field(name=f"Offre de {ctx.author.display_name} 🔀:",
-                            value=offered_yokai,
+                            value=offered_yokai+offered_item,
                             inline=False
                             )
         ask_embed.add_field(name="Contre 🔀:",
-                            value=asked_yokai_form,
+                            value=asked_yokai_form+asked_item_form,
                             inline=False
                             )
         ask_embed.set_author(name="🕰️ La demande timeout au bout de 1min.")
         
 
-        self.bot.logger.info(f"{ctx.author.name} a demandé un trade à {destinataire.name}, il demande {son_yokai} contre {ton_yokai}, dans {ctx.guild.name}")
+        self.bot.logger.info(f"{ctx.author.name} a demandé un trade à {destinataire.name}, il demande {son_yokai+son_item} contre {ton_yokai+ton_item}, dans {ctx.guild.name}")
 
 
         
@@ -466,7 +435,7 @@ class Trade(commands.Cog):
         await self.bot.trade_queue.add_member(ctx.interaction.id, [ctx.author, destinataire]) 
         
         
-        view = TradeConfirmView(ctx.author, destinataire, asked_yokai_form, offered_yokai, son_yokai, ton_yokai, self.bot, ctx=ctx)
+        view = TradeConfirmView(ctx.author, destinataire, asked_yokai_form+asked_item_form, offered_yokai+offered_item, son_yokai, son_item, ton_yokai, ton_item, self.bot, ctx=ctx)
         
         view.message = await ctx.send(embed=ask_embed, view=view)
         
@@ -477,7 +446,7 @@ class Trade(commands.Cog):
             
             
     @commands.hybrid_command(name="cadeau")
-    async def cadeau(self, ctx : commands.Context, ton_yokai : str, destinataire : discord.User):
+    async def cadeau(self, ctx : commands.Context, destinataire : discord.User,  ton_yokai : str = "", ton_item: str = ""):
         
         """
         Cette commande vous permet de donner un Yo-kai.
@@ -509,42 +478,56 @@ class Trade(commands.Cog):
         
         #Get what we need
         author_inv = await Cf.get_inv(ctx.author.id)
-        recipient_inv = await Cf.get_inv(destinataire.id)
+        author_bag = await Cf.get_bag(ctx.author.id)
         
-        #format the yokai
-        ton_yokai = list(ton_yokai.split(sep=", "))
-        
+        #format the args
 
-
-        author_have_it = False
-        #check for the author
-        corect_yokai_number_author = 0
-        if not author_inv == {} :
-            for asked_yokai in ton_yokai:
-                for yokai in author_inv :
-                    if await Cf.smart_match(asked_yokai, yokai):
-                        idx = ton_yokai.index(asked_yokai)
-                        ton_yokai[idx] = yokai
-                        corect_yokai_number_author += 1
-            if len(ton_yokai) == corect_yokai_number_author:
-                author_have_it = True
-                    
+        ton_yokai = list(ton_yokai.split(sep=", ")) if ton_yokai != "" else []
+        
+        ton_item = list(ton_item.split(sep=", ")) if ton_item != "" else []
         
         
-        if recipient_inv == {} :
-            error_embed = discord.Embed(color=discord.Color.red(),
-                                title=f"Le Medallium de {destinataire.name} est vide !",
-                                description="On va dire que j'avais la flemme de gérer ce cas, dcp dites lui de faire /bingo-kai et relancez la commande svp."
-                                )
-            return await ctx.send(embed = error_embed)
-
-        #if one of them don't have it 
-        if not author_have_it:
-            error_embed = discord.Embed(color=discord.Color.red(),
-                                        title="Ce(s) Yo-kai n'est pas dans votre Médallium 🤔",
-                                        description="Verifiez que l'orthographe est correct ou que vous le(s) possédez bien (`/medallium`)"
+        if ton_item == ton_yokai == []:
+            error_embed = discord.Embed(title="Vous devez au moins specifier un item/Yo-Kai",
+                                        color=discord.Color.red(),
+                                        description="Merci de refaire la commande !"
                                         )
             return await ctx.send(embed=error_embed)
+        
+        for item in ton_item:
+            if author_bag.get(item,[""])[0] == "coin":
+                error_embed = discord.Embed(title="Vous ne pouvez pas faire de cadeau de pièces !",
+                                        color=discord.Color.red(),
+                                        description="Cela est une sécurité, la fonction sera sûrement rétablie dans une prochaine mise à jour !"
+                                        )
+                return await ctx.send(embed=error_embed)
+
+        async def have_it(inv:dict, checks:list)-> bool:
+            if checks == []:return True
+            if inv == {}:return False
+            
+            counter = 0
+            for asked in checks:
+                for item in inv:
+                    if await Cf.smart_match(asked, item):
+                        checks[checks.index(asked)] = item
+                        counter += 1
+                        
+            if counter == len(checks):
+                return True
+            return False
+        
+        
+                
+        #Check they have everything
+        if not ( await have_it(author_inv,ton_yokai) and await have_it(author_bag,ton_item)):
+            error_embed = discord.Embed(color=discord.Color.red(),
+                                        title="Ce(s) Yo-kai/Item n'est pas dans votre Médallium/Sacoche 🤔",
+                                        description="Verifiez que l'orthographe est correct ou que vous le(s) possédez bien (`/medallium` ou `/bag`)"
+                                        )
+            return await ctx.send(embed=error_embed)
+        
+
         
         #check if they try to dup
         if ctx.author == destinataire :
@@ -575,6 +558,9 @@ class Trade(commands.Cog):
         offered_yokai = ""
         for asked_yokai in ton_yokai :
             offered_yokai += f"> Le Yo-kai **{asked_yokai}** de rang **{await Cf.classid_to_class(author_inv[asked_yokai][0])}**\n "
+        offered_item = ""
+        for asked_item in ton_item:
+            offered_item += f"> - **{asked_item}**"
         
         #ADD the user to the queue
 
@@ -585,17 +571,17 @@ class Trade(commands.Cog):
                                 description=f" {ctx.author.mention} merci de réagir pour confirmez, ou pour annuler.\n **Vous pouvez voir les details ci dessous.** \n -----------------------------------------------------"
                                 )
         ask_embed.add_field(name=f"Offre de {ctx.author.display_name} 🔀:",
-                            value=offered_yokai,
+                            value=offered_yokai+offered_item,
                             inline=False
                             )
         ask_embed.set_author(name="🕰️ L'offre timeout au bout de 1min.")
         
 
 
-        self.bot.logger.info(f"{ctx.author.name} fait un cadeau à {destinataire.name}, il offre {ton_yokai}, dans {ctx.guild.name}")
+        self.bot.logger.info(f"{ctx.author.name} fait un cadeau à {destinataire.name}, il offre {ton_yokai+ton_item}, dans {ctx.guild.name}")
              
         
-        view = GiftConfirmView(author=ctx.author, recipient=destinataire, ton_yokai=ton_yokai, offered_yokai=offered_yokai, bot=self.bot, ctx=ctx)
+        view = GiftConfirmView(author=ctx.author, recipient=destinataire, ton_yokai=ton_yokai, offered_yokai=offered_yokai, ton_item=ton_item, offered_item=offered_item, bot=self.bot, ctx=ctx)
         
         view.message = await ctx.send(embed=ask_embed, view=view)    
             
