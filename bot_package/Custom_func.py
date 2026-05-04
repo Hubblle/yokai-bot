@@ -1,6 +1,7 @@
 import os
 import json
 import bot_package.data as data
+import bot_package.economy as eco
 from difflib import SequenceMatcher
 import aiofiles
 
@@ -210,3 +211,166 @@ async def manage_cooldown(user_id: int, check_only: bool = False) -> bool:
     with open("./files/cooldownlist.json", "w") as f:
         json.dump(cooldown_list, f, indent=2)
     return False
+
+
+##########################
+## Data management part ##
+##########################
+
+async def add(input_id : int, thing : str, rang : str, where:str, rank_orbe: bool = False, number : str = '1'):
+    """A function that add things to a Medallium or a bag, works like the give command
+
+    Args:
+        input_id (int): The user's id
+        thing (str): the thing
+        rang (str): the thing class (the id format)
+        where (str): where to add, bag/medallium
+        rank_orbe (bool, optional): Whenever orbs will be gaved to. Defaults to False.
+        number (str, optional): how many. Defaults to '1'.
+    """
+    
+        
+    #get the inv or the bag:
+    if where == "bag":
+        inv = await get_bag(input_id)
+        default_inv = data.default_bag
+        async def save_inv_t(data, id):
+            await save_bag(data=data, id=id)
+        
+    elif where == "medallium":
+        inv = await get_inv(input_id)
+        default_inv = data.default_medallium
+        async def save_inv_t(data, id):
+            await save_inv(data=data, id=id)
+        
+    
+    #format the number :
+    try :
+        number = int(number)
+    except :
+        pass
+    
+    
+    
+    
+    if rang == "claim":
+        #In case they are trying to give claims
+        
+        inv = await get_inv(input_id)
+        
+        if inv == {}:
+            inv = data.default_medallium
+
+        inv["claim"] = number
+        await save_inv_t(inv, input_id)
+        return 0
+    
+    
+    
+    #so, now that we know that the function is used to give a yokai/item, we have to: 
+    # format the input:
+
+    number = int(number)
+    
+    #Verify if the input id has an inventory file :
+    if inv == {}:
+        #set the inv to the default
+        inv = default_inv
+        
+        inv[thing] = [rang]
+        
+        inv[rang] = 1
+        if not number == 1 :
+            inv[thing].append(int(number))
+        await save_inv_t(data=inv, id=input_id)
+
+    else :
+        #we have to verify :
+        # 1. If the yokai is already in the inv
+        # 2. If yes, if there is already many oh this yokai
+        # and we do it in range(number) to give several yokai
+        for _ in range(number) :
+            try:
+                inv[thing]
+                try:
+                    #stack the yokai
+                    inv[thing][1] += 1
+                    # give orb if the argument is true
+                    if rank_orbe:
+                        eco.add_rank_orbe(input_id,rang)
+                except Exception:
+                    #catch an exception if the yokai was not stacked
+                    #so we know there is only one and we can add the mention of two yokai ( .append(2) )
+                    inv[thing].append(2)
+            except KeyError:
+                #return an exception if the yokai was not in the inv
+                #add it
+                inv[thing] = [rang]
+                #add one more to the yokai count of the corresponding class
+                try:
+                    inv[rang] += 1
+                except:
+                    inv[rang] = 1
+                    
+            #save the inv
+            await save_inv_t(data=inv, id=input_id)
+        
+            
+async def remove(input_id:int, yokai : str, rang : str, where:str, number : int = 1): 
+    """
+    A function that removes things to a Medallium or a bag, works like the remove command
+
+    Args:
+        input_id (int): The user's id
+        thing (str): the thing
+        rang (str): the thing class (the id format)
+        where (str): where to remove, bag/medallium
+        number (str, optional): how many. Defaults to '1'.
+    """
+
+        #get the inv or the bag:
+    if where == "bag":
+        inv = await get_bag(input_id)
+        async def save_inv_t(data, id):
+            await save_bag(data=data, id=id)
+        
+    elif where == "medallium":
+        inv = await get_inv(input_id)
+        async def save_inv_t(data, id):
+            await save_inv(data=data, id=id)
+
+        
+
+    #we have to verify :
+    # 1. If the yokai is already in the inv
+    # 2. If yes, if there is already many oh this yokai
+    # and we do it in range(number) to delete several yokai
+    
+    for i in range(number) :
+        try :
+            one_more_author = inv[yokai][1] > 1
+        
+        
+        except KeyError:
+            return
+        
+        except IndexError :
+            number = 1
+            one_more_author = False
+            
+        if one_more_author == True :
+            if number - i > inv[yokai][1] :
+                return 0
+                
+                
+            #just remove the mention of several yokai if there are juste two
+            if inv[yokai][1] == 2:
+                inv[yokai].remove(inv[yokai][1])
+            else:
+                inv[yokai][1] -= 1
+                    
+        else :
+            inv.pop(yokai)
+            inv[rang] -= 1
+        await save_inv_t(data=inv, id=input_id)
+        
