@@ -810,7 +810,7 @@ class Bingo_kai(commands.Cog):
                     brute_bag["Pièce gagnante"] = ["coin"]
                     brute_bag["coin"] += 1
             
-            #gold_bkai_embed.set_thumbnail(url="")
+            winning_bkai_embed.set_thumbnail(url="https://api.quark-dev.com/yk/img/bkai-gagnant.png")
 
             await Cf.save_bag(brute_bag, ctx.author.id)
             await ctx.send(embed=winning_bkai_embed)
