@@ -24,19 +24,6 @@ class Rank(commands.Cog):
             "Complétion":[],
             "Points":[]
         }
-
-    @commands.hybrid_command(name="top")
-    async def top(self, ctx:commands.Context, category:Literal["Points", "Complétion"]):
-        """
-        Cette commande a été discontinuée suite à un sondage, faites `/top` pour en savoir plus.
-        """
-        message = """## Information: commande supprimée
-Hey, bonjour à toi cher utilisateur, ce message t'est affiché pour te prévenir que la commande `/top` n'est plus disponible. Plusieurs personnes nous ont signalés que elle ajoutait un aspect trop compétitif au bot; suite à un sondage réalisé sur le serveur discord officiel du bot, la majorité a confirmé ce soucis. Alors, l'option de désactiver cette commande a été choisie.
-
-> Si vous souhaitez tout de même revoir cette commande, nous vous invitons à rejoindre ce serveur: https://discord.gg/K4H4xhHqUb et à ouvrir un ticket pour nous signaler votre interet pour la commande.
--# Cordialement: l'équipe du bot."""
-
-        return await ctx.send(message, ephemeral=True)
         
 
     @commands.hybrid_command(name="rank")
