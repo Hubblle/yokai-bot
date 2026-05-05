@@ -1,0 +1,116 @@
+{
+  "list": {
+    "Sequestrella": [
+      "yokai",
+      0.019512
+    ],
+    "Shamanaconda": [
+      "yokai",
+      0.019512
+    ],
+    "Garegamelle": [
+      "yokai",
+      0.019512
+    ],
+    "Don Dorleone": [
+      "yokai",
+      0.019512
+    ],
+    "Bastetnyan": [
+      "yokai",
+      0.039024
+    ],
+    "El Dragonor": [
+      "yokai",
+      0.039024
+    ],
+    "Génie du rire": [
+      "yokai",
+      0.039024
+    ],
+    "Komanubis": [
+      "yokai",
+      0.039024
+    ],
+    "Néfertyrannie": [
+      "yokai",
+      0.039024
+    ],
+    "Pandore": [
+      "yokai",
+      0.039024
+    ],
+    "Phémniscian": [
+      "yokai",
+      0.039024
+    ],
+    "Shivatenguerre": [
+      "yokai",
+      0.039024
+    ],
+    "Sire Trompelamor": [
+      "yokai",
+      0.039024
+    ],
+    "Escoffregriffe": [
+      "yokai",
+      0.039024
+    ],
+    "Cocassepied": [
+      "yokai",
+      0.078049
+    ],
+    "Momignorante": [
+      "yokai",
+      0.078049
+    ],
+    "Tristos": [
+      "yokai",
+      0.078049
+    ],
+    "Onigirix Shiny": [
+      "yokai",
+      0.004878
+    ],
+    "Croix ankh dorée": [
+      "obj",
+      0.029268
+    ],
+    "Bannière seigneur": [
+      "obj",
+      0.029268
+    ],
+    "Bracelet mythique": [
+      "obj",
+      0.029268
+    ],
+    "Bague mythique": [
+      "obj",
+      0.029268
+    ],
+    "Amulette mythique": [
+      "obj",
+      0.029268
+    ],
+    "Badge mythique": [
+      "obj",
+      0.029268
+    ],
+    "Sceau empereur": [
+      "obj",
+      0.029268
+    ],
+    "Badge légendaire": [
+      "obj",
+      0.029268
+    ],
+    "Boîte rouge": [
+      "obj",
+      0.029268
+    ],
+    "Trésor légendaire": [
+      "treasure",
+      0.029268
+    ]
+  }
+}

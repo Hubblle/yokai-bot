@@ -1,0 +1,84 @@
+{
+  "list": {
+    "Gargaros": [
+      "yokai",
+      0.010638
+    ],
+    "Ogralos": [
+      "yokai",
+      0.010638
+    ],
+    "Orqanos": [
+      "yokai",
+      0.010638
+    ],
+    "Karmagister": [
+      "yokai",
+      0.010638
+    ],
+    "Orqéophyte": [
+      "yokai",
+      0.010638
+    ],
+    "Démophage": [
+      "yokai",
+      0.042553
+    ],
+    "Vampéric": [
+      "yokai",
+      0.042553
+    ],
+    "Suprarachnus": [
+      "yokai",
+      0.042553
+    ],
+    "Arachnus": [
+      "yokai",
+      0.042553
+    ],
+    "Ombraptor": [
+      "yokai",
+      0.042553
+    ],
+    "Millyeux": [
+      "yokai",
+      0.085106
+    ],
+    "Précyeux": [
+      "yokai",
+      0.085106
+    ],
+    "Popcorne": [
+      "yokai",
+      0.085106
+    ],
+    "Crapop": [
+      "yokai",
+      0.085106
+    ],
+    "Suspicioni Shiny": [
+      "yokai",
+      0.005319
+    ],
+    "Agonigiri Shiny": [
+      "yokai",
+      0.005319
+    ],
+    "EXPorbe Sacré": [
+      "obj",
+      0.106383
+    ],
+    "Bœuf persillé": [
+      "obj",
+      0.106383
+    ],
+    "Chocobar": [
+      "obj",
+      0.12766
+    ],
+    "Trésor oni": [
+      "treasure",
+      0.042553
+    ]
+  }
+}

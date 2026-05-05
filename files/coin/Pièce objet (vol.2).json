@@ -1,0 +1,27 @@
+{
+    "list": {
+        "Épée émoussée": ["obj", 1],
+        "Épée d'étourneau": ["obj", 1],
+        "Épée d'apprenti": ["obj", 1],
+        "Épée de rossignol": ["obj", 1],
+        "Épée de bon élève": ["obj", 1],
+        "Lame chat rouge": ["obj", 1],
+        "Couteau de cuisine": ["obj", 1],
+        "Sabre de corbeau": ["obj", 1],
+        "Épée du maître": ["obj", 1],
+        "Épée chat rouge": ["obj", 1],
+        "Lame de boucher": ["obj", 1],
+        "Épée du paon": ["obj", 1],
+        "Épée du sorcier": ["obj", 1],
+        "Épée de solitude": ["obj", 1],
+        "Épée royale": ["obj", 1],
+        "Sabre blizzard": ["obj", 1],
+        "Sabre divin": ["obj", 1],
+        "Sabre tonnerre": ["obj", 1],
+        "Sabre maudit": ["obj", 1],
+        "Épée Dragon d'eau": ["obj", 1],
+        "Épée du Seigneur oni": ["obj", 1],
+        "Rayon de lune": ["obj", 1],
+        "Ombre de lune": ["obj", 1]
+    }
+}
