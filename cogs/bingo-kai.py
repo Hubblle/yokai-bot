@@ -140,7 +140,13 @@ class Bingo_kai(commands.Cog):
             probaT = 30
             if equipped_treasure == "Trésor de l'eau":
                 ceilling = 25
-                probaT = 60
+                probaT = 10
+                
+            if data.team_bypass_cooldown :
+                for ids in data.team_member_id :
+                    if ctx.author.id == ids :
+                        amount = 0
+                    break
 
 
             if amount == ceilling: 
