@@ -831,7 +831,8 @@ class Bingo_kai(commands.Cog):
     @commands.hybrid_command(name="bingo-kai-gagnant")
     async def bingo_kai_gagnant(self, ctx = commands.Context):
         """
-        Tire au sort un Yo-kai de manière aléatoire, mais avec de meilleur yo-kai que le bingo-kai classique
+        New ✨
+        Tire au sort un Yo-kai de manière aléatoire, mais avec de meilleur Yo-kai que le bingo-kai classique
         Pour utiliser la commande, vous devez posséder un tirage (obtenable dans le bingo-kai)
         """
             
