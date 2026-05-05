@@ -772,12 +772,12 @@ class Bingo_kai(commands.Cog):
             await ctx.send(embed=streak_embed)
     
         #choose to give or not the coin
-        winning_bingo_kai = random.choices([True, False], weights = [0.01,0.99])
+        winning_bingo_kai = random.choices([True, False], weights = [0.01,0.99])[0]
 
         if winning_bingo_kai:
             winning_bkai_embed = discord.Embed(
-            title="Tu as reçu l'accès à un tirage au bingo kai doré!",
-            description="Fait /bingo-kai-gagnant pour utiliser ton tirage!",
+            title="Tu as reçu l'accès à un tirage au Bingo-kai gagnant !",
+            description="Fais /bingo-kai-gagnant pour utiliser ton tirage!",
             color=discord.Color.yellow()
             )
             
