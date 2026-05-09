@@ -37,6 +37,7 @@ async def bingo_kai_autcomplete(interaction : discord.Interaction, current : str
 class Bingo_kai(commands.Cog):
     
     """
+    New ✨
     Tire au sort un Yo-kai de manière aléatoire.
     """
     
@@ -294,7 +295,7 @@ class Bingo_kai(commands.Cog):
         
                     yokai_embed.add_field(
                         name="Vous ne l'avez jamais eu !",
-                        value="Il a été ajouté a votre Médallium. Faites `/medallium` pour le voir."
+                        value="Il a été ajouté à votre Médallium. Faites `/medallium` pour le voir."
                     )
                     yokai_embed.set_footer(text=f"{coin} utilisée !")
                     return await ctx.send(embed=yokai_embed)
@@ -609,7 +610,7 @@ class Bingo_kai(commands.Cog):
                 await Cf.save_inv(brute_inventory, ctx.author.id)
                 yokai_embed.add_field(
                     name="Vous ne l'avez jamais eu ! 🆕",
-                    value="Il a été ajouté a votre Médallium. Faites `/medallium` pour le voir."
+                    value="Il a été ajouté à votre Médallium. Faites `/medallium` pour le voir."
                 )
 
         else:
@@ -621,7 +622,7 @@ class Bingo_kai(commands.Cog):
             await Cf.save_inv(brute_inventory, ctx.author.id)
             yokai_embed.add_field(
                 name="Vous ne l'avez jamais eu ! 🆕",
-                value="Il a été ajouté a votre Médallium. Faites `/medallium` pour le voir."
+                value="Il a été ajouté à votre Médallium. Faites `/medallium` pour le voir."
             )
 
         #Choose if they get a coin or not:
@@ -697,7 +698,7 @@ class Bingo_kai(commands.Cog):
             if equipped_treasure:
                 yokai_embed.set_footer(text=f"{equipped_treasure} utilisé !")
             else:
-                message = random.choice(["La V6 est là: fais /help pour plus d'info !","Regardes le top 10 avec /top !","Regardes ton rang avec /rank !","Combien d'orbes as tu ? Regardes avec /orbe !"])
+                message = random.choice(["La V7 est là !", "Tips: tu peux maintenant trade des objets et trésors, fait `/help Trade`", "/bkai-gagnant, mais où peut-on bien obtenir cette pièce 👀"])
                 yokai_embed.set_footer(text=message)
             await ctx.send(embed=yokai_embed)
             await ctx.send(embed=coin_embed)
@@ -708,7 +709,7 @@ class Bingo_kai(commands.Cog):
             if equipped_treasure:
                 yokai_embed.set_footer(text=f"{equipped_treasure} utilisé !")
             else:
-                message = random.choice(["La V6 est là: fais /help pour plus d'info !","Regardes le top 10 avec /top !","Regardes ton rang avec /rank !","Combien d'orbes as tu ? Regardes avec /orbe !"])
+                message = random.choice(["La V7 est là !", "Tips: tu peux maintenant trade des objets et trésors, fait `/help Trade`", "/bkai-gagnant, mais où peut-on bien obtenir cette pièce 👀"])
                 yokai_embed.set_footer(text=message)
                 
                 
@@ -943,7 +944,7 @@ class Bingo_kai(commands.Cog):
             await Cf.save_inv(brute_inventory, ctx.author.id)
             yokai_embed.add_field(
                 name="Vous ne l'avez jamais eu ! 🆕",
-                value="Il a été ajouté a votre Médallium. Faites `/medallium` pour le voir."
+                value="Il a été ajouté à votre Médallium. Faites `/medallium` pour le voir."
             )
 
         else:
@@ -955,10 +956,8 @@ class Bingo_kai(commands.Cog):
             await Cf.save_inv(brute_inventory, ctx.author.id)
             yokai_embed.add_field(
                 name="Vous ne l'avez jamais eu ! 🆕",
-                value="Il a été ajouté a votre Médallium. Faites `/medallium` pour le voir."
+                value="Il a été ajouté à votre Médallium. Faites `/medallium` pour le voir."
             )
-        message = random.choice(["La V6 est là: fais /help pour plus d'info !","Regardes le top 10 avec /top !","Regardes ton rang avec /rank !","Combien d'orbes as tu ? Regardes avec /orbe !"])
-        yokai_embed.set_footer(text=message)
         yokai_embed.set_footer(text="Tu as utilisé un tirage du bingo-kai gagnant!")
                 
         await Cf.save_bag(brute_bag, ctx.author.id)
