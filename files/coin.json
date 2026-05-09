@@ -109,6 +109,18 @@
         "id" : "c0016",
         "proba" : 0
         
+    },
+    "Pièce objet (vol.1)" :{
+    "name_en" : "orange coin",
+    "color" : "#9D6934",
+    "id" : "c0003",
+    "proba" : 0.05
+    },
+    "Pièce objet (vol.2)" :{
+    "name_en" : "orange coin",
+    "color" : "#9D6934",
+    "id" : "c0003",
+    "proba" : 0.05
     }
 
     
