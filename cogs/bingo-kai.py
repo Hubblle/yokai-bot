@@ -772,7 +772,7 @@ class Bingo_kai(commands.Cog):
             await ctx.send(embed=streak_embed)
     
         #choose to give or not the coin
-        winning_bingo_kai = random.choices([True, False], weights = [0.01,0.99])[0]
+        winning_bingo_kai = random.choices([True, False], weights = [0.05,0.95])[0]
 
         if winning_bingo_kai:
             winning_bkai_embed = discord.Embed(
