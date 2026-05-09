@@ -249,7 +249,7 @@ class Medallium(commands.Cog) :
                     if yokai_list_brute != {}:
                         for elements in yokai_list_brute:
                             if yokai_list_brute[elements] > 1:
-                                yokai_list_formated += f"> {elements} **`(x{str(yokai_list_brute[elements])})`**\n"
+                                yokai_list_formated += f"> {elements} **(x{str(yokai_list_brute[elements])})**\n"
                             else:
                                 yokai_list_formated += f"> {elements}\n"
 

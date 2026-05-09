@@ -242,29 +242,12 @@ class Search(commands.Cog):
             for yokai in matched_yokai:
                 if yokai in inv:
                     if len(inv[yokai]) > 1:
-                        len_str = str(inv[yokai][1])
-                        trad_num_to_emoji = {
-                            "0": "0️⃣",
-                            "1": "1️⃣",
-                            "2": "2️⃣",
-                            "3": "3️⃣",
-                            "4": "4️⃣",
-                            "5": "5️⃣",
-                            "6": "6️⃣",
-                            "7": "7️⃣",
-                            "8": "8️⃣",
-                            "9": "9️⃣"
-                        }
-                        num = ""
-                        for c in len_str:
-                            emoji = trad_num_to_emoji[c]
-                            num += emoji
-                        yokai_list.append(f"> **{yokai}** ✅ {num}")
+                        yokai_list.append(f"> **{yokai}** x{len(inv[yokai])}")
                     else:
-                        yokai_list.append(f"> **{yokai}** ✅")
+                        yokai_list.append(f"> **{yokai}** ")
                     poss += 1
                 else:
-                    yokai_list.append(f"> {yokai} ❌")
+                    yokai_list.append(f"> {yokai} ")
             
             tag_embed = discord.Embed(
                 title=f"Tag: {matched_tag}",
