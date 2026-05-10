@@ -30,7 +30,7 @@ async def is_treasure_obtained(ctx : commands.Context, treasure : str, user : di
     else :
         return True
     
-async def use(ctx : commands.Context, treasure : str, user : discord.User = None):
+async def check_t(user : discord.User = None):
     """A func that remove one of the specified treasure of the user's bag.
 
     Args:
@@ -38,27 +38,6 @@ async def use(ctx : commands.Context, treasure : str, user : discord.User = None
         treasure (str): The treasure to check
         user (discord.User, optional): The user to check. Defaults to the author in the context.
     """
-    if user == None:
-        user = ctx.author
-        
     bag = await Cf.get_bag(user.id)
     
-    bag["equipped_treasure"] = None
-    
-    try :
-        more_than_one = bag[treasure][1] > 1
-    except :
-        more_than_one = False
-        
-    
-    if more_than_one == True :
-        #just remove the mention of several treasure if there are juste two
-        if bag[treasure][1] == 2:
-            bag[treasure].remove(bag[treasure][1])
-        else:
-            bag[treasure][1] -= 1
-            
-    else :
-        bag.pop(treasure)
-        bag["treasure"] -= 1
-    await Cf.save_bag(bag, user.id)
+    if bag.get("equipped_treasure", None) not in bag.keys(): bag["equipped_treasure"] = None; await Cf.save_bag(bag, user.id)

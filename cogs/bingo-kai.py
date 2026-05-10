@@ -1,15 +1,14 @@
 import discord
 from discord.ext import commands
 from discord import app_commands
-from discord.ext.commands import Context
 import random
 import time
 import os
 import bot_package.Custom_func as Cf
 import bot_package.data as data
 import bot_package.economy as eco
-import importlib
 import cogs.bkai_events.event_bkai as event
+import bot_package.treasure_tool as tt
 
 
         
@@ -57,6 +56,11 @@ class Bingo_kai(commands.Cog):
         La commande possède un cooldown de 1h30 (1h sur le serveur de support ;) )
         """
 
+        
+        #Secure equipped treasure
+        await tt.check_t(ctx.author)
+        
+        
         #Check if they have a treasure equiped
         bag = await Cf.get_bag(ctx.author.id)
         equipped_treasure = bag.get("equipped_treasure", None)
@@ -731,12 +735,12 @@ class Bingo_kai(commands.Cog):
             
         if inventory_history.get("streak", None) == None:inventory_history["streak"] = [0,"E",0]
         
-
-        if inventory_history["streak"][1] == class_id:
-            inventory_history["streak"][2] += 1
-        else:
-            inventory_history["streak"][1] = class_id
-            inventory_history["streak"][2] = 1
+        if not equipped_treasure == "Trésor du poison":
+            if inventory_history["streak"][1] == class_id:
+                inventory_history["streak"][2] += 1
+            else:
+                inventory_history["streak"][1] = class_id
+                inventory_history["streak"][2] = 1
 
 
 
