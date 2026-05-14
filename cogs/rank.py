@@ -61,9 +61,9 @@ class Rank(commands.Cog):
                 total_yokai = 0
                 claimed_yokai = 0
                 for cls, pts in data.class_to_point.items():
-                    count = inv.get(cls, 0) if cls != "SpecialS" else 0
+                    count = inv.get(cls, 0)
                     total_points += count * pts
-                    total_yokai += data.list_len.get(cls, 0) if cls != "SpecialS" else 0
+                    total_yokai += data.list_len.get(cls, 0)
                     claimed_yokai += count
 
                 completion = (claimed_yokai / total_yokai * 100) if total_yokai > 0 else 0
