@@ -113,6 +113,10 @@ class Medallium(commands.Cog) :
                 super().__init__(placeholder='Choisissez le rang que vous voulez...', min_values=1, max_values=1, options=options)
 
             async def callback(self, interaction, ctx=ctx):
+                
+                
+                ## Choice 1:
+                
                 if self.values[0] == "Tout !":
                     if user.id == ctx.author.id:
                         inv_embed = discord.Embed(title="Voici votre Médallium :")
@@ -238,6 +242,10 @@ class Medallium(commands.Cog) :
                                                 value="Vous pouvez utiliser le message ci-dessus.")
                             return await interaction.response.send_message(embed=error_embed)
 
+                
+                
+                ## Choice 2:
+                
                 else:
                     asked_class = await Cf.classid_to_class(self.values[0], True)
                     yokai_list_brute = yokai_per_class[asked_class]
@@ -245,6 +253,9 @@ class Medallium(commands.Cog) :
                     class_id = asked_class
 
                     yokai_list_formated = ""
+                    
+                    class_len = list_len[class_id] if class_id != "SpecialS" else "xx"
+                    
 
                     if yokai_list_brute != {}:
                         for elements in yokai_list_brute:
@@ -254,7 +265,7 @@ class Medallium(commands.Cog) :
                                 yokai_list_formated += f"> {elements}\n"
 
                         inv_embed = discord.Embed(
-                            title=f"Yo-kai de Rang {classes_name} `{brute_inventory[class_id]}/{list_len[class_id]}`",
+                            title=f"Yo-kai de Rang {classes_name} `{brute_inventory[class_id]}/{class_len}`",
                             description=yokai_list_formated,
                             color=discord.Color.from_str(yokai_data[class_id]["color"])
                         )
@@ -297,18 +308,21 @@ class Medallium(commands.Cog) :
         total_point = 0
         
         yokai_claimed_count = ""
-        for classes in yokai_per_class:     
-            total += list_len[classes]
+        for classes in yokai_per_class: 
+            total += list_len[classes] if classes != "SpecialS" else 0
             
-            actual += brute_inventory[classes]
+            actual += brute_inventory[classes] if classes != "SpecialS" else 0
             total_point += brute_inventory[classes]*data.class_to_point[classes]
+            
+            class_len = list_len[classes] if classes != "SpecialS" else "xx"
+            
             
             if brute_inventory[classes] == 0:
                 pass
             elif len(classes) == 1:
-                yokai_claimed_count += f"Yo-kai de rang **{await Cf.classid_to_class(classes, False)}**: `{brute_inventory[classes]}/{list_len[classes]}`\n"
+                yokai_claimed_count += f"Yo-kai de rang **{await Cf.classid_to_class(classes, False)}**: `{brute_inventory[classes]}/{class_len}`\n"
             else:
-                yokai_claimed_count += f"Yo-kai **{await Cf.classid_to_class(classes, False)}**: `{brute_inventory[classes]}/{list_len[classes]}`\n"
+                yokai_claimed_count += f"Yo-kai **{await Cf.classid_to_class(classes, False)}**: `{brute_inventory[classes]}/{class_len}`\n"
                 
         #process the completion of the medallium
         completion = actual/total*100
