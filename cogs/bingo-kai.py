@@ -941,27 +941,16 @@ class Bingo_kai(commands.Cog):
             
             if verification == True:
                 brute_inventory[Yokai_choice] = [class_id]
-            try:
-                brute_inventory[class_id] += 1
-            except KeyError:
-                brute_inventory[class_id] = 1
-            await Cf.save_inv(brute_inventory, ctx.author.id)
-            yokai_embed.add_field(
-                name="Vous ne l'avez jamais eu ! 🆕",
-                value="Il a été ajouté à votre Médallium. Faites `/medallium` pour le voir."
-            )
+                try:
+                    brute_inventory[class_id] += 1
+                except KeyError:
+                    brute_inventory[class_id] = 1
+                await Cf.save_inv(brute_inventory, ctx.author.id)
+                yokai_embed.add_field(
+                    name="Vous ne l'avez jamais eu ! 🆕",
+                    value="Il a été ajouté à votre Médallium. Faites `/medallium` pour le voir."
+                )
 
-        else:
-            brute_inventory[Yokai_choice] = [class_id]
-            try:
-                brute_inventory[class_id] += 1
-            except KeyError:
-                brute_inventory[class_id] = 1
-            await Cf.save_inv(brute_inventory, ctx.author.id)
-            yokai_embed.add_field(
-                name="Vous ne l'avez jamais eu ! 🆕",
-                value="Il a été ajouté à votre Médallium. Faites `/medallium` pour le voir."
-            )
         yokai_embed.set_footer(text="Tu as utilisé un tirage du bingo-kai gagnant!")
                 
         await Cf.save_bag(brute_bag, ctx.author.id)
