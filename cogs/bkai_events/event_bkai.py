@@ -197,7 +197,7 @@ class Terrheure():
                 elif reward["type"] == "treasure":
                     phrase = f"le magnifique {reward["name"]}"
                     for id in view.users_in:
-                        await give(id,reward["name"],"treasure","bag")
+                        await give(id,reward["name"],"trésor","bag")
 
 
                 # add a field to the embed corresponding of the reward of all stage
