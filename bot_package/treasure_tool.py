@@ -39,5 +39,7 @@ async def check_t(user : discord.User = None):
         user (discord.User, optional): The user to check. Defaults to the author in the context.
     """
     bag = await Cf.get_bag(user.id)
+    if bag == {}:return 0
+    if bag == {"equipped_treasure": None}: bag = {}; await Cf.save_bag(bag, user.id); return 0
     
     if bag.get("equipped_treasure", None) not in bag.keys(): bag["equipped_treasure"] = None; await Cf.save_bag(bag, user.id)
