@@ -718,13 +718,13 @@ class Bingo_kai(commands.Cog):
                 
                 
             await ctx.send(embed=yokai_embed)
-            """if equipped_treasure == "Trésor oni":
+            if equipped_treasure == "Trésor oni":
                     chance = data.item[equipped_treasure].get("value1")
             else :
-                    chance = 
+                    chance = 1
             if random.choices([True, False], weights=[chance, 100-chance])[0] :
                 evenement = event.Terrheure(self.bot)
-                await evenement.terrheure(ctx)"""
+                await evenement.terrheure(ctx)
    
    
 
