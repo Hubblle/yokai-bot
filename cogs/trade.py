@@ -497,13 +497,7 @@ class Trade(commands.Cog):
                                         )
             return await ctx.send(embed=error_embed)
         
-        for item in ton_item:
-            if author_bag.get(item,[""])[0] == "coin":
-                error_embed = discord.Embed(title="Vous ne pouvez pas faire de cadeau de pièces !",
-                                        color=discord.Color.red(),
-                                        description="Cela est une sécurité, la fonction sera sûrement rétablie dans une prochaine mise à jour !"
-                                        )
-                return await ctx.send(embed=error_embed)
+        
 
         async def have_it(inv:dict, checks:list)-> bool:
             if checks == []:return True
@@ -520,6 +514,14 @@ class Trade(commands.Cog):
                 return True
             return False
         
+        
+        for item in ton_item:
+            if author_bag.get(item,[""])[0] == "coin":
+                error_embed = discord.Embed(title="Vous ne pouvez pas faire de cadeau de pièces !",
+                                        color=discord.Color.red(),
+                                        description="Cela est une sécurité, la fonction sera sûrement rétablie dans une prochaine mise à jour !"
+                                        )
+                return await ctx.send(embed=error_embed)
         
                 
         #Check they have everything
