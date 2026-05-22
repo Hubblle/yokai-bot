@@ -717,7 +717,8 @@ class Bingo_kai(commands.Cog):
                 yokai_embed.set_footer(text=message)
                 
                 
-            """await ctx.send(embed=yokai_embed)
+            await ctx.send(embed=yokai_embed)
+            """
             if equipped_treasure == "Trésor oni":
                     chance = data.item[equipped_treasure].get("value1")
             else :
