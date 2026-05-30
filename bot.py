@@ -3,7 +3,7 @@ Based on
 Copyright © Krypton 2019-Present template
 Version: 6.3.0
 """
-VERSION = 7.3
+VERSION = 7.4
 
 #import general stuff
 import json
@@ -19,12 +19,12 @@ import time
 from bot_package import Error_manager
 from bot_package.Queue_manager import Queue
 
-#imort discord stuff
+#import discord stuff
 import discord
 from discord.ext import commands, tasks
 from discord.ext.commands import Context
 
-#imort .env stuff
+#import .env stuff
 from dotenv import load_dotenv
 
 
