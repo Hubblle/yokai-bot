@@ -515,14 +515,6 @@ class Trade(commands.Cog):
             return False
         
         
-        for item in ton_item:
-            if author_bag.get(item,[""])[0] == "coin":
-                error_embed = discord.Embed(title="Vous ne pouvez pas faire de cadeau de pièces !",
-                                        color=discord.Color.red(),
-                                        description="Cela est une sécurité, la fonction sera sûrement rétablie dans une prochaine mise à jour !"
-                                        )
-                return await ctx.send(embed=error_embed)
-        
                 
         #Check they have everything
         if not ( await have_it(author_inv,ton_yokai) and await have_it(author_bag,ton_item)):
@@ -531,6 +523,15 @@ class Trade(commands.Cog):
                                         description="Verifiez que l'orthographe est correct ou que vous le(s) possédez bien (`/medallium` ou `/bag`)"
                                         )
             return await ctx.send(embed=error_embed)
+        
+        
+        for item in ton_item:
+            if author_bag.get(item,[""])[0] == "coin":
+                error_embed = discord.Embed(title="Vous ne pouvez pas faire de cadeau de pièces !",
+                                        color=discord.Color.red(),
+                                        description="Cela est une sécurité, la fonction sera sûrement rétablie dans une prochaine mise à jour !"
+                                        )
+                return await ctx.send(embed=error_embed)
         
 
         
