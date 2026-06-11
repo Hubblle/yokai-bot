@@ -795,8 +795,7 @@ class Bingo_kai(commands.Cog):
                 brute_bag = {
                     "coin" : 1,
                     "obj" : 0,
-                    "treasure" : 0,
-                    "golden coin" : ["coin"]
+                    "treasure" : 0
                 }
                 verification = False
             
