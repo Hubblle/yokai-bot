@@ -311,6 +311,7 @@ class Admin_command(commands.Cog):
                 sucess_embed.add_field(name=f"La valeur `{yokai}` a été modifié sur `{number}` dans le {where} de `<@{input_id}>`",
                                        value="--------------") 
                 self.bot.logger.warning(msg=f"{ctx.author.name} a utilisé le /give sur l'id {input_id}, en mode json-mod, dans le {where}")
+                continue
 
                         
             
@@ -327,6 +328,7 @@ class Admin_command(commands.Cog):
                 sucess_embed.add_field(name=f"`<@{input_id}>` a reçu {number} claims",
                                        value="--------------")
                 self.bot.logger.warning(msg=f"{ctx.author.name} a utilisé le /give sur l'id {input_id}, il a donné {number} claims")
+                continue
 
             
             
