@@ -55,7 +55,7 @@ class Rank(commands.Cog):
 
                 inv = await Cf.get_inv(id)
                 if inv == {}:
-                    inv = data.default_medallium
+                    inv = data.default_medallium.copy()
 
                 total_points = 0
                 total_yokai = 0

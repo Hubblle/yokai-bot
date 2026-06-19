@@ -72,7 +72,7 @@ class Admin_command(commands.Cog):
             for id in ids:
                 inv = await Cf.get_inv(id)
                 if inv == {}:
-                    inv = data.default_medallium
+                    inv = data.default_medallium.copy()
 
                 total_points = 0
                 total_yokai = 0
@@ -118,7 +118,7 @@ class Admin_command(commands.Cog):
     @Check.is_in_dev_team()
     async def reset(self, ctx : commands.Context, input_id : str):
         """
-        Reset le Médallium de l'utilisateur donné.
+        Reset le Médallium et la sacoche de l'utilisateur donné.
         """
         #is the input id fine ?
         try:
@@ -130,21 +130,17 @@ class Admin_command(commands.Cog):
             )
             return await ctx.send(embed=error_embed)
         
-        #is the inv already empty ?
         brute_inventory = await Cf.get_inv(input_id)
-
-        if brute_inventory == {}:
-            error_embed = discord.Embed(
-            title="Le Médallium de cette utilisateur est déjà vide !",
-            color= discord.Color.red()
-        )
-            return await ctx.send(embed=error_embed)
+        brute_bag = await Cf.get_bag(input_id)
         
-        #empt the inv and send the message
+        
+        #empt the inv/bag and send the message
         brute_inventory = {}
+        brute_bag = {}
         await Cf.save_inv(brute_inventory, input_id)
+        await Cf.save_bag(brute_bag, input_id)
         sucess_embed = discord.Embed(
-            title="Le Médallium de cet utilisateur a été vidé !",
+            title="Le Médallium et la sacoche de cet utilisateur a été vidé !",
             color= discord.Color.green()
         )
         #Log
@@ -254,181 +250,187 @@ class Admin_command(commands.Cog):
         ⚠️ ** N'utilisez ce mode qui si vous savez ce que vous faites !**
         """
     
-
-        #is the input id fine ?
+        input_id_c = input_id.split(", ")
+        del input_id
+        input_ids = []
+        
         try:
-            input_id = int(input_id)
+            for id in input_id_c:
+                input_ids.append(int(id))
         except :
             error_embed = discord.Embed(
-                title="Merci de fournir un identifiant correct !",
+                title="Merci de verifier que vous utilisez le bon format :",
+                description="`input_id: id1, id2, id3` ou `input_id: id1`",
                 color= discord.Color.red()
             )
             return await ctx.send(embed=error_embed)
         
-        #get the inv or the bag:
-        if where == "bag":
-            inv = await Cf.get_bag(input_id)
-            default_inv = data.default_bag
-            async def save_inv(data, id):
-                await Cf.save_bag(data=data, id=id)
-            
-        elif where == "medallium":
-            inv = await Cf.get_inv(input_id)
-            default_inv = data.default_medallium
-            async def save_inv(data, id):
-                await Cf.save_inv(data=data, id=id)
-            
-        else:
-            error_embed = discord.Embed(
-                title="Merci de fournir une localisation (where) correcte!",
-                description="Soit `bag` soit `medallium`.",
-                color= discord.Color.red()
-            )
-            return await ctx.send(embed=error_embed)
+        sucess_embed = discord.Embed(title=f"Votre action de give a été exécutée, voici le bilan:",
+                                            color=discord.Color.green(),
+                                            description=""
+                                            )
         
-        #format the number :
-        try :
-            number = int(number)
-        except :
-            pass
-        
-        
-        #First, verify if the command is used to mod the inv .json directly
-        if rang == "json-mod" :
-            #verify if the inv is empty :
-            if inv == {}:
-                inv = default_inv
-            #now, mod the json as asked
-            inv[yokai] = number
-            await save_inv(inv, input_id)
-            sucess_embed = discord.Embed(title=f"La valeur `{yokai}` a été modifié sur `{number}` dans le {where} de `<@{input_id}>`",
-                                        color=discord.Color.green(),
-                                        description=""
-                                        )
-            self.bot.logger.warning(msg=f"{ctx.author.name} a utilisé le /give sur l'id {input_id}, en mode json-mod, dans le {where}")
-            return await ctx.send(embed=sucess_embed)
-                    
-        
-        if rang == "claim":
-            #In case they are trying to give claims
+        # loop through the ids
+        for input_id in input_ids:
+            #get the inv or the bag:
+            if where == "bag":
+                inv = await Cf.get_bag(input_id)
+                default_inv = data.default_bag.copy()
+                async def save_inv(data, id):
+                    await Cf.save_bag(data=data, id=id)
+                
+            elif where == "medallium":
+                inv = await Cf.get_inv(input_id)
+                default_inv = data.default_medallium.copy()
+                async def save_inv(data, id):
+                    await Cf.save_inv(data=data, id=id)
+                
+            else:
+                error_embed = discord.Embed(
+                    title="Merci de fournir une localisation (where) correcte!",
+                    description="Soit `bag` soit `medallium`.",
+                    color= discord.Color.red()
+                )
+                return await ctx.send(embed=error_embed)
             
-            inv = await Cf.get_inv(input_id)
+            #format the number :
+            try :
+                number = int(number)
+            except :
+                pass
             
-            if inv == {}:
-                inv = data.default_medallium
+            
+            #First, verify if the command is used to mod the inv .json directly
+            if rang == "json-mod" :
+                #verify if the inv is empty :
+                if inv == {}:
+                    inv = default_inv
+                #now, mod the json as asked
+                inv[yokai] = number
+                await save_inv(inv, input_id)
+                sucess_embed.add_field(name=f"La valeur `{yokai}` a été modifié sur `{number}` dans le {where} de `<@{input_id}>`",
+                                       value="--------------") 
+                self.bot.logger.warning(msg=f"{ctx.author.name} a utilisé le /give sur l'id {input_id}, en mode json-mod, dans le {where}")
 
-            inv["claim"] = number
-            await save_inv(inv, input_id)
-            sucess_embed = discord.Embed(title=f"`<@{input_id}>` a reçu {number} claims",
-                                        color=discord.Color.green(),
-                                        description=""
-                                        )
-            self.bot.logger.warning(msg=f"{ctx.author.name} a utilisé le /give sur l'id {input_id}, il a donné {number} claims")
-            return await ctx.send(embed=sucess_embed)
-        
-        
-        
-        #so, now that we know that the command is used to give a yokai, we have to: 
-        # format the input:
-        try :
-            number = int(number)
-        
-        except :
-            error_embed = discord.Embed(
-                    title="La quantité fournie n'est pas valide.",
+                        
+            
+            if rang == "claim":
+                #In case they are trying to give claims
+                
+                inv = await Cf.get_inv(input_id)
+                
+                if inv == {}:
+                    inv = data.default_medallium.copy()
+
+                inv["claim"] = number
+                await save_inv(inv, input_id)
+                sucess_embed.add_field(name=f"`<@{input_id}>` a reçu {number} claims",
+                                       value="--------------")
+                self.bot.logger.warning(msg=f"{ctx.author.name} a utilisé le /give sur l'id {input_id}, il a donné {number} claims")
+
+            
+            
+            
+            #so, now that we know that the command is used to give a yokai, we have to: 
+            # format the input:
+            try :
+                number = int(number)
+            
+            except :
+                error_embed = discord.Embed(
+                        title="La quantité fournie n'est pas valide.",
+                        description="Merci de verifier si la commande est utilisée de manière valide (`/help Admin_command`)",
+                        color= discord.Color.red()
+                    )
+                return await ctx.send(embed=error_embed)
+            
+            
+            
+            
+            
+            
+            #Verify if the class (rang) is fine :
+            class_name = rang
+            class_id = await Cf.classid_to_class(class_name, True)
+            if class_id == "" :
+                #if the class does not exist, it return "" and we can catch it
+                error_embed = discord.Embed(
+                    title="Le rang fourni n'est pas valide.",
                     description="Merci de verifier si la commande est utilisée de manière valide (`/help Admin_command`)",
                     color= discord.Color.red()
                 )
-            return await ctx.send(embed=error_embed)
-        
-        
-        
-        
-        
-        
-        #Verify if the class (rang) is fine :
-        class_name = rang
-        class_id = await Cf.classid_to_class(class_name, True)
-        if class_id == "" :
-            #if the class does not exist, it return "" and we can catch it
-            error_embed = discord.Embed(
-                title="Le rang fourni n'est pas valide.",
-                description="Merci de verifier si la commande est utilisée de manière valide (`/help Admin_command`)",
-                color= discord.Color.red()
-            )
-            return await ctx.send(embed=error_embed)
-        
-        if class_id in ["coin", "obj", "treasure"] and where == "medallium":
-            #Check if the class is valid for the place choosen (medallium)
-            error_embed = discord.Embed(
-                title="Le rang fourni n'est pas valide.",
-                description="Il ne fait pas partie des rang suportés dans le médallium",
-                color= discord.Color.red()
-            )
-            return await ctx.send(embed=error_embed)
-        
-        if not class_id in ["coin", "obj", "treasure"] and where == "bag":
-            #Check if the class is valid for the place choosen (bag)
-            error_embed = discord.Embed(
-                title="Le rang fourni n'est pas valide.",
-                description="Il ne fait pas partie des rang suportés dans le bag",
-                color= discord.Color.red()
-            )
+                return await ctx.send(embed=error_embed)
             
-            return await ctx.send(embed=error_embed)
-        
+            if class_id in ["coin", "obj", "treasure"] and where == "medallium":
+                #Check if the class is valid for the place choosen (medallium)
+                error_embed = discord.Embed(
+                    title="Le rang fourni n'est pas valide.",
+                    description="Il ne fait pas partie des rang suportés dans le médallium",
+                    color= discord.Color.red()
+                )
+                return await ctx.send(embed=error_embed)
+            
+            if not class_id in ["coin", "obj", "treasure"] and where == "bag":
+                #Check if the class is valid for the place choosen (bag)
+                error_embed = discord.Embed(
+                    title="Le rang fourni n'est pas valide.",
+                    description="Il ne fait pas partie des rang suportés dans le bag",
+                    color= discord.Color.red()
+                )
+                
+                return await ctx.send(embed=error_embed)
+            
 
-        
-        
-        
-        #Verify if the input id has an inventory file :
-        if inv == {}:
-            #set the inv to the default
-            inv = default_inv
             
-            inv[yokai] = [class_id]
             
-            inv[class_id] = 1
-            if not number == 1 :
-                inv[yokai].append(int(number))
-            await save_inv(data=inv, id=input_id)
             
-        else :
-            #we have to verify :
-            # 1. If the yokai is already in the inv
-            # 2. If yes, if there is already many oh this yokai
-            # and we do it in range(number) to give several yokai
-            for i in range(number) :
-                try:
-                    inv[yokai]
-                    try:
-                        #stack the yokai
-                        inv[yokai][1] += 1
-                        # give orb if the argument is true
-                        if rank_orbe:
-                            eco.add_rank_orbe(input_id,rang)
-                    except :
-                        #return an exception if the yokai was not stacked
-                        #so we know there is only one and we can add the mention of two yokai ( .append(2) )
-                        inv[yokai].append(2)
-                except KeyError:
-                    #return an exception if the yokai was not in the inv
-                    #add it
-                    inv[yokai] = [class_id]
-                    #add one more to the yokai count of the coresponding class
-                    try:
-                        inv[class_id] += 1
-                    except:
-                        inv[class_id] = 1
-                        
-                #save the inv
+            #Verify if the input id has an inventory file :
+            if inv == {}:
+                #set the inv to the default
+                inv = default_inv
+                
+                inv[yokai] = [class_id]
+                
+                inv[class_id] = 1
+                if not number == 1 :
+                    inv[yokai].append(int(number))
                 await save_inv(data=inv, id=input_id)
-            
-        sucess_embed = discord.Embed(title=f"Yo-Kai ajouté(s) {"au Médallium" if where=="medallium" else "à la sacoche"} de {input_id}",
-                                        color=discord.Color.green(),
-                                        description=f"**{yokai}** de rang **{rang}**\n> quantité : {number}"
-                                        )
-        self.bot.logger.warning(msg=f"{ctx.author.name} a utilisé le /give sur l'id {input_id} // yokai : {yokai} // rang : {rang} // x{number}")
+                
+            else :
+                #we have to verify :
+                # 1. If the yokai is already in the inv
+                # 2. If yes, if there is already many oh this yokai
+                # and we do it in range(number) to give several yokai
+                for i in range(number) :
+                    try:
+                        inv[yokai]
+                        try:
+                            #stack the yokai
+                            inv[yokai][1] += 1
+                            # give orb if the argument is true
+                            if rank_orbe:
+                                eco.add_rank_orbe(input_id,rang)
+                        except :
+                            #return an exception if the yokai was not stacked
+                            #so we know there is only one and we can add the mention of two yokai ( .append(2) )
+                            inv[yokai].append(2)
+                    except KeyError:
+                        #return an exception if the yokai was not in the inv
+                        #add it
+                        inv[yokai] = [class_id]
+                        #add one more to the yokai count of the coresponding class
+                        try:
+                            inv[class_id] += 1
+                        except:
+                            inv[class_id] = 1
+                            
+                    #save the inv
+                    await save_inv(data=inv, id=input_id)
+                
+            sucess_embed.add_field(name=f"Yo-Kai ajouté(s) {"au Médallium" if where=="medallium" else "à la sacoche"} de {input_id}",
+                                    value=f"**{yokai}** de rang **{rang}**\n> quantité : {number}\n----------------")
+            self.bot.logger.warning(msg=f"{ctx.author.name} a utilisé le /give sur l'id {input_id} // yokai : {yokai} // rang : {rang} // x{number}")
+
         return await ctx.send(embed=sucess_embed)
                 
                 
@@ -462,13 +464,13 @@ class Admin_command(commands.Cog):
          #get the inv or the bag:
         if where == "bag":
             inv = await Cf.get_bag(input_id)
-            default_inv = data.default_bag
+            default_inv = data.default_bag.copy()
             async def save_inv(data, id):
                 await Cf.save_bag(data=data, id=id)
             
         elif where == "medallium":
             inv = await Cf.get_inv(input_id)
-            default_inv = data.default_medallium
+            default_inv = data.default_medallium.copy()
             async def save_inv(data, id):
                 await Cf.save_inv(data=data, id=id)
             

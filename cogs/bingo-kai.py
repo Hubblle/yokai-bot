@@ -241,7 +241,7 @@ class Bingo_kai(commands.Cog):
 
                 brute_inventory = await Cf.get_inv(ctx.author.id)
                 if brute_inventory == {}:
-                    brute_inventory = data.default_medallium
+                    brute_inventory = data.default_medallium.copy()
                     brute_inventory["last_claim"] = time.time()
                     verification = False
                 else:
@@ -310,7 +310,7 @@ class Bingo_kai(commands.Cog):
                 bag = await Cf.get_bag(ctx.author.id)
                 item_desc = data.item[item]["desc"]
                 if bag == {}:
-                    bag = data.default_bag
+                    bag = data.default_bag.copy()
                     verification = False
                 else:
                     verification = True
@@ -375,7 +375,7 @@ class Bingo_kai(commands.Cog):
                 bag = await Cf.get_bag(ctx.author.id)
                 item_desc = data.item[item]["desc"]
                 if bag == {}:
-                    bag = data.default_bag
+                    bag = data.default_bag.copy()
                     verification = False
                 else:
                     verification = True
@@ -569,7 +569,7 @@ class Bingo_kai(commands.Cog):
         #is the Yo-kai in the inventory
         #try the inv
         if brute_inventory == {}:
-            brute_inventory = data.default_medallium
+            brute_inventory = data.default_medallium.copy()
             brute_inventory["last_claim"] = time.time()
             verification = False
         else:

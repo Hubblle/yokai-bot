@@ -233,13 +233,13 @@ async def add(input_id : int, thing : str, rang : str, where:str, rank_orbe: boo
     #get the inv or the bag:
     if where == "bag":
         inv = await get_bag(input_id)
-        default_inv = data.default_bag
+        default_inv = data.default_bag.copy()
         async def save_inv_t(data, id):
             await save_bag(data=data, id=id)
         
     elif where == "medallium":
         inv = await get_inv(input_id)
-        default_inv = data.default_medallium
+        default_inv = data.default_medallium.copy()
         async def save_inv_t(data, id):
             await save_inv(data=data, id=id)
         
@@ -259,7 +259,7 @@ async def add(input_id : int, thing : str, rang : str, where:str, rank_orbe: boo
         inv = await get_inv(input_id)
         
         if inv == {}:
-            inv = data.default_medallium
+            inv = data.default_medallium.copy()
 
         inv["claim"] = number
         await save_inv_t(inv, input_id)

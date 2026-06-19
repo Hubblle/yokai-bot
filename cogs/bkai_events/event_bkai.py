@@ -24,13 +24,13 @@ async def give(input_id : str, yokai : str, rang : str, where : str, number : st
     number = int(number)
     if where == "bag":
         inv = await Cf.get_bag(input_id)
-        default_inv = data.default_bag
+        default_inv = data.default_bag.copy()
         async def save_inv(data, id):
             await Cf.save_bag(data=data, id=id)
             
     elif where == "medallium":
         inv = await Cf.get_inv(input_id)
-        default_inv = data.default_medallium
+        default_inv = data.default_medallium.copy()
         async def save_inv(data, id):
             await Cf.save_inv(data=data, id=id)
 
@@ -44,7 +44,7 @@ async def give(input_id : str, yokai : str, rang : str, where : str, number : st
     if rang == "claim":
         inv = await Cf.get_inv(input_id)
         if inv == {}:
-            inv = data.default_medallium
+            inv = data.default_medallium.copy()
 
         inv["claim"] = number
         await save_inv(inv, input_id)
