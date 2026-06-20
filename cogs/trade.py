@@ -3,6 +3,36 @@ from discord.ext import commands
 import bot_package.Custom_func as Cf
 from bot_package.data import default_medallium
 
+
+
+async def list_to_dict(l:list)->dict:
+    """A fonction which a dict structured as following:
+    dict = {"elem1":number of instances in the parent list}
+
+    Args:
+        l (list): The parent list
+
+    Returns:
+        dict: The formatted dict
+    """
+
+    formatted_dict = {}
+    for elem in l:
+        if not formatted_dict.get(elem, False):
+            formatted_dict[elem] = 1
+        else:
+            formatted_dict[elem] += 1
+    return formatted_dict
+
+
+async def check_dup(dup_list:dict, inv:dict):     
+    for item in dup_list.items():
+        if item[1] > 1:
+            if len(inv[item[0]]): return False
+            if inv[item[0]][1] < item[1]: return False
+    return True
+
+
 class TradeConfirmView(discord.ui.View):
     
     def __init__(self, author : discord.User, destinataire : discord.User, asked_yokai_form, offered_yokai, son_yokai, son_item, ton_yokai, ton_item, bot, ctx):
@@ -311,7 +341,7 @@ class Trade(commands.Cog):
         author_bag = await Cf.get_bag(ctx.author.id)
         recipient_bag= await Cf.get_bag(destinataire.id)
         
-        #Format the yokai(s) in a tuple with separator ","
+        #Format the yokai(s) in a list with separator ","
 
         son_yokai = list(son_yokai.split(sep=", ")) if son_yokai != "" else []
         ton_yokai = list(ton_yokai.split(sep=", ")) if ton_yokai != "" else []
@@ -353,6 +383,27 @@ class Trade(commands.Cog):
         if not (await have_it(recipient_bag, son_item) and await have_it(recipient_inv, son_yokai)):
             return await ctx.send(embed=dont_have_it_embed("r"))
         
+        # check for duplicates
+        dup_check_a_Y = await list_to_dict(ton_yokai)
+        dup_check_a_I = await list_to_dict(ton_item)
+        
+        dup_check_r_Y = await list_to_dict(son_yokai)
+        dup_check_r_I = await list_to_dict(son_item)
+        
+        if not ( await check_dup(dup_check_a_Y, author_inv) and await check_dup(dup_check_a_I, author_bag)):
+            error_embed = discord.Embed(title="Vous avez indiqué plus de Yo-kai/Items que vous n'en aviez !",
+                                        color=discord.Color.red(),
+                                        description="Attention, lorsque vous ajoutez plusieurs fois un même Yo-kai/Item vérifiez que vous en avez autant."
+                                        )
+            return await ctx.send(embed=error_embed)
+        
+        if not ( await check_dup(dup_check_r_Y, recipient_inv) and await check_dup(dup_check_r_I, recipient_bag)):
+            error_embed = discord.Embed(title=f"Vous avez indiqué plus de Yo-kai/Items que {destinataire.name} n'en a !",
+                                        color=discord.Color.red(),
+                                        description="Attention, lorsque vous ajoutez plusieurs fois un même Yo-kai/Item vérifiez qu'il en autant."
+                                        )
+            return await ctx.send(embed=error_embed)
+        
         for item in ton_item:
             if author_bag.get(item,[""])[0] == "coin":
                 error_embed = discord.Embed(title="Vous ne pouvez pas faire de trade de pièces !",
@@ -368,7 +419,7 @@ class Trade(commands.Cog):
                                         description="Cela est une sécurité, la fonction sera sûrement rétablie dans une prochaine mise à jour !"
                                         )
                 return await ctx.send(embed=error_embed)
-        
+         
         #check if they try to trade them self
         if ctx.author == destinataire :
             error_embed = discord.Embed(title="Vous ne pouvez pas faire de trade à vous même !",
@@ -533,6 +584,16 @@ class Trade(commands.Cog):
                                         )
                 return await ctx.send(embed=error_embed)
         
+        # check for duplicates
+        dup_check_a_Y = await list_to_dict(ton_yokai)
+        dup_check_a_I = await list_to_dict(ton_item)
+
+        if not ( await check_dup(dup_check_a_Y, author_inv) and await check_dup(dup_check_a_I, author_bag)):
+            error_embed = discord.Embed(title="Vous avez indiqué plus de Yo-kai/Items que vous n'en aviez !",
+                                        color=discord.Color.red(),
+                                        description="Attention, lorsque vous ajoutez plusieurs fois un même Yo-kai/Item vérifiez que vous en avez autant."
+                                        )
+            return await ctx.send(embed=error_embed)
 
         
         #check if they try to dup
