@@ -242,7 +242,7 @@ class Search(commands.Cog):
             for yokai in matched_yokai:
                 if yokai in inv:
                     if len(inv[yokai]) > 1:
-                        yokai_list.append(f"> **{yokai}** x{len(inv[yokai])}")
+                        yokai_list.append(f"> **{yokai}** x{inv[yokai][1]}")
                     else:
                         yokai_list.append(f"> **{yokai}** ")
                     poss += 1
