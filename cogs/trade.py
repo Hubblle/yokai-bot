@@ -28,7 +28,7 @@ async def list_to_dict(l:list)->dict:
 async def check_dup(dup_list:dict, inv:dict):     
     for item in dup_list.items():
         if item[1] > 1:
-            if len(inv[item[0]]): return False
+            if len(inv[item[0]]) < 2: return False
             if inv[item[0]][1] < item[1]: return False
     return True
 
