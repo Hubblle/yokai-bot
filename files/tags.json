@@ -68,14 +68,28 @@
             "Roi Shogun",
             "As de nyan",
             "Hovernyan Cao Cao",
-            "Hovernyan S"
-        ]
-    },
-    "Nourriture":{
-        "color":"#F5F5DC",
-        "list":[
-            "Sumochi",
-            "Agonigiri"
+            "Hovernyan S",
+            "Jibanyan (Shadowside)",
+            "Jibanyan Cosplay (Fouétar)",
+            "Jibanyan Cosplay (Grégrigry)",
+            "Mistigrinyan",
+            "Cerinyan",
+            "Abyssinyan (Godside)",
+            "Ananyan",
+            "Citronyan",
+            "Coconyan",
+            "Duriannyan",
+            "Jibanyan Cosplay (Fouétar)",
+            "Jibanyan Cosplay (Grégrigry)",
+            "Jibanyan (Shadowside)",
+            "Jiganyan (Forme amicale)",
+            "Litchinyan",
+            "M. Ronronchon",
+            "Pommnyan",
+            "Pêchenyan",
+            "Shogunyan (Lightside)",
+            "Shogunyan (Shadowside)"
+
         ]
     },
     "Enma":{
@@ -94,7 +108,7 @@
             "Yasha Enma"
         ]
     },
-    "Komasan":{
+    "Koma":{
         "color":"#27F5E0",
         "list":[
             "Komasan",
@@ -119,7 +133,17 @@
             "Kuroi Komasan",
             "Jibakoma",
             "Komajiro Shiny",
-            "Komistigri Shiny"
+            "Komistigri Shiny",
+            "Komistigri",
+            "Komajiro (Lightside)",
+            "Komajiro (Shadowside)",
+            "Komak (Forme amicale)",
+            "Komami",
+            "Komasan (Lightside)",
+            "Komasan (Shadowside)",
+            "Komashura (Lightside)",
+            "Komashura (Shadowside)",
+            "Komashura Cristal"
 
         ]
     },
@@ -192,6 +216,7 @@
         "color":"#00FF7F",
         "list":[
             "Angélik (Parapluie)",
+            "Barakabo Printanier",
             "Blizzaria Printanière",
             "Dracounet (Saison des pluies)",
             "Dragô Printanier",
@@ -203,6 +228,7 @@
             "Komajiro (Parapluie)",
             "Komajiro Printanier",
             "Kyubi (Saison des pluies)",
+            "Barakabo Printanier",
             "Octorgone Printanier",
             "Sailornyan Printanière",
             "Sakuranyan",
@@ -225,8 +251,33 @@
             "Kœud de Pâques"
         ]
     },
+    "Event Estival":{
+        "color":"#FD6081",
+        "list":[
+            "Blizzaria Tournesol",
+            "Shutendoji Estival",
+            "Komasan (Voyage)",
+            "Blizzaria Estivale",
+            "Blizzaria (Shadowside) Estivale",
+            "Jibanyan Estival",
+            "Jibanyan (Surf)",
+            "Shogunyan réincarné Estival",
+            "Komak Estival",
+            "Sailornyan Estivale",
+            "Deadcool Estival",
+            "Dracounet Estival",
+            "Alpinella Estivale",
+            "Nyansès II Estival",
+            "Insomnelle Estivale",
+            "Raton glandeur Estival",
+            "Camaïeul réincarné Estival",
+            "Blizzaria Hula",
+            "Jibanyan (Voyage)",
+            "Blanche Hase Estivale"
+        ]
+    },
 
-    "Nouveaux":{
+    "Nouveau":{
         "color":"#4169e1",
         "list":[
             "Mistigrinyan",
@@ -1212,6 +1263,7 @@
             "Enma funèbre",
             "Enma l'Ancien",
             "Enma l'Ancien jeune",
+            "Jeune Baron Ananta(Merek)",
             "Lord Acala (Fudou Myouou)",
             "Lord Acala jeune",
             "Norukasoruka",
