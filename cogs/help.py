@@ -26,9 +26,6 @@ class Help(commands.Cog, name="help"):
         prefix = self.bot.bot_prefix  # METTEZ VOTRE PRÉFIXE - chargé depuis la config, en string ou comme vous voulez !
         version = self.bot.VERSION  # indiquez la version de votre code
 
-        # Paramétrage du nom du propriétaire - si vous ne voulez pas être mentionné, supprimez ces lignes et ajustez le texte d'aide
-        co_owner = 882241177578004542  # ENTREZ VOTRE ID DISCORD
-        co_owner_name = '__hubble'  # ENTREZ VOTRE NOM D'UTILISATEUR#1234
         
         owner = 902270379186323487
         owner_name = "Mart1Max"
@@ -45,11 +42,6 @@ class Help(commands.Cog, name="help"):
             except AttributeError:
                 owner = owner_name
 
-            try:
-                co_owner = ctx.guild.get_member(co_owner).mention
-
-            except AttributeError:
-                co_owner = co_owner_name
                 
                 
             # Commence à construire l'embed
@@ -79,8 +71,8 @@ class Help(commands.Cog, name="help"):
                 emb.add_field(name='Ne faisant pas partie d\'un module', value=commands_desc, inline=False)
 
             # Ajoute des informations sur l'auteur
-            emb.add_field(name="À propos", value=f"Le bot est la création de {owner} (Idées/direction), {co_owner} l'a développé mais il ne contribue plus à faire les maj ajourd'hui, juste maintenir / aider le git.\n")
-            emb.add_field(name="Contribuer ?", value="En effet, le bot est open source et ouvert à la contribution: [lien du gihub](https://github.com/Hubblle/yokai-bot)\n-# Il est ecrit en python, basé sur discord.py", inline=False)
+            emb.add_field(name="À propos", value=f"Le bot est la création de {owner} (Idées/direction)\n")
+            emb.add_field(name="Contribuer ?", value="En effet, le bot est open source et ouvert à la contribution: [lien du github](INSERRER LIEN)\n-# Il est écrit en python, basé sur discord.py", inline=False)
             emb.add_field(name="Serveur discord de support :", value=f"{serv_discord}", inline=False)
             emb.set_footer(text=f"bot version {version}")
 

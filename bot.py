@@ -3,7 +3,7 @@ Based on
 Copyright © Krypton 2019-Present template
 Version: 6.3.0
 """
-VERSION = 7.52
+VERSION = 7.6
 
 #import general stuff
 import json
@@ -157,7 +157,10 @@ class DiscordBot(commands.Bot):
         Setup the game status task of the bot.
         """
         statuses = [f"✨V{VERSION} !", "/bkai", "/help"]
-        await self.change_presence(activity=discord.Game(random.choice(statuses)))
+        if random.choices([True, False], [0.95, 0.05]):
+            await self.change_presence(activity=discord.Game(random.choice(statuses)))
+        else:
+            await self.change_presence(activity=discord.Game("🔭")) # Hubble was here x)
 
 
 
