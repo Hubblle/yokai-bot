@@ -44,7 +44,7 @@ async def check_image(session, yokai_name, yokai_data):
         
     
     asyncio.sleep(0.2)
-    url = f"https://api.quark-dev.com/yk/img/{yokai_data['id']}.png"
+    url = f"https://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/{yokai_data['id']}.png"
     try:
         async with session.get(url) as response:
             if response.status == 404:

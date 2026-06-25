@@ -261,7 +261,7 @@ class DiscordBot(commands.Bot):
                     f"Executed {executed_command} command by {context.author} (ID: {context.author.id}) in DMs"
                 )
 
-        # Check if user has already seen the message
+        """# Check if user has already seen the message
         from bot_package.Custom_func import manage_cooldown
         if await manage_cooldown(context.author.id, check_only=True):
             return
@@ -269,15 +269,8 @@ class DiscordBot(commands.Bot):
         # Add user to cooldown and send message
         await manage_cooldown(context.author.id)
         
-        message = ("""**Bonjour à toi cher utilisateur, nous avons quelque chose d'important à t'annoncer: le bot risque de s’arrêter.**
-En effet le mainteneur technique prévoit de quitter l'équipe le 4 Juillet 2026, c'est à cette date que le bot ne sera plus pris en charge.
-**Nous cherchons alors quelqu'un pour reprendre l’hébergement du bot, veuillez trouver toutes les informations au lien suivant: https://hubble.quark-dev.com/reprendre-scientifibot-y/**
-
-- Si vous voulez plus d'informations sur le reste: https://discord.gg/K4H4xhHqUb
-
-Maintenant, nous tenons à te remercier personnellement, ce sont des utilisateurs comme toi qui, même à minima, contribuent à faire vivre le bot, c'est grâce à vous, la communauté, que le bot est allé jusqu'au bout de ce qu'il a accompli aujourd’hui, et pour cela **merci ❤️ !**""")
-
-        await context.send(message, ephemeral=True)
+        message = ("")
+        await context.send(message, ephemeral=True)"""
         
     async def on_command_error(self, context: Context, error) -> None:
         """

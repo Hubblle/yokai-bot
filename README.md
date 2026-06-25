@@ -30,4 +30,4 @@ Il est important de noter que après l'ajout de Yo-kai dans la liste, il faut ut
 ## API des images
 Les contributeur de ScientifiBot Y ont participé à la création d'une api qui permet de récuperer des images pour les +800 Yo-kai du bot.
 
-Cette API est publique, mais elle ne possède pas la même Licence que le code, merci de voir: https://api.quark-dev.com/licence.html
+Cette API est publique, mais elle ne possède pas la même Licence que le code, merci de voir: https://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/html/licence.html

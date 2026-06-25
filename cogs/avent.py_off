@@ -139,7 +139,7 @@ class event(commands.Cog):
                     embed.add_field(name=f"aujourd'hui c'est le {days} décembre", value=f"c'est **{amount}** {"magnifique" if amount >2 else "magnifiques"} **{yokai}** de rang **{rang}**", inline=False)
                     yk_data : dict = data.yokai_list_full[yokai]
                     id = yk_data.get("id", "1")
-                    embed.set_image(url=f"https://api.quark-dev.com/yk/img/{id}.png")
+                    embed.set_image(url=f"https://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/{id}.png")
 
                 elif where == "bag":
                     if rang == "pièce":

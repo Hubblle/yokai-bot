@@ -1,17 +1,17 @@
 {
     "image_link" : {
-        "B" : "https://hubble.quark-dev.com/wp-content/uploads/sites/2/2025/08/Rang_B.webp",
-        "E" : "https://hubble.quark-dev.com/wp-content/uploads/sites/2/2025/08/Rang_E.webp",
-        "C" : "https://hubble.quark-dev.com/wp-content/uploads/sites/2/2025/08/Rang_C.webp",
-        "A" : "https://hubble.quark-dev.com/wp-content/uploads/sites/2/2025/08/Rang_A.webp",
-        "D" : "https://hubble.quark-dev.com/wp-content/uploads/sites/2/2025/08/Rang_D.webp",
-        "S" : "https://hubble.quark-dev.com/wp-content/uploads/sites/2/2025/08/Rang_S.webp",
-        "LegendaryS" : "https://hubble.quark-dev.com/wp-content/uploads/sites/2/2025/08/Legende.png",
-        "treasureS" : "https://hubble.quark-dev.com/wp-content/uploads/sites/2/2025/08/Treasure.png",
-        "SpecialS" : "https://hubble.quark-dev.com/wp-content/uploads/sites/2/2025/08/rare.png",
-        "DivinityS" : "https://hubble.quark-dev.com/wp-content/uploads/sites/2/2025/08/divinite.png",
-        "Boss" : "https://hubble.quark-dev.com/wp-content/uploads/sites/2/2025/08/boss.png",
-        "Shiny" : "https://example.com"
+        "B" : "https://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/static/Rang_B.webp",
+        "E" : "https://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/static/Rang_E.webp",
+        "C" : "https://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/static/Rang_C.webp",
+        "A" : "https://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/static/Rang_A.webp",
+        "D" : "https://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/static/Rang_D.webp",
+        "S" : "https://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/static/Rang_S.webp",
+        "LegendaryS" : "https://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/static/Legende.png",
+        "treasureS" : "https://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/static/Treasure.png",
+        "SpecialS" : "https://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/static/rare.png",
+        "DivinityS" : "https://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/static/divinite.png",
+        "Boss" : "https://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/static/boss.png",
+        "Shiny" : "https://example.com/"
 
     },
     "emoji" : {

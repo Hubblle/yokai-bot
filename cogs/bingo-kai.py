@@ -265,7 +265,7 @@ class Bingo_kai(commands.Cog):
                             #get the image
                             
                             id = data.yokai_list_full.get(item, {}).get("id", None)
-                            yokai_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{id}.png")
+                            yokai_embed.set_image(url=f"https://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/{id}.png")
                             yokai_embed.set_thumbnail(url=data.image_link[class_id])
 
                             
@@ -291,7 +291,7 @@ class Bingo_kai(commands.Cog):
                     )
                     try :
                         id = data.yokai_list_full[item]["id"]
-                        yokai_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{id}.png")
+                        yokai_embed.set_image(url=f"https://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/{id}.png")
                         yokai_embed.set_thumbnail(url=data.image_link[class_id])
                     except KeyError :
                         id = None
@@ -333,7 +333,7 @@ class Bingo_kai(commands.Cog):
                             #get the image
 
                             id = data.item[item]["id"]
-                            item_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{id}.png")
+                            item_embed.set_image(url=f"https://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/{id}.png")
                             
                             item_embed.add_field(
                                 name=f"Vous l'avez déjà eu. Vous en avez donc {bag[item][1]}",
@@ -359,7 +359,7 @@ class Bingo_kai(commands.Cog):
                     #get the image
 
                     id = data.item[item]["id"]
-                    item_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{id}.png")
+                    item_embed.set_image(url=f"https://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/{id}.png")
                     
                     item_embed.add_field(
                         name=f"Vous ne l'avez jamais eu !",
@@ -398,7 +398,7 @@ class Bingo_kai(commands.Cog):
                             #get the image
 
                             id = data.item[item]["id"]
-                            item_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{id}.png")
+                            item_embed.set_image(url=f"https://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/{id}.png")
                             
                             item_embed.add_field(
                                 name=f"Vous l'avez déjà eu. Vous en avez donc {bag[item][1]}",
@@ -427,7 +427,7 @@ class Bingo_kai(commands.Cog):
                     #get the image
 
                     id = data.item[item]["id"]
-                    item_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{id}.png")
+                    item_embed.set_image(url=f"https://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/{id}.png")
                     
                     item_embed.add_field(
                         name=f"Vous ne l'avez jamais eu !",
@@ -550,7 +550,7 @@ class Bingo_kai(commands.Cog):
         
 
         id = data.yokai_list_full.get(Yokai_choice, {}).get("id", None) #I feel ashamed of what I did here
-        yokai_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{id}.png")
+        yokai_embed.set_image(url=f"https://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/{id}.png")
 
         if id == None :
             yokai_embed.add_field(name="Image non disponible ! 😢", inline=False, value="En effet, nous ne possédons pas l'image de tous les Yo-kai, mais l'équipe travaille pour les apporter au complet et au plus vite.")
@@ -644,7 +644,7 @@ class Bingo_kai(commands.Cog):
             )
             
             #add the image
-            coin_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{coin_id}.png")
+            coin_embed.set_image(url=f"https://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/{coin_id}.png")
             
             #log the action
             if ctx.guild is not None:
@@ -815,7 +815,7 @@ class Bingo_kai(commands.Cog):
                     brute_bag["Pièce gagnante"] = ["coin"]
                     brute_bag["coin"] += 1
             
-            winning_bkai_embed.set_image(url="https://api.quark-dev.com/yk/img/bkai-gagnant.png")
+            winning_bkai_embed.set_image(url="https://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/bkai-gagnant.png")
 
             await Cf.save_bag(brute_bag, ctx.author.id)
             await ctx.send(embed=winning_bkai_embed)
@@ -894,7 +894,7 @@ class Bingo_kai(commands.Cog):
         
 
         id = data.yokai_list_full.get(Yokai_choice, {}).get("id", None)
-        yokai_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{id}.png")
+        yokai_embed.set_image(url=f"https://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/{id}.png")
 
         if id == None :
             yokai_embed.add_field(name="Image non disponible ! 😢", inline=False, value="En effet, nous ne possédons pas l'image de tous les Yo-kai, mais l'équipe travaille pour les apporter au complet et au plus vite.")

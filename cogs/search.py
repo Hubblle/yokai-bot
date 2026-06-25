@@ -100,7 +100,7 @@ class Search(commands.Cog):
             except:
                 yokai_id = None
                 
-            yokai_embed.set_image(url=f"https://api.quark-dev.com/yk/img/{yokai_id}.png")
+            yokai_embed.set_image(url=f"https://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/{yokai_id}.png")
             yokai_embed.set_thumbnail(url=data.image_link[class_id])
             return await ctx.send(embed=yokai_embed)
                 
@@ -129,7 +129,7 @@ class Search(commands.Cog):
             coin_embed.add_field(name="Obtenable via", value="> /bingo-kai", inline=False)
             coin_embed.add_field(name="Comment l'utiliser ?", value=f"Faites `/bingo-kai <{query}>`")
            
-            coin_embed.set_thumbnail(url=f"https://api.quark-dev.com/yk/img/{coin_data['id']}.png")
+            coin_embed.set_thumbnail(url=f"hhttps://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/{coin_data['id']}.png")
             await ctx.send(embed=coin_embed)
             return
 
@@ -163,7 +163,7 @@ class Search(commands.Cog):
             t_embed.add_field(name="Obtenable via", value="\n".join(locations), inline=False)
             t_embed.add_field(name="Comment l'utiliser ?", value=f"Faites `/equip <{query}>` et il sera utilisé à votre prochain bingo-kai\n-# Plus d'info: `/help equip`")
            
-            t_embed.set_thumbnail(url=f"https://api.quark-dev.com/yk/img/{t_data['id']}.png")
+            t_embed.set_thumbnail(url=f"https://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/{t_data['id']}.png")
             await ctx.send(embed=t_embed)
             return
 
@@ -196,7 +196,7 @@ class Search(commands.Cog):
             )
             item_embed.add_field(name="Obtenable via", value="\n".join(locations), inline=False)
            
-            item_embed.set_thumbnail(url=f"https://api.quark-dev.com/yk/img/{item_data['id']}.png")
+            item_embed.set_thumbnail(url=f"https://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/{item_data['id']}.png")
             await ctx.send(embed=item_embed)
             return
         # Not found
