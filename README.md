@@ -1,4 +1,7 @@
 # ScientifyBot Y
+
+# /!\ Ce repo n'est plus maintenu, merci de vous rendre sur https://github.com/MrPheonixi/ScientifiBot-Y-maintained pour le repo maintenu par la communauté.
+
 ## Requirements :
 
 - Python 3.12+
@@ -28,6 +31,6 @@ Le script manager.py est fourni pour toutes taches de maintenance sur le bot (vo
 Il est important de noter que après l'ajout de Yo-kai dans la liste, il faut utiliser la fonction "6. **Ajustement des identifiants** (`adjust_id()`)", ou les ajouter manuellement au fichier `./files/full_name_fr.json` sinon le bot risque de provoquer des erreurs quand on les obtients.
 
 ## API des images
-Les contributeur de ScientifiBot Y ont participé à la création d'une api qui permet de récuperer des images pour les +800 Yo-kai du bot.
+Les contributeurs de ScientifiBot Y ont participé à la création d'une api qui permet de récupérer des images pour les +800 Yo-kai du bot.
 
 Cette API est publique, mais elle ne possède pas la même Licence que le code, merci de voir: https://lfbn-idf3-1-5-236.w81-249.abo.wanadoo.fr/html/licence.html
